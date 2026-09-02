@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle2, ShieldCheck, Cpu, Code2, Users, Globe, BookMarked, Sparkles, Award } from "lucide-react";
+import { ArrowRight, CheckCircle2, ShieldCheck, Cpu, Code2, Users, Globe, BookMarked, Sparkles, Award, Quote } from "lucide-react";
+import { asset } from "../lib/assets";
+import { temoignages } from "../data/content";
 
 export default function Home() {
   return (
@@ -72,7 +74,7 @@ export default function Home() {
               {/* sharp vertical separator */}
               <div className="absolute inset-y-0 left-0 w-px bg-[var(--color-misa-line)] z-10" />
               <img
-                src={`${import.meta.env.BASE_URL}campus-main.jpg`}
+                src={asset('campus-main.jpg')}
                 alt="Campus Faculté des Sciences — Université d'Antananarivo"
                 className="campus-img absolute inset-0 w-full h-full"
                 style={{ objectPosition: "center 20%" }}
@@ -96,7 +98,7 @@ export default function Home() {
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <div className="p-1.5 border border-[var(--color-misa-line)]">
-              <img src={`${import.meta.env.BASE_URL}logo-mit.png`} alt="MIT logo" className="h-9 w-auto object-contain" />
+              <img src={asset('logo-mit.png')} alt="MIT logo" className="h-9 w-auto object-contain" />
             </div>
             <div>
               <div className="text-xs font-bold tracking-[0.14em] text-[var(--color-misa-red)] uppercase">MIT — UNIVERSITÉ D'ANTANANARIVO</div>
@@ -211,8 +213,43 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PARTENAIRES — paper band ─────────────────────────────────────── */}
+      {/* ── ALUMNI TÉMOIGNAGES — paper band (added from dev) ─────────────── */}
       <section className="bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-16 lg:py-24">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">ALUMNI & SORTANTS</p>
+              <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)] max-w-[540px]">
+                Avis et parcours de nos diplômés
+              </h2>
+              <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
+            </div>
+            <p className="text-xs text-neutral-500 font-mono tracking-wider">
+              « MISA un jour, MISA toujours ! »
+            </p>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {temoignages.map((t) => (
+              <div key={t.author} className="academic-card bg-white border border-[var(--color-misa-line)] p-6 sm:p-8 flex flex-col justify-between">
+                <div>
+                  <Quote size={20} className="text-[var(--color-misa-red)] mb-4 opacity-80" />
+                  <p className="text-sm leading-[1.7] text-neutral-700 italic">
+                    "{t.quote}"
+                  </p>
+                </div>
+                <div className="mt-6 border-t border-[var(--color-misa-line)] pt-4 flex items-center justify-between">
+                  <span className="text-xs font-bold text-[var(--color-misa-red)] uppercase tracking-wider">{t.author}</span>
+                  <span className="text-xs font-mono text-neutral-500">{t.promo}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PARTENAIRES — white band ─────────────────────────────────────── */}
+      <section className="bg-white border-b border-[var(--color-misa-line)] py-16 lg:py-24">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
 

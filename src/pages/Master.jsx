@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { masterParcours } from "../data/content";
+import { introductionParcours, masterParcours } from "../data/content";
 import { BookOpen, Target, User } from "lucide-react";
 
 export default function Master() {
@@ -20,8 +20,11 @@ export default function Master() {
             Master Informatique et Technologie
           </h1>
           <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
-          <p className="mt-5 max-w-[680px] text-sm sm:text-base leading-[1.7] text-neutral-600">
-            Deux parcours spécialisés : Innovation et Technologie (INT) et MISA. Contenu repris fidèlement depuis la page Master officielle — aucune UE inventée.
+          <p className="mt-5 max-w-[720px] text-sm sm:text-base leading-[1.7] text-neutral-700 font-medium">
+            {introductionParcours}
+          </p>
+          <p className="mt-3 max-w-[680px] text-xs sm:text-sm leading-[1.7] text-neutral-500">
+            Deux parcours : Innovation et Technologie (INT) — systèmes embarqués, et MISA — data & IA. Programmes mis à jour d'après contenu officiel fourni.
           </p>
         </div>
       </div>
