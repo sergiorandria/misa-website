@@ -121,9 +121,23 @@ export default function Navbar() {
             )}
           </div>
 
-          <NavLink to="/admission" className={({ isActive }) => `${linkBase} ${isActive ? linkActive : linkIdle}`}>
-            ADMISSION
-          </NavLink>
+          <div className="relative" onMouseEnter={() => setAdmissionDrop(true)} onMouseLeave={() => setAdmissionDrop(false)}>
+            <NavLink to="/admission" className={({ isActive }) => `${linkBase} ${isActive ? linkActive : linkIdle} flex items-center gap-1`}>
+              ADMISSION <ChevronDown size={14} className={`${admissionDrop ? "rotate-180" : ""} transition`} />
+            </NavLink>
+            {admissionDrop && (
+              <div className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[280px] bg-white border border-[var(--color-misa-line)] p-2 flex gap-2 shadow-sm">
+                <Link to="/admission/licence" className="flex-1 border border-[var(--color-misa-line)] p-3 hover:border-[var(--color-misa-ink)] transition">
+                  <div className="text-sm font-semibold">Licence</div>
+                  <div className="text-xs text-neutral-500">L1 — IT</div>
+                </Link>
+                <Link to="/admission/master-int" className="flex-1 border border-[var(--color-misa-line)] p-3 hover:border-[var(--color-misa-ink)] transition">
+                  <div className="text-sm font-semibold">Master INT</div>
+                  <div className="text-xs text-neutral-500">M1 — INT</div>
+                </Link>
+              </div>
+            )}
+          </div>
         </nav>
 
         {/* Desktop CTA */}

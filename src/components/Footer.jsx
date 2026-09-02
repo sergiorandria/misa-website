@@ -68,6 +68,8 @@ export default function Footer() {
               { to: "/formation/licence", label: "Licence" },
               { to: "/formation/master", label: "Master" },
               { to: "/admission", label: "Conditions d’admission" },
+              { to: "/admission/licence", label: "Admission Licence" },
+              { to: "/admission/master-int", label: "Admission Master INT" },
             ].map(item => (
               <li key={item.to}>
                 <Link to={item.to} className="inline-block py-1 text-white/90 hover:text-white hover:underline transition">

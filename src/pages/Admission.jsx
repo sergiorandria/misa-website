@@ -301,3 +301,14 @@ export default function Admission() {
     </div>
   );
 }
+
+function AdmissionLink({ to, title, description }) {
+  return (
+    <Link to={to} className="border border-[var(--color-misa-line)] p-5 hover:border-[var(--color-misa-red)] transition">
+      <div className="text-xs tracking-widest text-[var(--color-misa-red)]">CANDIDATURE</div>
+      <h2 className="mt-2 text-sm font-bold">{title}</h2>
+      <p className="mt-1 text-xs leading-relaxed text-neutral-500">{description}</p>
+      <span className="mt-3 block text-xs font-semibold text-[var(--color-misa-red)]">Consulter la procédure →</span>
+    </Link>
+  );
+}
