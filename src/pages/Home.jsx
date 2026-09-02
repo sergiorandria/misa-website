@@ -26,9 +26,8 @@ export default function Home() {
               <Link to="/admission" className="bg-[var(--color-misa-red)] text-white text-sm font-semibold px-6 py-3 hover:bg-[var(--color-misa-red-dark)] transition">Conditions d'admission</Link>
               <Link to="/formation/licence" className="border border-[var(--color-misa-ink)] text-sm font-semibold px-6 py-3 hover:bg-[var(--color-misa-ink)] hover:text-white transition">Voir la formation</Link>
             </div>
-            <div className="mt-10 grid grid-cols-3 gap-8 max-w-[520px] border-t border-[var(--color-misa-line)] pt-6">
+            <div className="mt-10 grid grid-cols-2 gap-8 max-w-[360px] border-t border-[var(--color-misa-line)] pt-6">
               <div><div className="text-sm font-bold">1996</div><div className="text-xs text-neutral-500">Création MISA</div></div>
-              <div><div className="text-sm font-bold">LMD 2014</div><div className="text-xs text-neutral-500">Licence → Master</div></div>
               <div><div className="text-sm font-bold">BP 906</div><div className="text-xs text-neutral-500">Ankatso</div></div>
             </div>
           </div>
@@ -47,12 +46,12 @@ export default function Home() {
         <div className="max-w-[1160px] mx-auto px-6 py-10 grid lg:grid-cols-2 gap-10">
           <div>
             <div className="text-xs tracking-widest text-neutral-500">LA MIT / MISA</div>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight">De la MISA (1996) à la MIT (2022)</h2>
+            <h2 className="mt-2 text-2xl font-bold tracking-tight">La MIT / MISA</h2>
             <div className="mt-3 h-px bg-[var(--color-misa-line)]" />
             <div className="mt-4 space-y-3 text-sm leading-relaxed text-neutral-700">
-              <p>Fondée en <strong>1996</strong> dans le Département de Mathématiques et Informatique de la Faculté des Sciences de l’Université d’Antananarivo, avec le soutien du projet <strong>PRESUP</strong> et de la Coopération Française.</p>
-              <p>Ayant basculé dans le système <strong>LMD depuis 2014</strong>, la Maîtrise en Informatique et Statistique Appliquées est devenue <strong>Mathématiques, Informatique et Statistique Appliquées</strong>. Formation orientée recherche pour les M2 (première promotion 2016).</p>
-              <p>À la fin de l’année <strong>2022</strong>, la MISA introduit la Mention Informatique et Technologie, offrant une formation complète de la première année (<strong>L1</strong>) à la troisième année (<strong>L3</strong>).</p>
+              <p>Fondée dans le Département de Mathématiques et Informatique de la Faculté des Sciences de l'Université d'Antananarivo, avec le soutien du projet PRESUP et de la Coopération Française.</p>
+              <p>La Maîtrise en Informatique et Statistique Appliquées est devenue Mathématiques, Informatique et Statistique Appliquées (MISA) avec l'adoption du système LMD.</p>
+              <p>La MISA a ensuite introduit la Mention Informatique et Technologie (MIT), offrant une formation complète de la première année (L1) à la troisième année (L3).</p>
             </div>
           </div>
           <div className="space-y-4">
@@ -68,7 +67,6 @@ export default function Home() {
               <div className="text-xs tracking-widest text-neutral-500">POURQUOI LA MIT / MISA</div>
               <ul className="mt-2 text-sm leading-relaxed list-disc pl-5 space-y-1">
                 <li>Approche intégrée mathématiques & informatique</li>
-                <li>Pionnière en IA — expertise de pointe</li>
                 <li>Diplômés hautement recherchés — qualité & compétences pratiques</li>
               </ul>
             </div>

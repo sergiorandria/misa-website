@@ -38,10 +38,9 @@ export const objectives = [
 ];
 
 export const stats = [
-  { value: "1996", label: "Année de création", sub: "30 ans d’excellence" },
-  { value: "LMD", label: "Système depuis 2014", sub: "Licence → Master → Doctorat" },
+  { value: "1996", label: "Année de création", sub: "MISA" },
+  { value: "LMD", label: "Système LMD", sub: "Licence → Master" },
   { value: "2", label: "Parcours Master", sub: "MISA & Innovation Tech." },
-  { value: "100%", label: "Employabilité", sub: "Profils très recherchés" },
 ];
 
 export const licenceParcours = [
@@ -133,18 +132,14 @@ export const partenaires = [
 
 export const admission = {
   classement: [
-    "BACC 2021 ou BACC 2022 : Série C, S ou BACC Français Série S (Spécialité Mathématiques), selon l’ordre de mérite",
-    "BACC 2020 : à condition de signer un engagement de non-perception de bourse d’étude, même critère que précédent",
+    "Sélection sur dossier selon l'ordre de mérite",
   ],
   dossier: [
-    "Photo d’identité",
+    "Photo d'identité",
     "Demande de préinscription dûment remplie et signée",
     "Copie certifiée conforme du relevé de notes du Baccalauréat",
-    "BACC 2022 : Photocopie de la convocation du BACC",
-    "Acte de naissance récent (< 3 mois) avec état civil complet",
-    "Reçu de versement de 40 000 Ar — BNI CA n° 00005 00002 214103 602 00 43 — libellé à « Monsieur le Doyen de la Faculté des Sciences — Université d’Antananarivo BP 906 »",
+    "Acte de naissance récent avec état civil complet",
   ],
-  depot: "Les dossiers peuvent être envoyés sous pli recommandé à “Monsieur le Doyen de la Faculté des Sciences Antananarivo BP 906” au plus tard le vendredi 30 septembre 2022",
 };
 
 export const contact = {

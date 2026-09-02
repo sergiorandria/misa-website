@@ -5,8 +5,8 @@ export default function Admission() {
     <div className="bg-white">
       <div className="max-w-[1160px] mx-auto px-6 py-8">
         <div className="text-xs tracking-widest text-neutral-500">ADMISSION</div>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight">Conditions d’admission</h1>
-        <p className="mt-3 max-w-[720px] text-sm leading-relaxed text-neutral-600">Mention Informatique et Technologie — repris fidèlement depuis la page Conditions d’admission. Aucune date inventée ; les années mentionnées sont celles affichées sur le site original.</p>
+        <h1 className="mt-2 text-3xl font-bold tracking-tight">Conditions d'admission</h1>
+        <p className="mt-3 max-w-[720px] text-sm leading-relaxed text-neutral-600">Mention Informatique et Technologie — informations générales. Contactez la scolarité pour les conditions de l'année en cours.</p>
       </div>
 
       <div className="max-w-[1160px] mx-auto px-6 pb-12 grid lg:grid-cols-[1.7fr_0.9fr] gap-6">
@@ -35,16 +35,6 @@ export default function Admission() {
                 </div>
               ))}
             </div>
-            <div className="px-5 pb-5">
-              <a href="/assets/file/PREINSCRIPTION.pdf" className="text-xs underline decoration-[var(--color-misa-red)] underline-offset-4">Télécharger le modèle de préinscription (PDF) — si disponible sur site original</a>
-            </div>
-          </section>
-
-          <section className="border border-[var(--color-misa-line)] bg-amber-50/40">
-            <div className="p-5">
-              <div className="text-xs tracking-widest text-neutral-500">DATE LIMITE DE DÉPÔT</div>
-              <p className="mt-2 text-sm leading-relaxed">{admission.depot}. Cette date est celle affichée sur le site (2022) — à confirmer auprès de la scolarité pour l’année en cours.</p>
-            </div>
           </section>
         </div>
 
@@ -56,9 +46,6 @@ export default function Admission() {
               <li>(+261) 34 53 140 38</li>
               <li>mit-univ-tana@gmail.com</li>
             </ul>
-            <div className="mt-4 text-xs leading-relaxed text-neutral-500 border-t border-[var(--color-misa-line)] pt-3">
-              Paiement BNI : 40 000 Ar — n° 00005 00002 214103 602 00 43 — “M. le Doyen de la Faculté des Sciences — BP 906”.
-            </div>
           </div>
 
           <div className="border border-[var(--color-misa-ink)] p-5">
