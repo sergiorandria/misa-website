@@ -4,9 +4,9 @@ export default function Admission() {
   return (
     <div className="bg-white">
       <div className="max-w-[1160px] mx-auto px-6 py-8">
-        <div className="text-xs tracking-widest text-neutral-500">ADMISSION</div>
+        <div className="text-xs tracking-widest text-neutral-500">ADMISSION — PROCÉDURE D'INSCRIPTION</div>
         <h1 className="mt-2 text-3xl font-bold tracking-tight">Conditions d’admission</h1>
-        <p className="mt-3 max-w-[720px] text-sm leading-relaxed text-neutral-600">Mention Informatique et Technologie — repris fidèlement depuis la page Conditions d’admission. Aucune date inventée ; les années mentionnées sont celles affichées sur le site original.</p>
+        <p className="mt-3 max-w-[720px] text-sm leading-relaxed text-neutral-600">Cursus complet L1 → M2 : tronc commun IT (L1-L2), spécialisation MISA (L3), puis Master MISA (data/IA) ou INT (embarqué). Admission sur dossier et entretien selon parcours — contenu actualisé d'après « contenu_parcours_inscription_MISA ».</p>
       </div>
 
       <div className="max-w-[1160px] mx-auto px-6 pb-12 grid lg:grid-cols-[1.7fr_0.9fr] gap-6">
@@ -40,10 +40,86 @@ export default function Admission() {
             </div>
           </section>
 
+          <section className="border border-[var(--color-misa-line)]">
+            <div className="p-5 border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
+              <h2 className="text-sm font-bold tracking-tight">Étapes de l'admission (L1)</h2>
+            </div>
+            <div className="p-5">
+              <ol className="space-y-2">
+                {admission.etapes.map((e, i) => (
+                  <li key={e} className="flex gap-3 text-sm leading-relaxed">
+                    <span className="text-xs font-mono text-neutral-500 mt-0.5">{String(i + 1).padStart(2, "0")}</span> {e}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </section>
+
+          <section className="border border-[var(--color-misa-line)]">
+            <div className="p-5 border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
+              <h2 className="text-sm font-bold tracking-tight">Inscription en L1 — pièces & étapes</h2>
+            </div>
+            <div className="p-5 space-y-3">
+              <p className="text-sm leading-relaxed text-neutral-600">{admission.inscription.enLigne}</p>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div className="border border-[var(--color-misa-line)] p-3">
+                  <div className="text-xs tracking-widest text-neutral-500">PIÈCES INSCRIPTION</div>
+                  <ul className="mt-2 space-y-1 text-sm">
+                    <li className="flex gap-2"><span className="text-[var(--color-misa-red)]">—</span> Acte de naissance récent (&lt; 3 mois)</li>
+                    <li className="flex gap-2"><span className="text-[var(--color-misa-red)]">—</span> Reçu de versement frais de dossier (agence bancaire)</li>
+                  </ul>
+                </div>
+                <div className="border border-[var(--color-misa-line)] p-3">
+                  <div className="text-xs tracking-widest text-neutral-500">ÉTAPES</div>
+                  <ol className="mt-2 space-y-1 text-sm">
+                    {admission.inscription.etapes.map(e => <li key={e} className="flex gap-2"><span className="text-neutral-400">{admission.inscription.etapes.indexOf(e)+1}.</span>{e}</li>)}
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="border border-[var(--color-misa-line)]">
+            <div className="p-5 border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
+              <h2 className="text-sm font-bold tracking-tight">Admission en M1 — MISA vs INT</h2>
+            </div>
+            <div className="p-5 space-y-4">
+              <p className="text-sm leading-relaxed text-neutral-600">{admission.m1.intro}</p>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div className="border border-[var(--color-misa-line)] p-3">
+                  <div className="text-xs font-semibold tracking-widest text-[var(--color-misa-red)]">MISA</div>
+                  <p className="mt-1 text-sm leading-relaxed">{admission.m1.misa}</p>
+                </div>
+                <div className="border border-[var(--color-misa-line)] p-3">
+                  <div className="text-xs font-semibold tracking-widest text-[var(--color-misa-red)]">INT</div>
+                  <p className="mt-1 text-sm leading-relaxed">{admission.m1.int}</p>
+                </div>
+              </div>
+              <div className="border-t border-[var(--color-misa-line)] pt-3">
+                <div className="text-xs tracking-widest text-neutral-500">CANDIDATS EXTERNES INT — ÉTAPES</div>
+                <ol className="mt-2 space-y-1">
+                  {admission.m1.etapesExternes.map((e,i) => (
+                    <li key={e} className="flex gap-3 text-sm leading-relaxed">
+                      <span className="text-xs font-mono text-neutral-500 mt-0.5">{String(i+1).padStart(2,"0")}</span> {e}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+              <div className="border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-3">
+                <div className="text-xs tracking-widest text-neutral-500">INSCRIPTION M1 — ÉTAPES</div>
+                <ol className="mt-2 space-y-1">
+                  {admission.m1.inscriptionEtapes.map((e,i) => (
+                    <li key={e} className="text-sm flex gap-2"><span className="text-neutral-400">{i+1}.</span>{e}</li>
+                  ))}
+                </ol>
+              </div>
+            </div>
+          </section>
+
           <section className="border border-[var(--color-misa-line)] bg-amber-50/40">
             <div className="p-5">
-              <div className="text-xs tracking-widest text-neutral-500">DATE LIMITE DE DÉPÔT</div>
-              <p className="mt-2 text-sm leading-relaxed">{admission.depot}. Cette date est celle affichée sur le site (2022) — à confirmer auprès de la scolarité pour l’année en cours.</p>
+              <div className="text-xs tracking-widest text-neutral-500">DÉPÔT DU DOSSIER</div>
+              <p className="mt-2 text-sm leading-relaxed">{admission.depot}</p>
             </div>
           </section>
         </div>
@@ -62,13 +138,15 @@ export default function Admission() {
           </div>
 
           <div className="border border-[var(--color-misa-ink)] p-5">
-            <div className="text-xs tracking-widest">ÉTAPES</div>
+            <div className="text-xs tracking-widest">ÉTAPES — RÉSUMÉ L1</div>
             <ol className="mt-3 space-y-2 text-sm">
-              <li>1 — Pré-inscription</li>
-              <li>2 — Dépôt du dossier complet</li>
-              <li>3 — Classement & sélection</li>
-              <li>4 — Publication des résultats</li>
+              {admission.etapes.map((e,i) => <li key={e}>{i+1} — {e.split(' — ')[0] ?? e}</li>)}
             </ol>
+          </div>
+
+          <div className="border border-[var(--color-misa-line)] p-5 bg-[var(--color-misa-paper)]">
+            <div className="text-xs tracking-widest text-neutral-500">ADMISSION M1 — RÉSUMÉ</div>
+            <p className="mt-2 text-sm leading-relaxed">MISA : continuité depuis L1. INT : ouvert aux externes sur CV + lettre + entretien.</p>
           </div>
         </aside>
       </div>

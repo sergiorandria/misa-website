@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { asset } from "../lib/assets";
 
 export default function Footer() {
   return (
@@ -6,7 +7,7 @@ export default function Footer() {
       <div className="max-w-[1160px] mx-auto px-6 py-10 grid md:grid-cols-3 gap-10 text-sm">
         <div>
           <div className="flex items-center gap-3">
-            <img src={`${import.meta.env.BASE_URL}logo-mit.png`} alt="MIT" className="h-8 w-auto bg-white p-1" />
+            <img src={asset('logo-mit.png')} alt="MIT" className="h-8 w-auto bg-white p-1" />
             <span className="font-semibold tracking-tight">MIT — MISA</span>
           </div>
           <p className="mt-4 leading-relaxed text-white/80">

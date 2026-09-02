@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { masterParcours } from "../data/content";
+import { introductionParcours, masterParcours } from "../data/content";
 
 export default function Master() {
   const [parcours, setParcours] = useState("INT");
@@ -12,7 +12,8 @@ export default function Master() {
       <div className="max-w-[1160px] mx-auto px-6 py-8">
         <div className="text-xs tracking-widest text-neutral-500">FORMATION — MASTER</div>
         <h1 className="mt-2 text-3xl font-bold tracking-tight">Master</h1>
-        <p className="mt-3 max-w-[720px] text-sm leading-relaxed text-neutral-600">Deux parcours : Innovation et Technologie (INT) et MISA. Contenu repris fidèlement depuis la page Master originale.</p>
+        <p className="mt-3 max-w-[720px] text-sm leading-relaxed text-neutral-600">{introductionParcours}</p>
+        <p className="mt-2 max-w-[720px] text-xs leading-relaxed text-neutral-500">Deux parcours : Innovation et Technologie (INT) — systèmes embarqués, et MISA — data & IA. Programmes actualisés d'après contenu fourni.</p>
       </div>
 
       <div className="max-w-[1160px] mx-auto px-6 pb-12">

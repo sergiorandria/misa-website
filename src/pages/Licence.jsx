@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { licenceParcours } from "../data/content";
+import { introductionParcours, licenceParcours } from "../data/content";
 
 export default function Licence() {
   return (
@@ -7,7 +7,8 @@ export default function Licence() {
       <div className="max-w-[1160px] mx-auto px-6 py-8">
         <div className="text-xs tracking-widest text-neutral-500">FORMATION — LICENCE</div>
         <h1 className="mt-2 text-3xl font-bold tracking-tight">Licence</h1>
-        <p className="mt-3 max-w-[720px] text-sm leading-relaxed text-neutral-600">Deux parcours : Informatique et Technologie (L1, L2) et MISA (L3). Contenu repris fidèlement depuis les pages Licence du site original — aucune UE inventée.</p>
+        <p className="mt-3 max-w-[720px] text-sm leading-relaxed text-neutral-600">{introductionParcours}</p>
+        <p className="mt-2 max-w-[720px] text-xs leading-relaxed text-neutral-500">Deux parcours : Informatique et Technologie (L1, L2) et MISA (L3) — programmes actualisés d'après contenu fourni (contenu_parcours_inscription).</p>
       </div>
 
       <div className="max-w-[1160px] mx-auto px-6 pb-12 space-y-8">

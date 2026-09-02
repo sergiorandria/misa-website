@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { asset } from "../lib/assets";
+import { temoignages } from "../data/content";
 
 export default function Home() {
   return (
@@ -31,7 +33,7 @@ export default function Home() {
           </div>
 
           <div className="border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-6">
-            <img src={`${import.meta.env.BASE_URL}logo-mit.png`} alt="MIT logo" className="h-12 w-auto" />
+            <img src={asset('logo-mit.png')} alt="MIT logo" className="h-12 w-auto" />
             <h2 className="mt-4 text-sm font-bold tracking-wide">Une pédagogie centrée sur l’étudiant</h2>
             <p className="mt-2 text-sm leading-relaxed text-neutral-600">
               Cours magistraux, travaux dirigés, ateliers, simulations et projets de groupe. Les étudiants sont encouragés à prendre en charge leur apprentissage et à développer leur autonomie. Stages en entreprise chaque année.
@@ -103,6 +105,27 @@ export default function Home() {
           ))}
         </div>
         <p className="mt-3 text-xs text-neutral-500">Intitulés repris tels quels depuis la page d’accueil originale.</p>
+      </section>
+
+      {/* Témoignages — Alumni (contenu/temoignages) */}
+      <section className="border-y border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
+        <div className="max-w-[1160px] mx-auto px-6 py-10">
+          <div className="text-xs tracking-widest text-neutral-500">ALUMNI — TÉMOIGNAGES</div>
+          <h2 className="mt-2 text-xl font-bold tracking-tight">Avis des sortants</h2>
+          <p className="mt-2 text-sm leading-relaxed text-neutral-600 max-w-[720px]">Paroles d'anciens — valeurs de la MISA : intégrité, initiative, audace, rigueur, persévérance et travail d'équipe. « MISA un jour, MISA toujours ! »</p>
+          <div className="mt-6 space-y-4">
+            {temoignages.map(t => (
+              <div key={t.author} className="bg-white border-l-4 border-[var(--color-misa-red)] border-y border-r border-[var(--color-misa-line)] p-5 shadow-sm">
+                <p className="text-sm leading-relaxed italic text-neutral-700">"{t.quote}"</p>
+                <div className="mt-3 text-right text-xs">
+                  <span className="font-semibold text-[var(--color-misa-red)]">{t.author}</span>
+                  <span className="text-neutral-500"> — {t.promo}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 text-xs text-neutral-500">Extraits de « temoignages_anciens(1).txt » — textes intégraux conservés, mise en forme minimaliste (design inchangé).</p>
+        </div>
       </section>
 
       {/* Partenaires */}

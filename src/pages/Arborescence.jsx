@@ -1,3 +1,5 @@
+import { asset } from "../lib/assets";
+
 export default function Arborescence() {
   return (
     <div className="bg-white">
@@ -101,7 +103,7 @@ export default function Arborescence() {
         <div className="mt-8 border border-[var(--color-misa-line)] p-4 bg-[var(--color-misa-paper)]">
           <div className="text-xs tracking-widest text-neutral-500">IMAGE SOURCE — VÉRIFICATION</div>
           <p className="text-xs text-neutral-500 mt-1">L’image ci-dessous est l’original du site (785 Ko, 3508×4961). Elle fait foi en cas de divergence.</p>
-          <img src={`${import.meta.env.BASE_URL}arborescence.png`} alt="Arborescence MIT originale" className="mt-4 w-full h-auto border border-[var(--color-misa-line)] bg-white" loading="lazy" />
+          <img src={asset('arborescence.png')} alt="Arborescence MIT originale" className="mt-4 w-full h-auto border border-[var(--color-misa-line)] bg-white" loading="lazy" />
         </div>
       </div>
     </div>
