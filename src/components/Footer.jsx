@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, ExternalLink, ShieldAlert } from "lucide-react";
+import { Phone, Mail, ExternalLink, MapPin, ShieldAlert } from "lucide-react";
+import { asset } from "../lib/assets";
 import { contact } from "../data/content";
 
 export default function Footer() {
@@ -14,7 +15,7 @@ export default function Footer() {
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <div className="p-1 bg-white border border-white/20 shadow-2xs">
-              <img src={`${import.meta.env.BASE_URL}logo-mit.png`} alt="MIT" className="h-8 w-auto object-contain" />
+              <img src={asset('logo-mit.png')} alt="MIT" className="h-8 w-auto object-contain" />
             </div>
             <span className="font-extrabold text-base tracking-tight text-white">MIT — MISA</span>
           </div>

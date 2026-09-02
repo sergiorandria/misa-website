@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { licenceParcours } from "../data/content";
+import { introductionParcours, licenceParcours } from "../data/content";
 import { BookOpen, Target, User } from "lucide-react";
 
 export default function Licence() {
@@ -14,8 +14,11 @@ export default function Licence() {
             Licence Mention Informatique et Technologie
           </h1>
           <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
-          <p className="mt-5 max-w-[680px] text-sm sm:text-base leading-[1.7] text-neutral-600">
-            Deux parcours : Informatique et Technologie (L1, L2) et MISA (L3). Contenu repris fidèlement depuis les pages Licence du site officiel — aucune UE inventée.
+          <p className="mt-5 max-w-[720px] text-sm sm:text-base leading-[1.7] text-neutral-700 font-medium">
+            {introductionParcours}
+          </p>
+          <p className="mt-3 max-w-[680px] text-xs sm:text-sm leading-[1.7] text-neutral-500">
+            Deux parcours : Informatique et Technologie (L1, L2) et MISA (L3). Programmes mis à jour d'après contenu officiel fourni.
           </p>
         </div>
       </div>

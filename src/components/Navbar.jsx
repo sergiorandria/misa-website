@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown, ChevronRight, GraduationCap, BookOpen, Layers, Award } from "lucide-react";
+import { asset } from "../lib/assets";
 
 const linkBase = "text-[13px] tracking-wider font-semibold uppercase px-3 py-1.5 border-b-2 transition-all duration-200";
 const linkActive = "border-[var(--color-misa-red)] text-[var(--color-misa-red)] font-bold";
@@ -38,7 +39,7 @@ export default function Navbar() {
         {/* Brand logo & title */}
         <Link to="/" className="flex items-center gap-3 shrink-0 group">
           <div className="p-1 bg-white border border-[var(--color-misa-line)] shadow-2xs group-hover:border-[var(--color-misa-red)] transition duration-200">
-            <img src={`${import.meta.env.BASE_URL}logo-mit.png`} alt="MIT Logo" className="h-8 sm:h-9 w-auto object-contain" />
+            <img src={asset('logo-mit.png')} alt="MIT Logo" className="h-8 sm:h-9 w-auto object-contain" />
           </div>
           <div className="leading-none">
             <div className="text-[13px] sm:text-[14px] font-extrabold tracking-tight text-[var(--color-misa-ink)] group-hover:text-[var(--color-misa-red)] transition duration-200">
