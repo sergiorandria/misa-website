@@ -135,7 +135,7 @@ export default function PartnersSection() {
 
         {/* Footer Note */}
         <div className="mt-10 sm:mt-12 text-center text-[10px] sm:text-xs text-neutral-500 font-mono tracking-wider uppercase border-t border-[var(--color-misa-line)] pt-6">
-          Identités institutionnelles & marques officielles — Université d'Antananarivo (Mentions IT & MISA)
+          Identités institutionnelles & marques officielles - Université d'Antananarivo (Mentions IT & MISA)
         </div>
 
       </div>

@@ -17,8 +17,8 @@ export default function AdmissionMasterInt() {
     <div className="bg-white">
       <div className="border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
-          <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">ADMISSION — MASTER</p>
-          <h1 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">Admission en M1 — Innovation et Technologie</h1>
+          <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">ADMISSION - MASTER</p>
+          <h1 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">Admission en M1 - Innovation et Technologie</h1>
           <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
           <p className="mt-4 sm:mt-5 max-w-[720px] text-sm sm:text-base leading-[1.7] text-neutral-700 font-medium">Le parcours INT accueille les étudiants issus de la Licence, y compris les candidats externes titulaires d’une Licence obtenue dans un établissement public.</p>
         </div>
@@ -35,7 +35,7 @@ export default function AdmissionMasterInt() {
             <List items={etapes} numbered />
           </section>
           <section className="academic-card border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-5 sm:p-8">
-            <div className="text-xs tracking-widest text-neutral-500">APRÈS ADMISSION — INSCRIPTION EN M1</div>
+            <div className="text-xs tracking-widest text-neutral-500">APRÈS ADMISSION - INSCRIPTION EN M1</div>
             <p className="mt-2 text-sm leading-relaxed">L’inscription comprend l’inscription administrative en ligne, le paiement des frais de scolarité, puis l’inscription pédagogique selon le parcours retenu.</p>
           </section>
         </div>
@@ -44,14 +44,14 @@ export default function AdmissionMasterInt() {
           <div className="academic-card border border-[var(--color-misa-line)] p-5 sm:p-6">
             <div className="text-[11px] tracking-[0.18em] font-bold text-[var(--color-misa-ink)] uppercase">PARCOURS D’ADMISSION</div>
             <div className="mt-4 space-y-2 text-sm">
-              <Link to="/admission/licence" className="block border-l-2 border-transparent pl-3 hover:border-[var(--color-misa-red)]">Licence — L1 IT</Link>
-              <Link to="/admission/master-int" className="block border-l-2 border-[var(--color-misa-red)] pl-3 font-semibold">Master — M1 INT</Link>
+              <Link to="/admission/licence" className="block border-l-2 border-transparent pl-3 hover:border-[var(--color-misa-red)]">Licence - L1 IT</Link>
+              <Link to="/admission/master-int" className="block border-l-2 border-[var(--color-misa-red)] pl-3 font-semibold">Master - M1 INT</Link>
             </div>
           </div>
           <div className="academic-card border border-[var(--color-misa-line)] p-5 sm:p-6 bg-[var(--color-misa-paper)]">
             <div className="text-[11px] tracking-[0.18em] font-bold text-neutral-500 uppercase">CONTACT SCOLARITÉ</div>
             <ul className="mt-3 text-sm leading-relaxed space-y-1">
-              <li>BP 906 Ankatso — Faculté des Sciences</li>
+              <li>BP 906 Ankatso - Faculté des Sciences</li>
               <li>(+261) 34 53 140 38</li>
               <li>mit-univ-tana@gmail.com</li>
             </ul>

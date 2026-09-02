@@ -45,7 +45,7 @@ export default function Navbar() {
           </div>
           <div className="leading-none">
             <div className="text-[13px] sm:text-[14px] font-extrabold tracking-tight text-[var(--color-misa-ink)] group-hover:text-[var(--color-misa-red)] transition duration-200">
-              MIT — MISA
+              MIT - MISA
             </div>
             <div className="text-[9px] sm:text-[10px] tracking-[0.16em] text-neutral-500 font-medium uppercase mt-0.5">
               UNIVERSITÉ D'ANTANANARIVO
@@ -59,7 +59,7 @@ export default function Navbar() {
             ACCUEIL
           </NavLink>
 
-          {/* Harvard/MIT style Mega-Menu Dropdown — FORMATION */}
+          {/* Harvard/MIT style Mega-Menu Dropdown - FORMATION */}
           <div className="relative" onMouseEnter={() => setDrop(true)} onMouseLeave={() => setDrop(false)}>
             <button
               className={`${linkBase} ${linkIdle} flex items-center gap-1.5 cursor-pointer`}
@@ -127,7 +127,7 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Harvard/MIT style Mega-Menu Dropdown — ADMISSION (même structure que FORMATION) */}
+          {/* Harvard/MIT style Mega-Menu Dropdown - ADMISSION (même structure que FORMATION) */}
           <div className="relative" onMouseEnter={() => setAdmissionDrop(true)} onMouseLeave={() => setAdmissionDrop(false)}>
             <div className="flex items-center">
               <NavLink
@@ -156,14 +156,14 @@ export default function Navbar() {
                     {
                       to: "/admission/licence",
                       title: "Licence",
-                      sub: "L1 — IT",
+                      sub: "L1 - IT",
                       icon: BookOpen,
                       badge: "Concours",
                     },
                     {
                       to: "/admission/master-int",
                       title: "Master INT",
-                      sub: "M1 — INT",
+                      sub: "M1 - INT",
                       icon: Award,
                       badge: "Dossier",
                     },
@@ -336,7 +336,7 @@ export default function Navbar() {
                 CANDIDATER À LA MIT
               </Link>
               <div className="text-[11px] text-center text-neutral-500 leading-tight">
-                Mention Informatique et Technologie — Université d’Antananarivo
+                Mention Informatique et Technologie - Université d’Antananarivo
               </div>
             </div>
           </div>

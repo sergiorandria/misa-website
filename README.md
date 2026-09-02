@@ -1,8 +1,8 @@
-# MIT • MISA — Université d'Antananarivo
+# MIT • MISA - Université d'Antananarivo
 
-Modern static website scaffold for **Mention Informatique et Technologie (MIT) / Mathématiques Informatique et Statistique Appliquées (MISA)** — University of Antananarivo (BP 906 Ankatso).
+Modern static website scaffold for **Mention Informatique et Technologie (MIT) / Mathématiques Informatique et Statistique Appliquées (MISA)** - University of Antananarivo (BP 906 Ankatso).
 
-> Mimics the architecture of http://mit.univ-antananarivo.mg (and https://mit-ua.mg) — but with a fully improved design system.
+> Mimics the architecture of http://mit.univ-antananarivo.mg (and https://mit-ua.mg) - but with a fully improved design system.
 
 ## Stack
 - React 19 + Vite 6
@@ -11,12 +11,12 @@ Modern static website scaffold for **Mention Informatique et Technologie (MIT) /
 - lucide-react icons
 
 ## Pages / Architecture
-- `/` — Accueil (hero, stats, histoire MISA, vision/mission, 6 objectifs, partenaires)
-- `/formation/licence` — Licence L1/L2 (Informatique et Technologie) + L3 (MISA) with UE tabs
-- `/formation/master` — Master M1/M2 × 2 parcours (INT & MISA)
-- `/formation/arborescence` — Interactive LMD diagram (BACC → L1 → L2 → L3 → Master bifurqué → Doctorat/Emploi)
-- `/admission` — Conditions d’admission (classement, dossier, dépôt, étapes)
-- `/inscription` — Pré-inscription form (client-side demo)
+- `/` - Accueil (hero, stats, histoire MISA, vision/mission, 6 objectifs, partenaires)
+- `/formation/licence` - Licence L1/L2 (Informatique et Technologie) + L3 (MISA) with UE tabs
+- `/formation/master` - Master M1/M2 × 2 parcours (INT & MISA)
+- `/formation/arborescence` - Interactive LMD diagram (BACC → L1 → L2 → L3 → Master bifurqué → Doctorat/Emploi)
+- `/admission` - Conditions d’admission (classement, dossier, dépôt, étapes)
+- `/inscription` - Pré-inscription form (client-side demo)
 
 Legacy query-param routes (`index.php?page=...`) redirect to new paths.
 

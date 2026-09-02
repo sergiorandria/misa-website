@@ -10,17 +10,17 @@ export default function Arborescence() {
       {/* Banner */}
       <div className="border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
-          <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">FORMATION — ARBORESCENCE</p>
+          <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">FORMATION - ARBORESCENCE</p>
           <h1 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">
             Arborescence LMD
           </h1>
           <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
           <p className="mt-4 sm:mt-5 max-w-[680px] text-sm sm:text-base leading-[1.7] text-neutral-600">
-            Reproduction fidèle du schéma officiel <span className="font-mono text-[11px] bg-white border border-[var(--color-misa-line)] px-1.5 py-0.5 font-bold">MIT(1).png</span> — les informations ci-dessous reprennent uniquement ce qui est lisible sur le site, aucun intitulé n'a été inventé.
+            Reproduction fidèle du schéma officiel <span className="font-mono text-[11px] bg-white border border-[var(--color-misa-line)] px-1.5 py-0.5 font-bold">MIT(1).png</span> - les informations ci-dessous reprennent uniquement ce qui est lisible sur le site, aucun intitulé n'a été inventé.
           </p>
           <p className="mt-3 text-xs text-neutral-500 flex items-center gap-1.5 font-medium">
             <FileText size={14} className="text-[var(--color-misa-red)] shrink-0" />
-            <span>Source : <code>/assets/images/MIT(1).png</code> — image incluse en bas de page.</span>
+            <span>Source : <code>/assets/images/MIT(1).png</code> - image incluse en bas de page.</span>
           </p>
         </div>
       </div>
@@ -34,7 +34,7 @@ export default function Arborescence() {
             <div className="bg-[var(--color-misa-paper)] p-4 sm:p-5 border-b md:border-b-0 md:border-r border-[var(--color-misa-line)] flex flex-col justify-center">
               <div className="inline-flex items-center gap-1.5 text-[11px] tracking-widest text-[var(--color-misa-red)] font-bold uppercase">
                 <span className="w-2 h-2 rounded-full bg-[var(--color-misa-red)]" />
-                L1 — S1·S2
+                L1 - S1·S2
               </div>
               <div className="font-bold text-sm sm:text-base mt-1.5 text-[var(--color-misa-ink)]">Informatique et Technologie</div>
             </div>
@@ -52,7 +52,7 @@ export default function Arborescence() {
             <div className="bg-[var(--color-misa-paper)] p-4 sm:p-5 border-b md:border-b-0 md:border-r border-[var(--color-misa-line)] flex flex-col justify-center">
               <div className="inline-flex items-center gap-1.5 text-[11px] tracking-widest text-[var(--color-misa-red)] font-bold uppercase">
                 <span className="w-2 h-2 rounded-full bg-[var(--color-misa-red)]" />
-                L2 — S3·S4
+                L2 - S3·S4
               </div>
               <div className="font-bold text-sm sm:text-base mt-1.5 text-[var(--color-misa-ink)]">Informatique et Technologie</div>
             </div>
@@ -70,7 +70,7 @@ export default function Arborescence() {
             <div className="bg-[var(--color-misa-paper)] p-4 sm:p-5 border-b md:border-b-0 md:border-r border-[var(--color-misa-line)] flex flex-col justify-center">
               <div className="inline-flex items-center gap-1.5 text-[11px] tracking-widest text-[var(--color-misa-red)] font-bold uppercase">
                 <span className="w-2 h-2 rounded-full bg-[var(--color-misa-red)]" />
-                L3 — S5·S6
+                L3 - S5·S6
               </div>
               <div className="font-bold text-sm sm:text-base mt-1.5 text-[var(--color-misa-ink)]">MISA</div>
               <div className="text-[11px] text-neutral-500 font-medium mt-0.5">Mathématiques, Informatique et Statistique Appliquées</div>
@@ -81,7 +81,7 @@ export default function Arborescence() {
                 <li>Ouvert aux étudiants qui ont validé le L2 du parcours Informatique de la mention IT</li>
                 <li>Ouvert aux étudiants de Mathématiques ayant validé L1/L2, après sélection et entretien (selon lecture du schéma)</li>
               </ul>
-              <p className="mt-3 text-[11px] sm:text-xs text-neutral-500 italic">UE détaillées : voir page Licence — aucune matière ajoutée ici.</p>
+              <p className="mt-3 text-[11px] sm:text-xs text-neutral-500 italic">UE détaillées : voir page Licence - aucune matière ajoutée ici.</p>
             </div>
           </div>
 
@@ -90,7 +90,7 @@ export default function Arborescence() {
             <div className="p-4 sm:p-5">
               <div className="inline-flex items-center gap-1.5 text-[11px] tracking-widest text-[var(--color-misa-red)] font-bold uppercase">
                 <span className="w-2 h-2 rounded-full bg-[var(--color-misa-red)]" />
-                M1 MISA — S7·S8
+                M1 MISA - S7·S8
               </div>
               <div className="text-[11px] tracking-widest text-neutral-500 font-bold uppercase mt-3">MODALITÉ D’ACCÈS</div>
               <ul className="mt-2 text-xs sm:text-sm leading-relaxed list-disc pl-5 space-y-1 text-neutral-700">
@@ -102,7 +102,7 @@ export default function Arborescence() {
             <div className="p-4 sm:p-5">
               <div className="inline-flex items-center gap-1.5 text-[11px] tracking-widest text-[var(--color-misa-red)] font-bold uppercase">
                 <span className="w-2 h-2 rounded-full bg-[var(--color-misa-red)]" />
-                M1 INT — S7·S8
+                M1 INT - S7·S8
               </div>
               <div className="text-xs text-neutral-500 font-medium mt-0.5">Innovation et Technologie</div>
               <div className="text-[11px] tracking-widest text-neutral-500 font-bold uppercase mt-3">MODALITÉ D’ACCÈS</div>
@@ -118,17 +118,17 @@ export default function Arborescence() {
             <div className="p-4 sm:p-5">
               <div className="inline-flex items-center gap-1.5 text-[11px] tracking-widest text-[var(--color-misa-red)] font-bold uppercase">
                 <span className="w-2 h-2 rounded-full bg-[var(--color-misa-red)]" />
-                M2 MISA — S9·S10
+                M2 MISA - S9·S10
               </div>
               <div className="text-xs sm:text-sm text-neutral-600 mt-2 leading-relaxed">
-                Année recherche : stage & mémoire. Les débouchés listés sur le schéma (chef de projet, data-scientist, enseignant-chercheur, etc.) sont partiellement lisibles — ils ne sont pas retranscrits ici pour éviter toute approximation.
+                Année recherche : stage & mémoire. Les débouchés listés sur le schéma (chef de projet, data-scientist, enseignant-chercheur, etc.) sont partiellement lisibles - ils ne sont pas retranscrits ici pour éviter toute approximation.
               </div>
             </div>
             
             <div className="p-4 sm:p-5">
               <div className="inline-flex items-center gap-1.5 text-[11px] tracking-widest text-[var(--color-misa-red)] font-bold uppercase">
                 <span className="w-2 h-2 rounded-full bg-[var(--color-misa-red)]" />
-                M2 INT — S9·S10
+                M2 INT - S9·S10
               </div>
               <div className="text-xs sm:text-sm text-neutral-600 mt-2 leading-relaxed">
                 Année professionnalisante : stage & mémoire. Débouchés du schéma non retranscrits (lisibilité insuffisante).
@@ -142,7 +142,7 @@ export default function Arborescence() {
         <div className="mt-8 border border-[var(--color-misa-line)] p-4 sm:p-6 bg-[var(--color-misa-paper)] shadow-xs">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <div className="text-[11px] sm:text-xs tracking-[0.16em] text-neutral-500 font-bold uppercase">IMAGE SOURCE — VÉRIFICATION ACADÉMIQUE</div>
+              <div className="text-[11px] sm:text-xs tracking-[0.16em] text-neutral-500 font-bold uppercase">IMAGE SOURCE - VÉRIFICATION ACADÉMIQUE</div>
               <p className="text-xs text-neutral-600 mt-1">L’image ci-dessous est l’original du site (785 Ko, 3508×4961). Touchez pour agrandir.</p>
             </div>
             
@@ -179,7 +179,7 @@ export default function Arborescence() {
         <div className="fixed inset-0 z-50 bg-black/95 p-4 sm:p-6 flex flex-col justify-between backdrop-blur-md animate-in fade-in duration-200">
           <div className="flex items-center justify-between text-white border-b border-white/20 pb-3">
             <span className="text-xs sm:text-sm font-bold tracking-wider uppercase">
-              Schéma Officiel LMD — MIT (3508 × 4961 px)
+              Schéma Officiel LMD - MIT (3508 × 4961 px)
             </span>
             
             <div className="flex items-center gap-2">

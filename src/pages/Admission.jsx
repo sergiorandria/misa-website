@@ -4,7 +4,7 @@ import { ArrowRight, BookOpen, GraduationCap } from "lucide-react";
 const accessPaths = [
   {
     to: "/admission/licence",
-    title: "Admission en Licence (L1 — IT)",
+    title: "Admission en Licence (L1 - IT)",
     description: (
       <>
         Sur sélection de dossier, réservée exclusivement aux titulaires d’un <strong>Bac scientifique (Série C, Série S)</strong>
@@ -15,7 +15,7 @@ const accessPaths = [
   },
   {
     to: "/admission/master-int",
-    title: "Admission en Master (M1 — MISA ou INT)",
+    title: "Admission en Master (M1 - MISA ou INT)",
     description: "Le parcours MISA valorise la continuité depuis la L1 ; le parcours INT est ouvert aux titulaires d’une Licence d’un autre établissement public.",
     icon: GraduationCap,
     accent: "red",

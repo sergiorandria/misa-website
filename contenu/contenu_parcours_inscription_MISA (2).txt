@@ -1,4 +1,4 @@
-CONTENU DU SITE — PARCOURS ET INSCRIPTION
+CONTENU DU SITE - PARCOURS ET INSCRIPTION
 
 PAGE « PARCOURS DE FORMATION »
 
@@ -6,7 +6,7 @@ Introduction générale
 
 Notre établissement propose un cursus complet en informatique, structuré en cinq années : deux années de tronc commun en Licence (L1 et L2), une année de spécialisation (L3), puis deux années de Master (M1 et M2) au choix entre deux parcours complémentaires.
 
-L1 et L2 — Informatique et Technologie (IT)
+L1 et L2 - Informatique et Technologie (IT)
 
 Les deux premières années de licence constituent le tronc commun de la filière Informatique et Technologie (IT). Ce parcours renforce les bases de l'informatique et des mathématiques nécessaires pour des études plus avancées.
 
@@ -33,7 +33,7 @@ Programme pédagogique en L2 (S3-S4) :
 - Probabilité et statistiques
 - Web et multimédia
 
-L3 — MISA
+L3 - MISA
 
 En troisième année de licence, les étudiants intègrent le parcours MISA (S5-S6), qui les prépare directement à la poursuite d'études en Master. Ce parcours combine des matières fondamentales (mathématiques, algorithmique, programmation) et des matières professionnalisantes (réseaux, bases de données, développement web).
 
@@ -52,7 +52,7 @@ Programme pédagogique en L3 :
 
 À l'issue de la L3, les étudiants peuvent intégrer le monde professionnel ou poursuivre en Master, dans le parcours MISA ou le parcours INT.
 
-M1 et M2 — Deux parcours au choix : MISA et INT
+M1 et M2 - Deux parcours au choix : MISA et INT
 
 En Master, deux parcours sont proposés, permettant à chaque étudiant d'orienter sa formation selon son projet professionnel :
 

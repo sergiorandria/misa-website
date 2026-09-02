@@ -16,8 +16,8 @@ const dossier = [
 export default function AdmissionLicence() {
   return (
     <AdmissionPage
-      eyebrow="ADMISSION — LICENCE"
-      title="Admission en L1 — Informatique et Technologie"
+      eyebrow="ADMISSION - LICENCE"
+      title="Admission en L1 - Informatique et Technologie"
       intro="L’admission en première année se fait sur classement de dossier, selon la série du Baccalauréat."
       next="Admission en Master INT"
       nextTo="/admission/master-int"
@@ -40,7 +40,7 @@ export default function AdmissionLicence() {
         ]} numbered />
       </section>
       <section className="academic-card border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-5 sm:p-8">
-        <div className="text-xs tracking-widest text-neutral-500">APRÈS ADMISSION — INSCRIPTION EN L1</div>
+        <div className="text-xs tracking-widest text-neutral-500">APRÈS ADMISSION - INSCRIPTION EN L1</div>
         <p className="mt-2 text-sm leading-relaxed">L’inscription administrative peut se faire en ligne ou sur place. Elle comprend ensuite l’inscription pédagogique et la remise de l’emploi du temps.</p>
         <p className="mt-3 text-sm leading-relaxed">Pièces complémentaires : acte de naissance récent (moins de 3 mois) et reçu de versement des frais de dossier.</p>
       </section>
@@ -65,14 +65,14 @@ function AdmissionPage({ eyebrow, title, intro, next, nextTo, children }) {
           <div className="academic-card border border-[var(--color-misa-line)] p-5 sm:p-6">
             <div className="text-[11px] tracking-[0.18em] font-bold text-[var(--color-misa-ink)] uppercase">PARCOURS D’ADMISSION</div>
             <div className="mt-4 space-y-2 text-sm">
-              <Link to="/admission/licence" className="block border-l-2 border-[var(--color-misa-red)] pl-3 font-semibold">Licence — L1 IT</Link>
-              <Link to="/admission/master-int" className="block border-l-2 border-transparent pl-3 hover:border-[var(--color-misa-red)]">Master — M1 INT</Link>
+              <Link to="/admission/licence" className="block border-l-2 border-[var(--color-misa-red)] pl-3 font-semibold">Licence - L1 IT</Link>
+              <Link to="/admission/master-int" className="block border-l-2 border-transparent pl-3 hover:border-[var(--color-misa-red)]">Master - M1 INT</Link>
             </div>
           </div>
           <div className="academic-card border border-[var(--color-misa-line)] p-5 sm:p-6 bg-[var(--color-misa-paper)]">
             <div className="text-[11px] tracking-[0.18em] font-bold text-neutral-500 uppercase">CONTACT SCOLARITÉ</div>
             <ul className="mt-3 text-sm leading-relaxed space-y-1">
-              <li>BP 906 Ankatso — Faculté des Sciences</li>
+              <li>BP 906 Ankatso - Faculté des Sciences</li>
               <li>(+261) 34 53 140 38</li>
               <li>mit-univ-tana@gmail.com</li>
             </ul>
