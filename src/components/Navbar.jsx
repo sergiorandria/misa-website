@@ -17,61 +17,43 @@ const formationItems = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [drop, setDrop] = useState(false);
+  const dropTimer = useRef(null);
   const dropRef = useRef(null);
-  const triggerRef = useRef(null);
-  const [dropFocusIndex, setDropFocusIndex] = useState(-1);
-
-  const closeDrop = useCallback(() => {
-    setDrop(false);
-    setDropFocusIndex(-1);
-  }, []);
 
   const openDrop = useCallback(() => {
+    clearTimeout(dropTimer.current);
     setDrop(true);
-    setDropFocusIndex(-1);
   }, []);
 
-  const toggleDrop = useCallback(() => {
-    setDrop(prev => {
-      if (!prev) setDropFocusIndex(-1);
-      return !prev;
-    });
+  const scheduleClose = useCallback(() => {
+    dropTimer.current = setTimeout(() => setDrop(false), 120);
   }, []);
+
+  const cancelClose = useCallback(() => {
+    clearTimeout(dropTimer.current);
+  }, []);
+
+  useEffect(() => () => clearTimeout(dropTimer.current), []);
 
   useEffect(() => {
     if (!drop) return;
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") {
-        closeDrop();
-        triggerRef.current?.focus();
-      } else if (e.key === "ArrowDown") {
-        e.preventDefault();
-        setDropFocusIndex(prev => (prev + 1) % formationItems.length);
-      } else if (e.key === "ArrowUp") {
-        e.preventDefault();
-        setDropFocusIndex(prev => (prev - 1 + formationItems.length) % formationItems.length);
-      }
+    const handleKey = (e) => {
+      if (e.key === "Escape") setDrop(false);
     };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [drop, closeDrop]);
-
-  useEffect(() => {
-    if (dropFocusIndex < 0 || !dropRef.current) return;
-    const links = dropRef.current.querySelectorAll('[role="menuitem"]');
-    links[dropFocusIndex]?.focus();
-  }, [dropFocusIndex]);
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [drop]);
 
   useEffect(() => {
     if (!drop) return;
-    const handleClickOutside = (e) => {
-      if (dropRef.current && !dropRef.current.contains(e.target) && !triggerRef.current?.contains(e.target)) {
-        closeDrop();
+    const handleClick = (e) => {
+      if (dropRef.current && !dropRef.current.contains(e.target)) {
+        setDrop(false);
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [drop, closeDrop]);
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [drop]);
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-[var(--color-misa-line)]">
@@ -92,40 +74,32 @@ export default function Navbar() {
             className="relative"
             ref={dropRef}
             onMouseEnter={openDrop}
-            onMouseLeave={closeDrop}
+            onMouseLeave={scheduleClose}
           >
             <button
-              ref={triggerRef}
-              onClick={toggleDrop}
-              onKeyDown={(e) => {
-                if (e.key === "ArrowDown" && !drop) {
-                  e.preventDefault();
-                  openDrop();
-                }
-              }}
+              onClick={() => setDrop(prev => !prev)}
               className={`${linkBase} ${linkIdle} flex items-center gap-1`}
               aria-haspopup="true"
               aria-expanded={drop}
             >
               FORMATION <ChevronDown size={14} className={`${drop ? "rotate-180" : ""} transition`} />
             </button>
+
             {drop && (
-              <div
-                className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[420px] bg-white border border-[var(--color-misa-line)] p-2 flex gap-2 shadow-sm"
-                role="menu"
-              >
-                {formationItems.map((i) => (
-                  <Link
-                    key={i.to}
-                    to={i.to}
-                    role="menuitem"
-                    tabIndex={-1}
-                    className="flex-1 border border-[var(--color-misa-line)] p-3 hover:border-[var(--color-misa-ink)] focus:border-[var(--color-misa-ink)] focus:outline-none transition"
-                  >
-                    <div className="text-sm font-semibold">{i.k}</div>
-                    <div className="text-xs text-neutral-500">{i.d}</div>
-                  </Link>
-                ))}
+              <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-[420px]">
+                <div className="bg-white border border-[var(--color-misa-line)] p-2 flex gap-2 shadow-sm">
+                  {formationItems.map((i) => (
+                    <Link
+                      key={i.to}
+                      to={i.to}
+                      onClick={() => setDrop(false)}
+                      className="flex-1 border border-[var(--color-misa-line)] p-3 hover:border-[var(--color-misa-ink)] transition"
+                    >
+                      <div className="text-sm font-semibold">{i.k}</div>
+                      <div className="text-xs text-neutral-500">{i.d}</div>
+                    </Link>
+                  ))}
+                </div>
               </div>
             )}
           </div>
