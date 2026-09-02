@@ -17,7 +17,7 @@ export default function Home() {
             </h1>
             <div className="mt-4 h-1 w-16 bg-[var(--color-misa-red)]" />
             <p className="mt-6 text-[16px] leading-relaxed text-neutral-600 max-w-[560px]">
-              <strong className="text-[var(--color-misa-ink)]">Le futur est entre vos mains.</strong> Immergez-vous dans la Science, la technologie, l'ingénierie et les Mathématiques en intégrant la MIT, la toute nouvelle mention du Domaine des Sciences et Technologies de l'Université d'Antananarivo.
+              <strong className="text-[var(--color-misa-ink)]">Le futur est entre vos mains.</strong> Immergez-vous dans la Science, la technologie, l'ingénierie et les Mathématiques en intégrant la MIT, la mention du Domaine des Sciences et Technologies de l'Université d'Antananarivo.
             </p>
             <div className="mt-8 flex gap-3">
               <Link to="/admission" className="bg-[var(--color-misa-red)] text-white text-sm font-semibold px-6 py-3 hover:bg-[var(--color-misa-red-dark)] transition">Conditions d'admission</Link>

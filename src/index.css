@@ -23,3 +23,239 @@ body {
 
 /* minimal focus */
 :focus-visible { outline: 2px solid var(--color-misa-red); outline-offset: 2px; }
+
+/* ═══════════════════════════════════════════════════════
+   Formation Dashboard — Custom Styles
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Animated fade-in ── */
+@keyframes dash-fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes dash-fade-scale {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes dash-slide-right {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+@keyframes connector-draw {
+  from { stroke-dashoffset: 100; }
+  to   { stroke-dashoffset: 0; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.dash-animate-in {
+  animation: dash-fade-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.dash-animate-scale {
+  animation: dash-fade-scale 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.dash-animate-slide {
+  animation: dash-slide-right 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── Roadmap node ── */
+.roadmap-node {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.roadmap-node:hover {
+  transform: translateY(-3px);
+}
+.roadmap-node.active {
+  transform: translateY(-4px);
+}
+.roadmap-node .node-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.roadmap-node:hover .node-ring,
+.roadmap-node.active .node-ring {
+  opacity: 0.35;
+  animation: pulse-ring 1.6s ease-out infinite;
+}
+.roadmap-node .node-glow {
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, currentColor 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.roadmap-node.active .node-glow {
+  opacity: 0.12;
+}
+
+/* ── Category pill ── */
+.cat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  white-space: nowrap;
+}
+.cat-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 12px -2px rgba(0,0,0,0.12);
+}
+.cat-pill.active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 16px -2px rgba(0,0,0,0.15);
+}
+
+/* ── UE Card ── */
+.ue-card {
+  background: white;
+  border: 1px solid var(--color-misa-line);
+  border-radius: 8px;
+  padding: 14px 16px;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+.ue-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--tag-color, var(--color-misa-red));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.ue-card:hover {
+  border-color: var(--tag-color, var(--color-misa-red));
+  box-shadow: 0 4px 20px -4px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+.ue-card:hover::before {
+  opacity: 1;
+}
+.ue-card.highlight {
+  border-color: var(--tag-color, var(--color-misa-red));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--tag-color, var(--color-misa-red)) 15%, transparent);
+}
+.ue-card.highlight::before {
+  opacity: 1;
+}
+
+/* ── Glass panel ── */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px) saturate(1.5);
+  -webkit-backdrop-filter: blur(16px) saturate(1.5);
+  border: 1px solid rgba(232, 226, 226, 0.6);
+  border-radius: 12px;
+}
+
+/* ── View mode tab ── */
+.view-tab {
+  padding: 8px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  border: 1.5px solid var(--color-misa-line);
+  background: white;
+  color: var(--color-misa-ink);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 6px;
+}
+.view-tab:hover {
+  border-color: var(--color-misa-ink);
+  background: var(--color-misa-paper);
+}
+.view-tab.active {
+  background: var(--color-misa-ink);
+  color: white;
+  border-color: var(--color-misa-ink);
+  box-shadow: 0 2px 8px rgba(70,68,68,0.2);
+}
+
+/* ── Connector line ── */
+.connector-line {
+  stroke-dasharray: 100;
+  animation: connector-draw 0.8s ease-out both;
+}
+
+/* ── Search input ── */
+.dash-search {
+  background: var(--color-misa-paper);
+  border: 1.5px solid var(--color-misa-line);
+  border-radius: 8px;
+  padding: 10px 14px 10px 38px;
+  font-size: 13px;
+  width: 100%;
+  transition: all 0.25s;
+  color: var(--color-misa-ink);
+}
+.dash-search::placeholder {
+  color: #a8a3a3;
+}
+.dash-search:focus {
+  outline: none;
+  border-color: var(--color-misa-red);
+  box-shadow: 0 0 0 3px rgba(175,35,35,0.08);
+  background: white;
+}
+
+/* ── Compare columns ── */
+.compare-col {
+  border: 1px solid var(--color-misa-line);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+}
+.compare-col:hover {
+  box-shadow: 0 4px 24px -4px rgba(0,0,0,0.08);
+}
+
+/* ── Stagger delays for children animations ── */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.10s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.20s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.30s; }
+.stagger-7 { animation-delay: 0.35s; }
+.stagger-8 { animation-delay: 0.40s; }
+
+/* ── Responsive helpers ── */
+@media (max-width: 768px) {
+  .roadmap-horizontal {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+}
+
+/* ── Subtle shimmer loading effect ── */
+.shimmer-bg {
+  background: linear-gradient(90deg, var(--color-misa-paper) 25%, white 50%, var(--color-misa-paper) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
