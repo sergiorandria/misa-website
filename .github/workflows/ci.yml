@@ -1,0 +1,36 @@
+name: CI — verify
+
+on:
+  push:
+    branches: [dev, main, "fix/**", "feat/**"]
+  pull_request:
+    branches: [dev, main]
+
+jobs:
+  build-and-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Lint (oxlint)
+        run: npm run lint
+
+      - name: Build (Vite)
+        run: npm run build
+
+      - name: Verify /mit base in dist
+        run: |
+          echo "Checking base /mit/ in dist/index.html"
+          grep -q 'href="/mit/' dist/index.html || (echo "Missing /mit/ base in index.html" && exit 1)
+          grep -q 'src="/mit/assets/' dist/index.html || (echo "Missing /mit/assets/ in index.html" && exit 1)
+          test -f dist/.htaccess && grep -q "RewriteBase /mit/" dist/.htaccess || (echo "Missing .htaccess RewriteBase" && exit 1)
+          echo "✓ /mit/ hosting verified"
