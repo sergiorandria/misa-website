@@ -9,6 +9,7 @@ const linkIdle = "border-transparent text-neutral-500 hover:text-[var(--color-mi
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [drop, setDrop] = useState(false);
+  const [admissionDrop, setAdmissionDrop] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-[var(--color-misa-line)]">
@@ -44,7 +45,23 @@ export default function Navbar() {
             )}
           </div>
 
-          <NavLink to="/admission" className={({ isActive }) => `${linkBase} ${isActive ? linkActive : linkIdle}`}>ADMISSION</NavLink>
+          <div className="relative" onMouseEnter={() => setAdmissionDrop(true)} onMouseLeave={() => setAdmissionDrop(false)}>
+            <NavLink to="/admission" className={({ isActive }) => `${linkBase} ${isActive ? linkActive : linkIdle} flex items-center gap-1`}>
+              ADMISSION <ChevronDown size={14} className={`${admissionDrop ? "rotate-180" : ""} transition`} />
+            </NavLink>
+            {admissionDrop && (
+              <div className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[280px] bg-white border border-[var(--color-misa-line)] p-2 flex gap-2 shadow-sm">
+                <Link to="/admission/licence" className="flex-1 border border-[var(--color-misa-line)] p-3 hover:border-[var(--color-misa-ink)] transition">
+                  <div className="text-sm font-semibold">Licence</div>
+                  <div className="text-xs text-neutral-500">L1 — IT</div>
+                </Link>
+                <Link to="/admission/master-int" className="flex-1 border border-[var(--color-misa-line)] p-3 hover:border-[var(--color-misa-ink)] transition">
+                  <div className="text-sm font-semibold">Master INT</div>
+                  <div className="text-xs text-neutral-500">M1 — INT</div>
+                </Link>
+              </div>
+            )}
+          </div>
         </nav>
 
         <div className="hidden lg:block">
@@ -67,6 +84,8 @@ export default function Navbar() {
             <Link onClick={() => setOpen(false)} to="/formation/licence" className="block py-2 pl-3">— Licence</Link>
             <Link onClick={() => setOpen(false)} to="/formation/master" className="block py-2 pl-3">— Master</Link>
             <NavLink onClick={() => setOpen(false)} to="/admission" className="block py-2 mt-3 border-t border-[var(--color-misa-line)]">Admission</NavLink>
+            <Link onClick={() => setOpen(false)} to="/admission/licence" className="block py-2 pl-3">— Admission Licence</Link>
+            <Link onClick={() => setOpen(false)} to="/admission/master-int" className="block py-2 pl-3">— Admission Master INT</Link>
           </div>
         </div>
       )}

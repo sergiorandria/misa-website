@@ -116,8 +116,8 @@ export const partenaires = [
 
 export const admission = {
   classement: [
-    "BACC 2021 ou BACC 2022 : Série C, S ou BACC Français Série S (Spécialité Mathématiques), selon l’ordre de mérite",
-    "BACC 2020 : à condition de signer un engagement de non-perception de bourse d’étude, même critère que précédent",
+    "BACC 2025 ou BACC 2026 : Série C, S ou BACC Français Série S (Spécialité Mathématiques), selon l’ordre de mérite",
+    "BACC 2025 : à condition de signer un engagement de non-perception de bourse d’étude, même critère que précédent",
   ],
   dossier: [
     "Photo d’identité",

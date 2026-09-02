@@ -35,6 +35,8 @@ export default function Footer() {
             <li><Link to="/formation/licence" className="hover:underline">Licence</Link></li>
             <li><Link to="/formation/master" className="hover:underline">Master</Link></li>
             <li><Link to="/admission" className="hover:underline">Conditions d’admission</Link></li>
+                      <li><Link to="/admission/licence" className="hover:underline">Admission Licence</Link></li>
+                      <li><Link to="/admission/master-int" className="hover:underline">Admission Master INT</Link></li>
           </ul>
         </div>
       </div>

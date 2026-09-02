@@ -1,4 +1,5 @@
 import { admission } from "../data/content";
+import { Link } from "react-router-dom";
 
 export default function Admission() {
   return (
@@ -46,6 +47,10 @@ export default function Admission() {
               <p className="mt-2 text-sm leading-relaxed">{admission.depot}. Cette date est celle affichée sur le site (2022) — à confirmer auprès de la scolarité pour l’année en cours.</p>
             </div>
           </section>
+          <section className="grid sm:grid-cols-2 gap-3">
+            <AdmissionLink to="/admission/licence" title="Admission en Licence" description="Candidature en L1 — Informatique et Technologie" />
+            <AdmissionLink to="/admission/master-int" title="Admission en Master INT" description="Candidature en M1 — Innovation et Technologie" />
+          </section>
         </div>
 
         <aside className="space-y-6">
@@ -73,5 +78,16 @@ export default function Admission() {
         </aside>
       </div>
     </div>
+  );
+}
+
+function AdmissionLink({ to, title, description }) {
+  return (
+    <Link to={to} className="border border-[var(--color-misa-line)] p-5 hover:border-[var(--color-misa-red)] transition">
+      <div className="text-xs tracking-widest text-[var(--color-misa-red)]">CANDIDATURE</div>
+      <h2 className="mt-2 text-sm font-bold">{title}</h2>
+      <p className="mt-1 text-xs leading-relaxed text-neutral-500">{description}</p>
+      <span className="mt-3 block text-xs font-semibold text-[var(--color-misa-red)]">Consulter la procédure →</span>
+    </Link>
   );
 }
