@@ -6,34 +6,42 @@
   --color-misa-ink: #464444;
   --color-misa-paper: #f8f5f5;
   --color-misa-line: #e8e2e2;
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
+/* Prevent touch highlight on mobile devices */
 * {
-  scroll-behavior: smooth;
   -webkit-tap-highlight-color: transparent;
-}
-
-body {
-  @apply bg-white text-[var(--color-misa-ink)] antialiased;
-  font-family: var(--font-sans);
-  font-size: 15px;
-  line-height: 1.6;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
 
-/* thin hairline */
-.hr { @apply border-t border-[var(--color-misa-line)]; }
+/* MIT / Stanford style subtle academic background grid pattern */
+.bg-academic-grid {
+  background-image: radial-gradient(#af2323 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
+  background-position: 0 0;
+}
 
-/* minimal focus */
-:focus-visible { outline: 2px solid var(--color-misa-red); outline-offset: 2px; }
+/* Custom ivy-league card hover effects */
+.academic-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
 
+.academic-card:hover {
+  border-color: var(--color-misa-ink);
+  box-shadow: 0 4px 20px -2px rgba(70, 68, 68, 0.08);
+}
+
+/* Left accent bar token */
+.border-l-accent {
+  border-left: 3px solid var(--color-misa-red);
+}

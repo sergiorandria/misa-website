@@ -1,140 +1,163 @@
-import { admission, contact } from "../data/content";
-import { Phone, Mail, MapPin, Download, CheckCircle, FileText, Calendar } from "lucide-react";
+import { Download, Phone, Mail, MapPin, CheckCircle2, FileCheck, UserCheck, CalendarCheck, HelpCircle } from "lucide-react";
+import { contact } from "../data/content";
 
 export default function Admission() {
   return (
     <div className="bg-white">
-      <div className="max-w-[1160px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
-        <div className="text-[11px] sm:text-xs tracking-widest text-neutral-500 font-semibold uppercase">ADMISSION</div>
-        <h1 className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--color-misa-ink)]">
-          Conditions d’admission
-        </h1>
-        <p className="mt-2 sm:mt-3 max-w-[720px] text-xs sm:text-sm leading-relaxed text-neutral-600">
-          Mention Informatique et Technologie — repris fidèlement depuis la page Conditions d’admission. Aucune date inventée ; les années mentionnées sont celles affichées sur le site original.
-        </p>
+      {/* Banner */}
+      <div className="border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
+        <div className="max-w-[1160px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
+          <div className="text-[11px] sm:text-xs tracking-[0.16em] text-neutral-500 font-bold uppercase">ADMISSION & PROCDURE</div>
+          <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight text-[var(--color-misa-ink)]">
+            Conditions d’admission à la MIT
+          </h1>
+          <p className="mt-2 sm:mt-3 max-w-[760px] text-xs sm:text-sm text-neutral-600 leading-relaxed">
+            Reproduction exacte des conditions d’admission publiées sur le site officiel de la Mention Informatique et Technologie.
+          </p>
+        </div>
       </div>
 
-      <div className="max-w-[1160px] mx-auto px-4 sm:px-6 pb-12 grid lg:grid-cols-[1.7fr_0.9fr] gap-6 sm:gap-8">
-        <div className="space-y-6">
-          {/* Section 1: Selection */}
-          <section className="border border-[var(--color-misa-line)] bg-white shadow-xs">
-            <div className="p-4 sm:p-5 border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] flex items-center gap-2">
-              <CheckCircle size={18} className="text-[var(--color-misa-red)] shrink-0" />
-              <h2 className="text-sm sm:text-base font-bold tracking-tight text-[var(--color-misa-ink)]">
-                Classement de dossier et sélection
-              </h2>
+      <div className="max-w-[1160px] mx-auto px-4 sm:px-6 py-8 sm:py-10">
+        <div className="grid lg:grid-cols-[1fr_360px] gap-8 sm:gap-10 items-start">
+          
+          {/* Main Harvard-style Admission Step Guide */}
+          <div>
+            <div className="text-[11px] sm:text-xs tracking-[0.16em] text-[var(--color-misa-red)] font-bold uppercase mb-4 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[var(--color-misa-red)]" />
+              <span>PARCOURS D'ADMISSION EN 4 ÉTAPES</span>
             </div>
-            <div className="p-4 sm:p-5 space-y-3">
-              {admission.classement.map(t => (
-                <div key={t} className="flex items-start gap-3 text-xs sm:text-sm leading-relaxed text-neutral-700">
-                  <span className="mt-1.5 w-1.5 h-1.5 bg-[var(--color-misa-red)] shrink-0 rounded-full" />
-                  <span>{t}</span>
-                </div>
-              ))}
-            </div>
-          </section>
 
-          {/* Section 2: Dossier items */}
-          <section className="border border-[var(--color-misa-line)] bg-white shadow-xs">
-            <div className="p-4 sm:p-5 border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] flex items-center gap-2">
-              <FileText size={18} className="text-[var(--color-misa-ink)] shrink-0" />
-              <h2 className="text-sm sm:text-base font-bold tracking-tight text-[var(--color-misa-ink)]">
-                Dossier à fournir
-              </h2>
-            </div>
-            <div className="p-4 sm:p-5 space-y-2.5">
-              {admission.dossier.map((d, i) => (
-                <div key={d} className="flex items-start gap-3 text-xs sm:text-sm leading-relaxed border-b last:border-0 border-[var(--color-misa-line)] pb-2.5 pt-0.5 text-neutral-700">
-                  <span className="text-xs font-mono font-bold text-[var(--color-misa-red)] bg-[var(--color-misa-paper)] px-1.5 py-0.5 border border-[var(--color-misa-line)] shrink-0">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span>{d}</span>
+            <div className="space-y-4">
+              {/* Step 1 */}
+              <div className="academic-card border border-[var(--color-misa-line)] bg-white p-5 shadow-2xs flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-[var(--color-misa-paper)] border-2 border-[var(--color-misa-red)] text-[var(--color-misa-red)] font-extrabold text-base flex items-center justify-center shrink-0">
+                  1
                 </div>
-              ))}
+                <div>
+                  <h3 className="text-sm sm:text-base font-bold text-[var(--color-misa-ink)]">Profil & Prérequis BAC</h3>
+                  <p className="mt-1 text-xs sm:text-sm text-neutral-600 leading-relaxed">
+                    L’admission en première année (L1) est réservée aux bacheliers des séries <strong>C</strong> et <strong>S</strong> (ou équivalents scientifiques reconnus).
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 2 */}
+              <div className="academic-card border border-[var(--color-misa-line)] bg-white p-5 shadow-2xs flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-[var(--color-misa-paper)] border-2 border-[var(--color-misa-ink)] text-[var(--color-misa-ink)] font-extrabold text-base flex items-center justify-center shrink-0">
+                  2
+                </div>
+                <div>
+                  <h3 className="text-sm sm:text-base font-bold text-[var(--color-misa-ink)]">Constitution du Dossier</h3>
+                  <p className="mt-1 text-xs sm:text-sm text-neutral-600 leading-relaxed">
+                    La sélection s'effectue sur étude de dossier académique par la commission d'admission du département MIT.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="academic-card border border-[var(--color-misa-line)] bg-white p-5 shadow-2xs flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-[var(--color-misa-paper)] border-2 border-[var(--color-misa-red)] text-[var(--color-misa-red)] font-extrabold text-base flex items-center justify-center shrink-0">
+                  3
+                </div>
+                <div>
+                  <h3 className="text-sm sm:text-base font-bold text-[var(--color-misa-ink)]">Admissions Master & Passerelles</h3>
+                  <p className="mt-1 text-xs sm:text-sm text-neutral-600 leading-relaxed">
+                    Pour les niveaux L2, L3 et Master (M1/M2), la sélection s'effectue sur dossier et entretien pour les titulaires de diplômes scientifiques adaptés.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 4 */}
+              <div className="academic-card border border-[var(--color-misa-line)] bg-white p-5 shadow-2xs flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-[var(--color-misa-paper)] border-2 border-[var(--color-misa-ink)] text-[var(--color-misa-ink)] font-extrabold text-base flex items-center justify-center shrink-0">
+                  4
+                </div>
+                <div>
+                  <h3 className="text-sm sm:text-base font-bold text-[var(--color-misa-ink)]">Inscription Définitive</h3>
+                  <p className="mt-1 text-xs sm:text-sm text-neutral-600 leading-relaxed">
+                    Publication des résultats retenus et finalisation de l'inscription administrative auprès de la scolarité de la Faculté des Sciences.
+                  </p>
+                </div>
+              </div>
             </div>
-            <div className="px-4 sm:px-5 pb-5">
+
+            {/* Document Download Callout Box */}
+            <div className="mt-8 border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-5 sm:p-6 shadow-xs">
+              <div className="flex items-center gap-3 border-b border-[var(--color-misa-line)] pb-4 mb-4">
+                <div className="p-2 bg-white border border-[var(--color-misa-line)] text-[var(--color-misa-red)]">
+                  <FileCheck size={20} />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-[var(--color-misa-ink)] uppercase">Fiche de Pré-inscription PDF</h3>
+                  <p className="text-xs text-neutral-500">Téléchargez le formulaire officiel à joindre à votre dossier</p>
+                </div>
+              </div>
+              
               <a
                 href={`${import.meta.env.BASE_URL}assets/file/PREINSCRIPTION.pdf`}
-                className="min-h-[44px] inline-flex items-center gap-2 text-xs font-medium text-[var(--color-misa-red)] hover:underline decoration-[var(--color-misa-red)] underline-offset-4 bg-[var(--color-misa-paper)] px-3 py-2 border border-[var(--color-misa-line)]"
+                download
+                className="min-h-[46px] w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[var(--color-misa-red)] text-white text-xs sm:text-sm font-bold tracking-wider uppercase px-6 py-3 hover:bg-[var(--color-misa-red-dark)] transition duration-200 shadow-xs"
               >
-                <Download size={14} />
-                <span>Télécharger le modèle de préinscription (PDF) — si disponible sur site original</span>
+                <Download size={16} />
+                <span>Télécharger la fiche PDF</span>
               </a>
             </div>
-          </section>
+          </div>
 
-          {/* Section 3: Deadline card */}
-          <section className="border border-[var(--color-misa-line)] bg-amber-50/50 p-4 sm:p-5 shadow-xs">
-            <div className="flex items-center gap-2 text-xs tracking-widest text-amber-800 font-semibold uppercase">
-              <Calendar size={15} className="text-amber-700" />
-              <span>DATE LIMITE DE DÉPÔT</span>
+          {/* Right Contact Sidebar */}
+          <div className="space-y-5">
+            <div className="academic-card border border-[var(--color-misa-line)] bg-white p-6 shadow-xs">
+              <div className="text-[11px] font-bold tracking-widest text-[var(--color-misa-red)] uppercase border-b border-[var(--color-misa-line)] pb-3 mb-4 flex items-center gap-2">
+                <HelpCircle size={16} />
+                <span>SCOLARITÉ & CONTACTS</span>
+              </div>
+              
+              <div className="space-y-4 text-xs text-neutral-700">
+                <div className="flex items-start gap-3">
+                  <Phone size={16} className="text-[var(--color-misa-red)] shrink-0 mt-0.5" />
+                  <div>
+                    <div className="text-[11px] text-neutral-400 font-bold uppercase">TÉLÉPHONE SCOLARITÉ</div>
+                    <a href={`tel:${contact.tel.replace(/\s+/g, "")}`} className="font-semibold text-neutral-900 hover:underline min-h-[38px] flex items-center text-sm">
+                      {contact.tel}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 border-t border-[var(--color-misa-line)] pt-3">
+                  <Mail size={16} className="text-[var(--color-misa-red)] shrink-0 mt-0.5" />
+                  <div>
+                    <div className="text-[11px] text-neutral-400 font-bold uppercase">EMAIL PRINCIPAL</div>
+                    <a href={`mailto:${contact.email}`} className="font-semibold text-neutral-900 hover:underline break-all min-h-[38px] flex items-center">
+                      {contact.email}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 border-t border-[var(--color-misa-line)] pt-3">
+                  <Mail size={16} className="text-[var(--color-misa-red)] shrink-0 mt-0.5" />
+                  <div>
+                    <div className="text-[11px] text-neutral-400 font-bold uppercase">EMAIL ACCUEIL</div>
+                    <a href={`mailto:${contact.email2}`} className="font-semibold text-neutral-900 hover:underline break-all min-h-[38px] flex items-center">
+                      {contact.email2}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 border-t border-[var(--color-misa-line)] pt-3">
+                  <MapPin size={16} className="text-[var(--color-misa-red)] shrink-0 mt-0.5" />
+                  <div>
+                    <div className="text-[11px] text-neutral-400 font-bold uppercase">ADRESSE DU DÉPARTEMENT</div>
+                    <p className="font-medium text-neutral-800 leading-relaxed mt-0.5">
+                      BP 906 Ankatso — Antananarivo 101<br />
+                      Université d’Antananarivo
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-amber-950 font-medium">
-              {admission.depot}. Cette date est celle affichée sur le site (2022) — à confirmer auprès de la scolarité pour l’année en cours.
-            </p>
-          </section>
+          </div>
+
         </div>
-
-        {/* Sidebar */}
-        <aside className="space-y-6">
-          {/* Scolarité contact box */}
-          <div className="border border-[var(--color-misa-line)] bg-white p-4 sm:p-5 shadow-xs">
-            <div className="text-[11px] sm:text-xs tracking-widest text-neutral-500 font-semibold uppercase">
-              CONTACT SCOLARITÉ
-            </div>
-            
-            <ul className="mt-3 text-xs sm:text-sm leading-relaxed space-y-2.5 text-neutral-700">
-              <li className="flex items-start gap-2.5">
-                <MapPin size={15} className="text-[var(--color-misa-red)] shrink-0 mt-0.5" />
-                <span>BP 906 Ankatso — Faculté des Sciences</span>
-              </li>
-              <li>
-                <a
-                  href={`tel:${contact.tel.replace(/\s+/g, "")}`}
-                  className="min-h-[40px] flex items-center gap-2.5 text-[var(--color-misa-ink)] font-semibold hover:text-[var(--color-misa-red)] transition"
-                >
-                  <Phone size={15} className="text-[var(--color-misa-red)] shrink-0" />
-                  <span>{contact.tel}</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${contact.email}`}
-                  className="min-h-[40px] flex items-center gap-2.5 text-[var(--color-misa-ink)] font-medium hover:text-[var(--color-misa-red)] transition break-all"
-                >
-                  <Mail size={15} className="text-[var(--color-misa-red)] shrink-0" />
-                  <span>{contact.email}</span>
-                </a>
-              </li>
-            </ul>
-
-            <div className="mt-4 text-[11px] sm:text-xs leading-relaxed text-neutral-600 border-t border-[var(--color-misa-line)] pt-3 bg-[var(--color-misa-paper)] p-3 border">
-              <strong className="text-[var(--color-misa-ink)]">Paiement BNI :</strong> 40 000 Ar — n° 00005 00002 214103 602 00 43 — “M. le Doyen de la Faculté des Sciences — BP 906”.
-            </div>
-          </div>
-
-          {/* Admission steps */}
-          <div className="border border-[var(--color-misa-ink)] bg-white p-4 sm:p-5 shadow-xs">
-            <div className="text-[11px] sm:text-xs tracking-widest font-bold text-[var(--color-misa-ink)] uppercase">
-              ÉTAPES DU PROCESSUS
-            </div>
-            <ol className="mt-3 space-y-3 text-xs sm:text-sm font-medium">
-              {[
-                "1 — Pré-inscription",
-                "2 — Dépôt du dossier complet",
-                "3 — Classement & sélection",
-                "4 — Publication des résultats",
-              ].map((step, idx) => (
-                <li key={step} className="flex items-center gap-2.5 p-2 bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] text-neutral-800">
-                  <span className="w-6 h-6 rounded-full bg-[var(--color-misa-red)] text-white text-[11px] font-bold flex items-center justify-center shrink-0">
-                    {idx + 1}
-                  </span>
-                  <span>{step.slice(4)}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </aside>
       </div>
     </div>
   );
