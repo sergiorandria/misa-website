@@ -67,10 +67,10 @@ export const licenceParcours = [
   },
   {
     tag: "Parcours",
-    title: "MISA — Mathématiques Informatique et Statistique Appliquées",
+    title: "MISA - Mathématiques Informatique et Statistique Appliquées",
     levels: ["L3 (S5-S6)"],
     responsable: "RAMANANA Hasinarivo",
-    objectif: "En troisième année (S5-S6), parcours MISA préparant au Master — socle fondamental + professionnalisation (réseaux, BDD, web/mobile, projet). À l'issue, insertion pro ou poursuite M1 MISA/INT.",
+    objectif: "En troisième année (S5-S6), parcours MISA préparant au Master - socle fondamental + professionnalisation (réseaux, BDD, web/mobile, projet). À l'issue, insertion pro ou poursuite M1 MISA/INT.",
     ues: {
       "L3 (S5-S6)": [
         ["Prototypage numérique", "Mathématiques du numérique", "Conduite de projet informatique", "Probabilités et statistiques", "Programmation avancée", "Informatique décisionnelle"],
@@ -84,7 +84,7 @@ export const masterParcours = {
   INT: {
     title: "Innovation et Technologie",
     responsable: "RASOANAIVO Andry",
-    objectif: "Parcours orienté systèmes embarqués — conception et développement de systèmes informatiques intégrés à des dispositifs matériels. Socle commun informatique avec débouchés adaptés au marché.",
+    objectif: "Parcours orienté systèmes embarqués - conception et développement de systèmes informatiques intégrés à des dispositifs matériels. Socle commun informatique avec débouchés adaptés au marché.",
     m1: [
       ["Algorithmique avancée", "Introduction à l’apprentissage automatique", "Optimisation combinatoire avancée", "Base de données réparties", "Introduction à la vision par ordinateur", "Entreprenariat"],
       ["Modélisation et conception d'objet", "Modélisation et calcul scientifique", "JAVA EE", "Management de projet informatique", "Web services, XML", "Développement collaboratif"],
@@ -97,7 +97,7 @@ export const masterParcours = {
   MISA: {
     title: "MISA",
     responsable: "ROBINSON Olivier",
-    objectif: "Parcours orienté data et intelligence artificielle — analyse de données, machine learning et IA. Formation recherche avec mobilité internationale et passerelles écoles d'ingénieurs / actuariat.",
+    objectif: "Parcours orienté data et intelligence artificielle - analyse de données, machine learning et IA. Formation recherche avec mobilité internationale et passerelles écoles d'ingénieurs / actuariat.",
     m1: [
       ["Management d'entreprise", "Calcul et simulation", "Fabrication numérique", "Data Sciences", "Programmation par contraintes", "Étude d'algorithme"],
       ["Conception et fabrication", "Langues et entreprenariat", "Apprentissage statistique", "Informatique de la vie courante", "Outils mathématiques", "Système d'information"],
@@ -116,9 +116,9 @@ export const partenaires = [
 ];
 
 export const admission = {
-  // L1 — classement sur dossier selon série Bac
+  // L1 - classement sur dossier selon série Bac
   classement: [
-    "Baccalauréat série C, S, ou Baccalauréat français série S (spécialité mathématiques) — classement sur dossier selon l'ordre de mérite",
+    "Baccalauréat série C, S, ou Baccalauréat français série S (spécialité mathématiques) - classement sur dossier selon l'ordre de mérite",
     "Bacheliers d'une session antérieure : admission possible sous engagement de non-perception de bourse d'étude",
   ],
   dossier: [
@@ -126,10 +126,10 @@ export const admission = {
     "Une demande de préinscription remplie et signée par le candidat",
     "Une copie certifiée conforme du relevé de notes du Baccalauréat",
     "Une photocopie de la convocation du Baccalauréat",
-    "Acte de naissance récent (moins de 3 mois) — pour l'inscription",
-    "Reçu de versement des frais de dossier en agence bancaire — pour l'inscription (BNI n° 00005 00002 214103 602 00 43, M. le Doyen de la Faculté des Sciences BP 906)",
+    "Acte de naissance récent (moins de 3 mois) - pour l'inscription",
+    "Reçu de versement des frais de dossier en agence bancaire - pour l'inscription (BNI n° 00005 00002 214103 602 00 43, M. le Doyen de la Faculté des Sciences BP 906)",
   ],
-  depot: "Dépôt du dossier complet avant la date limite, en ligne ou par envoi recommandé à « Monsieur le Doyen de la Faculté des Sciences — Université d'Antananarivo BP 906 ». Classement sur dossier puis publication des résultats.",
+  depot: "Dépôt du dossier complet avant la date limite, en ligne ou par envoi recommandé à « Monsieur le Doyen de la Faculté des Sciences - Université d'Antananarivo BP 906 ». Classement sur dossier puis publication des résultats.",
   etapes: [
     "Remplissage du formulaire de préinscription en ligne ou téléchargement du modèle papier",
     "Dépôt du dossier complet avant la date limite (en ligne ou pli recommandé)",
@@ -145,7 +145,7 @@ export const admission = {
   },
   m1: {
     intro: "L'accès au Master diffère selon le parcours :",
-    misa: "Parcours MISA valorise la continuité — s'adresse aux étudiants ayant construit leur formation depuis la L1 au sein de l'établissement.",
+    misa: "Parcours MISA valorise la continuité - s'adresse aux étudiants ayant construit leur formation depuis la L1 au sein de l'établissement.",
     int: "Parcours INT s'ouvre également à de nouveaux talents venant d'autres facultés, sous réserve d'être titulaire d'une Licence obtenue dans un établissement public.",
     etapesExternes: [
       "Dépôt du dossier de candidature en ligne (CV + lettre de motivation précisant le parcours souhaité)",
@@ -166,7 +166,7 @@ export const temoignages = [
     promo: "Promo 2024, MISA",
   },
   {
-    quote: "Par rapport à d'autres établissements, la MISA se distingue particulièrement par l'importance accordée aux mathématiques, tout en offrant des bases solides et polyvalentes dans les différents domaines de l'informatique. Au-delà des connaissances, la MISA forge intégrité, initiative, audace face aux défis, rigueur, persévérance et travail d'équipe — et pousse à rester curieux, à chercher par soi-même et à apprendre continuellement. Cette culture se prolonge grâce à la force et à la solidarité de la communauté Alumni. MISA un jour, MISA toujours !",
+    quote: "Par rapport à d'autres établissements, la MISA se distingue particulièrement par l'importance accordée aux mathématiques, tout en offrant des bases solides et polyvalentes dans les différents domaines de l'informatique. Au-delà des connaissances, la MISA forge intégrité, initiative, audace face aux défis, rigueur, persévérance et travail d'équipe - et pousse à rester curieux, à chercher par soi-même et à apprendre continuellement. Cette culture se prolonge grâce à la force et à la solidarité de la communauté Alumni. MISA un jour, MISA toujours !",
     author: "RAZAKAHASINA Fanomezana Sarobidy",
     promo: "Promo 2024, MISA",
   },
@@ -176,12 +176,12 @@ export const temoignages = [
     promo: "Promo 2023, MISA",
   },
   {
-    quote: "Mes études à la MISA ont été l'une des meilleures expériences de ma vie. J'y ai énormément appris, tant sur le plan technique que humain, et développé persévérance, esprit d'initiative, travail d'équipe et rigueur. Ce qui m'a le plus marqué, c'est la cohésion entre promotions — entraide, partage d'expériences et bienveillance. Grâce au soutien de mes aînés, j'ai pu mieux envisager la suite de mon parcours. Au-delà d'une formation, la MISA a été une véritable école de la vie.",
+    quote: "Mes études à la MISA ont été l'une des meilleures expériences de ma vie. J'y ai énormément appris, tant sur le plan technique que humain, et développé persévérance, esprit d'initiative, travail d'équipe et rigueur. Ce qui m'a le plus marqué, c'est la cohésion entre promotions - entraide, partage d'expériences et bienveillance. Grâce au soutien de mes aînés, j'ai pu mieux envisager la suite de mon parcours. Au-delà d'une formation, la MISA a été une véritable école de la vie.",
     author: "R. Andy Astier (suite)",
     promo: "Promo 2023, MISA",
   },
   {
-    quote: "La MISA, pour moi, c'est ce qui m'a formé à être résilient. Elle façonne la manière de penser, de raisonner, et force à toujours se surpasser. Aujourd'hui Product Owner dans une entreprise éditrice de logiciels, les valeurs de la MISA — initiative, rigueur, persévérance et travail d'équipe — m'ont permis d'être là où je suis. Bien plus qu'un parcours, la MISA est une famille, là où j'ai rencontré les meilleurs des meilleurs dans le domaine de l'IT moderne.",
+    quote: "La MISA, pour moi, c'est ce qui m'a formé à être résilient. Elle façonne la manière de penser, de raisonner, et force à toujours se surpasser. Aujourd'hui Product Owner dans une entreprise éditrice de logiciels, les valeurs de la MISA - initiative, rigueur, persévérance et travail d'équipe - m'ont permis d'être là où je suis. Bien plus qu'un parcours, la MISA est une famille, là où j'ai rencontré les meilleurs des meilleurs dans le domaine de l'IT moderne.",
     author: "Rajosiarisaona Iantsa Sarobidy",
     promo: "Promo 2022, MISA",
   },
@@ -192,5 +192,5 @@ export const contact = {
   tel2: "(+261) 38 18 515 28",
   email: "mit-univ-tana@gmail.com",
   email2: "administration@mit-ua.mg",
-  adresse: "Université d’Antananarivo — BP 906 Ankatso — Faculté des Sciences — Domaine Sciences et Technologies — Département MIT",
+  adresse: "Université d’Antananarivo - BP 906 Ankatso - Faculté des Sciences - Domaine Sciences et Technologies - Département MIT",
 };

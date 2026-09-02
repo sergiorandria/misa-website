@@ -1,4 +1,4 @@
-name: CI — verify
+name: CI - verify
 
 on:
   push:

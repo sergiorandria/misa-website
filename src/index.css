@@ -45,7 +45,7 @@ h1, h2 {
   background-position: 0 0;
 }
 
-/* Ivy-league card hover — applied consistently to all interactive cards */
+/* Ivy-league card hover - applied consistently to all interactive cards */
 .academic-card {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }

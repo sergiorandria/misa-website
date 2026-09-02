@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { CheckCircle2, ShieldCheck, Cpu, Code2, Users, Globe, BookMarked, Sparkles, Award, Quote } from "lucide-react";
+import { ArrowRight, CheckCircle2, ShieldCheck, Cpu, Code2, Users, Globe, BookMarked, Sparkles, Award, Quote } from "lucide-react";
 import { asset } from "../lib/assets";
 import { temoignages } from "../data/content";
 import Stack from "../components/Stack";
@@ -11,16 +11,16 @@ export default function Home() {
   return (
     <div className="bg-white">
 
-      {/* ── HERO — full-width split: text left | campus photo right ──────── */}
+      {/* - HERO - full-width split: text left | campus photo right ---- */}
       <section className="relative overflow-hidden border-b border-[var(--color-misa-line)]">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-[1fr_480px] xl:grid-cols-[1fr_560px] gap-0 items-stretch min-h-[540px] sm:min-h-[600px] lg:min-h-[680px]">
 
-            {/* Left column — text */}
+            {/* Left column - text */}
             <div className="py-12 sm:py-16 lg:py-24 pr-0 lg:pr-16 flex flex-col justify-center">
               <div className="inline-flex items-center gap-2 text-[11px] tracking-[0.18em] text-[var(--color-misa-red)] font-bold uppercase border-l-3 border-[var(--color-misa-red)] bg-[var(--color-misa-paper)] px-3 py-1.5 self-start">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-misa-red)] animate-pulse" />
-                <span>PRÉ-INSCRIPTION — SÉLECTION SUR DOSSIER</span>
+                <span>PRÉ-INSCRIPTION - SÉLECTION SUR DOSSIER</span>
               </div>
 
               <h1 className="mt-6 text-[30px] sm:text-[40px] lg:text-[52px] leading-[1.08] sm:leading-[1.05] tracking-tight font-light text-[var(--color-misa-ink)]">
@@ -36,7 +36,7 @@ export default function Home() {
 
               <p className="mt-6 text-sm sm:text-base leading-[1.7] text-neutral-600 max-w-[520px]">
                 <strong className="text-[var(--color-misa-ink)] font-semibold">Le futur est entre vos mains.</strong>{" "}
-                Immergez-vous dans la Science, la technologie, l'ingénierie et les Mathématiques en intégrant la MIT — mention du Domaine des Sciences et Technologies de l'Université d'Antananarivo.
+                Immergez-vous dans la Science, la technologie, l'ingénierie et les Mathématiques en intégrant la MIT - mention du Domaine des Sciences et Technologies de l'Université d'Antananarivo.
               </p>
 
               {/* CTAs — Particle Buttons */}
@@ -76,19 +76,19 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right column — campus photo (full bleed, hidden on mobile) */}
+            {/* Right column - campus photo (full bleed, hidden on mobile) */}
             <div className="hidden lg:block relative">
               <div className="absolute inset-y-0 left-0 w-px bg-[var(--color-misa-line)] z-10" />
               <img
                 src={asset('campus-main.jpg')}
-                alt="Campus Faculté des Sciences — Université d'Antananarivo"
+                alt="Campus Faculté des Sciences - Université d'Antananarivo"
                 className="campus-img absolute inset-0 w-full h-full"
                 style={{ objectPosition: "center 20%" }}
               />
               <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[var(--color-misa-ink)]/30 to-transparent pointer-events-none" />
               <div className="absolute bottom-6 left-8 right-6 z-10">
                 <div className="text-[10px] text-white/80 tracking-[0.14em] uppercase font-medium">
-                  Faculté des Sciences — Université d'Antananarivo
+                  Faculté des Sciences - Université d'Antananarivo
                 </div>
               </div>
             </div>
@@ -97,7 +97,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── INFO STRIP — logo + tagline — white band ─────────────────────── */}
+      {/* - INFO STRIP - logo + tagline - white band -----------─ */}
       <div className="border-b border-[var(--color-misa-line)] bg-white">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3 sm:gap-4">
@@ -105,7 +105,7 @@ export default function Home() {
               <img src={asset('logo-mit.png')} alt="MIT logo" className="h-8 sm:h-9 w-auto object-contain" />
             </div>
             <div>
-              <div className="text-[11px] sm:text-xs font-bold tracking-[0.14em] text-[var(--color-misa-red)] uppercase">MIT — UNIVERSITÉ D'ANTANANARIVO</div>
+              <div className="text-[11px] sm:text-xs font-bold tracking-[0.14em] text-[var(--color-misa-red)] uppercase">MIT - UNIVERSITÉ D'ANTANANARIVO</div>
               <div className="text-[10px] sm:text-[11px] text-neutral-500 font-medium mt-0.5">Sciences & Technologies · Faculté des Sciences</div>
             </div>
           </div>
@@ -118,7 +118,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ── PÉDAGOGIE — paper band ───────────────────────────────────────── */}
+      {/* - PÉDAGOGIE - paper band --------------------─ */}
       <section className="bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">PÉDAGOGIE</p>
@@ -194,7 +194,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── HISTOIRE — white band ────────────────────────────────────────── */}
+      {/* - HISTOIRE - white band --------------------- */}
       <section className="bg-white border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
@@ -208,13 +208,13 @@ export default function Home() {
 
               <div className="mt-6 sm:mt-8 space-y-4 text-xs sm:text-sm leading-[1.7] text-neutral-700">
                 <div className="p-4 sm:p-5 bg-[var(--color-misa-paper)] border-l-3 border-[var(--color-misa-red)]">
-                  <span className="font-bold text-[var(--color-misa-ink)]">1996 — Fondée</span> dans le Département de Mathématiques et Informatique de la Faculté des Sciences de l'Université d'Antananarivo, avec le soutien du projet <strong>PRESUP</strong> et de la Coopération Française.
+                  <span className="font-bold text-[var(--color-misa-ink)]">1996 - Fondée</span> dans le Département de Mathématiques et Informatique de la Faculté des Sciences de l'Université d'Antananarivo, avec le soutien du projet <strong>PRESUP</strong> et de la Coopération Française.
                 </div>
                 <div className="p-4 sm:p-5 bg-[var(--color-misa-paper)] border-l-3 border-[var(--color-misa-ink)]">
-                  <span className="font-bold text-[var(--color-misa-ink)]">2014 — Bascule LMD</span> : La Maîtrise en Informatique et Statistique Appliquées est devenue <strong>Mathématiques, Informatique et Statistique Appliquées</strong>. Formation orientée recherche pour les M2 (première promotion 2016).
+                  <span className="font-bold text-[var(--color-misa-ink)]">2014 - Bascule LMD</span> : La Maîtrise en Informatique et Statistique Appliquées est devenue <strong>Mathématiques, Informatique et Statistique Appliquées</strong>. Formation orientée recherche pour les M2 (première promotion 2016).
                 </div>
                 <div className="p-4 sm:p-5 bg-[var(--color-misa-paper)] border-l-3 border-[var(--color-misa-red)]">
-                  <span className="font-bold text-[var(--color-misa-ink)]">2022 — Mention IT</span> : La MISA introduit la Mention Informatique et Technologie, offrant une formation complète de la première année (<strong>L1</strong>) à la troisième année (<strong>L3</strong>).
+                  <span className="font-bold text-[var(--color-misa-ink)]">2022 - Mention IT</span> : La MISA introduit la Mention Informatique et Technologie, offrant une formation complète de la première année (<strong>L1</strong>) à la troisième année (<strong>L3</strong>).
                 </div>
               </div>
             </div>
@@ -236,7 +236,7 @@ export default function Home() {
                   <span>MISSION</span>
                 </div>
                 <p className="mt-3 text-xs sm:text-sm leading-[1.7] text-neutral-700">
-                  Former des diplômés compétents et adaptables, maîtrisant les technologies actuelles et capables d'évoluer — apprentissage continu tout au long de la vie.
+                  Former des diplômés compétents et adaptables, maîtrisant les technologies actuelles et capables d'évoluer - apprentissage continu tout au long de la vie.
                 </p>
               </div>
 
@@ -247,8 +247,8 @@ export default function Home() {
                 </div>
                 <ul className="mt-3 text-xs sm:text-sm leading-[1.7] list-disc pl-5 space-y-1.5 text-neutral-700">
                   <li>Approche intégrée mathématiques & informatique</li>
-                  <li>Pionnière en IA — expertise de pointe</li>
-                  <li>Diplômés hautement recherchés — qualité & compétences pratiques</li>
+                  <li>Pionnière en IA - expertise de pointe</li>
+                  <li>Diplômés hautement recherchés - qualité & compétences pratiques</li>
                 </ul>
               </div>
             </div>
@@ -257,15 +257,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── AVIS DES SORTANTS — Stack (React Bits) ─────────────────────── */}
-      <section className="bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-16 lg:py-24">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
-            {/* Left — copy */}
-            <div className="lg:w-80 xl:w-[360px] shrink-0">
-              <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">ALUMNI — TÉMOIGNAGES</p>
-              <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">
-                Avis des sortants
+      {/* - ALUMNI TÉMOIGNAGES - paper band ---------------─ */}
+      <section className="bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">ALUMNI & SORTANTS</p>
+              <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)] max-w-[540px]">
+                Avis et parcours de nos diplômés
               </h2>
               <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
               <p className="mt-6 text-sm leading-[1.7] text-neutral-700">
@@ -314,7 +313,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PARTENAIRES — Ivy League Wall of Trust ──────────────────────── */}
+      {/* - PARTENAIRES - Ivy League Wall of Trust ------------ */}
       <PartnersSection />
 
     </div>

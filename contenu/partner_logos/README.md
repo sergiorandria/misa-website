@@ -19,9 +19,9 @@ Prepared 2 September 2026. “Current 2026” means the current institutional/co
 | BMOI | BMOI | BMOI.png | Official BMOI website asset. |
 | BNI | BNI Madagascar | BNI_Madagascar.png | Official BNI Madagascar website asset. |
 | BOA | BOA Madagascar | BOA_Madagascar.png | Official BOA Madagascar website asset. |
-| Amen | Unresolved | — | Search did not identify a Madagascar partner matching “Amen”; do not substitute Tunisia’s Amen Bank without confirmation. |
+| Amen | Unresolved | - | Search did not identify a Madagascar partner matching “Amen”; do not substitute Tunisia’s Amen Bank without confirmation. |
 | Fac. Sciences | Faculté des Sciences, Université d’Antananarivo | Faculte_des_Sciences_Antananarivo.jpg | Image-search fallback; confirm with the faculty’s current communications office. |
-| VV | Unresolved | — | The abbreviation is not uniquely identifiable from the screenshot or public search. Please confirm the full organization name. |
+| VV | Unresolved | - | The abbreviation is not uniquely identifiable from the screenshot or public search. Please confirm the full organization name. |
 | University of Antananarivo | Université d’Antananarivo | Universite_Antananarivo.jpg | Image-search fallback; confirm against the university’s current communications office. |
 
 ## Important identity updates

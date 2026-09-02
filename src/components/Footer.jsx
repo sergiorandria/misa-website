@@ -17,15 +17,15 @@ export default function Footer() {
             <div className="p-1 bg-white border border-white/20 shadow-2xs">
               <img src={asset('logo-mit.png')} alt="MIT" className="h-8 w-auto object-contain" />
             </div>
-            <span className="font-extrabold text-base tracking-tight text-white">MIT — MISA</span>
+            <span className="font-extrabold text-base tracking-tight text-white">MIT - MISA</span>
           </div>
           <p className="leading-relaxed text-white/90 text-xs sm:text-sm">
             Université d’Antananarivo<br />
-            Faculté des Sciences — Domaine Sciences et Technologies<br />
-            Département MIT · BP 906 Ankatso — Antananarivo 101
+            Faculté des Sciences - Domaine Sciences et Technologies<br />
+            Département MIT · BP 906 Ankatso - Antananarivo 101
           </p>
           <p className="text-[11px] text-white/70 pt-1 font-mono tracking-wider uppercase">
-            Fondée en 1996 — PRESUP & Coopération Française
+            Fondée en 1996 - PRESUP & Coopération Française
           </p>
         </div>
 
@@ -85,8 +85,8 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-white/20 bg-black/20">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-white/75 text-center sm:text-left">
-          <span>© {new Date().getFullYear()} MIT — MISA. Tous droits réservés.</span>
-          <span>Site non officiel — reproduction fidèle de mit.univ-antananarivo.mg à titre de maquette.</span>
+          <span>© {new Date().getFullYear()} MIT - MISA. Tous droits réservés.</span>
+          <span>Site non officiel - reproduction fidèle de mit.univ-antananarivo.mg à titre de maquette.</span>
         </div>
       </div>
     </footer>

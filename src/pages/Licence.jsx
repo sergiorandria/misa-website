@@ -6,10 +6,10 @@ export default function Licence() {
   return (
     <div className="bg-white">
 
-      {/* ── BANNER — paper band ──────────────────────────────────────────── */}
+      {/* - BANNER - paper band ---------------------- */}
       <div className="border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
-          <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">FORMATION — LICENCE</p>
+          <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">FORMATION - LICENCE</p>
           <h1 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">
             Licence Mention Informatique et Technologie
           </h1>
@@ -23,7 +23,7 @@ export default function Licence() {
         </div>
       </div>
 
-      {/* ── CONTENT — white band ─────────────────────────────────────────── */}
+      {/* - CONTENT - white band ---------------------─ */}
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 space-y-8 sm:space-y-12">
         {licenceParcours.map((p) => (
           <ParcoursCard key={p.title} p={p} />
@@ -74,7 +74,7 @@ function ParcoursCard({ p }) {
           <div className="flex items-center justify-between border-b border-[var(--color-misa-line)] pb-3 mb-5 sm:mb-6">
             <div className="flex items-center gap-2 text-[11px] tracking-[0.16em] text-neutral-500 font-bold uppercase">
               <BookOpen size={14} className="text-[var(--color-misa-red)] shrink-0" />
-              <span>UNITÉS D'ENSEIGNEMENT — {activeLevel}</span>
+              <span>UNITÉS D'ENSEIGNEMENT - {activeLevel}</span>
             </div>
             <span className="text-[10px] font-mono tracking-widest text-neutral-500 bg-[var(--color-misa-paper)] px-2 py-0.5 border border-[var(--color-misa-line)] uppercase">
               {uesGroups.length} groupes
@@ -90,7 +90,7 @@ function ParcoursCard({ p }) {
                 <ul className="space-y-2">
                   {group.map((item) => (
                     <li key={item} className="text-xs sm:text-sm text-neutral-700 flex items-start gap-2 leading-snug">
-                      <span className="text-[var(--color-misa-red)] font-bold shrink-0 mt-0.5">—</span>
+                      <span className="text-[var(--color-misa-red)] font-bold shrink-0 mt-0.5">-</span>
                       <span>{item}</span>
                     </li>
                   ))}
