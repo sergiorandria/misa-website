@@ -8,7 +8,7 @@ export default function Footer() {
       {/* Top accent border */}
       <div className="h-[3px] bg-gradient-to-r from-[var(--color-misa-red-dark)] via-white/40 to-[var(--color-misa-red-dark)]" />
 
-      <div className="max-w-[1160px] mx-auto px-4 sm:px-6 py-10 sm:py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 text-xs sm:text-sm">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-12 lg:py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 text-sm">
         
         {/* Col 1: University Info */}
         <div className="space-y-3">
@@ -81,7 +81,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/20 bg-black/20">
-        <div className="max-w-[1160px] mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-[11px] sm:text-xs text-white/75 text-center sm:text-left">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-white/75 text-center sm:text-left">
           <span>© {new Date().getFullYear()} MIT — MISA. Tous droits réservés.</span>
           <span>Site non officiel — reproduction fidèle de mit.univ-antananarivo.mg à titre de maquette.</span>
         </div>

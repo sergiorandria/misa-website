@@ -8,22 +8,23 @@ export default function Arborescence() {
     <div className="bg-white">
       {/* Banner */}
       <div className="border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
-        <div className="max-w-[1160px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
-          <div className="text-[11px] sm:text-xs tracking-[0.16em] text-neutral-500 font-bold uppercase">FORMATION — ARBORESCENCE</div>
-          <h1 className="mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight text-[var(--color-misa-ink)]">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-12 lg:py-16">
+          <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">FORMATION — ARBORESCENCE</p>
+          <h1 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">
             Arborescence LMD
           </h1>
-          <p className="mt-2 sm:mt-3 max-w-[760px] text-xs sm:text-sm text-neutral-600 leading-relaxed">
-            Reproduction fidèle du schéma officiel <span className="font-mono text-[11px] bg-white border border-[var(--color-misa-line)] px-1.5 py-0.5 font-bold">MIT(1).png</span> de mit.univ-antananarivo.mg. Les informations ci-dessous reprennent uniquement ce qui est lisible sur le site — aucun intitulé n’a été inventé.
+          <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
+          <p className="mt-5 max-w-[680px] text-sm sm:text-base leading-[1.7] text-neutral-600">
+            Reproduction fidèle du schéma officiel <span className="font-mono text-[11px] bg-white border border-[var(--color-misa-line)] px-1.5 py-0.5 font-bold">MIT(1).png</span> — les informations ci-dessous reprennent uniquement ce qui est lisible sur le site, aucun intitulé n'a été inventé.
           </p>
-          <p className="mt-2 text-[11px] sm:text-xs text-neutral-500 flex items-center gap-1.5 font-medium">
+          <p className="mt-3 text-xs text-neutral-500 flex items-center gap-1.5 font-medium">
             <FileText size={14} className="text-[var(--color-misa-red)] shrink-0" />
-            <span>Source originale : <code> /assets/images/MIT(1).png</code> — image incluse en bas de page pour vérification.</span>
+            <span>Source : <code>/assets/images/MIT(1).png</code> — image incluse en bas de page.</span>
           </p>
         </div>
       </div>
 
-      <div className="max-w-[1160px] mx-auto px-4 sm:px-6 py-8">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-16 lg:py-24">
         {/* Stanford-style Academic Progression Pathway */}
         <div className="border border-[var(--color-misa-line)] bg-white shadow-xs">
           

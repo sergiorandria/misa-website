@@ -34,7 +34,7 @@ export default function Navbar() {
       {/* Top Ivy League brand accent bar */}
       <div className="h-[3px] bg-gradient-to-r from-[var(--color-misa-red)] via-[var(--color-misa-red-dark)] to-[var(--color-misa-red)]" />
 
-      <div className="max-w-[1160px] mx-auto px-4 sm:px-6 h-[66px] flex items-center justify-between gap-4">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-8 h-[66px] flex items-center justify-between gap-4">
         {/* Brand logo & title */}
         <Link to="/" className="flex items-center gap-3 shrink-0 group">
           <div className="p-1 bg-white border border-[var(--color-misa-line)] shadow-2xs group-hover:border-[var(--color-misa-red)] transition duration-200">
