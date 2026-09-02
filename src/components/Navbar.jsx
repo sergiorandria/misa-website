@@ -285,16 +285,13 @@ export default function Navbar() {
               </div>
 
               {/* Accordion for Admission */}
-              <div className="relative" onMouseEnter={() => setAdmissionDrop(true)} onMouseLeave={() => setAdmissionDrop(false)}>
+              <div>
                 <button
-                  className={`${linkBase} ${linkIdle} flex items-center gap-1.5 cursor-pointer`}
-                  aria-expanded={admissionDrop}
-                  aria-haspopup="true"
-                  onClick={() => setAdmissionDrop(v => !v)}
-                  onFocus={() => setAdmissionDrop(true)}
+                  onClick={() => setMobileAdmissionOpen(!mobileAdmissionOpen)}
+                  className="w-full flex items-center justify-between h-[48px] px-3 font-semibold text-sm text-neutral-800 hover:bg-[var(--color-misa-paper)] transition cursor-pointer"
                 >
                   <span>ADMISSION</span>
-                  <ChevronDown size={14} className={`${admissionDrop ? "rotate-180 text-[var(--color-misa-red)]" : "text-neutral-400"} transition-transform duration-200`} />
+                  <ChevronDown size={16} className={`text-neutral-500 transition-transform duration-200 ${mobileAdmissionOpen ? "rotate-180" : ""}`} />
                 </button>
 
                 {mobileAdmissionOpen && (
