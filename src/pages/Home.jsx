@@ -126,21 +126,61 @@ export default function Home() {
 
           <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[var(--color-misa-line)] border border-[var(--color-misa-line)]">
             {[
-              { title: "Data Science", desc: "Analyser et exploiter les données massives pour l'aide à la décision.", icon: Cpu },
-              { title: "Expert en cybersécurité", desc: "Protéger les systèmes et infrastructures critiques.", icon: ShieldCheck },
-              { title: "Expert en IA", desc: "Concevoir et déployer des systèmes intelligents.", icon: Sparkles },
-              { title: "Designer", desc: "Concevoir des interfaces intuitives et esthétiques.", icon: Globe },
-              { title: "Lead developer", desc: "Diriger les équipes techniques et produire du logiciel robuste.", icon: Code2 },
-              { title: "Administrateur Système & Réseaux", desc: "Gérer les infrastructures et l'environnement cloud.", icon: Users },
+              {
+                title: "Data Science",
+                desc: "Analyser et exploiter les données massives pour l'aide à la décision.",
+                icon: Cpu,
+                stack: ["Python", "SQL", "PyTorch", "Big Data"],
+              },
+              {
+                title: "Expert en cybersécurité",
+                desc: "Protéger les systèmes et infrastructures critiques.",
+                icon: ShieldCheck,
+                stack: ["Pentesting", "OWASP", "Cryptographie", "Linux"],
+              },
+              {
+                title: "Expert en IA",
+                desc: "Concevoir et déployer des systèmes intelligents.",
+                icon: Sparkles,
+                stack: ["Machine Learning", "Deep Learning", "Scikit-learn", "NLP"],
+              },
+              {
+                title: "Designer",
+                desc: "Concevoir des interfaces intuitives et esthétiques.",
+                icon: Globe,
+                stack: ["UI/UX", "Figma", "HTML/CSS", "Accessibilité"],
+              },
+              {
+                title: "Lead developer",
+                desc: "Diriger les équipes techniques et produire du logiciel robuste.",
+                icon: Code2,
+                stack: ["Architecture Cloud", "CI/CD", "Design Patterns", "Git"],
+              },
+              {
+                title: "Administrateur Système & Réseaux",
+                desc: "Gérer les infrastructures et l'environnement cloud.",
+                icon: Users,
+                stack: ["Linux", "Docker", "TCP/IP", "Virtualisation"],
+              },
             ].map(item => {
               const Icon = item.icon;
               return (
-                <div key={item.title} className="academic-card bg-white p-5 sm:p-8 hover:border-[var(--color-misa-ink)] transition-all duration-200">
+                <div key={item.title} className="academic-card bg-white p-5 sm:p-8 hover:border-[var(--color-misa-ink)] transition-all duration-200 flex flex-col">
                   <div className="p-2 bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] text-[var(--color-misa-red)] w-fit">
                     <Icon size={18} />
                   </div>
                   <div className="mt-4 text-sm font-bold text-[var(--color-misa-ink)]">{item.title}</div>
-                  <div className="mt-2 text-xs sm:text-sm text-neutral-600 leading-[1.6]">{item.desc}</div>
+                  <div className="mt-2 text-xs sm:text-sm text-neutral-600 leading-[1.6] flex-1">{item.desc}</div>
+                  <div className="mt-4 flex flex-wrap gap-1.5">
+                    {item.stack.map(tech => (
+                      <span
+                        key={tech}
+                        className="text-[9px] font-mono tracking-widest uppercase border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] text-neutral-500 px-2 py-1"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               );
             })}
