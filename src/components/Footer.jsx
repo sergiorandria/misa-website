@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, ExternalLink, MapPin, ShieldAlert } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { asset } from "../lib/assets";
-import { contact } from "../data/content";
 
 export default function Footer() {
   return (
-    <footer className="bg-[var(--color-misa-red)] text-white relative">
+    <footer id="footer" className="bg-[var(--color-misa-red)] text-white relative scroll-mt-[69px]">
       {/* Top accent border */}
       <div className="h-[3px] bg-gradient-to-r from-[var(--color-misa-red-dark)] via-white/40 to-[var(--color-misa-red-dark)]" />
 
@@ -29,31 +28,41 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Col 2: Contacts with tap-to-call / mailto */}
+        {/* Col 2: Contacts with mailto / external links */}
         <div>
           <div className="text-[11px] tracking-[0.16em] text-white/70 font-bold uppercase border-b border-white/20 pb-2">CONTACTS</div>
           <ul className="mt-3 space-y-2.5 text-white/90">
             <li className="flex items-center gap-2">
-              <Phone size={15} className="text-white/70 shrink-0" />
-              <a href={`tel:${contact.tel.replace(/\s+/g, "")}`} className="hover:underline font-semibold min-h-[38px] flex items-center">
-                {contact.tel}
-              </a>
-            </li>
-            <li className="flex items-center gap-2">
-              <Mail size={15} className="text-white/70 shrink-0" />
-              <a href={`mailto:${contact.email}`} className="hover:underline min-h-[38px] flex items-center break-all">
-                {contact.email}
-              </a>
-            </li>
-            <li className="flex items-center gap-2">
-              <Mail size={15} className="text-white/70 shrink-0" />
-              <a href={`mailto:${contact.email2}`} className="hover:underline min-h-[38px] flex items-center break-all">
-                {contact.email2}
+              <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/40 text-white/80 shrink-0">
+                <Mail size={14} aria-hidden="true" />
+              </span>
+              <a href="mailto:mit@univ-antananarivo.mg" className="hover:underline min-h-[38px] flex items-center break-all">
+                mit@univ-antananarivo.mg
               </a>
             </li>
             <li className="flex items-start gap-2 pt-1">
-              <ExternalLink size={15} className="text-white/70 shrink-0 mt-0.5" />
-              <span className="text-white/80">Facebook : MIT-Mention Informatique et Technologie</span>
+              <span className="flex h-7 w-7 items-center justify-center rounded-full border border-white/40 text-white/80 shrink-0">
+                <MapPin size={14} aria-hidden="true" />
+              </span>
+              <a href="https://maps.app.goo.gl/gcEK5goTVk1HJAsM6" target="_blank" rel="noreferrer" className="text-white/80 hover:text-white hover:underline">
+                Ankatso-Antananarivo
+              </a>
+            </li>
+            <li className="flex items-center gap-2 pt-1">
+              <a href="https://www.facebook.com/profile.php?id=100084982487450" target="_blank" rel="noreferrer" aria-label="Facebook MIT" className="flex h-7 w-7 items-center justify-center rounded-full border border-white/40 text-sm font-bold text-white/80 hover:border-white hover:text-white transition">
+                f
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=100084982487450" target="_blank" rel="noreferrer" className="text-white/80 hover:text-white hover:underline">
+                Facebook
+              </a>
+            </li>
+            <li className="flex items-center gap-2 pt-1">
+              <a href="https://www.linkedin.com/school/mit-mention-informatique-et-technologie/" target="_blank" rel="noreferrer" aria-label="LinkedIn MIT" className="flex h-7 w-7 items-center justify-center rounded-full border border-white/40 text-[11px] font-extrabold text-white/80 hover:border-white hover:text-white transition">
+                in
+              </a>
+              <a href="https://www.linkedin.com/school/mit-mention-informatique-et-technologie/" target="_blank" rel="noreferrer" className="text-white/80 hover:text-white hover:underline">
+                LinkedIn
+              </a>
             </li>
           </ul>
         </div>
@@ -84,9 +93,8 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/20 bg-black/20">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-white/75 text-center sm:text-left">
-          <span>© {new Date().getFullYear()} MIT - MISA. Tous droits réservés.</span>
-          <span>Site non officiel - reproduction fidèle de mit.univ-antananarivo.mg à titre de maquette.</span>
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-center items-center gap-2 text-xs text-white/75 text-center sm:text-left">
+          <span>© 2026 MIT - MISA. Tous droits réservés.</span>
         </div>
       </div>
     </footer>

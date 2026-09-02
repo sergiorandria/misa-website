@@ -207,6 +207,10 @@ export default function Navbar() {
               </div>
             )}
           </div>
+
+          <a href="#footer" className={`${linkBase} ${linkIdle}`}>
+            CONTACTS
+          </a>
         </nav>
 
         {/* Desktop CTA */}
@@ -340,6 +344,14 @@ export default function Navbar() {
                   </div>
                 )}
               </div>
+
+              <a
+                href="#footer"
+                onClick={() => setOpen(false)}
+                className="flex items-center h-[48px] px-3 font-semibold text-sm text-neutral-800 hover:bg-[var(--color-misa-paper)] transition"
+              >
+                CONTACTS
+              </a>
             </div>
 
             {/* Mobile Footer Action inside Menu */}

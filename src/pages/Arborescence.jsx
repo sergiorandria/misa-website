@@ -1,9 +1,39 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ZoomIn, X, Download, FileText } from "lucide-react";
 import { asset } from "../lib/assets";
 
 export default function Arborescence() {
   const [modalOpen, setModalOpen] = useState(false);
+  const imageViewportRef = useRef(null);
+  const scrollAnimationRef = useRef(null);
+
+  useEffect(() => {
+    return () => cancelAnimationFrame(scrollAnimationRef.current);
+  }, []);
+
+  function startImageScroll() {
+    const viewport = imageViewportRef.current;
+    if (!viewport || viewport.scrollHeight <= viewport.clientHeight) return;
+
+    cancelAnimationFrame(scrollAnimationRef.current);
+    viewport.scrollTop = viewport.scrollHeight - viewport.clientHeight;
+    const startTime = performance.now();
+    const duration = 30000;
+
+    function animateScroll(currentTime) {
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      viewport.scrollTop = (viewport.scrollHeight - viewport.clientHeight) * (1 - progress);
+      if (progress < 1) {
+        scrollAnimationRef.current = requestAnimationFrame(animateScroll);
+      }
+    }
+
+    scrollAnimationRef.current = requestAnimationFrame(animateScroll);
+  }
+
+  function stopImageScroll() {
+    cancelAnimationFrame(scrollAnimationRef.current);
+  }
 
   return (
     <div className="bg-white">
@@ -16,11 +46,11 @@ export default function Arborescence() {
           </h1>
           <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
           <p className="mt-4 sm:mt-5 max-w-[680px] text-sm sm:text-base leading-[1.7] text-neutral-600">
-            Reproduction fidèle du schéma officiel <span className="font-mono text-[11px] bg-white border border-[var(--color-misa-line)] px-1.5 py-0.5 font-bold">MIT(1).png</span> - les informations ci-dessous reprennent uniquement ce qui est lisible sur le site, aucun intitulé n'a été inventé.
+            Découvrez l’organisation du cursus de la Mention Informatique et Technologie, de la première année de Licence jusqu’aux deux parcours de Master proposés par l’établissement.
           </p>
           <p className="mt-3 text-xs text-neutral-500 flex items-center gap-1.5 font-medium">
             <FileText size={14} className="text-[var(--color-misa-red)] shrink-0" />
-            <span>Source : <code>/assets/images/MIT(1).png</code> - image incluse en bas de page.</span>
+            <span>Consultez également le schéma original du parcours en bas de page.</span>
           </p>
         </div>
       </div>
@@ -142,8 +172,8 @@ export default function Arborescence() {
         <div className="mt-8 border border-[var(--color-misa-line)] p-4 sm:p-6 bg-[var(--color-misa-paper)] shadow-xs">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <div className="text-[11px] sm:text-xs tracking-[0.16em] text-neutral-500 font-bold uppercase">IMAGE SOURCE - VÉRIFICATION ACADÉMIQUE</div>
-              <p className="text-xs text-neutral-600 mt-1">L’image ci-dessous est l’original du site (785 Ko, 3508×4961). Touchez pour agrandir.</p>
+              <div className="text-[11px] sm:text-xs tracking-[0.16em] text-neutral-500 font-bold uppercase">VÉRIFICATION ACADÉMIQUE</div>
+              <p className="text-xs text-neutral-600 mt-1">Touchez pour agrandir.</p>
             </div>
             
             <button
@@ -157,19 +187,17 @@ export default function Arborescence() {
 
           <div
             onClick={() => setModalOpen(true)}
-            className="mt-4 relative group cursor-pointer border border-[var(--color-misa-line)] bg-white overflow-hidden"
+            onMouseEnter={startImageScroll}
+            onMouseLeave={stopImageScroll}
+            ref={imageViewportRef}
+            className="mt-4 relative group cursor-pointer border border-[var(--color-misa-line)] bg-white overflow-y-auto no-scrollbar max-h-[500px]"
           >
             <img
               src={asset('arborescence.png')}
               alt="Arborescence MIT originale"
-              className="w-full h-auto max-h-[500px] object-top object-cover group-hover:scale-[1.01] transition duration-300"
+              className="block w-full h-auto group-hover:scale-[1.01] transition duration-300"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition duration-200">
-              <span className="bg-white text-[var(--color-misa-ink)] font-bold text-xs px-4 py-2.5 border border-neutral-300 shadow-xl flex items-center gap-2 uppercase tracking-wide">
-                <ZoomIn size={15} /> Touchez pour faire un zoom plein écran
-              </span>
-            </div>
           </div>
         </div>
       </div>
