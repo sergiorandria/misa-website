@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ZoomIn, X, Download, FileText } from "lucide-react";
+import { asset } from "../lib/assets";
 
 export default function Arborescence() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -151,7 +152,7 @@ export default function Arborescence() {
             className="mt-4 relative group cursor-pointer border border-[var(--color-misa-line)] bg-white overflow-hidden"
           >
             <img
-              src={`${import.meta.env.BASE_URL}arborescence.png`}
+              src={asset('arborescence.png')}
               alt="Arborescence MIT originale"
               className="w-full h-auto max-h-[500px] object-top object-cover group-hover:scale-[1.01] transition duration-300"
               loading="lazy"
@@ -175,7 +176,7 @@ export default function Arborescence() {
             
             <div className="flex items-center gap-2">
               <a
-                href={`${import.meta.env.BASE_URL}arborescence.png`}
+                href={asset('arborescence.png')}
                 download="MIT_Arborescence_LMD.png"
                 className="min-h-[38px] px-3 bg-white/10 hover:bg-white/20 text-white text-xs font-medium flex items-center gap-1.5 transition"
               >
@@ -194,7 +195,7 @@ export default function Arborescence() {
 
           <div className="flex-1 overflow-auto py-4 flex items-center justify-center">
             <img
-              src={`${import.meta.env.BASE_URL}arborescence.png`}
+              src={asset('arborescence.png')}
               alt="Arborescence MIT officielle plein écran"
               className="max-w-none w-auto max-h-none sm:max-w-full sm:max-h-full object-contain mx-auto"
             />

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, ExternalLink } from "lucide-react";
+import { Phone, Mail, ExternalLink } from "lucide-react";
+import { asset } from "../lib/assets";
 import { contact } from "../data/content";
 
 export default function Footer() {
@@ -9,7 +10,7 @@ export default function Footer() {
         {/* Col 1: University Info */}
         <div className="space-y-3">
           <div className="flex items-center gap-3">
-            <img src={`${import.meta.env.BASE_URL}logo-mit.png`} alt="MIT" className="h-8 w-auto bg-white p-1 object-contain" />
+            <img src={asset('logo-mit.png')} alt="MIT" className="h-8 w-auto bg-white p-1 object-contain" />
             <span className="font-bold text-base tracking-tight">MIT — MISA</span>
           </div>
           <p className="leading-relaxed text-white/90">
