@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, ChevronRight, GraduationCap } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight, GraduationCap, BookOpen, Layers, Award } from "lucide-react";
 import { asset } from "../lib/assets";
 
-const linkBase = "text-[13px] tracking-wide font-medium px-2 py-1 border-b-2 transition-colors";
-const linkActive = "border-[var(--color-misa-red)] text-[var(--color-misa-ink)] font-semibold";
-const linkIdle = "border-transparent text-neutral-600 hover:text-[var(--color-misa-ink)] hover:border-neutral-300";
+const linkBase = "text-[13px] tracking-wider font-semibold uppercase px-3 py-1.5 border-b-2 transition-all duration-200";
+const linkActive = "border-[var(--color-misa-red)] text-[var(--color-misa-red)] font-bold";
+const linkIdle = "border-transparent text-neutral-700 hover:text-[var(--color-misa-ink)] hover:border-neutral-300";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -31,55 +31,95 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-[var(--color-misa-line)]">
-      <div className="max-w-[1160px] mx-auto px-4 sm:px-6 h-[64px] flex items-center justify-between gap-4">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[var(--color-misa-line)] shadow-xs">
+      {/* Top Ivy League brand accent bar */}
+      <div className="h-[3px] bg-gradient-to-r from-[var(--color-misa-red)] via-[var(--color-misa-red-dark)] to-[var(--color-misa-red)]" />
+
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-8 h-[66px] flex items-center justify-between gap-4">
         {/* Brand logo & title */}
-        <Link to="/" className="flex items-center gap-2.5 shrink-0">
-          <img src={asset('logo-mit.png')} alt="MIT" className="h-8 sm:h-9 w-auto object-contain" />
-          <div className="leading-tight">
-            <div className="text-[13px] sm:text-[14px] font-bold tracking-tight text-[var(--color-misa-ink)]">
+        <Link to="/" className="flex items-center gap-3 shrink-0 group">
+          <div className="p-1 bg-white border border-[var(--color-misa-line)] shadow-2xs group-hover:border-[var(--color-misa-red)] transition duration-200">
+            <img src={asset('logo-mit.png')} alt="MIT Logo" className="h-8 sm:h-9 w-auto object-contain" />
+          </div>
+          <div className="leading-none">
+            <div className="text-[13px] sm:text-[14px] font-extrabold tracking-tight text-[var(--color-misa-ink)] group-hover:text-[var(--color-misa-red)] transition duration-200">
               MIT — MISA
             </div>
-            <div className="text-[9px] sm:text-[10px] tracking-[0.12em] sm:tracking-[0.14em] text-neutral-500 font-medium">
+            <div className="text-[9px] sm:text-[10px] tracking-[0.16em] text-neutral-500 font-medium uppercase mt-0.5">
               UNIVERSITÉ D'ANTANANARIVO
             </div>
           </div>
         </Link>
 
         {/* Desktop navigation */}
-        <nav className="hidden lg:flex items-center gap-6">
+        <nav className="hidden lg:flex items-center gap-2">
           <NavLink to="/" className={({ isActive }) => `${linkBase} ${isActive ? linkActive : linkIdle}`}>
             ACCUEIL
           </NavLink>
 
+          {/* Harvard/MIT style Mega-Menu Dropdown */}
           <div className="relative" onMouseEnter={() => setDrop(true)} onMouseLeave={() => setDrop(false)}>
             <button
-              className={`${linkBase} ${linkIdle} flex items-center gap-1 cursor-pointer`}
+              className={`${linkBase} ${linkIdle} flex items-center gap-1.5 cursor-pointer`}
               aria-expanded={drop}
               aria-haspopup="true"
               onClick={() => setDrop(v => !v)}
               onFocus={() => setDrop(true)}
             >
-              FORMATION <ChevronDown size={14} className={`${drop ? "rotate-180" : ""} transition-transform duration-200`} />
+              <span>FORMATION</span>
+              <ChevronDown size={14} className={`${drop ? "rotate-180 text-[var(--color-misa-red)]" : "text-neutral-400"} transition-transform duration-200`} />
             </button>
             {drop && (
-              <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3">
-                <div className="w-[420px] bg-white border border-[var(--color-misa-line)] p-2 flex gap-2 shadow-lg">
+              <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 animate-in fade-in duration-150">
+                <div className="w-[480px] bg-white border border-[var(--color-misa-line)] p-3 shadow-xl grid grid-cols-3 gap-2">
                   {[
-                    { to: "/formation/arborescence", k: "Arborescence", d: "Schéma LMD" },
-                    { to: "/formation/licence", k: "Licence", d: "L1 · L2 · L3" },
-                    { to: "/formation/master", k: "Master", d: "M1 · M2" },
-                  ].map(i => (
-                    <Link
-                      key={i.to}
-                      to={i.to}
-                      onClick={() => setDrop(false)}
-                      className="flex-1 border border-[var(--color-misa-line)] p-3 hover:border-[var(--color-misa-ink)] transition bg-white hover:bg-[var(--color-misa-paper)]"
-                    >
-                      <div className="text-sm font-semibold">{i.k}</div>
-                      <div className="text-xs text-neutral-500">{i.d}</div>
-                    </Link>
-                  ))}
+                    {
+                      to: "/formation/arborescence",
+                      title: "Arborescence",
+                      sub: "Schéma LMD",
+                      icon: Layers,
+                      badge: "Aperçu",
+                    },
+                    {
+                      to: "/formation/licence",
+                      title: "Licence",
+                      sub: "L1 · L2 · L3",
+                      icon: BookOpen,
+                      badge: "3 Ans",
+                    },
+                    {
+                      to: "/formation/master",
+                      title: "Master",
+                      sub: "INT · MISA",
+                      icon: GraduationCap,
+                      badge: "2 Ans",
+                    },
+                  ].map(item => {
+                    const IconComp = item.icon;
+                    return (
+                      <Link
+                        key={item.to}
+                        to={item.to}
+                        onClick={() => setDrop(false)}
+                        className="group border border-[var(--color-misa-line)] p-3 bg-[var(--color-misa-paper)] hover:bg-white hover:border-[var(--color-misa-red)] transition-all duration-200 flex flex-col justify-between"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between mb-2">
+                            <IconComp size={18} className="text-[var(--color-misa-red)] group-hover:scale-110 transition duration-200" />
+                            <span className="text-[9px] font-mono tracking-widest uppercase bg-white border border-[var(--color-misa-line)] px-1.5 py-0.5 text-neutral-500">
+                              {item.badge}
+                            </span>
+                          </div>
+                          <div className="text-xs font-bold text-[var(--color-misa-ink)] group-hover:text-[var(--color-misa-red)] transition">
+                            {item.title}
+                          </div>
+                          <div className="text-[11px] text-neutral-500 mt-0.5">
+                            {item.sub}
+                          </div>
+                        </div>
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -92,16 +132,19 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:block">
-          <Link to="/admission" className="text-xs font-semibold tracking-wide border border-[var(--color-misa-red)] text-[var(--color-misa-red)] px-4 py-2 hover:bg-[var(--color-misa-red)] hover:text-white transition">
+          <Link
+            to="/admission"
+            className="text-xs font-bold tracking-wider uppercase border-2 border-[var(--color-misa-red)] text-[var(--color-misa-red)] px-4 py-2 hover:bg-[var(--color-misa-red)] hover:text-white transition duration-200 shadow-2xs"
+          >
             CANDIDATER
           </Link>
         </div>
 
-        {/* Mobile menu toggle */}
+        {/* Mobile menu toggle button */}
         <button
           onClick={() => setOpen(!open)}
           aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
-          className="lg:hidden min-h-[44px] min-w-[44px] flex items-center justify-center border border-[var(--color-misa-line)] bg-white text-[var(--color-misa-ink)] hover:bg-[var(--color-misa-paper)] active:bg-neutral-100 transition"
+          className="lg:hidden min-h-[44px] min-w-[44px] flex items-center justify-center border border-[var(--color-misa-line)] bg-white text-[var(--color-misa-ink)] hover:bg-[var(--color-misa-paper)] active:bg-neutral-100 transition cursor-pointer"
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -109,19 +152,19 @@ export default function Navbar() {
 
       {/* Mobile Drawer Overlay */}
       {open && (
-        <div className="fixed inset-0 top-[64px] bg-black/40 backdrop-blur-xs z-40 lg:hidden" onClick={() => setOpen(false)} />
+        <div className="fixed inset-0 top-[69px] bg-black/40 backdrop-blur-xs z-40 lg:hidden" onClick={() => setOpen(false)} />
       )}
 
       {/* Mobile Drawer Content */}
       {open && (
-        <div className="fixed top-[64px] left-0 right-0 max-h-[calc(100vh-64px)] overflow-y-auto bg-white border-b border-[var(--color-misa-line)] shadow-xl z-50 lg:hidden animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="fixed top-[69px] left-0 right-0 max-h-[calc(100vh-69px)] overflow-y-auto bg-white border-b border-[var(--color-misa-line)] shadow-2xl z-50 lg:hidden animate-in fade-in slide-in-from-top-2 duration-200">
           <div className="px-5 py-4 space-y-3 divide-y divide-[var(--color-misa-line)]">
             <div className="space-y-1">
               <NavLink
                 to="/"
                 className={({ isActive }) =>
                   `flex items-center justify-between h-[48px] px-3 font-semibold text-sm transition ${
-                    isActive ? "bg-[var(--color-misa-paper)] text-[var(--color-misa-red)] border-l-2 border-[var(--color-misa-red)]" : "text-neutral-800 hover:bg-[var(--color-misa-paper)]"
+                    isActive ? "bg-[var(--color-misa-paper)] text-[var(--color-misa-red)] border-l-3 border-[var(--color-misa-red)]" : "text-neutral-800 hover:bg-[var(--color-misa-paper)]"
                   }`
                 }
               >
@@ -139,11 +182,11 @@ export default function Navbar() {
                     <GraduationCap size={16} className="text-[var(--color-misa-red)]" />
                     FORMATION
                   </span>
-                  <ChevronDown size={16} className={`text-neutral-500 transition-transform duration-200 ${mobileFormationOpen ? "rotate-180" : ""}`} />
+                  <ChevronDown size={16} className={`text-neutral-500 transition-transform duration-200 ${mobileFormationOpen ? "rotate-180 text-[var(--color-misa-red)]" : ""}`} />
                 </button>
 
                 {mobileFormationOpen && (
-                  <div className="ml-3 pl-3 border-l border-[var(--color-misa-line)] space-y-1 my-1">
+                  <div className="ml-3 pl-3 border-l-2 border-[var(--color-misa-line)] space-y-1 my-1">
                     {[
                       { to: "/formation/arborescence", name: "Arborescence LMD", badge: "Schéma" },
                       { to: "/formation/licence", name: "Licence", badge: "L1 · L2 · L3" },
@@ -174,7 +217,7 @@ export default function Navbar() {
                 to="/admission"
                 className={({ isActive }) =>
                   `flex items-center justify-between h-[48px] px-3 font-semibold text-sm transition ${
-                    isActive ? "bg-[var(--color-misa-paper)] text-[var(--color-misa-red)] border-l-2 border-[var(--color-misa-red)]" : "text-neutral-800 hover:bg-[var(--color-misa-paper)]"
+                    isActive ? "bg-[var(--color-misa-paper)] text-[var(--color-misa-red)] border-l-3 border-[var(--color-misa-red)]" : "text-neutral-800 hover:bg-[var(--color-misa-paper)]"
                   }`
                 }
               >
@@ -187,7 +230,7 @@ export default function Navbar() {
             <div className="pt-4 space-y-3">
               <Link
                 to="/admission"
-                className="w-full flex items-center justify-center min-h-[44px] bg-[var(--color-misa-red)] text-white text-sm font-semibold tracking-wide hover:bg-[var(--color-misa-red-dark)] active:scale-[0.99] transition shadow-xs"
+                className="w-full flex items-center justify-center min-h-[44px] bg-[var(--color-misa-red)] text-white text-sm font-bold tracking-wider uppercase hover:bg-[var(--color-misa-red-dark)] active:scale-[0.99] transition shadow-xs"
               >
                 CANDIDATER À LA MIT
               </Link>
