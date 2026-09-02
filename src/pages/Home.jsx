@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle2, ShieldCheck, Cpu, Code2, Users, Globe, BookMarked, Sparkles, Award, Quote } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { CheckCircle2, ShieldCheck, Cpu, Code2, Users, Globe, BookMarked, Sparkles, Award, Quote } from "lucide-react";
 import { asset } from "../lib/assets";
 import { temoignages } from "../data/content";
+import Stack from "../components/Stack";
+import ParticleButton from "../components/ui/ParticleButton";
 import PartnersSection from "../components/PartnersSection";
 
 export default function Home() {
+  const navigate = useNavigate();
   return (
     <div className="bg-white">
 
