@@ -90,13 +90,6 @@ export default function Navbar() {
           </NavLink>
         </nav>
 
-        {/* Desktop CTA */}
-        <div className="hidden lg:block">
-          <Link to="/admission" className="text-xs font-semibold tracking-wide border border-[var(--color-misa-red)] text-[var(--color-misa-red)] px-4 py-2 hover:bg-[var(--color-misa-red)] hover:text-white transition">
-            CANDIDATER
-          </Link>
-        </div>
-
         {/* Mobile menu toggle */}
         <button
           onClick={() => setOpen(!open)}
@@ -183,17 +176,8 @@ export default function Navbar() {
               </NavLink>
             </div>
 
-            {/* Mobile Footer Action inside Menu */}
-            <div className="pt-4 space-y-3">
-              <Link
-                to="/admission"
-                className="w-full flex items-center justify-center min-h-[44px] bg-[var(--color-misa-red)] text-white text-sm font-semibold tracking-wide hover:bg-[var(--color-misa-red-dark)] active:scale-[0.99] transition shadow-xs"
-              >
-                CANDIDATER À LA MIT
-              </Link>
-              <div className="text-[11px] text-center text-neutral-500 leading-tight">
-                Mention Informatique et Technologie — Université d’Antananarivo
-              </div>
+            <div className="pt-4 text-[11px] text-center text-neutral-500 leading-tight border-t border-[var(--color-misa-line)]">
+              Mention Informatique et Technologie — Université d’Antananarivo
             </div>
           </div>
         </div>
