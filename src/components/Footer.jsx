@@ -1,16 +1,18 @@
 import { Link } from "react-router-dom";
 
+const base = import.meta.env.BASE_URL;
+
 export default function Footer() {
   return (
     <footer className="bg-[var(--color-misa-red)] text-white">
       <div className="max-w-[1160px] mx-auto px-6 py-10 grid md:grid-cols-3 gap-10 text-sm">
         <div>
-          <div className="flex items-center gap-3">
-            <img src="/logo-mit.png" alt="MIT" className="h-8 w-auto bg-white p-1" />
-            <span className="font-semibold tracking-tight">MIT — MISA</span>
+          <div className="flex items-center gap-4">
+            <img src={`${base}logo-mit.png`} alt="MIT" className="h-10 w-auto bg-white p-1" />
+            <img src={`${base}logo-misa.png`} alt="MISA" className="h-10 w-auto bg-white p-1" />
           </div>
           <p className="mt-4 leading-relaxed text-white/80">
-            Université d’Antananarivo<br />
+            Université d'Antananarivo<br />
             Faculté des Sciences — Domaine Sciences et Technologies<br />
             Département MIT · BP 906 Ankatso — Antananarivo 101
           </p>
@@ -34,7 +36,7 @@ export default function Footer() {
             <li><Link to="/formation/arborescence" className="hover:underline">Arborescence</Link></li>
             <li><Link to="/formation/licence" className="hover:underline">Licence</Link></li>
             <li><Link to="/formation/master" className="hover:underline">Master</Link></li>
-            <li><Link to="/admission" className="hover:underline">Conditions d’admission</Link></li>
+            <li><Link to="/admission" className="hover:underline">Conditions d'admission</Link></li>
           </ul>
         </div>
       </div>

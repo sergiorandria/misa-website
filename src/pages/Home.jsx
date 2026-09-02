@@ -1,48 +1,43 @@
 import { Link } from "react-router-dom";
+import { partenaires } from "../data/content";
+
+const base = import.meta.env.BASE_URL;
 
 export default function Home() {
   return (
     <div className="bg-white">
       {/* Hero — minimal */}
-      <section className="max-w-[1160px] mx-auto px-6 pt-10 pb-8">
-        <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-10 items-start">
+      <section className="max-w-[1160px] mx-auto px-8 pt-16 pb-12">
+        <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-14 items-start">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs tracking-widest text-neutral-500 border border-[var(--color-misa-line)] px-2.5 py-1">
+            <div className="inline-flex items-center gap-2 text-xs tracking-widest text-neutral-500 border border-[var(--color-misa-line)] px-3 py-1.5">
               <span className="w-1.5 h-1.5 bg-[var(--color-misa-red)]" /> PRÉ-INSCRIPTION — SÉLECTION SUR DOSSIER
             </div>
-            <h1 className="mt-5 text-[42px] leading-[0.95] tracking-tight font-bold">
+            <h1 className="mt-7 text-[42px] leading-[0.95] tracking-tight font-bold">
               <span className="block text-[12px] tracking-[0.18em] font-semibold text-[var(--color-misa-red)]">MENTION INFORMATIQUE ET TECHNOLOGIE</span>
-              <span className="block mt-2">Informatique</span>
+              <span className="block mt-3">Informatique</span>
               <span className="block">et Technologie (MIT)</span>
             </h1>
-            <div className="mt-3 h-1 w-16 bg-[var(--color-misa-red)]" />
-            <p className="mt-5 text-[16px] leading-relaxed text-neutral-600 max-w-[560px]">
-              <strong className="text-[var(--color-misa-ink)]">Le futur est entre vos mains.</strong> Immergez-vous dans la Science, la technologie, l’ingénierie et les Mathématiques en intégrant la MIT, la toute nouvelle mention du Domaine des Sciences et Technologies de l’Université d’Antananarivo.
+            <div className="mt-4 h-1 w-16 bg-[var(--color-misa-red)]" />
+            <p className="mt-6 text-[16px] leading-relaxed text-neutral-600 max-w-[560px]">
+              <strong className="text-[var(--color-misa-ink)]">Le futur est entre vos mains.</strong> Immergez-vous dans la Science, la technologie, l'ingénierie et les Mathématiques en intégrant la MIT, la toute nouvelle mention du Domaine des Sciences et Technologies de l'Université d'Antananarivo.
             </p>
-            <div className="mt-6 flex gap-3">
-              <Link to="/admission" className="bg-[var(--color-misa-red)] text-white text-sm font-semibold px-5 py-2.5 hover:bg-[var(--color-misa-red-dark)] transition">Conditions d’admission</Link>
-              <Link to="/formation/licence" className="border border-[var(--color-misa-ink)] text-sm font-semibold px-5 py-2.5 hover:bg-[var(--color-misa-ink)] hover:text-white transition">Voir la formation</Link>
+            <div className="mt-8 flex gap-3">
+              <Link to="/admission" className="bg-[var(--color-misa-red)] text-white text-sm font-semibold px-6 py-3 hover:bg-[var(--color-misa-red-dark)] transition">Conditions d'admission</Link>
+              <Link to="/formation/licence" className="border border-[var(--color-misa-ink)] text-sm font-semibold px-6 py-3 hover:bg-[var(--color-misa-ink)] hover:text-white transition">Voir la formation</Link>
             </div>
-            <div className="mt-8 grid grid-cols-3 gap-6 max-w-[520px] border-t border-[var(--color-misa-line)] pt-5">
+            <div className="mt-10 grid grid-cols-3 gap-8 max-w-[520px] border-t border-[var(--color-misa-line)] pt-6">
               <div><div className="text-sm font-bold">1996</div><div className="text-xs text-neutral-500">Création MISA</div></div>
               <div><div className="text-sm font-bold">LMD 2014</div><div className="text-xs text-neutral-500">Licence → Master</div></div>
               <div><div className="text-sm font-bold">BP 906</div><div className="text-xs text-neutral-500">Ankatso</div></div>
             </div>
           </div>
 
-          <div className="border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-6">
-            <img src="/logo-mit.png" alt="MIT logo" className="h-12 w-auto" />
-            <h2 className="mt-4 text-sm font-bold tracking-wide">Une pédagogie centrée sur l’étudiant</h2>
-            <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-              Cours magistraux, travaux dirigés, ateliers, simulations et projets de groupe. Les étudiants sont encouragés à prendre en charge leur apprentissage et à développer leur autonomie. Stages en entreprise chaque année.
-            </p>
-            <ul className="mt-4 grid grid-cols-2 gap-2 text-xs">
-              <li className="border border-[var(--color-misa-line)] bg-white px-3 py-2">Projets réels</li>
-              <li className="border border-[var(--color-misa-line)] bg-white px-3 py-2">Stages annuels</li>
-              <li className="border border-[var(--color-misa-line)] bg-white px-3 py-2">Encadrement chercheur</li>
-              <li className="border border-[var(--color-misa-line)] bg-white px-3 py-2">Partenariats intl.</li>
-            </ul>
-            <div className="mt-4 text-xs text-neutral-500">Référence : excellence académique, programmes rigoureux, classements nationaux.</div>
+          <div className="flex items-start justify-center lg:justify-end pt-6">
+            <div className="flex items-center gap-6">
+              <img src={`${base}logo-mit.png`} alt="MIT logo" className="h-28 w-auto object-contain" />
+              <img src={`${base}logo-misa.png`} alt="MISA logo" className="h-28 w-auto object-contain" />
+            </div>
           </div>
         </div>
       </section>
@@ -107,14 +102,16 @@ export default function Home() {
 
       {/* Partenaires */}
       <section className="border-t border-[var(--color-misa-line)]">
-        <div className="max-w-[1160px] mx-auto px-6 py-8">
+        <div className="max-w-[1160px] mx-auto px-6 py-10">
           <div className="text-xs tracking-widest text-neutral-500">PARTENAIRES</div>
-          <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-px bg-[var(--color-misa-line)] border border-[var(--color-misa-line)]">
-            {["MESUPRES","AUF","Toulouse III","Paris Diderot","Paris 13","Passau","Telma","Orange","Renault","Institut Pasteur","VV","Etech","Ingenosia","BMOI","BNI","BOA","Amen","Fac. Sciences"].map(p => (
-              <div key={p} className="bg-white h-[56px] flex items-center justify-center text-xs text-neutral-600 px-2 text-center">{p}</div>
+          <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {partenaires.map(({ name, logo }) => (
+              <div key={name} className="flex items-center justify-center border border-[var(--color-misa-line)] bg-white p-3 h-[72px] hover:shadow-sm transition">
+                <img src={logo} alt={name} className="max-h-[48px] max-w-full object-contain" loading="lazy" />
+              </div>
             ))}
           </div>
-          <p className="mt-3 text-xs leading-relaxed text-neutral-500">Telma (connectivité), Universités Paris 7 / Paris 13 / Paul Sabatier Toulouse (missions d’enseignement), Passau, etc. — repris depuis la bande partenaires du site original.</p>
+          <p className="mt-4 text-xs leading-relaxed text-neutral-500">Telma (connectivité), Universités Paris 7 / Paris 13 / Paul Sabatier Toulouse (missions d'enseignement), Passau, etc. — repris depuis la bande partenaires du site original.</p>
         </div>
       </section>
     </div>

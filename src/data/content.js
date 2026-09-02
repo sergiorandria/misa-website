@@ -108,10 +108,27 @@ export const masterParcours = {
   },
 };
 
+const base = import.meta.env.BASE_URL;
+
 export const partenaires = [
-  "MESUPRES", "AUF", "Université Toulouse III", "Université Paris Diderot", "Université Paris 13",
-  "Universität Passau", "Telma Madagascar", "Orange", "Renault",
-  "Institut Pasteur", "VV", "Etech", "Ingenosia", "BMOI", "BNI Madagascar", "BOA", "Amen"
+  { name: "MESUPRES", logo: `${base}partners/mesupres.png` },
+  { name: "AUF", logo: `${base}partners/auf.png` },
+  { name: "Université Toulouse III", logo: `${base}partners/toulouse3.png` },
+  { name: "Université Paris Diderot", logo: `${base}partners/paris7.jpg` },
+  { name: "Université Paris 13", logo: `${base}partners/paris13.png` },
+  { name: "Universität Passau", logo: `${base}partners/passau.png` },
+  { name: "Telma Madagascar", logo: `${base}partners/telma.jpg` },
+  { name: "Orange", logo: `${base}partners/orange.png` },
+  { name: "Renault", logo: `${base}partners/renault.png` },
+  { name: "Institut Pasteur", logo: `${base}partners/institut-pasteur.png` },
+  { name: "VV", logo: `${base}partners/vv.png` },
+  { name: "Etech", logo: `${base}partners/etech.png` },
+  { name: "Ingenosia", logo: `${base}partners/ingenosia.png` },
+  { name: "BMOI", logo: `${base}partners/bmoi.png` },
+  { name: "BNI Madagascar", logo: `${base}partners/bni.jpg` },
+  { name: "BOA", logo: `${base}partners/boa.jpg` },
+  { name: "Amen", logo: `${base}partners/amen.jpeg` },
+  { name: "Fac. Sciences", logo: `${base}partners/fac-sciences.svg` },
 ];
 
 export const admission = {
