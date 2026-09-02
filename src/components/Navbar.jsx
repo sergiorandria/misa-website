@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, ChevronRight, GraduationCap, BookOpen, Layers, Award } from "lucide-react";
+import { Link, NavLink } from "react-router-dom";
+import { Menu, X, ChevronDown, ChevronRight, GraduationCap, BookOpen, Layers } from "lucide-react";
 import { asset } from "../lib/assets";
 
 const linkBase = "text-[13px] tracking-wider font-semibold uppercase px-3 py-1.5 border-b-2 transition-all duration-200";
@@ -11,12 +11,8 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [drop, setDrop] = useState(false);
   const [mobileFormationOpen, setMobileFormationOpen] = useState(true);
-  const location = useLocation();
 
-  // Close drawer on route change
-  useEffect(() => {
-    setOpen(false);
-  }, [location]);
+  const closeDrawer = () => setOpen(false);
 
   // Lock background scroll when mobile drawer is open
   useEffect(() => {
@@ -37,7 +33,7 @@ export default function Navbar() {
 
       <div className="max-w-[1280px] mx-auto px-6 lg:px-8 h-[66px] flex items-center justify-between gap-4">
         {/* Brand logo & title */}
-        <Link to="/" className="flex items-center gap-3 shrink-0 group">
+        <Link to="/" onClick={closeDrawer} className="flex items-center gap-3 shrink-0 group">
           <div className="p-1 bg-white border border-[var(--color-misa-line)] shadow-2xs group-hover:border-[var(--color-misa-red)] transition duration-200">
             <img src={asset('logo-mit.png')} alt="MIT Logo" className="h-8 sm:h-9 w-auto object-contain" />
           </div>
@@ -162,6 +158,7 @@ export default function Navbar() {
             <div className="space-y-1">
               <NavLink
                 to="/"
+                onClick={closeDrawer}
                 className={({ isActive }) =>
                   `flex items-center justify-between h-[48px] px-3 font-semibold text-sm transition ${
                     isActive ? "bg-[var(--color-misa-paper)] text-[var(--color-misa-red)] border-l-3 border-[var(--color-misa-red)]" : "text-neutral-800 hover:bg-[var(--color-misa-paper)]"
@@ -195,6 +192,7 @@ export default function Navbar() {
                       <NavLink
                         key={item.to}
                         to={item.to}
+                        onClick={closeDrawer}
                         className={({ isActive }) =>
                           `flex items-center justify-between min-h-[44px] px-3 py-2 text-sm transition ${
                             isActive
@@ -215,6 +213,7 @@ export default function Navbar() {
 
               <NavLink
                 to="/admission"
+                onClick={closeDrawer}
                 className={({ isActive }) =>
                   `flex items-center justify-between h-[48px] px-3 font-semibold text-sm transition ${
                     isActive ? "bg-[var(--color-misa-paper)] text-[var(--color-misa-red)] border-l-3 border-[var(--color-misa-red)]" : "text-neutral-800 hover:bg-[var(--color-misa-paper)]"
@@ -230,6 +229,7 @@ export default function Navbar() {
             <div className="pt-4 space-y-3">
               <Link
                 to="/admission"
+                onClick={closeDrawer}
                 className="w-full flex items-center justify-center min-h-[44px] bg-[var(--color-misa-red)] text-white text-sm font-bold tracking-wider uppercase hover:bg-[var(--color-misa-red-dark)] active:scale-[0.99] transition shadow-xs"
               >
                 CANDIDATER À LA MIT

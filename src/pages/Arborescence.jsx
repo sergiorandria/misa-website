@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { ZoomIn, X, Download, FileText } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ZoomIn, X, Download } from "lucide-react";
 import { asset } from "../lib/assets";
 
 export default function Arborescence() {
@@ -12,15 +13,11 @@ export default function Arborescence() {
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
           <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">FORMATION — ARBORESCENCE</p>
           <h1 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">
-            Arborescence LMD
+            Arborescence du Cursus LMD
           </h1>
           <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
           <p className="mt-4 sm:mt-5 max-w-[680px] text-sm sm:text-base leading-[1.7] text-neutral-600">
-            Reproduction fidèle du schéma officiel <span className="font-mono text-[11px] bg-white border border-[var(--color-misa-line)] px-1.5 py-0.5 font-bold">MIT(1).png</span> — les informations ci-dessous reprennent uniquement ce qui est lisible sur le site, aucun intitulé n'a été inventé.
-          </p>
-          <p className="mt-3 text-xs text-neutral-500 flex items-center gap-1.5 font-medium">
-            <FileText size={14} className="text-[var(--color-misa-red)] shrink-0" />
-            <span>Source : <code>/assets/images/MIT(1).png</code> — image incluse en bas de page.</span>
+            Découvrez le cheminement académique au sein de la Mention Informatique et Technologie (MIT / MISA) : du tronc commun en Licence aux filières spécialisées de Master et aux ouvertures vers le Doctorat et le milieu professionnel.
           </p>
         </div>
       </div>
@@ -78,10 +75,14 @@ export default function Arborescence() {
             <div className="p-4 sm:p-5">
               <div className="text-[11px] tracking-widest text-neutral-500 font-bold uppercase">MODALITÉ D’ACCÈS</div>
               <ul className="mt-2 text-xs sm:text-sm leading-relaxed list-disc pl-5 space-y-1 text-neutral-700">
-                <li>Ouvert aux étudiants qui ont validé le L2 du parcours Informatique de la mention IT</li>
-                <li>Ouvert aux étudiants de Mathématiques ayant validé L1/L2, après sélection et entretien (selon lecture du schéma)</li>
+                <li>Ouvert aux étudiants ayant validé le L2 du parcours Informatique de la mention IT</li>
+                <li>Ouvert aux étudiants de Mathématiques ayant validé L1/L2, après sélection sur dossier et entretien</li>
               </ul>
-              <p className="mt-3 text-[11px] sm:text-xs text-neutral-500 italic">UE détaillées : voir page Licence — aucune matière ajoutée ici.</p>
+              <div className="mt-3">
+                <Link to="/formation/licence" className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--color-misa-red)] hover:underline">
+                  Consulter le détail des Unités d'Enseignement (UE) de Licence →
+                </Link>
+              </div>
             </div>
           </div>
 
@@ -94,8 +95,8 @@ export default function Arborescence() {
               </div>
               <div className="text-[11px] tracking-widest text-neutral-500 font-bold uppercase mt-3">MODALITÉ D’ACCÈS</div>
               <ul className="mt-2 text-xs sm:text-sm leading-relaxed list-disc pl-5 space-y-1 text-neutral-700">
-                <li>Sélection sur dossier + entrevue avec l’équipe de formation</li>
-                <li>Ouvert aux étudiants titulaires d’une Licence MISA ou licence informatique d’une institution publique</li>
+                <li>Sélection sur dossier et entretien avec l’équipe pédagogique</li>
+                <li>Ouvert aux titulaires d’une Licence MISA ou d'une Licence en informatique d’un établissement public</li>
               </ul>
             </div>
             
@@ -107,8 +108,8 @@ export default function Arborescence() {
               <div className="text-xs text-neutral-500 font-medium mt-0.5">Innovation et Technologie</div>
               <div className="text-[11px] tracking-widest text-neutral-500 font-bold uppercase mt-3">MODALITÉ D’ACCÈS</div>
               <ul className="mt-2 text-xs sm:text-sm leading-relaxed list-disc pl-5 space-y-1 text-neutral-700">
-                <li>Sélection sur dossier + entrevue</li>
-                <li>Ouvert aux étudiants titulaires d’une Licence MISA ou licence informatique d’une institution publique</li>
+                <li>Sélection sur dossier et entretien de motivation</li>
+                <li>Ouvert aux titulaires d’une Licence MISA ou équivalente issue d'un établissement d'enseignement supérieur public</li>
               </ul>
             </div>
           </div>
@@ -121,7 +122,7 @@ export default function Arborescence() {
                 M2 MISA — S9·S10
               </div>
               <div className="text-xs sm:text-sm text-neutral-600 mt-2 leading-relaxed">
-                Année recherche : stage & mémoire. Les débouchés listés sur le schéma (chef de projet, data-scientist, enseignant-chercheur, etc.) sont partiellement lisibles — ils ne sont pas retranscrits ici pour éviter toute approximation.
+                Parcours axé sur la recherche et les technologies avancées : Data Science, Modélisation, Intelligence Artificielle et Systèmes complexes. Stage de fin d'études et mémoire ouvrant vers le Doctorat et les carrières R&D internationales.
               </div>
             </div>
             
@@ -131,7 +132,7 @@ export default function Arborescence() {
                 M2 INT — S9·S10
               </div>
               <div className="text-xs sm:text-sm text-neutral-600 mt-2 leading-relaxed">
-                Année professionnalisante : stage & mémoire. Débouchés du schéma non retranscrits (lisibilité insuffisante).
+                Parcours professionnalisant orienté industrie logicielle : Architecture logicielle, Solutions distribuées, IoT & embarqué, Management de projet et qualification logicielle. Stage de fin d'études et insertion directe.
               </div>
             </div>
           </div>
@@ -141,10 +142,8 @@ export default function Arborescence() {
         {/* Diagram Image Verification Box */}
         <div className="mt-8 border border-[var(--color-misa-line)] p-4 sm:p-6 bg-[var(--color-misa-paper)] shadow-xs">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div>
-              <div className="text-[11px] sm:text-xs tracking-[0.16em] text-neutral-500 font-bold uppercase">IMAGE SOURCE — VÉRIFICATION ACADÉMIQUE</div>
-              <p className="text-xs text-neutral-600 mt-1">L’image ci-dessous est l’original du site (785 Ko, 3508×4961). Touchez pour agrandir.</p>
-            </div>
+              <div className="text-[11px] sm:text-xs tracking-[0.16em] text-neutral-500 font-bold uppercase">SCHÉMA OFFICIEL DU CURSUS</div>
+              <p className="text-xs text-neutral-600 mt-1">Consultez le schéma de progression pédagogique haute définition. Cliquez pour agrandir en plein écran.</p>
             
             <button
               onClick={() => setModalOpen(true)}

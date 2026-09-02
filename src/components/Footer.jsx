@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, ExternalLink, MapPin, ShieldAlert } from "lucide-react";
+import { Phone, Mail, ExternalLink } from "lucide-react";
 import { asset } from "../lib/assets";
 import { contact } from "../data/content";
 

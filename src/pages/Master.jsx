@@ -11,7 +11,6 @@ export default function Master() {
 
   return (
     <div className="bg-white">
-
       {/* ── BANNER — paper band ──────────────────────────────────────────── */}
       <div className="border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
@@ -24,7 +23,7 @@ export default function Master() {
             {introductionParcours}
           </p>
           <p className="mt-3 max-w-[680px] text-xs sm:text-sm leading-[1.7] text-neutral-500">
-            Deux parcours : Innovation et Technologie (INT) — systèmes embarqués, et MISA — data & IA. Programmes mis à jour d'après contenu officiel fourni.
+            Deux parcours d'excellence : Innovation et Technologie (INT) — systèmes embarqués et ingénierie logicielle, et MISA — data science, modélisation et intelligence artificielle.
           </p>
         </div>
       </div>

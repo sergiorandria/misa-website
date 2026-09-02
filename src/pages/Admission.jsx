@@ -6,7 +6,6 @@ import PartnersSection from "../components/PartnersSection";
 export default function Admission() {
   return (
     <div className="bg-white">
-
       {/* ── BANNER — paper band with campus image accent ─────────────────── */}
       <div className="border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] relative overflow-hidden">
         {/* Campus image accent — right side, desktop only */}
@@ -27,7 +26,7 @@ export default function Admission() {
           </h1>
           <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
           <p className="mt-4 sm:mt-5 max-w-[640px] text-sm sm:text-base leading-[1.7] text-neutral-600">
-            Cursus complet L1 → M2 : tronc commun IT (L1-L2), spécialisation MISA (L3), puis Master MISA (data/IA) ou INT (embarqué). Sélection sur dossier et entretien.
+            Cursus complet de la Licence 1 au Master 2 : tronc commun Informatique et Technologie (L1-L2), spécialisation MISA (L3), puis filières d'excellence en Master. L'admission s'effectue sur sélection de dossier au mérite et entretien selon le niveau sollicité.
           </p>
         </div>
       </div>
@@ -293,7 +292,6 @@ export default function Admission() {
             </div>
 
           </div>
-
         </div>
       </div>
 

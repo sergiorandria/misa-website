@@ -5,7 +5,6 @@ import { BookOpen, Target, User } from "lucide-react";
 export default function Licence() {
   return (
     <div className="bg-white">
-
       {/* ── BANNER — paper band ──────────────────────────────────────────── */}
       <div className="border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
@@ -18,7 +17,7 @@ export default function Licence() {
             {introductionParcours}
           </p>
           <p className="mt-3 max-w-[680px] text-xs sm:text-sm leading-[1.7] text-neutral-500">
-            Deux parcours : Informatique et Technologie (L1, L2) et MISA (L3). Programmes mis à jour d'après contenu officiel fourni.
+            Deux parcours d'excellence : Informatique et Technologie (L1, L2) et MISA (L3).
           </p>
         </div>
       </div>

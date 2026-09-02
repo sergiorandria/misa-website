@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import Licence from "./pages/Licence";
 import Master from "./pages/Master";
@@ -10,6 +11,7 @@ import Admission from "./pages/Admission";
 export default function App() {
   return (
     <BrowserRouter basename="/mit">
+      <ScrollToTop />
       <div className="min-h-screen flex flex-col bg-white">
         <Navbar />
         <main className="flex-1">

@@ -237,8 +237,6 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="mt-6 border-t border-[var(--color-misa-line)] pt-4 flex items-center justify-between">
-                  <span className="text-xs font-bold text-[var(--color-misa-red)] uppercase tracking-wider">{t.author}</span>
-                  <span className="text-xs font-mono text-neutral-500">{t.promo}</span>
                 </div>
               </div>
             ))}
@@ -248,7 +246,6 @@ export default function Home() {
 
       {/* ── PARTENAIRES — Ivy League Wall of Trust ──────────────────────── */}
       <PartnersSection />
-
     </div>
   );
 }
