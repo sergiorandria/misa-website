@@ -31,7 +31,7 @@ export default function Home() {
           </div>
 
           <div className="border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-6">
-            <img src="/logo-mit.png" alt="MIT logo" className="h-12 w-auto" />
+            <img src={`${import.meta.env.BASE_URL}logo-mit.png`} alt="MIT logo" className="h-12 w-auto" />
             <h2 className="mt-4 text-sm font-bold tracking-wide">Une pédagogie centrée sur l’étudiant</h2>
             <p className="mt-2 text-sm leading-relaxed text-neutral-600">
               Cours magistraux, travaux dirigés, ateliers, simulations et projets de groupe. Les étudiants sont encouragés à prendre en charge leur apprentissage et à développer leur autonomie. Stages en entreprise chaque année.
