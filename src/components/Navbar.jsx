@@ -52,21 +52,34 @@ export default function Navbar() {
           </NavLink>
 
           <div className="relative" onMouseEnter={() => setDrop(true)} onMouseLeave={() => setDrop(false)}>
-            <button className={`${linkBase} ${linkIdle} flex items-center gap-1 cursor-pointer`}>
+            <button
+              className={`${linkBase} ${linkIdle} flex items-center gap-1 cursor-pointer`}
+              aria-expanded={drop}
+              aria-haspopup="true"
+              onClick={() => setDrop(v => !v)}
+              onFocus={() => setDrop(true)}
+            >
               FORMATION <ChevronDown size={14} className={`${drop ? "rotate-180" : ""} transition-transform duration-200`} />
             </button>
             {drop && (
-              <div className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[420px] bg-white border border-[var(--color-misa-line)] p-2 flex gap-2 shadow-lg">
-                {[
-                  { to: "/formation/arborescence", k: "Arborescence", d: "Schéma LMD" },
-                  { to: "/formation/licence", k: "Licence", d: "L1 · L2 · L3" },
-                  { to: "/formation/master", k: "Master", d: "M1 · M2" },
-                ].map(i => (
-                  <Link key={i.to} to={i.to} className="flex-1 border border-[var(--color-misa-line)] p-3 hover:border-[var(--color-misa-ink)] transition bg-white hover:bg-[var(--color-misa-paper)]">
-                    <div className="text-sm font-semibold">{i.k}</div>
-                    <div className="text-xs text-neutral-500">{i.d}</div>
-                  </Link>
-                ))}
+              <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3">
+                <div className="w-[420px] bg-white border border-[var(--color-misa-line)] p-2 flex gap-2 shadow-lg">
+                  {[
+                    { to: "/formation/arborescence", k: "Arborescence", d: "Schéma LMD" },
+                    { to: "/formation/licence", k: "Licence", d: "L1 · L2 · L3" },
+                    { to: "/formation/master", k: "Master", d: "M1 · M2" },
+                  ].map(i => (
+                    <Link
+                      key={i.to}
+                      to={i.to}
+                      onClick={() => setDrop(false)}
+                      className="flex-1 border border-[var(--color-misa-line)] p-3 hover:border-[var(--color-misa-ink)] transition bg-white hover:bg-[var(--color-misa-paper)]"
+                    >
+                      <div className="text-sm font-semibold">{i.k}</div>
+                      <div className="text-xs text-neutral-500">{i.d}</div>
+                    </Link>
+                  ))}
+                </div>
               </div>
             )}
           </div>
