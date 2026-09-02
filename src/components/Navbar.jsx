@@ -32,6 +32,12 @@ export default function Navbar() {
     };
   }, [open]);
 
+  function handleContactClick(event) {
+    event.preventDefault();
+    setOpen(false);
+    document.getElementById("footer")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[var(--color-misa-line)] shadow-xs">
       {/* Top Ivy League brand accent bar */}
@@ -208,7 +214,7 @@ export default function Navbar() {
             )}
           </div>
 
-          <a href="#footer" className={`${linkBase} ${linkIdle}`}>
+          <a href="#footer" onClick={handleContactClick} className={`${linkBase} ${linkIdle}`}>
             CONTACTS
           </a>
         </nav>
@@ -347,7 +353,7 @@ export default function Navbar() {
 
               <a
                 href="#footer"
-                onClick={() => setOpen(false)}
+                onClick={handleContactClick}
                 className="flex items-center h-[48px] px-3 font-semibold text-sm text-neutral-800 hover:bg-[var(--color-misa-paper)] transition"
               >
                 CONTACTS
