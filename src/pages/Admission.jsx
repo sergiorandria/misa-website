@@ -1,6 +1,7 @@
 import { Download, Phone, Mail, MapPin, FileCheck, HelpCircle, CheckCircle, FileText, Calendar, CreditCard } from "lucide-react";
 import { admission, contact } from "../data/content";
 import { asset } from "../lib/assets";
+import PartnersSection from "../components/PartnersSection";
 
 export default function Admission() {
   return (
@@ -19,40 +20,40 @@ export default function Admission() {
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-misa-paper)] via-[var(--color-misa-paper)]/40 to-transparent" />
         </div>
 
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-12 lg:py-16 relative z-10">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16 relative z-10">
           <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">ADMISSION & PROCÉDURE</p>
           <h1 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)] max-w-[540px]">
             Conditions d'admission à la MIT
           </h1>
           <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
-          <p className="mt-5 max-w-[640px] text-sm sm:text-base leading-[1.7] text-neutral-600">
+          <p className="mt-4 sm:mt-5 max-w-[640px] text-sm sm:text-base leading-[1.7] text-neutral-600">
             Cursus complet L1 → M2 : tronc commun IT (L1-L2), spécialisation MISA (L3), puis Master MISA (data/IA) ou INT (embarqué). Sélection sur dossier et entretien.
           </p>
         </div>
       </div>
 
       {/* ── MAIN CONTENT — white band ────────────────────────────────────── */}
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-16 lg:py-24">
-        <div className="grid lg:grid-cols-[1fr_360px] gap-12 lg:gap-16 items-start">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
+        <div className="grid lg:grid-cols-[1fr_360px] gap-10 lg:gap-16 items-start">
 
           {/* Left Column — Detailed Admission Steps & Docs */}
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-12">
 
             {/* 1. Conditions & Classement */}
             <div>
-              <p className="text-[11px] tracking-[0.18em] text-[var(--color-misa-red)] font-bold uppercase mb-4 flex items-center gap-2">
+              <p className="text-[11px] tracking-[0.18em] text-[var(--color-misa-red)] font-bold uppercase mb-3 sm:mb-4 flex items-center gap-2">
                 <span className="w-2 h-2 bg-[var(--color-misa-red)] inline-block" />
                 <span>1. PRÉREQUIS & SÉLECTION EN L1</span>
               </p>
-              <div className="academic-card border border-[var(--color-misa-line)] bg-white p-6 sm:p-8 space-y-4">
-                <h3 className="text-base font-bold text-[var(--color-misa-ink)] flex items-center gap-2">
-                  <CheckCircle size={18} className="text-[var(--color-misa-red)]" />
+              <div className="academic-card border border-[var(--color-misa-line)] bg-white p-5 sm:p-8 space-y-4">
+                <h3 className="text-sm sm:text-base font-bold text-[var(--color-misa-ink)] flex items-center gap-2">
+                  <CheckCircle size={18} className="text-[var(--color-misa-red)] shrink-0" />
                   <span>Classement de dossier et sélection</span>
                 </h3>
-                <div className="space-y-3 pt-2">
+                <div className="space-y-3 pt-1 sm:pt-2">
                   {admission.classement.map((item) => (
-                    <div key={item} className="flex items-start gap-3 text-sm leading-[1.7] text-neutral-700">
-                      <span className="mt-2 w-1.5 h-1.5 bg-[var(--color-misa-red)] shrink-0 rounded-full" />
+                    <div key={item} className="flex items-start gap-3 text-xs sm:text-sm leading-[1.7] text-neutral-700">
+                      <span className="mt-1.5 sm:mt-2 w-1.5 h-1.5 bg-[var(--color-misa-red)] shrink-0 rounded-full" />
                       <span>{item}</span>
                     </div>
                   ))}
@@ -62,18 +63,18 @@ export default function Admission() {
 
             {/* 2. Dossier à fournir */}
             <div>
-              <p className="text-[11px] tracking-[0.18em] text-[var(--color-misa-ink)] font-bold uppercase mb-4 flex items-center gap-2">
+              <p className="text-[11px] tracking-[0.18em] text-[var(--color-misa-ink)] font-bold uppercase mb-3 sm:mb-4 flex items-center gap-2">
                 <span className="w-2 h-2 bg-[var(--color-misa-ink)] inline-block" />
                 <span>2. DOSSIER ACADÉMIQUE À FOURNIR</span>
               </p>
-              <div className="academic-card border border-[var(--color-misa-line)] bg-white p-6 sm:p-8 space-y-4">
-                <h3 className="text-base font-bold text-[var(--color-misa-ink)] flex items-center gap-2">
-                  <FileText size={18} className="text-[var(--color-misa-ink)]" />
+              <div className="academic-card border border-[var(--color-misa-line)] bg-white p-5 sm:p-8 space-y-4">
+                <h3 className="text-sm sm:text-base font-bold text-[var(--color-misa-ink)] flex items-center gap-2">
+                  <FileText size={18} className="text-[var(--color-misa-ink)] shrink-0" />
                   <span>Pièces justificatives requises</span>
                 </h3>
-                <div className="space-y-3 pt-2">
+                <div className="space-y-3 pt-1 sm:pt-2">
                   {admission.dossier.map((doc, idx) => (
-                    <div key={doc} className="flex items-start gap-3 text-sm leading-[1.7] border-b last:border-0 border-[var(--color-misa-line)] pb-3 text-neutral-700">
+                    <div key={doc} className="flex items-start gap-3 text-xs sm:text-sm leading-[1.7] border-b last:border-0 border-[var(--color-misa-line)] pb-3 text-neutral-700">
                       <span className="text-xs font-mono font-bold text-[var(--color-misa-red)] bg-[var(--color-misa-paper)] px-2 py-0.5 border border-[var(--color-misa-line)] shrink-0 mt-0.5">
                         {String(idx + 1).padStart(2, "0")}
                       </span>
@@ -83,20 +84,20 @@ export default function Admission() {
                 </div>
 
                 {/* PDF Download Box */}
-                <div className="mt-6 border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-6">
-                  <div className="flex items-center gap-4 border-b border-[var(--color-misa-line)] pb-4 mb-4">
-                    <div className="p-2.5 bg-white border border-[var(--color-misa-line)] text-[var(--color-misa-red)]">
+                <div className="mt-6 border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-4 sm:p-6">
+                  <div className="flex items-center gap-3 sm:gap-4 border-b border-[var(--color-misa-line)] pb-4 mb-4">
+                    <div className="p-2 sm:p-2.5 bg-white border border-[var(--color-misa-line)] text-[var(--color-misa-red)] shrink-0">
                       <FileCheck size={20} />
                     </div>
                     <div>
                       <h4 className="text-xs font-bold text-[var(--color-misa-ink)] uppercase tracking-wide">Fiche de Pré-inscription PDF</h4>
-                      <p className="text-xs text-neutral-500 mt-0.5">Formulaire officiel à compléter et joindre au dossier</p>
+                      <p className="text-[11px] text-neutral-500 mt-0.5">Formulaire officiel à compléter et joindre au dossier</p>
                     </div>
                   </div>
                   <a
                     href={asset('assets/file/PREINSCRIPTION.pdf')}
                     download
-                    className="min-h-[44px] inline-flex items-center justify-center gap-2.5 bg-[var(--color-misa-red)] text-white text-xs font-bold tracking-[0.12em] uppercase px-6 py-2.5 hover:bg-[var(--color-misa-red-dark)] transition duration-200"
+                    className="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center gap-2.5 bg-[var(--color-misa-red)] text-white text-xs font-bold tracking-[0.12em] uppercase px-6 py-2.5 hover:bg-[var(--color-misa-red-dark)] active:scale-[0.99] transition duration-200"
                   >
                     <Download size={15} />
                     <span>Télécharger la fiche PDF</span>
@@ -107,12 +108,12 @@ export default function Admission() {
 
             {/* 3. Inscription administrative & BNI */}
             <div>
-              <p className="text-[11px] tracking-[0.18em] text-[var(--color-misa-red)] font-bold uppercase mb-4 flex items-center gap-2">
+              <p className="text-[11px] tracking-[0.18em] text-[var(--color-misa-red)] font-bold uppercase mb-3 sm:mb-4 flex items-center gap-2">
                 <span className="w-2 h-2 bg-[var(--color-misa-red)] inline-block" />
                 <span>3. INSCRIPTION ET FRAIS DE DOSSIER</span>
               </p>
-              <div className="academic-card border border-[var(--color-misa-line)] bg-white p-6 sm:p-8 space-y-6">
-                <p className="text-sm leading-[1.7] text-neutral-700">
+              <div className="academic-card border border-[var(--color-misa-line)] bg-white p-5 sm:p-8 space-y-6">
+                <p className="text-xs sm:text-sm leading-[1.7] text-neutral-700">
                   {admission.inscription.enLigne}
                 </p>
 
@@ -152,12 +153,12 @@ export default function Admission() {
 
             {/* 4. Admissions Master (MISA vs INT) */}
             <div>
-              <p className="text-[11px] tracking-[0.18em] text-[var(--color-misa-ink)] font-bold uppercase mb-4 flex items-center gap-2">
+              <p className="text-[11px] tracking-[0.18em] text-[var(--color-misa-ink)] font-bold uppercase mb-3 sm:mb-4 flex items-center gap-2">
                 <span className="w-2 h-2 bg-[var(--color-misa-ink)] inline-block" />
                 <span>4. ADMISSIONS MASTER (M1 / M2)</span>
               </p>
-              <div className="academic-card border border-[var(--color-misa-line)] bg-white p-6 sm:p-8 space-y-6">
-                <p className="text-sm leading-[1.7] text-neutral-700">
+              <div className="academic-card border border-[var(--color-misa-line)] bg-white p-5 sm:p-8 space-y-6">
+                <p className="text-xs sm:text-sm leading-[1.7] text-neutral-700">
                   {admission.m1.intro}
                 </p>
 
@@ -195,9 +196,9 @@ export default function Admission() {
             </div>
 
             {/* Date limite box */}
-            <div className="border-l-4 border-amber-600 bg-amber-50/60 p-6 border-y border-r border-amber-200">
+            <div className="border-l-4 border-amber-600 bg-amber-50/60 p-5 sm:p-6 border-y border-r border-amber-200">
               <div className="flex items-center gap-2 text-xs font-bold tracking-widest text-amber-900 uppercase">
-                <Calendar size={16} className="text-amber-700" />
+                <Calendar size={16} className="text-amber-700 shrink-0" />
                 <span>DATE LIMITE DE DÉPÔT</span>
               </div>
               <p className="mt-2 text-xs sm:text-sm leading-[1.7] text-amber-950 font-medium">
@@ -211,13 +212,13 @@ export default function Admission() {
           <div className="space-y-6">
 
             {/* Scolarité contact card */}
-            <div className="academic-card border border-[var(--color-misa-line)] bg-white p-6 sm:p-8">
+            <div className="academic-card border border-[var(--color-misa-line)] bg-white p-5 sm:p-8">
               <div className="text-[11px] font-bold tracking-[0.16em] text-[var(--color-misa-red)] uppercase border-b border-[var(--color-misa-line)] pb-4 mb-5 flex items-center gap-2">
-                <HelpCircle size={15} />
+                <HelpCircle size={15} className="shrink-0" />
                 <span>SCOLARITÉ & CONTACTS</span>
               </div>
 
-              <div className="space-y-5 text-sm text-neutral-700">
+              <div className="space-y-5 text-xs sm:text-sm text-neutral-700">
                 <div className="flex items-start gap-3">
                   <Phone size={16} className="text-[var(--color-misa-red)] shrink-0 mt-0.5" />
                   <div>
@@ -262,9 +263,9 @@ export default function Admission() {
             </div>
 
             {/* BNI Payment Card */}
-            <div className="academic-card border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-6">
+            <div className="academic-card border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-5 sm:p-6">
               <div className="flex items-center gap-2 text-[11px] font-bold tracking-[0.16em] text-[var(--color-misa-ink)] uppercase border-b border-[var(--color-misa-line)] pb-3 mb-3">
-                <CreditCard size={15} className="text-[var(--color-misa-red)]" />
+                <CreditCard size={15} className="text-[var(--color-misa-red)] shrink-0" />
                 <span>FRAIS DE DOSSIER & BNI</span>
               </div>
               <p className="text-xs leading-[1.7] text-neutral-700">
@@ -275,7 +276,7 @@ export default function Admission() {
             </div>
 
             {/* Admission Process Overview List */}
-            <div className="academic-card border border-[var(--color-misa-line)] bg-white p-6">
+            <div className="academic-card border border-[var(--color-misa-line)] bg-white p-5 sm:p-6">
               <div className="text-[11px] font-bold tracking-[0.16em] text-[var(--color-misa-ink)] uppercase border-b border-[var(--color-misa-line)] pb-3 mb-4">
                 SYNTHÈSE DU PROCESSUS
               </div>
@@ -296,6 +297,20 @@ export default function Admission() {
         </div>
       </div>
 
+      {/* ── PARTENAIRES — Ivy League Wall of Trust ──────────────────────── */}
+      <PartnersSection />
+
     </div>
+  );
+}
+
+function AdmissionLink({ to, title, description }) {
+  return (
+    <Link to={to} className="border border-[var(--color-misa-line)] p-5 hover:border-[var(--color-misa-red)] transition">
+      <div className="text-xs tracking-widest text-[var(--color-misa-red)]">CANDIDATURE</div>
+      <h2 className="mt-2 text-sm font-bold">{title}</h2>
+      <p className="mt-1 text-xs leading-relaxed text-neutral-500">{description}</p>
+      <span className="mt-3 block text-xs font-semibold text-[var(--color-misa-red)]">Consulter la procédure →</span>
+    </Link>
   );
 }

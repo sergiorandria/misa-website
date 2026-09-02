@@ -125,9 +125,23 @@ export default function Navbar() {
             )}
           </div>
 
-          <NavLink to="/admission" className={({ isActive }) => `${linkBase} ${isActive ? linkActive : linkIdle}`}>
-            ADMISSION
-          </NavLink>
+          <div className="relative" onMouseEnter={() => setAdmissionDrop(true)} onMouseLeave={() => setAdmissionDrop(false)}>
+            <NavLink to="/admission" className={({ isActive }) => `${linkBase} ${isActive ? linkActive : linkIdle} flex items-center gap-1`}>
+              ADMISSION <ChevronDown size={14} className={`${admissionDrop ? "rotate-180" : ""} transition`} />
+            </NavLink>
+            {admissionDrop && (
+              <div className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[280px] bg-white border border-[var(--color-misa-line)] p-2 flex gap-2 shadow-sm">
+                <Link to="/admission/licence" className="flex-1 border border-[var(--color-misa-line)] p-3 hover:border-[var(--color-misa-ink)] transition">
+                  <div className="text-sm font-semibold">Licence</div>
+                  <div className="text-xs text-neutral-500">L1 — IT</div>
+                </Link>
+                <Link to="/admission/master-int" className="flex-1 border border-[var(--color-misa-line)] p-3 hover:border-[var(--color-misa-ink)] transition">
+                  <div className="text-sm font-semibold">Master INT</div>
+                  <div className="text-xs text-neutral-500">M1 — INT</div>
+                </Link>
+              </div>
+            )}
+          </div>
         </nav>
 
         {/* Desktop CTA */}
@@ -162,6 +176,7 @@ export default function Navbar() {
             <div className="space-y-1">
               <NavLink
                 to="/"
+                onClick={() => setMobileMenuOpen(false)}
                 className={({ isActive }) =>
                   `flex items-center justify-between h-[48px] px-3 font-semibold text-sm transition ${
                     isActive ? "bg-[var(--color-misa-paper)] text-[var(--color-misa-red)] border-l-3 border-[var(--color-misa-red)]" : "text-neutral-800 hover:bg-[var(--color-misa-paper)]"
@@ -195,6 +210,7 @@ export default function Navbar() {
                       <NavLink
                         key={item.to}
                         to={item.to}
+                        onClick={() => setMobileMenuOpen(false)}
                         className={({ isActive }) =>
                           `flex items-center justify-between min-h-[44px] px-3 py-2 text-sm transition ${
                             isActive
@@ -213,24 +229,55 @@ export default function Navbar() {
                 )}
               </div>
 
-              <NavLink
-                to="/admission"
-                className={({ isActive }) =>
-                  `flex items-center justify-between h-[48px] px-3 font-semibold text-sm transition ${
-                    isActive ? "bg-[var(--color-misa-paper)] text-[var(--color-misa-red)] border-l-3 border-[var(--color-misa-red)]" : "text-neutral-800 hover:bg-[var(--color-misa-paper)]"
-                  }`
-                }
-              >
-                ADMISSION
-                <ChevronRight size={16} className="text-neutral-400" />
-              </NavLink>
+              {/* Accordion for Admission */}
+              <div>
+                <button
+                  onClick={() => setMobileAdmissionOpen(!mobileAdmissionOpen)}
+                  className="w-full flex items-center justify-between h-[48px] px-3 font-semibold text-sm text-neutral-800 hover:bg-[var(--color-misa-paper)] transition cursor-pointer"
+                >
+                  <span>ADMISSION</span>
+                  <ChevronDown size={16} className={`text-neutral-500 transition-transform duration-200 ${mobileAdmissionOpen ? "rotate-180" : ""}`} />
+                </button>
+
+                {mobileAdmissionOpen && (
+                  <div className="ml-3 pl-3 border-l border-[var(--color-misa-line)] space-y-1 my-1">
+                    <NavLink
+                      to="/admission/licence"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={({ isActive }) =>
+                        `flex items-center min-h-[44px] px-3 py-2 text-sm transition ${
+                          isActive
+                            ? "bg-[var(--color-misa-paper)] font-semibold text-[var(--color-misa-red)]"
+                            : "text-neutral-700 hover:bg-neutral-50"
+                        }`
+                      }
+                    >
+                      Admission Licence
+                    </NavLink>
+                    <NavLink
+                      to="/admission/master-int"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={({ isActive }) =>
+                        `flex items-center min-h-[44px] px-3 py-2 text-sm transition ${
+                          isActive
+                            ? "bg-[var(--color-misa-paper)] font-semibold text-[var(--color-misa-red)]"
+                            : "text-neutral-700 hover:bg-neutral-50"
+                        }`
+                      }
+                    >
+                      Admission Master INT
+                    </NavLink>
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Mobile Footer Action inside Menu */}
             <div className="pt-4 space-y-3">
               <Link
                 to="/admission"
-                className="w-full flex items-center justify-center min-h-[44px] bg-[var(--color-misa-red)] text-white text-sm font-bold tracking-wider uppercase hover:bg-[var(--color-misa-red-dark)] active:scale-[0.99] transition shadow-xs"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full flex items-center justify-center min-h-[44px] bg-[var(--color-misa-red)] text-white text-sm font-semibold tracking-wide hover:bg-[var(--color-misa-red-dark)] active:scale-[0.99] transition shadow-xs"
               >
                 CANDIDATER À LA MIT
               </Link>
