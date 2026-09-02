@@ -39,21 +39,24 @@ export default function Home() {
                 Immergez-vous dans la Science, la technologie, l'ingénierie et les Mathématiques en intégrant la MIT — mention du Domaine des Sciences et Technologies de l'Université d'Antananarivo.
               </p>
 
-              {/* CTAs */}
+              {/* CTAs — Particle Buttons */}
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                <Link
-                  to="/admission"
-                  className="min-h-[48px] bg-[var(--color-misa-red)] text-white text-xs font-bold tracking-[0.12em] uppercase px-7 py-3 flex items-center justify-center gap-2 hover:bg-[var(--color-misa-red-dark)] active:scale-[0.99] transition duration-200 group shadow-xs"
+                <ParticleButton
+                  variant="primary"
+                  successDuration={900}
+                  onSuccess={() => setTimeout(() => navigate("/admission"), 250)}
+                  className="flex-1 sm:flex-none min-w-[200px]"
                 >
-                  <span>Conditions d'admission</span>
-                  <ArrowRight size={15} className="group-hover:translate-x-1 transition duration-200" />
-                </Link>
-                <Link
-                  to="/formation/licence"
-                  className="min-h-[48px] border-2 border-[var(--color-misa-ink)] text-[var(--color-misa-ink)] text-xs font-bold tracking-[0.12em] uppercase px-7 py-3 flex items-center justify-center hover:bg-[var(--color-misa-ink)] hover:text-white transition duration-200"
+                  Conditions d&apos;admission
+                </ParticleButton>
+                <ParticleButton
+                  variant="outline"
+                  successDuration={900}
+                  onSuccess={() => setTimeout(() => navigate("/formation/licence"), 250)}
+                  className="flex-1 sm:flex-none min-w-[180px]"
                 >
                   Voir la formation
-                </Link>
+                </ParticleButton>
               </div>
 
               {/* Key metrics */}
@@ -254,37 +257,59 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── ALUMNI TÉMOIGNAGES — paper band ─────────────────────────────── */}
-      <section className="bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div>
-              <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">ALUMNI & SORTANTS</p>
-              <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)] max-w-[540px]">
-                Avis et parcours de nos diplômés
+      {/* ── AVIS DES SORTANTS — Stack (React Bits) ─────────────────────── */}
+      <section className="bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-16 lg:py-24">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
+            {/* Left — copy */}
+            <div className="lg:w-80 xl:w-[360px] shrink-0">
+              <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">ALUMNI — TÉMOIGNAGES</p>
+              <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">
+                Avis des sortants
               </h2>
               <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
+              <p className="mt-6 text-sm leading-[1.7] text-neutral-700">
+                Paroles d&apos;anciens — valeurs de la MISA : intégrité, initiative, audace, rigueur, persévérance et travail d&apos;équipe.
+              </p>
+              <p className="mt-3 text-sm leading-[1.7] text-neutral-600 italic">« MISA un jour, MISA toujours ! »</p>
+              <p className="mt-6 text-xs leading-relaxed text-neutral-500">
+                Faites glisser ou cliquez sur la carte du dessus pour découvrir le témoignage suivant. Défilement automatique en pause au survol.
+              </p>
+              <p className="mt-3 text-[11px] text-neutral-400">Extraits de « temoignages_anciens(1).txt » — textes intégraux conservés.</p>
             </div>
-            <p className="text-xs text-neutral-500 font-mono tracking-wider">
-              « MISA un jour, MISA toujours ! »
-            </p>
-          </div>
 
-          <div className="mt-8 sm:mt-12 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-            {temoignages.map((t) => (
-              <div key={t.author} className="academic-card bg-white border border-[var(--color-misa-line)] p-5 sm:p-8 flex flex-col justify-between">
-                <div>
-                  <Quote size={20} className="text-[var(--color-misa-red)] mb-3 sm:mb-4 opacity-80" />
-                  <p className="text-xs sm:text-sm leading-[1.7] text-neutral-700 italic">
-                    "{t.quote}"
-                  </p>
-                </div>
-                <div className="mt-6 border-t border-[var(--color-misa-line)] pt-4 flex items-center justify-between">
-                  <span className="text-xs font-bold text-[var(--color-misa-red)] uppercase tracking-wider">{t.author}</span>
-                  <span className="text-xs font-mono text-neutral-500">{t.promo}</span>
-                </div>
+            {/* Right — Stack */}
+            <div className="flex-1 w-full flex justify-center lg:justify-end">
+              <div className="w-[300px] xs:w-[340px] sm:w-[420px] md:w-[460px] h-[380px] sm:h-[360px]">
+                <Stack
+                  randomRotation={true}
+                  sensitivity={180}
+                  sendToBackOnClick={true}
+                  autoplay={true}
+                  autoplayDelay={4000}
+                  pauseOnHover={true}
+                  cards={temoignages.map((t) => (
+                    <div
+                      key={t.author}
+                      className="w-full h-full bg-white border border-[var(--color-misa-line)] border-l-4 border-l-[var(--color-misa-red)] p-6 sm:p-7 flex flex-col justify-between text-left shadow-sm"
+                    >
+                      <div className="flex-1 min-h-0 flex flex-col">
+                        <div className="w-7 h-7 flex items-center justify-center bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] text-[var(--color-misa-red)] shrink-0">
+                          <Quote size={14} />
+                        </div>
+                        <p className="mt-4 text-xs sm:text-[13px] leading-relaxed italic text-neutral-700 overflow-y-auto pr-1">
+                          &ldquo;{t.quote}&rdquo;
+                        </p>
+                      </div>
+                      <div className="mt-4 pt-4 border-t border-[var(--color-misa-line)] text-right shrink-0">
+                        <div className="text-xs font-bold text-[var(--color-misa-red)] leading-tight">{t.author}</div>
+                        <div className="text-[11px] text-neutral-500 tracking-wide uppercase font-medium mt-0.5">{t.promo}</div>
+                      </div>
+                    </div>
+                  ))}
+                />
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
