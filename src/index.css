@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Geist", "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Space Grotesk", "Geist", sans-serif;
+  --color-primary: #0f2a44;
+  --color-primary-light: #163a5f;
+  --color-accent: #e11d48;
+  --color-accent-2: #06b6d4;
+  --color-muted: #64748b;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-[#f8fafc] text-slate-800 antialiased;
+  font-family: var(--font-sans);
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full;
+}
+::-webkit-scrollbar-track {
+  @apply bg-slate-100;
+}

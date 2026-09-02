@@ -1,0 +1,37 @@
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import Licence from "./pages/Licence";
+import Master from "./pages/Master";
+import Arborescence from "./pages/Arborescence";
+import Admission from "./pages/Admission";
+import Inscription from "./pages/Inscription";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-1">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/formation/licence" element={<Licence />} />
+            <Route path="/formation/master" element={<Master />} />
+            <Route path="/formation/arborescence" element={<Arborescence />} />
+            {/* legacy query-param style redirects */}
+            <Route path="/licence" element={<Navigate to="/formation/licence" replace />} />
+            <Route path="/master" element={<Navigate to="/formation/master" replace />} />
+            <Route path="/arborescence" element={<Navigate to="/formation/arborescence" replace />} />
+            <Route path="/admission" element={<Admission />} />
+            <Route path="/inscription" element={<Inscription />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
+  );
+}
+
+export default App;
