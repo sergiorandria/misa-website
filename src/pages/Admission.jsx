@@ -54,7 +54,7 @@ export default function Admission() {
             </div>
             <div className="px-4 sm:px-5 pb-5">
               <a
-                href="/assets/file/PREINSCRIPTION.pdf"
+                href={`${import.meta.env.BASE_URL}assets/file/PREINSCRIPTION.pdf`}
                 className="min-h-[44px] inline-flex items-center gap-2 text-xs font-medium text-[var(--color-misa-red)] hover:underline decoration-[var(--color-misa-red)] underline-offset-4 bg-[var(--color-misa-paper)] px-3 py-2 border border-[var(--color-misa-line)]"
               >
                 <Download size={14} />

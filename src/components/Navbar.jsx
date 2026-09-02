@@ -34,7 +34,7 @@ export default function Navbar() {
       <div className="max-w-[1160px] mx-auto px-4 sm:px-6 h-[64px] flex items-center justify-between gap-4">
         {/* Brand logo & title */}
         <Link to="/" className="flex items-center gap-2.5 shrink-0">
-          <img src="/logo-mit.png" alt="MIT" className="h-8 sm:h-9 w-auto object-contain" />
+          <img src={`${import.meta.env.BASE_URL}logo-mit.png`} alt="MIT" className="h-8 sm:h-9 w-auto object-contain" />
           <div className="leading-tight">
             <div className="text-[13px] sm:text-[14px] font-bold tracking-tight text-[var(--color-misa-ink)]">
               MIT — MISA

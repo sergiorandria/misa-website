@@ -61,7 +61,7 @@ export default function Home() {
 
           <div className="border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-5 sm:p-6 shadow-xs">
             <div className="flex items-center gap-3">
-              <img src="/logo-mit.png" alt="MIT logo" className="h-10 sm:h-12 w-auto object-contain" />
+              <img src={`${import.meta.env.BASE_URL}logo-mit.png`} alt="MIT logo" className="h-10 sm:h-12 w-auto object-contain" />
               <div>
                 <div className="text-xs font-bold tracking-wider text-[var(--color-misa-red)]">MIT — UNIVERSITÉ D'ANTANANARIVO</div>
                 <div className="text-[11px] text-neutral-500">Sciences & Technologies</div>
