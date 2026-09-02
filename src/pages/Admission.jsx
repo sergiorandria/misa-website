@@ -1,6 +1,7 @@
 import { Download, Phone, Mail, MapPin, FileCheck, HelpCircle, CheckCircle, FileText, Calendar, CreditCard } from "lucide-react";
 import { admission, contact } from "../data/content";
 import { asset } from "../lib/assets";
+import PartnersSection from "../components/PartnersSection";
 
 export default function Admission() {
   return (
@@ -295,6 +296,9 @@ export default function Admission() {
 
         </div>
       </div>
+
+      {/* ── PARTENAIRES — Ivy League Wall of Trust ──────────────────────── */}
+      <PartnersSection />
 
     </div>
   );

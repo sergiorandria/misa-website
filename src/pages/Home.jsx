@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2, ShieldCheck, Cpu, Code2, Users, Globe, BookMarked, Sparkles, Award, Quote } from "lucide-react";
 import { asset } from "../lib/assets";
 import { temoignages } from "../data/content";
+import PartnersSection from "../components/PartnersSection";
 
 export default function Home() {
   return (
@@ -213,7 +214,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── ALUMNI TÉMOIGNAGES — paper band (added from dev) ─────────────── */}
+      {/* ── ALUMNI TÉMOIGNAGES — paper band ─────────────────────────────── */}
       <section className="bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-16 lg:py-24">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -248,43 +249,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PARTENAIRES — white band ─────────────────────────────────────── */}
-      <section className="bg-white border-b border-[var(--color-misa-line)] py-16 lg:py-24">
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
-
-            {/* Left — copy + link */}
-            <div className="lg:w-72 xl:w-80 shrink-0">
-              <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">PARTENAIRES</p>
-              <h2 className="mt-3 text-xl sm:text-2xl lg:text-3xl font-light tracking-tight text-[var(--color-misa-ink)]">
-                Un réseau académique & industriel
-              </h2>
-              <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
-              <p className="mt-5 text-sm leading-[1.7] text-neutral-600">
-                Telma (connectivité), Universités Paris 7 / Paris 13 / Paul Sabatier Toulouse (missions d'enseignement), Passau, Institut Pasteur et partenaires industriels locaux.
-              </p>
-              <Link
-                to="/admission"
-                className="mt-6 inline-flex items-center gap-2 text-xs font-bold tracking-[0.12em] uppercase text-[var(--color-misa-red)] border-b-2 border-[var(--color-misa-red)] pb-0.5 hover:text-[var(--color-misa-red-dark)] hover:border-[var(--color-misa-red-dark)] transition duration-200"
-              >
-                → Candidater
-              </Link>
-            </div>
-
-            {/* Right — partner grid */}
-            <div className="flex-1 min-w-0">
-              <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-px bg-[var(--color-misa-line)] border border-[var(--color-misa-line)]">
-                {["MESUPRES","AUF","Toulouse III","Paris Diderot","Paris 13","Passau","Telma","Orange","Renault","Institut Pasteur","VV","Etech","Ingenosia","BMOI","BNI","BOA","Amen","Fac. Sciences"].map(p => (
-                  <div key={p} className="bg-white min-h-[52px] flex items-center justify-center text-xs font-semibold text-neutral-700 px-3 py-2 text-center hover:bg-[var(--color-misa-paper)] hover:text-[var(--color-misa-red)] transition duration-200">
-                    {p}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
+      {/* ── PARTENAIRES — Ivy League Wall of Trust ──────────────────────── */}
+      <PartnersSection />
 
     </div>
   );
