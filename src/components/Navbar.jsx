@@ -61,16 +61,26 @@ export default function Navbar() {
 
           {/* Harvard/MIT style Mega-Menu Dropdown - FORMATION */}
           <div className="relative" onMouseEnter={() => setDrop(true)} onMouseLeave={() => setDrop(false)}>
-            <button
-              className={`${linkBase} ${linkIdle} flex items-center gap-1.5 cursor-pointer`}
-              aria-expanded={drop}
-              aria-haspopup="true"
-              onClick={() => setDrop(v => !v)}
-              onFocus={() => setDrop(true)}
-            >
-              <span>FORMATION</span>
-              <ChevronDown size={14} className={`${drop ? "rotate-180 text-[var(--color-misa-red)]" : "text-neutral-400"} transition-transform duration-200`} />
-            </button>
+            <div className="flex items-center">
+              <NavLink
+                to="/formation"
+                className={({ isActive }) => `${linkBase} ${isActive ? linkActive : linkIdle}`}
+                onFocus={() => setDrop(true)}
+              >
+                FORMATION
+              </NavLink>
+              <button
+                type="button"
+                className={`${linkBase} ${linkIdle} !px-1.5 cursor-pointer`}
+                aria-label="Ouvrir le menu Formation"
+                aria-expanded={drop}
+                aria-haspopup="true"
+                onClick={() => setDrop(v => !v)}
+                onFocus={() => setDrop(true)}
+              >
+                <ChevronDown size={14} className={`${drop ? "rotate-180 text-[var(--color-misa-red)]" : "text-neutral-400"} transition-transform duration-200`} />
+              </button>
+            </div>
             {drop && (
               <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 animate-in fade-in duration-150">
                 <div className="w-[480px] bg-white border border-[var(--color-misa-line)] p-3 shadow-xl grid grid-cols-3 gap-2">
@@ -244,16 +254,25 @@ export default function Navbar() {
 
               {/* Accordion for Formation */}
               <div>
-                <button
-                  onClick={() => setMobileFormationOpen(!mobileFormationOpen)}
-                  className="w-full flex items-center justify-between h-[48px] px-3 font-semibold text-sm text-neutral-800 hover:bg-[var(--color-misa-paper)] transition cursor-pointer"
-                >
-                  <span className="flex items-center gap-2">
+                <div className="flex items-center">
+                  <NavLink
+                    to="/formation"
+                    onClick={() => setOpen(false)}
+                    className={({ isActive }) => `flex-1 flex items-center gap-2 h-[48px] px-3 font-semibold text-sm transition ${isActive ? "bg-[var(--color-misa-paper)] text-[var(--color-misa-red)]" : "text-neutral-800 hover:bg-[var(--color-misa-paper)]"}`}
+                  >
                     <GraduationCap size={16} className="text-[var(--color-misa-red)]" />
                     FORMATION
-                  </span>
-                  <ChevronDown size={16} className={`text-neutral-500 transition-transform duration-200 ${mobileFormationOpen ? "rotate-180 text-[var(--color-misa-red)]" : ""}`} />
-                </button>
+                  </NavLink>
+                  <button
+                    type="button"
+                    aria-label="Ouvrir le menu Formation"
+                    aria-expanded={mobileFormationOpen}
+                    onClick={() => setMobileFormationOpen(!mobileFormationOpen)}
+                    className="flex items-center justify-center h-[48px] w-[48px] text-neutral-500 hover:bg-[var(--color-misa-paper)] transition cursor-pointer"
+                  >
+                    <ChevronDown size={16} className={`transition-transform duration-200 ${mobileFormationOpen ? "rotate-180 text-[var(--color-misa-red)]" : ""}`} />
+                  </button>
+                </div>
 
                 {mobileFormationOpen && (
                   <div className="ml-3 pl-3 border-l-2 border-[var(--color-misa-line)] space-y-1 my-1">
