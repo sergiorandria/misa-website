@@ -10,7 +10,9 @@ const linkIdle = "border-transparent text-neutral-700 hover:text-[var(--color-mi
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [drop, setDrop] = useState(false);
+  const [admissionDrop, setAdmissionDrop] = useState(false);
   const [mobileFormationOpen, setMobileFormationOpen] = useState(true);
+  const [mobileAdmissionOpen, setMobileAdmissionOpen] = useState(false);
   const location = useLocation();
 
   // Close drawer on route change
@@ -57,7 +59,7 @@ export default function Navbar() {
             ACCUEIL
           </NavLink>
 
-          {/* Harvard/MIT style Mega-Menu Dropdown */}
+          {/* Harvard/MIT style Mega-Menu Dropdown — FORMATION */}
           <div className="relative" onMouseEnter={() => setDrop(true)} onMouseLeave={() => setDrop(false)}>
             <button
               className={`${linkBase} ${linkIdle} flex items-center gap-1.5 cursor-pointer`}
@@ -125,20 +127,73 @@ export default function Navbar() {
             )}
           </div>
 
+          {/* Harvard/MIT style Mega-Menu Dropdown — ADMISSION (même structure que FORMATION) */}
           <div className="relative" onMouseEnter={() => setAdmissionDrop(true)} onMouseLeave={() => setAdmissionDrop(false)}>
-            <NavLink to="/admission" className={({ isActive }) => `${linkBase} ${isActive ? linkActive : linkIdle} flex items-center gap-1`}>
-              ADMISSION <ChevronDown size={14} className={`${admissionDrop ? "rotate-180" : ""} transition`} />
-            </NavLink>
+            <div className="flex items-center">
+              <NavLink
+                to="/admission"
+                className={({ isActive }) => `${linkBase} ${isActive ? linkActive : linkIdle}`}
+                onFocus={() => setAdmissionDrop(true)}
+              >
+                ADMISSION
+              </NavLink>
+              <button
+                type="button"
+                className={`${linkBase} ${linkIdle} !px-1.5 cursor-pointer`}
+                aria-label="Ouvrir le menu Admission"
+                aria-expanded={admissionDrop}
+                aria-haspopup="true"
+                onClick={() => setAdmissionDrop(v => !v)}
+                onFocus={() => setAdmissionDrop(true)}
+              >
+                <ChevronDown size={14} className={`${admissionDrop ? "rotate-180 text-[var(--color-misa-red)]" : "text-neutral-400"} transition-transform duration-200`} />
+              </button>
+            </div>
             {admissionDrop && (
-              <div className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[280px] bg-white border border-[var(--color-misa-line)] p-2 flex gap-2 shadow-sm">
-                <Link to="/admission/licence" className="flex-1 border border-[var(--color-misa-line)] p-3 hover:border-[var(--color-misa-ink)] transition">
-                  <div className="text-sm font-semibold">Licence</div>
-                  <div className="text-xs text-neutral-500">L1 — IT</div>
-                </Link>
-                <Link to="/admission/master-int" className="flex-1 border border-[var(--color-misa-line)] p-3 hover:border-[var(--color-misa-ink)] transition">
-                  <div className="text-sm font-semibold">Master INT</div>
-                  <div className="text-xs text-neutral-500">M1 — INT</div>
-                </Link>
+              <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 animate-in fade-in duration-150">
+                <div className="w-[340px] bg-white border border-[var(--color-misa-line)] p-3 shadow-xl grid grid-cols-2 gap-2">
+                  {[
+                    {
+                      to: "/admission/licence",
+                      title: "Licence",
+                      sub: "L1 — IT",
+                      icon: BookOpen,
+                      badge: "Concours",
+                    },
+                    {
+                      to: "/admission/master-int",
+                      title: "Master INT",
+                      sub: "M1 — INT",
+                      icon: Award,
+                      badge: "Dossier",
+                    },
+                  ].map(item => {
+                    const IconComp = item.icon;
+                    return (
+                      <Link
+                        key={item.to}
+                        to={item.to}
+                        onClick={() => setAdmissionDrop(false)}
+                        className="group border border-[var(--color-misa-line)] p-3 bg-[var(--color-misa-paper)] hover:bg-white hover:border-[var(--color-misa-red)] transition-all duration-200 flex flex-col justify-between"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between mb-2">
+                            <IconComp size={18} className="text-[var(--color-misa-red)] group-hover:scale-110 transition duration-200" />
+                            <span className="text-[9px] font-mono tracking-widest uppercase bg-white border border-[var(--color-misa-line)] px-1.5 py-0.5 text-neutral-500">
+                              {item.badge}
+                            </span>
+                          </div>
+                          <div className="text-xs font-bold text-[var(--color-misa-ink)] group-hover:text-[var(--color-misa-red)] transition">
+                            {item.title}
+                          </div>
+                          <div className="text-[11px] text-neutral-500 mt-0.5">
+                            {item.sub}
+                          </div>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
             )}
           </div>
@@ -176,7 +231,7 @@ export default function Navbar() {
             <div className="space-y-1">
               <NavLink
                 to="/"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => setOpen(false)}
                 className={({ isActive }) =>
                   `flex items-center justify-between h-[48px] px-3 font-semibold text-sm transition ${
                     isActive ? "bg-[var(--color-misa-paper)] text-[var(--color-misa-red)] border-l-3 border-[var(--color-misa-red)]" : "text-neutral-800 hover:bg-[var(--color-misa-paper)]"
@@ -210,7 +265,7 @@ export default function Navbar() {
                       <NavLink
                         key={item.to}
                         to={item.to}
-                        onClick={() => setMobileMenuOpen(false)}
+                        onClick={() => setOpen(false)}
                         className={({ isActive }) =>
                           `flex items-center justify-between min-h-[44px] px-3 py-2 text-sm transition ${
                             isActive
@@ -230,43 +285,42 @@ export default function Navbar() {
               </div>
 
               {/* Accordion for Admission */}
-              <div>
+              <div className="relative" onMouseEnter={() => setAdmissionDrop(true)} onMouseLeave={() => setAdmissionDrop(false)}>
                 <button
-                  onClick={() => setMobileAdmissionOpen(!mobileAdmissionOpen)}
-                  className="w-full flex items-center justify-between h-[48px] px-3 font-semibold text-sm text-neutral-800 hover:bg-[var(--color-misa-paper)] transition cursor-pointer"
+                  className={`${linkBase} ${linkIdle} flex items-center gap-1.5 cursor-pointer`}
+                  aria-expanded={admissionDrop}
+                  aria-haspopup="true"
+                  onClick={() => setAdmissionDrop(v => !v)}
+                  onFocus={() => setAdmissionDrop(true)}
                 >
                   <span>ADMISSION</span>
-                  <ChevronDown size={16} className={`text-neutral-500 transition-transform duration-200 ${mobileAdmissionOpen ? "rotate-180" : ""}`} />
+                  <ChevronDown size={14} className={`${admissionDrop ? "rotate-180 text-[var(--color-misa-red)]" : "text-neutral-400"} transition-transform duration-200`} />
                 </button>
 
                 {mobileAdmissionOpen && (
-                  <div className="ml-3 pl-3 border-l border-[var(--color-misa-line)] space-y-1 my-1">
-                    <NavLink
-                      to="/admission/licence"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={({ isActive }) =>
-                        `flex items-center min-h-[44px] px-3 py-2 text-sm transition ${
-                          isActive
-                            ? "bg-[var(--color-misa-paper)] font-semibold text-[var(--color-misa-red)]"
-                            : "text-neutral-700 hover:bg-neutral-50"
-                        }`
-                      }
-                    >
-                      Admission Licence
-                    </NavLink>
-                    <NavLink
-                      to="/admission/master-int"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={({ isActive }) =>
-                        `flex items-center min-h-[44px] px-3 py-2 text-sm transition ${
-                          isActive
-                            ? "bg-[var(--color-misa-paper)] font-semibold text-[var(--color-misa-red)]"
-                            : "text-neutral-700 hover:bg-neutral-50"
-                        }`
-                      }
-                    >
-                      Admission Master INT
-                    </NavLink>
+                  <div className="ml-3 pl-3 border-l-2 border-[var(--color-misa-line)] space-y-1 my-1">
+                    {[
+                      { to: "/admission/licence", name: "Admission Licence", badge: "L1" },
+                      { to: "/admission/master-int", name: "Admission Master INT", badge: "M1" },
+                    ].map(item => (
+                      <NavLink
+                        key={item.to}
+                        to={item.to}
+                        onClick={() => setOpen(false)}
+                        className={({ isActive }) =>
+                          `flex items-center justify-between min-h-[44px] px-3 py-2 text-sm transition ${
+                            isActive
+                              ? "bg-[var(--color-misa-paper)] font-semibold text-[var(--color-misa-red)]"
+                              : "text-neutral-700 hover:bg-neutral-50"
+                          }`
+                        }
+                      >
+                        <span>{item.name}</span>
+                        <span className="text-[10px] font-mono tracking-wider px-2 py-0.5 border border-[var(--color-misa-line)] bg-white text-neutral-500">
+                          {item.badge}
+                        </span>
+                      </NavLink>
+                    ))}
                   </div>
                 )}
               </div>
@@ -276,7 +330,7 @@ export default function Navbar() {
             <div className="pt-4 space-y-3">
               <Link
                 to="/admission"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => setOpen(false)}
                 className="w-full flex items-center justify-center min-h-[44px] bg-[var(--color-misa-red)] text-white text-sm font-semibold tracking-wide hover:bg-[var(--color-misa-red-dark)] active:scale-[0.99] transition shadow-xs"
               >
                 CANDIDATER À LA MIT
