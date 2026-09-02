@@ -9,7 +9,7 @@ import Admission from "./pages/Admission";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/mit">
       <div className="min-h-screen flex flex-col bg-white">
         <Navbar />
         <main className="flex-1">
