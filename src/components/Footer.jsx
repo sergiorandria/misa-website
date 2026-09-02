@@ -8,8 +8,8 @@ export default function Footer() {
       <div className="max-w-[1160px] mx-auto px-6 py-10 grid md:grid-cols-3 gap-10 text-sm">
         <div>
           <div className="flex items-center gap-4">
-            <img src={`${base}logo-mit.png`} alt="MIT" className="h-10 w-auto bg-white p-1" />
-            <img src={`${base}logo-misa.png`} alt="MISA" className="h-10 w-auto bg-white p-1" />
+            <img src={`${base}logo-mit.png`} alt="MIT" className="h-10 w-auto bg-white p-1 rounded-sm shadow-sm" />
+            <img src={`${base}logo-misa.png`} alt="MISA" className="h-10 w-auto bg-white p-1 rounded-sm shadow-sm" />
           </div>
           <p className="mt-4 leading-relaxed text-white/80">
             Université d'Antananarivo<br />
@@ -20,7 +20,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <div className="text-xs tracking-widest text-white/60">CONTACTS</div>
+          <div className="text-xs tracking-widest text-white/60 font-semibold">CONTACTS</div>
           <ul className="mt-3 space-y-2 text-white/90">
             <li>Tél : (+261) 34 53 140 38</li>
             <li>mit-univ-tana@gmail.com</li>
@@ -30,13 +30,13 @@ export default function Footer() {
         </div>
 
         <div>
-          <div className="text-xs tracking-widest text-white/60">NAVIGATION</div>
+          <div className="text-xs tracking-widest text-white/60 font-semibold">NAVIGATION</div>
           <ul className="mt-3 space-y-1">
-            <li><Link to="/" className="hover:underline">Accueil</Link></li>
-            <li><Link to="/formation/arborescence" className="hover:underline">Arborescence</Link></li>
-            <li><Link to="/formation/licence" className="hover:underline">Licence</Link></li>
-            <li><Link to="/formation/master" className="hover:underline">Master</Link></li>
-            <li><Link to="/admission" className="hover:underline">Conditions d'admission</Link></li>
+            <li><Link to="/" className="hover:underline hover:text-white transition-colors">Accueil</Link></li>
+            <li><Link to="/formation/arborescence" className="hover:underline hover:text-white transition-colors">Arborescence</Link></li>
+            <li><Link to="/formation/licence" className="hover:underline hover:text-white transition-colors">Licence</Link></li>
+            <li><Link to="/formation/master" className="hover:underline hover:text-white transition-colors">Master</Link></li>
+            <li><Link to="/admission" className="hover:underline hover:text-white transition-colors">Conditions d'admission</Link></li>
           </ul>
         </div>
       </div>

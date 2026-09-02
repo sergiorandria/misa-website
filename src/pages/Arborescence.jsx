@@ -1,5 +1,106 @@
-import FormationDashboard from "../components/FormationDashboard";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 
 export default function Arborescence() {
-  return <FormationDashboard initialView="roadmap" />;
+  const treeRef = useScrollReveal({ threshold: 0.05 });
+
+  return (
+    <div className="bg-white page-fade-in">
+      <div className="max-w-[1160px] mx-auto px-6 py-10">
+        <div className="text-xs tracking-widest text-[var(--color-misa-red)] font-semibold">FORMATION — ARBORESCENCE</div>
+        <h1 className="mt-3 text-3xl font-bold tracking-tight text-[var(--color-misa-ink)]">Arborescence LMD</h1>
+        <p className="mt-4 max-w-[720px] text-neutral-600 leading-relaxed">
+          Arborescence LMD du programme MIT — Informatique et Technologie.
+        </p>
+      </div>
+
+      <div ref={treeRef} className="reveal max-w-[1160px] mx-auto px-6 pb-14">
+        {/* Animated tree */}
+        <div className="border border-[var(--color-misa-line)] rounded-sm shadow-sm overflow-hidden">
+          {/* L1 */}
+          <div className="grid md:grid-cols-[200px_1fr] border-b border-[var(--color-misa-line)] hover:bg-neutral-50/50 transition-colors duration-200">
+            <div className="bg-[var(--color-misa-paper)] p-6 border-b md:border-b-0 md:border-r border-[var(--color-misa-line)]">
+              <div className="text-xs tracking-widest text-[var(--color-misa-red)] font-semibold">L1 — S1·S2</div>
+              <div className="font-bold mt-2 text-[var(--color-misa-ink)]">Informatique et Technologie</div>
+            </div>
+            <div className="p-6">
+              <div className="text-xs tracking-widest text-neutral-500 font-semibold">MODALITÉ D'ACCÈS</div>
+              <ul className="mt-3 text-sm leading-relaxed list-disc pl-5 space-y-1 text-neutral-700">
+                <li>Sélection sur dossier</li>
+                <li>Ouvert aux titulaires d'un baccalauréat série C ou S</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* L2 */}
+          <div className="grid md:grid-cols-[200px_1fr] border-b border-[var(--color-misa-line)] hover:bg-neutral-50/50 transition-colors duration-200">
+            <div className="bg-[var(--color-misa-paper)] p-6 border-b md:border-b-0 md:border-r border-[var(--color-misa-line)]">
+              <div className="text-xs tracking-widest text-[var(--color-misa-red)] font-semibold">L2 — S3·S4</div>
+              <div className="font-bold mt-2 text-[var(--color-misa-ink)]">Informatique et Technologie</div>
+            </div>
+            <div className="p-6">
+              <div className="text-xs tracking-widest text-neutral-500 font-semibold">MODALITÉ D'ACCÈS</div>
+              <ul className="mt-3 text-sm leading-relaxed list-disc pl-5 space-y-1 text-neutral-700">
+                <li>Ouvert aux étudiants ayant validé le L1 en MIT</li>
+                <li>Ouvert aux étudiants de Mathématiques ayant validé L1, après sélection et entretien</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* L3 */}
+          <div className="grid md:grid-cols-[200px_1fr] border-b border-[var(--color-misa-line)] hover:bg-neutral-50/50 transition-colors duration-200">
+            <div className="bg-[var(--color-misa-paper)] p-6 border-b md:border-b-0 md:border-r border-[var(--color-misa-line)]">
+              <div className="text-xs tracking-widest text-[var(--color-misa-red)] font-semibold">L3 — S5·S6</div>
+              <div className="font-bold mt-2 text-[var(--color-misa-ink)]">MISA</div>
+              <div className="text-xs text-neutral-500 mt-1.5">Mathématiques, Informatique et Statistique Appliquées</div>
+            </div>
+            <div className="p-6">
+              <div className="text-xs tracking-widest text-neutral-500 font-semibold">MODALITÉ D'ACCÈS</div>
+              <ul className="mt-3 text-sm leading-relaxed list-disc pl-5 space-y-1 text-neutral-700">
+                <li>Ouvert aux étudiants qui ont validé le L2 du parcours Informatique de la mention IT</li>
+                <li>Ouvert aux étudiants de Mathématiques ayant validé L1/L2, après sélection et entretien</li>
+              </ul>
+              <p className="mt-4 text-xs text-neutral-500">UE détaillées : voir page Licence — aucune matière ajoutée ici.</p>
+            </div>
+          </div>
+
+          {/* M1 */}
+          <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[var(--color-misa-line)] border-b border-[var(--color-misa-line)]">
+            <div className="p-6 hover:bg-neutral-50/50 transition-colors duration-200">
+              <div className="text-xs tracking-widest text-[var(--color-misa-red)] font-semibold">M1 MISA — S7·S8</div>
+              <div className="text-xs tracking-widest text-neutral-500 font-semibold mt-4">MODALITÉ D'ACCÈS</div>
+              <ul className="mt-3 text-sm leading-relaxed list-disc pl-5 space-y-1 text-neutral-700">
+                <li>Sélection sur dossier + entrevue avec l'équipe de formation</li>
+                <li>Ouvert aux étudiants titulaires d'une Licence MISA ou licence informatique d'une institution publique</li>
+              </ul>
+            </div>
+            <div className="p-6 hover:bg-neutral-50/50 transition-colors duration-200">
+              <div className="text-xs tracking-widest text-[var(--color-misa-red)] font-semibold">M1 INT — S7·S8</div>
+              <div className="text-xs text-neutral-500 mt-1.5">Innovation et Technologie</div>
+              <div className="text-xs tracking-widest text-neutral-500 font-semibold mt-4">MODALITÉ D'ACCÈS</div>
+              <ul className="mt-3 text-sm leading-relaxed list-disc pl-5 space-y-1 text-neutral-700">
+                <li>Sélection sur dossier + entrevue</li>
+                <li>Ouvert aux étudiants titulaires d'une Licence MISA ou licence informatique d'une institution publique</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* M2 */}
+          <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[var(--color-misa-line)]">
+            <div className="p-6 hover:bg-neutral-50/50 transition-colors duration-200">
+              <div className="text-xs tracking-widest text-[var(--color-misa-red)] font-semibold">M2 MISA — S9·S10</div>
+              <div className="text-sm text-neutral-600 mt-3 leading-relaxed">
+                Année recherche : stage & mémoire.
+              </div>
+            </div>
+            <div className="p-6 hover:bg-neutral-50/50 transition-colors duration-200">
+              <div className="text-xs tracking-widest text-[var(--color-misa-red)] font-semibold">M2 INT — S9·S10</div>
+              <div className="text-sm text-neutral-600 mt-3 leading-relaxed">
+                Année professionnalisante : stage & mémoire.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
