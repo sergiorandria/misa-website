@@ -5,9 +5,8 @@ export default function Arborescence() {
         <div className="text-xs tracking-widest text-neutral-500">FORMATION — ARBORESCENCE</div>
         <h1 className="mt-3 text-3xl font-bold tracking-tight">Arborescence LMD</h1>
         <p className="mt-4 max-w-[720px] text-neutral-600 leading-relaxed">
-          Reproduction fidèle du schéma officiel <span className="font-mono text-xs bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] px-1.5 py-0.5">MIT(1).png</span> de mit.univ-antananarivo.mg. Les informations ci-dessous reprennent uniquement ce qui est lisible sur le site — aucun intitulé n'a été inventé.
+          Arborescence LMD du programme MIT — Informatique et Technologie.
         </p>
-        <p className="mt-3 text-xs text-neutral-500">Source originale : <code> /assets/images/MIT(1).png</code> — image incluse en bas de page pour vérification.</p>
       </div>
 
       <div className="max-w-[1160px] mx-auto px-6 pb-14">
@@ -54,7 +53,7 @@ export default function Arborescence() {
               <div className="text-xs tracking-widest text-neutral-500">MODALITÉ D'ACCÈS</div>
               <ul className="mt-3 text-sm leading-relaxed list-disc pl-5 space-y-1">
                 <li>Ouvert aux étudiants qui ont validé le L2 du parcours Informatique de la mention IT</li>
-                <li>Ouvert aux étudiants de Mathématiques ayant validé L1/L2, après sélection et entretien (selon lecture du schéma)</li>
+                <li>Ouvert aux étudiants de Mathématiques ayant validé L1/L2, après sélection et entretien</li>
               </ul>
               <p className="mt-4 text-xs text-neutral-500">UE détaillées : voir page Licence — aucune matière ajoutée ici.</p>
             </div>
@@ -86,22 +85,16 @@ export default function Arborescence() {
             <div className="p-6">
               <div className="text-xs tracking-widest text-[var(--color-misa-red)] font-semibold">M2 MISA — S9·S10</div>
               <div className="text-sm text-neutral-600 mt-3 leading-relaxed">
-                Année recherche : stage & mémoire. Les débouchés listés sur le schéma (chef de projet, data-scientist, enseignant-chercheur, etc.) sont partiellement lisibles — ils ne sont pas retranscrits ici pour éviter toute approximation.
+                Année recherche : stage & mémoire.
               </div>
             </div>
             <div className="p-6">
               <div className="text-xs tracking-widest text-[var(--color-misa-red)] font-semibold">M2 INT — S9·S10</div>
               <div className="text-sm text-neutral-600 mt-3 leading-relaxed">
-                Année professionnalisante : stage & mémoire. Débouchés du schéma non retranscrits (lisibilité insuffisante).
+                Année professionnalisante : stage & mémoire.
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="mt-10 border border-[var(--color-misa-line)] p-5 bg-[var(--color-misa-paper)]">
-          <div className="text-xs tracking-widest text-neutral-500">IMAGE SOURCE — VÉRIFICATION</div>
-          <p className="text-xs text-neutral-500 mt-2">L'image ci-dessous est l'original du site (785 Ko, 3508×4961). Elle fait foi en cas de divergence.</p>
-          <img src={`${import.meta.env.BASE_URL}arborescence.png`} alt="Arborescence MIT originale" className="mt-5 w-full h-auto border border-[var(--color-misa-line)] bg-white" loading="lazy" />
         </div>
       </div>
     </div>

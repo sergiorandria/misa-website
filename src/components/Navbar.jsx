@@ -60,9 +60,8 @@ export default function Navbar() {
       <div className="max-w-[1160px] mx-auto px-6 h-[64px] flex items-center justify-between gap-6">
         <Link to="/" className="flex items-center gap-4 shrink-0">
           <img src={`${base}logo-mit.png`} alt="MIT" className="h-10 w-auto object-contain" />
-          <img src={`${base}logo-misa.png`} alt="MISA" className="h-10 w-auto object-contain" />
           <div className="hidden sm:block leading-none">
-            <div className="text-[14px] font-bold tracking-tight text-[var(--color-misa-ink)]">MIT — MISA</div>
+            <div className="text-[14px] mb-2 font-bold tracking-tight text-[var(--color-misa-ink)]">MIT</div>
             <div className="text-[10px] tracking-[0.14em] text-neutral-500">UNIVERSITÉ D'ANTANANARIVO</div>
           </div>
         </Link>

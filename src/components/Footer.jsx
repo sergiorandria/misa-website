@@ -43,7 +43,6 @@ export default function Footer() {
       <div className="border-t border-white/20">
         <div className="max-w-[1160px] mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between gap-2 text-xs text-white/60">
           <span>© {new Date().getFullYear()} MIT — MISA. Tous droits réservés.</span>
-          <span>Site non officiel — reproduction fidèle de mit.univ-antananarivo.mg à titre de maquette.</span>
         </div>
       </div>
     </footer>

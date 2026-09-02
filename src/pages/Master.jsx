@@ -12,7 +12,7 @@ export default function Master() {
       <div className="max-w-[1160px] mx-auto px-6 py-8">
         <div className="text-xs tracking-widest text-neutral-500">FORMATION — MASTER</div>
         <h1 className="mt-2 text-3xl font-bold tracking-tight">Master</h1>
-        <p className="mt-3 max-w-[720px] text-sm leading-relaxed text-neutral-600">Deux parcours : Innovation et Technologie (INT) et MISA. Contenu repris fidèlement depuis la page Master originale.</p>
+        <p className="mt-3 max-w-[720px] text-sm leading-relaxed text-neutral-600">Deux parcours : Innovation et Technologie (INT) et MISA.</p>
       </div>
 
       <div className="max-w-[1160px] mx-auto px-6 pb-12">
@@ -55,7 +55,7 @@ export default function Master() {
                 <div className="mt-1 text-sm font-semibold">{data.responsable}</div>
               </div>
               <div className="border-t border-[var(--color-misa-line)] pt-4 text-sm leading-relaxed text-neutral-600">
-                M2 : stage & mémoire. Seule année indiquée comme telle sur le site original.
+                M2 : stage & mémoire.
               </div>
             </div>
           </div>

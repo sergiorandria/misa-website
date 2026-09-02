@@ -10,9 +10,6 @@ export default function Home() {
       <section className="max-w-[1160px] mx-auto px-8 pt-16 pb-12">
         <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-14 items-start">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs tracking-widest text-neutral-500 border border-[var(--color-misa-line)] px-3 py-1.5">
-              <span className="w-1.5 h-1.5 bg-[var(--color-misa-red)]" /> PRÉ-INSCRIPTION — SÉLECTION SUR DOSSIER
-            </div>
             <h1 className="mt-7 text-[42px] leading-[0.95] tracking-tight font-bold">
               <span className="block text-[12px] tracking-[0.18em] font-semibold text-[var(--color-misa-red)]">MENTION INFORMATIQUE ET TECHNOLOGIE</span>
               <span className="block mt-3">Informatique</span>
@@ -34,8 +31,8 @@ export default function Home() {
 
           <div className="flex items-start justify-center lg:justify-end pt-6">
             <div className="flex items-center gap-6">
-              <img src={`${base}logo-mit.png`} alt="MIT logo" className="h-28 w-auto object-contain" />
-              <img src={`${base}logo-misa.png`} alt="MISA logo" className="h-28 w-auto object-contain" />
+              <img src={`${base}logo-mit.png`} alt="MIT logo" className="h-60 w-auto object-contain" />
+              {/* <img src={`${base}logo-misa.png`} alt="MISA logo" className="h-28 w-auto object-contain" /> */}
             </div>
           </div>
         </div>
@@ -95,7 +92,6 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <p className="mt-3 text-xs text-neutral-500">Intitulés repris tels quels depuis la page d’accueil originale.</p>
       </section>
 
       {/* Partenaires */}
@@ -109,7 +105,6 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <p className="mt-4 text-xs leading-relaxed text-neutral-500">Telma (connectivité), Universités Paris 7 / Paris 13 / Paul Sabatier Toulouse (missions d'enseignement), Passau, etc. — repris depuis la bande partenaires du site original.</p>
         </div>
       </section>
     </div>
