@@ -1,100 +1,124 @@
 import { useState } from "react";
 import { introductionParcours, licenceParcours } from "../data/content";
-import { BookOpen, User, Target } from "lucide-react";
+import { BookOpen, Target, User } from "lucide-react";
 
 export default function Licence() {
   return (
     <div className="bg-white">
-      <div className="max-w-[1160px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
-        <div className="text-[11px] sm:text-xs tracking-widest text-neutral-500 font-semibold uppercase">FORMATION — LICENCE</div>
-        <h1 className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-[var(--color-misa-ink)]">Licence</h1>
-        <p className="mt-2 sm:mt-3 max-w-[720px] text-xs sm:text-sm leading-relaxed text-neutral-600">
-          {introductionParcours}
-        </p>
-        <p className="mt-2 max-w-[720px] text-[11px] sm:text-xs leading-relaxed text-neutral-500">Deux parcours : Informatique et Technologie (L1, L2) et MISA (L3) — programmes actualisés d'après contenu fourni.</p>
+
+      {/* ── BANNER — paper band ──────────────────────────────────────────── */}
+      <div className="border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
+          <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">FORMATION — LICENCE</p>
+          <h1 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">
+            Licence Mention Informatique et Technologie
+          </h1>
+          <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
+          <p className="mt-4 sm:mt-5 max-w-[720px] text-sm sm:text-base leading-[1.7] text-neutral-700 font-medium">
+            {introductionParcours}
+          </p>
+          <p className="mt-3 max-w-[680px] text-xs sm:text-sm leading-[1.7] text-neutral-500">
+            Deux parcours : Informatique et Technologie (L1, L2) et MISA (L3). Programmes mis à jour d'après contenu officiel fourni.
+          </p>
+        </div>
       </div>
 
-      <div className="max-w-[1160px] mx-auto px-4 sm:px-6 pb-12 space-y-6 sm:space-y-8">
-        {licenceParcours.map(p => (
-          <Parcours key={p.title} p={p} />
+      {/* ── CONTENT — white band ─────────────────────────────────────────── */}
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 space-y-8 sm:space-y-12">
+        {licenceParcours.map((p) => (
+          <ParcoursCard key={p.title} p={p} />
         ))}
       </div>
+
     </div>
   );
 }
 
-function Parcours({ p }) {
-  const [active, setActive] = useState(p.levels[0]);
-  const groups = p.ues[active];
+function ParcoursCard({ p }) {
+  const [activeLevel, setActiveLevel] = useState(p.levels[0]);
+  const uesGroups = p.ues[activeLevel] || [];
 
   return (
-    <div className="border border-[var(--color-misa-line)] bg-white shadow-xs">
-      {/* Header bar with level selector */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 sm:p-5 border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
+    <div className="academic-card border border-[var(--color-misa-line)] bg-white">
+
+      {/* Card header with level selector */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-5 sm:px-8 py-5 sm:py-6 border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
         <div>
-          <div className="text-[11px] tracking-widest font-semibold text-[var(--color-misa-red)] uppercase">PARCOURS</div>
-          <h2 className="text-base sm:text-lg font-bold tracking-tight text-[var(--color-misa-ink)]">{p.title}</h2>
+          <p className="text-[11px] tracking-[0.18em] font-bold text-[var(--color-misa-red)] uppercase">PARCOURS</p>
+          <h2 className="mt-1 text-base sm:text-lg font-light tracking-tight text-[var(--color-misa-ink)]">{p.title}</h2>
         </div>
-        
-        {/* Horizontal scrollable segmented control for mobile */}
-        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1 shrink-0 -mx-1 px-1">
-          {p.levels.map(l => (
+
+        {/* Level selector tabs */}
+        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar shrink-0 pb-1 sm:pb-0">
+          {p.levels.map((lvl) => (
             <button
-              key={l}
-              onClick={() => setActive(l)}
-              className={`min-h-[38px] min-w-[44px] text-xs font-semibold px-3.5 py-1.5 border transition cursor-pointer shrink-0 ${
-                active === l
-                  ? "bg-[var(--color-misa-ink)] text-white border-[var(--color-misa-ink)] shadow-xs"
-                  : "bg-white border-[var(--color-misa-line)] text-neutral-700 hover:border-neutral-400"
+              key={lvl}
+              onClick={() => setActiveLevel(lvl)}
+              className={`min-h-[40px] px-4 sm:px-5 text-xs font-bold uppercase tracking-wider transition duration-200 cursor-pointer shrink-0 ${
+                activeLevel === lvl
+                  ? "bg-[var(--color-misa-red)] text-white shadow-xs"
+                  : "bg-white border border-[var(--color-misa-line)] text-neutral-700 hover:bg-neutral-100"
               }`}
             >
-              {l}
+              {lvl}
             </button>
           ))}
         </div>
       </div>
 
-      {/* Main Grid: UEs + Details */}
+      {/* Main Content Grid: UEs + Objectif & Responsable */}
       <div className="grid lg:grid-cols-[1.4fr_0.6fr]">
+
         {/* Left: UEs */}
-        <div className="p-4 sm:p-5">
-          <div className="flex items-center gap-2 text-xs tracking-widest text-neutral-500 font-semibold uppercase">
-            <BookOpen size={14} className="text-[var(--color-misa-red)]" />
-            <span>UE — {active}</span>
+        <div className="p-5 sm:p-8">
+          <div className="flex items-center justify-between border-b border-[var(--color-misa-line)] pb-3 mb-5 sm:mb-6">
+            <div className="flex items-center gap-2 text-[11px] tracking-[0.16em] text-neutral-500 font-bold uppercase">
+              <BookOpen size={14} className="text-[var(--color-misa-red)] shrink-0" />
+              <span>UNITÉS D'ENSEIGNEMENT — {activeLevel}</span>
+            </div>
+            <span className="text-[10px] font-mono tracking-widest text-neutral-500 bg-[var(--color-misa-paper)] px-2 py-0.5 border border-[var(--color-misa-line)] uppercase">
+              {uesGroups.length} groupes
+            </span>
           </div>
-          
-          <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {groups.map((g, idx) => (
-              <ul key={idx} className="border border-[var(--color-misa-line)] p-3 sm:p-4 space-y-2 bg-white">
-                {g.map(item => (
-                  <li key={item} className="text-xs sm:text-sm flex items-start gap-2 text-neutral-700 leading-snug">
-                    <span className="text-[var(--color-misa-red)] font-bold shrink-0">—</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+
+          <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+            {uesGroups.map((group, idx) => (
+              <div key={idx} className="border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-4">
+                <div className="text-[10px] font-bold tracking-wider text-[var(--color-misa-ink)] uppercase border-b border-[var(--color-misa-line)] pb-2 mb-3">
+                  Groupe {idx + 1}
+                </div>
+                <ul className="space-y-2">
+                  {group.map((item) => (
+                    <li key={item} className="text-xs sm:text-sm text-neutral-700 flex items-start gap-2 leading-snug">
+                      <span className="text-[var(--color-misa-red)] font-bold shrink-0 mt-0.5">—</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* Right Sidebar: Objectif & Responsable */}
-        <div className="border-t lg:border-t-0 lg:border-l border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-4 sm:p-5 space-y-4">
+        {/* Right: Objectif & Responsable */}
+        <div className="border-t lg:border-t-0 lg:border-l border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-5 sm:p-8 space-y-6">
           <div>
-            <div className="flex items-center gap-1.5 text-[11px] sm:text-xs tracking-widest text-neutral-500 font-semibold uppercase">
-              <Target size={14} className="text-[var(--color-misa-ink)]" />
+            <div className="flex items-center gap-1.5 text-[11px] tracking-[0.16em] text-neutral-500 font-bold uppercase">
+              <Target size={14} className="text-[var(--color-misa-red)] shrink-0" />
               <span>OBJECTIF</span>
             </div>
-            <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-neutral-700">{p.objectif}</p>
+            <p className="mt-2.5 text-xs sm:text-sm leading-[1.7] text-neutral-700">{p.objectif}</p>
           </div>
-          
-          <div className="border-t border-[var(--color-misa-line)] pt-4">
-            <div className="flex items-center gap-1.5 text-[11px] sm:text-xs tracking-widest text-neutral-500 font-semibold uppercase">
-              <User size={14} className="text-[var(--color-misa-ink)]" />
+
+          <div className="border-t border-[var(--color-misa-line)] pt-5">
+            <div className="flex items-center gap-1.5 text-[11px] tracking-[0.16em] text-neutral-500 font-bold uppercase">
+              <User size={14} className="text-[var(--color-misa-ink)] shrink-0" />
               <span>RESPONSABLE</span>
             </div>
-            <div className="mt-1 text-xs sm:text-sm font-semibold text-[var(--color-misa-ink)]">{p.responsable}</div>
+            <div className="mt-2 text-xs sm:text-sm font-bold text-[var(--color-misa-ink)]">{p.responsable}</div>
           </div>
         </div>
+
       </div>
     </div>
   );
