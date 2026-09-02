@@ -9,7 +9,10 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
-* { scroll-behavior: smooth; }
+* {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
 
 body {
   @apply bg-white text-[var(--color-misa-ink)] antialiased;
@@ -18,8 +21,19 @@ body {
   line-height: 1.6;
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 /* thin hairline */
 .hr { @apply border-t border-[var(--color-misa-line)]; }
 
 /* minimal focus */
 :focus-visible { outline: 2px solid var(--color-misa-red); outline-offset: 2px; }
+
