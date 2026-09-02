@@ -24,7 +24,7 @@ export default function Master() {
             {introductionParcours}
           </p>
           <p className="mt-3 max-w-[680px] text-xs sm:text-sm leading-[1.7] text-neutral-500">
-            Deux parcours : Innovation et Technologie (INT) - systèmes embarqués, et MISA - data & IA. Programmes mis à jour d'après contenu officiel fourni.
+            Deux parcours : Innovation et Technologie (INT) - systèmes embarqués, et MISA - data & IA.
           </p>
         </div>
       </div>

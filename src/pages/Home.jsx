@@ -272,9 +272,8 @@ export default function Home() {
               </p>
               <p className="mt-3 text-sm leading-[1.7] text-neutral-600 italic">« MISA un jour, MISA toujours ! »</p>
               <p className="mt-6 text-xs leading-relaxed text-neutral-500">
-                Faites glisser ou cliquez sur la carte du dessus pour découvrir le témoignage suivant. Défilement automatique en pause au survol.
+                Découvrez les expériences de nos diplômés et leur parcours après la formation.
               </p>
-              <p className="mt-3 text-[11px] text-neutral-400">Extraits de « temoignages_anciens(1).txt » — textes intégraux conservés.</p>
             </div>
 
             {/* Right — Stack */}

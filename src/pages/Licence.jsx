@@ -18,7 +18,7 @@ export default function Licence() {
             {introductionParcours}
           </p>
           <p className="mt-3 max-w-[680px] text-xs sm:text-sm leading-[1.7] text-neutral-500">
-            Deux parcours : Informatique et Technologie (L1, L2) et MISA (L3). Programmes mis à jour d'après contenu officiel fourni.
+            Deux parcours : Informatique et Technologie (L1, L2) et MISA (L3).
           </p>
         </div>
       </div>

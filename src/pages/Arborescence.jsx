@@ -109,7 +109,7 @@ export default function Arborescence() {
               <div className="text-[11px] tracking-widest text-neutral-500 font-bold uppercase">MODALITÉ D’ACCÈS</div>
               <ul className="mt-2 text-xs sm:text-sm leading-relaxed list-disc pl-5 space-y-1 text-neutral-700">
                 <li>Ouvert aux étudiants qui ont validé le L2 du parcours Informatique de la mention IT</li>
-                <li>Ouvert aux étudiants de Mathématiques ayant validé L1/L2, après sélection et entretien (selon lecture du schéma)</li>
+                <li>Ouvert aux étudiants de Mathématiques ayant validé L1/L2, après sélection et entretien</li>
               </ul>
               <p className="mt-3 text-[11px] sm:text-xs text-neutral-500 italic">UE détaillées : voir page Licence - aucune matière ajoutée ici.</p>
             </div>
@@ -151,7 +151,7 @@ export default function Arborescence() {
                 M2 MISA - S9·S10
               </div>
               <div className="text-xs sm:text-sm text-neutral-600 mt-2 leading-relaxed">
-                Année recherche : stage & mémoire. Les débouchés listés sur le schéma (chef de projet, data-scientist, enseignant-chercheur, etc.) sont partiellement lisibles - ils ne sont pas retranscrits ici pour éviter toute approximation.
+                Année de recherche : stage et mémoire. Cette formation prépare notamment aux métiers de la recherche, de la data science et de la gestion de projets informatiques.
               </div>
             </div>
             
@@ -161,7 +161,7 @@ export default function Arborescence() {
                 M2 INT - S9·S10
               </div>
               <div className="text-xs sm:text-sm text-neutral-600 mt-2 leading-relaxed">
-                Année professionnalisante : stage & mémoire. Débouchés du schéma non retranscrits (lisibilité insuffisante).
+                Année professionnalisante : stage et mémoire. Cette formation prépare aux métiers du développement, des systèmes et des technologies numériques.
               </div>
             </div>
           </div>
@@ -172,8 +172,8 @@ export default function Arborescence() {
         <div className="mt-8 border border-[var(--color-misa-line)] p-4 sm:p-6 bg-[var(--color-misa-paper)] shadow-xs">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <div className="text-[11px] sm:text-xs tracking-[0.16em] text-neutral-500 font-bold uppercase">VÉRIFICATION ACADÉMIQUE</div>
-              <p className="text-xs text-neutral-600 mt-1">Touchez pour agrandir.</p>
+              <div className="text-[11px] sm:text-xs tracking-[0.16em] text-neutral-500 font-bold uppercase">SCHÉMA DU CURSUS</div>
+              <p className="text-xs text-neutral-600 mt-1">Consultez le schéma détaillé de l’organisation des études au sein de la mention.</p>
             </div>
             
             <button
