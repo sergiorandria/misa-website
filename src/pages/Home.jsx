@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle2, ShieldCheck, Cpu, Code2, Users, Globe, BookMarked, Sparkles, Award, Quote } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { CheckCircle2, ShieldCheck, Cpu, Code2, Users, Globe, BookMarked, Sparkles, Award, Quote } from "lucide-react";
 import { asset } from "../lib/assets";
 import { temoignages } from "../data/content";
 import Stack from "../components/Stack";
+import ParticleButton from "../components/ui/ParticleButton";
 
 export default function Home() {
+  const navigate = useNavigate();
   return (
     <div className="bg-white">
 
@@ -36,21 +38,24 @@ export default function Home() {
                 Immergez-vous dans la Science, la technologie, l'ingénierie et les Mathématiques en intégrant la MIT — mention du Domaine des Sciences et Technologies de l'Université d'Antananarivo.
               </p>
 
-              {/* CTAs */}
+              {/* CTAs — Particle Buttons */}
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                <Link
-                  to="/admission"
-                  className="min-h-[48px] bg-[var(--color-misa-red)] text-white text-xs font-bold tracking-[0.12em] uppercase px-7 py-3 flex items-center justify-center gap-2 hover:bg-[var(--color-misa-red-dark)] transition duration-200 group"
+                <ParticleButton
+                  variant="primary"
+                  successDuration={900}
+                  onSuccess={() => setTimeout(() => navigate("/admission"), 250)}
+                  className="flex-1 sm:flex-none min-w-[200px]"
                 >
-                  <span>Conditions d'admission</span>
-                  <ArrowRight size={15} className="group-hover:translate-x-1 transition duration-200" />
-                </Link>
-                <Link
-                  to="/formation/licence"
-                  className="min-h-[48px] border-2 border-[var(--color-misa-ink)] text-[var(--color-misa-ink)] text-xs font-bold tracking-[0.12em] uppercase px-7 py-3 flex items-center justify-center hover:bg-[var(--color-misa-ink)] hover:text-white transition duration-200"
+                  Conditions d&apos;admission
+                </ParticleButton>
+                <ParticleButton
+                  variant="outline"
+                  successDuration={900}
+                  onSuccess={() => setTimeout(() => navigate("/formation/licence"), 250)}
+                  className="flex-1 sm:flex-none min-w-[180px]"
                 >
                   Voir la formation
-                </Link>
+                </ParticleButton>
               </div>
 
               {/* Key metrics */}
