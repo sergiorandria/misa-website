@@ -8,6 +8,7 @@ import Arborescence from "./pages/Arborescence";
 import Admission from "./pages/Admission";
 import AdmissionLicence from "./pages/AdmissionLicence";
 import AdmissionMasterInt from "./pages/AdmissionMasterInt";
+import Formation from "./pages/Formation";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/formation" element={<Formation />} />
             <Route path="/formation/licence" element={<Licence />} />
             <Route path="/formation/master" element={<Master />} />
             <Route path="/formation/arborescence" element={<Arborescence />} />
