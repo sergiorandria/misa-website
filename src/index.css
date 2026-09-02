@@ -1,32 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Geist", "Inter", system-ui, -apple-system, sans-serif;
-  --font-display: "Space Grotesk", "Geist", sans-serif;
-  --color-primary: #0f2a44;
-  --color-primary-light: #163a5f;
-  --color-accent: #e11d48;
-  --color-accent-2: #06b6d4;
-  --color-muted: #64748b;
+  --color-misa-red: #af2323;
+  --color-misa-red-dark: #8d1c1c;
+  --color-misa-ink: #464444;
+  --color-misa-paper: #f8f5f5;
+  --color-misa-line: #e8e2e2;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
-* {
-  scroll-behavior: smooth;
-}
+* { scroll-behavior: smooth; }
 
 body {
-  @apply bg-[#f8fafc] text-slate-800 antialiased;
+  @apply bg-white text-[var(--color-misa-ink)] antialiased;
   font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
 }
 
-/* custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-thumb {
-  @apply bg-slate-300 rounded-full;
-}
-::-webkit-scrollbar-track {
-  @apply bg-slate-100;
-}
+/* thin hairline */
+.hr { @apply border-t border-[var(--color-misa-line)]; }
+
+/* minimal focus */
+:focus-visible { outline: 2px solid var(--color-misa-red); outline-offset: 2px; }

@@ -6,12 +6,11 @@ import Licence from "./pages/Licence";
 import Master from "./pages/Master";
 import Arborescence from "./pages/Arborescence";
 import Admission from "./pages/Admission";
-import Inscription from "./pages/Inscription";
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col bg-white">
         <Navbar />
         <main className="flex-1">
           <Routes>
@@ -19,12 +18,11 @@ function App() {
             <Route path="/formation/licence" element={<Licence />} />
             <Route path="/formation/master" element={<Master />} />
             <Route path="/formation/arborescence" element={<Arborescence />} />
-            {/* legacy query-param style redirects */}
+            <Route path="/admission" element={<Admission />} />
             <Route path="/licence" element={<Navigate to="/formation/licence" replace />} />
             <Route path="/master" element={<Navigate to="/formation/master" replace />} />
             <Route path="/arborescence" element={<Navigate to="/formation/arborescence" replace />} />
-            <Route path="/admission" element={<Admission />} />
-            <Route path="/inscription" element={<Inscription />} />
+            <Route path="/inscription" element={<Navigate to="/admission" replace />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
@@ -33,5 +31,3 @@ function App() {
     </BrowserRouter>
   );
 }
-
-export default App;
