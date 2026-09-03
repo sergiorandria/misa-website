@@ -44,36 +44,37 @@ export const stats = [
   { value: "100%", label: "Employabilité", sub: "Profils très recherchés" },
 ];
 
+export const introductionParcours =
+  "Notre établissement propose un cursus complet en informatique, structuré en cinq années : deux années de tronc commun en Licence (L1 et L2), une année de spécialisation (L3), puis deux années de Master (M1 et M2) au choix entre deux parcours complémentaires.";
+
 export const licenceParcours = [
   {
     tag: "Parcours",
     title: "Informatique et Technologie",
     levels: ["L1 (S1-S2)", "L2 (S3-S4)"],
     responsable: "BERNARDIN Hagamalala Santatra",
-    objectif: "Renforcer les bases en informatique et mathématiques pour des études avancées.",
+    objectif: "Renforcer les bases en informatique et mathématiques pour des études avancées. Tronc commun L1-L2 en Informatique et Technologie (IT).",
     ues: {
       "L1 (S1-S2)": [
-        ["Mathématiques générales", "Technique de communication", "Base de la programmation", "Prise en main Unix/Linux", "Physique"],
-        ["Mathématiques appliquées pour l’informatique", "Combinatoire et probabilité", "Communication audio-visuel", "Langage C", "Linux et logiciels libres", "Électromécanique"],
+        ["Mathématiques générales", "Techniques de communication", "Base de la programmation", "Prise en main Unix/Linux", "Physique"],
+        ["Mathématiques appliquées à l'informatique", "Combinatoire et probabilités", "Communication audiovisuelle", "Langage C", "Linux et logiciels libres", "Électromécanique"],
       ],
       "L2 (S3-S4)": [
-        ["Fabrication numérique", "Architecture des réseaux et systèmes", "Langue et entrepreneuriat", "Probabilité et statistiques", "Architecture des ordinateurs"],
-        ["Réseaux, système et base de données", "Programmation orientée objet", "Comptabilité et management", "Web et multimédia"],
+        ["Fabrication numérique", "Architecture des réseaux et systèmes", "Langue et entreprenariat", "Architecture des ordinateurs"],
+        ["Réseaux, systèmes et bases de données", "Programmation orientée objet", "Probabilité et statistiques", "Web et multimédia"],
       ],
     },
   },
   {
     tag: "Parcours",
-    title: "MISA — Mathématiques Informatique et Statistique Appliquées",
+    title: "MISA - Mathématiques Informatique et Statistique Appliquées",
     levels: ["L3 (S5-S6)"],
     responsable: "RAMANANA Hasinarivo",
-    objectif: "Préparer à la poursuite en Master. Informatique en interaction avec maths, électronique, physique, biologie. Socle fondamental + professionnalisation (web, BDD, POO, réseaux).",
+    objectif: "En troisième année (S5-S6), parcours MISA préparant au Master - socle fondamental + professionnalisation (réseaux, BDD, web/mobile, projet). À l'issue, insertion pro ou poursuite M1 MISA/INT.",
     ues: {
       "L3 (S5-S6)": [
-        ["Prototypage numérique", "Mathématique du numérique", "Conduite de projet informatique", "Probabilité et statistiques", "Gestion d’entreprise"],
-        ["Base de données", "Réseau avancé", "Développement logiciel"],
-        ["Programmation avancée", "Informatique décisionnelle", "Analyse numérique", "Contrôle et gestion d’entreprise", "Projet Informatique"],
-        ["Système d’information", "Administration réseau avancée", "Développement web et mobile"],
+        ["Prototypage numérique", "Mathématiques du numérique", "Conduite de projet informatique", "Probabilités et statistiques", "Programmation avancée", "Informatique décisionnelle"],
+        ["Analyse numérique", "Projet informatique", "Administration réseau avancée", "Développement web et mobile", "Système d'information"],
       ],
     },
   },
@@ -83,27 +84,27 @@ export const masterParcours = {
   INT: {
     title: "Innovation et Technologie",
     responsable: "RASOANAIVO Andry",
-    objectif: "Former des ingénieurs innovants capables de concevoir des produits et services numériques à fort impact.",
+    objectif: "Parcours orienté systèmes embarqués - conception et développement de systèmes informatiques intégrés à des dispositifs matériels. Socle commun informatique avec débouchés adaptés au marché.",
     m1: [
-      ["Algorithmique avancée", "Introduction à l’apprentissage automatique", "Optimisation combinatoire avancée", "Base de données réparties", "Introduction à la vision par ordinateur", "Entrepreneuriat"],
-      ["Modélisation et conception d’objet", "Modélisation et calcul scientifique", "JAVA EE", "Management de projet Informatique", "Web services, XML", "Développement collaboratif"],
+      ["Algorithmique avancée", "Introduction à l’apprentissage automatique", "Optimisation combinatoire avancée", "Base de données réparties", "Introduction à la vision par ordinateur", "Entreprenariat"],
+      ["Modélisation et conception d'objet", "Modélisation et calcul scientifique", "JAVA EE", "Management de projet informatique", "Web services, XML", "Développement collaboratif"],
     ],
     m2: [
-      ["Stage et Mémoire"],
-      ["Transformation de modèle de données", "Préparation à l’environnement professionnel", "Développement mobile et embarqué", "Intégration, vérification, validation, qualification", "Ingénierie de modèle", "Développement orienté plateforme"],
+      ["Stage et mémoire"],
+      ["Transformation de modèle de données", "Préparation à l'environnement professionnel", "Développement mobile et embarqués", "Intégration, vérification, validation, qualification", "Ingénierie de modèle", "Développement orienté plateforme"],
     ],
   },
   MISA: {
     title: "MISA",
     responsable: "ROBINSON Olivier",
-    objectif: "Former enseignants-chercheurs et chercheurs en informatique. Socle fondamental solide, mobilité internationale assurée, passerelles vers écoles d’ingénieurs, statistique, actuariat, etc.",
+    objectif: "Parcours orienté data et intelligence artificielle - analyse de données, machine learning et IA. Formation recherche avec mobilité internationale et passerelles écoles d'ingénieurs / actuariat.",
     m1: [
-      ["Management d’entreprise", "Calcul et simulation", "Fabrication numérique", "Data Sciences", "Programmation par contraintes", "Étude d’algorithme"],
-      ["Conception et fabrication", "Langues et entrepreneuriat", "Apprentissage statistique", "Informatique de la vie courante", "Outils mathématiques", "Système d’information"],
+      ["Management d'entreprise", "Calcul et simulation", "Fabrication numérique", "Data Sciences", "Programmation par contraintes", "Étude d'algorithme"],
+      ["Conception et fabrication", "Langues et entreprenariat", "Apprentissage statistique", "Informatique de la vie courante", "Outils mathématiques", "Système d'information"],
     ],
     m2: [
-      ["Stage et Mémoire"],
-      ["Simulation numérique", "Sécurité numérique", "Traitement d’information", "Imagerie", "Intelligence artificielle", "Algorithmique"],
+      ["Stage et mémoire"],
+      ["Simulation numérique", "Sécurité numérique", "Traitement d'information", "Imagerie", "Intelligence artificielle", "Algorithmique"],
     ],
   },
 };
@@ -115,25 +116,81 @@ export const partenaires = [
 ];
 
 export const admission = {
+  // L1 - classement sur dossier selon série Bac
   classement: [
-    "BACC 2021 ou BACC 2022 : Série C, S ou BACC Français Série S (Spécialité Mathématiques), selon l’ordre de mérite",
-    "BACC 2020 : à condition de signer un engagement de non-perception de bourse d’étude, même critère que précédent",
+    "Baccalauréat série C, S, ou Baccalauréat français série S (spécialité mathématiques) - classement sur dossier selon l'ordre de mérite",
+    "Bacheliers d'une session antérieure : admission possible sous engagement de non-perception de bourse d'étude",
   ],
   dossier: [
-    "Photo d’identité",
-    "Demande de préinscription dûment remplie et signée",
-    "Copie certifiée conforme du relevé de notes du Baccalauréat",
-    "BACC 2022 : Photocopie de la convocation du BACC",
-    "Acte de naissance récent (< 3 mois) avec état civil complet",
-    "Reçu de versement de 40 000 Ar — BNI CA n° 00005 00002 214103 602 00 43 — libellé à « Monsieur le Doyen de la Faculté des Sciences — Université d’Antananarivo BP 906 »",
+    "Une photo d'identité",
+    "Une demande de préinscription remplie et signée par le candidat",
+    "Une copie certifiée conforme du relevé de notes du Baccalauréat",
+    "Une photocopie de la convocation du Baccalauréat",
+    "Acte de naissance récent (moins de 3 mois) - pour l'inscription",
+    "Reçu de versement des frais de dossier en agence bancaire - pour l'inscription (BNI n° 00005 00002 214103 602 00 43, M. le Doyen de la Faculté des Sciences BP 906)",
   ],
-  depot: "Les dossiers peuvent être envoyés sous pli recommandé à “Monsieur le Doyen de la Faculté des Sciences Antananarivo BP 906” au plus tard le vendredi 30 septembre 2022",
+  depot: "Dépôt du dossier complet avant la date limite, en ligne ou par envoi recommandé à « Monsieur le Doyen de la Faculté des Sciences - Université d'Antananarivo BP 906 ». Classement sur dossier puis publication des résultats.",
+  etapes: [
+    "Remplissage du formulaire de préinscription en ligne ou téléchargement du modèle papier",
+    "Dépôt du dossier complet avant la date limite (en ligne ou pli recommandé)",
+    "Classement des dossiers selon l'ordre de mérite",
+    "Publication des résultats d'admission",
+  ],
+  inscription: {
+    etapes: [
+      "Inscription administrative en ligne ou sur place",
+      "Inscription pédagogique et remise de l'emploi du temps",
+    ],
+    enLigne: "L'inscription peut se faire en ligne via le site web ou par dépôt physique sur place.",
+  },
+  m1: {
+    intro: "L'accès au Master diffère selon le parcours :",
+    misa: "Parcours MISA valorise la continuité - s'adresse aux étudiants ayant construit leur formation depuis la L1 au sein de l'établissement.",
+    int: "Parcours INT s'ouvre également à de nouveaux talents venant d'autres facultés, sous réserve d'être titulaire d'une Licence obtenue dans un établissement public.",
+    etapesExternes: [
+      "Dépôt du dossier de candidature en ligne (CV + lettre de motivation précisant le parcours souhaité)",
+      "Étude du dossier, pouvant être suivie d'un entretien",
+      "Publication des résultats d'admission",
+    ],
+    inscriptionEtapes: [
+      "Inscription administrative en ligne et paiement des frais de scolarité",
+      "Inscription pédagogique selon le parcours retenu",
+    ],
+  },
 };
+
+export const temoignages = [
+  {
+    quote: "Rejoindre le MISA, c'est intégrer une famille. La proximité avec les anciens élèves et le partage d'expérience font toute la différence pour réussir son entrée sur le marché du travail.",
+    author: "RAKOTONIRINA Mathieu",
+    promo: "Promo 2024, MISA",
+  },
+  {
+    quote: "Par rapport à d'autres établissements, la MISA se distingue particulièrement par l'importance accordée aux mathématiques, tout en offrant des bases solides et polyvalentes dans les différents domaines de l'informatique. Au-delà des connaissances, la MISA forge intégrité, initiative, audace face aux défis, rigueur, persévérance et travail d'équipe - et pousse à rester curieux, à chercher par soi-même et à apprendre continuellement. Cette culture se prolonge grâce à la force et à la solidarité de la communauté Alumni. MISA un jour, MISA toujours !",
+    author: "RAZAKAHASINA Fanomezana Sarobidy",
+    promo: "Promo 2024, MISA",
+  },
+  {
+    quote: "À la MISA on nous enseigne les bases et c'est nous même qui allons développer et approfondir nos connaissances, contrairement aux autres écoles où on nous donne tout et on applique juste, et surtout le réseau des alumnis est puissant. L'intégration nous forgeait persévérance et travail d'équipe, ce qui nous poussait à réussir tous ensemble.",
+    author: "RAMANANJANAHARY Andy Astier",
+    promo: "Promo 2023, MISA",
+  },
+  {
+    quote: "Mes études à la MISA ont été l'une des meilleures expériences de ma vie. J'y ai énormément appris, tant sur le plan technique que humain, et développé persévérance, esprit d'initiative, travail d'équipe et rigueur. Ce qui m'a le plus marqué, c'est la cohésion entre promotions - entraide, partage d'expériences et bienveillance. Grâce au soutien de mes aînés, j'ai pu mieux envisager la suite de mon parcours. Au-delà d'une formation, la MISA a été une véritable école de la vie.",
+    author: "R. Andy Astier (suite)",
+    promo: "Promo 2023, MISA",
+  },
+  {
+    quote: "La MISA, pour moi, c'est ce qui m'a formé à être résilient. Elle façonne la manière de penser, de raisonner, et force à toujours se surpasser. Aujourd'hui Product Owner dans une entreprise éditrice de logiciels, les valeurs de la MISA - initiative, rigueur, persévérance et travail d'équipe - m'ont permis d'être là où je suis. Bien plus qu'un parcours, la MISA est une famille, là où j'ai rencontré les meilleurs des meilleurs dans le domaine de l'IT moderne.",
+    author: "Rajosiarisaona Iantsa Sarobidy",
+    promo: "Promo 2022, MISA",
+  },
+];
 
 export const contact = {
   tel: "(+261) 34 53 140 38",
   tel2: "(+261) 38 18 515 28",
   email: "mit-univ-tana@gmail.com",
   email2: "administration@mit-ua.mg",
-  adresse: "Université d’Antananarivo — BP 906 Ankatso — Faculté des Sciences — Domaine Sciences et Technologies — Département MIT",
+  adresse: "Université d’Antananarivo - BP 906 Ankatso - Faculté des Sciences - Domaine Sciences et Technologies - Département MIT",
 };

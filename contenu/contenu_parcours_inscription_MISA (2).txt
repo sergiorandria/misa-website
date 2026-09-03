@@ -1,0 +1,166 @@
+CONTENU DU SITE - PARCOURS ET INSCRIPTION
+
+PAGE « PARCOURS DE FORMATION »
+
+Introduction générale
+
+Notre établissement propose un cursus complet en informatique, structuré en cinq années : deux années de tronc commun en Licence (L1 et L2), une année de spécialisation (L3), puis deux années de Master (M1 et M2) au choix entre deux parcours complémentaires.
+
+L1 et L2 - Informatique et Technologie (IT)
+
+Les deux premières années de licence constituent le tronc commun de la filière Informatique et Technologie (IT). Ce parcours renforce les bases de l'informatique et des mathématiques nécessaires pour des études plus avancées.
+
+Programme pédagogique en L1 (S1-S2) :
+- Mathématiques générales
+- Techniques de communication
+- Base de la programmation
+- Prise en main Unix/Linux
+- Physique
+- Mathématiques appliquées à l'informatique
+- Combinatoire et probabilités
+- Communication audiovisuelle
+- Langage C
+- Linux et logiciels libres
+- Électromécanique
+
+Programme pédagogique en L2 (S3-S4) :
+- Fabrication numérique
+- Architecture des réseaux et systèmes
+- Langue et entreprenariat
+- Architecture des ordinateurs
+- Réseaux, systèmes et bases de données
+- Programmation orientée objet
+- Probabilité et statistiques
+- Web et multimédia
+
+L3 - MISA
+
+En troisième année de licence, les étudiants intègrent le parcours MISA (S5-S6), qui les prépare directement à la poursuite d'études en Master. Ce parcours combine des matières fondamentales (mathématiques, algorithmique, programmation) et des matières professionnalisantes (réseaux, bases de données, développement web).
+
+Programme pédagogique en L3 :
+- Prototypage numérique
+- Mathématiques du numérique
+- Conduite de projet informatique
+- Probabilités et statistiques
+- Programmation avancée
+- Informatique décisionnelle
+- Analyse numérique
+- Projet informatique
+- Administration réseau avancée
+- Développement web et mobile
+- Système d'information
+
+À l'issue de la L3, les étudiants peuvent intégrer le monde professionnel ou poursuivre en Master, dans le parcours MISA ou le parcours INT.
+
+M1 et M2 - Deux parcours au choix : MISA et INT
+
+En Master, deux parcours sont proposés, permettant à chaque étudiant d'orienter sa formation selon son projet professionnel :
+
+- Le parcours MISA, orienté vers le data et l'intelligence artificielle. Il s'adresse aux étudiants souhaitant se spécialiser dans l'analyse de données, le machine learning et les technologies liées à l'IA.
+- Le parcours INT, orienté vers les systèmes embarqués. Il s'adresse aux étudiants intéressés par la conception et le développement de systèmes informatiques intégrés à des dispositifs matériels.
+
+Ces deux parcours partagent un socle commun de compétences en informatique tout en offrant des débouchés professionnels différents, adaptés aux besoins actuels du marché du numérique.
+
+Programme pédagogique en M1 MISA (S7-S8) :
+- Management d'entreprise
+- Calcul et simulation
+- Fabrication numérique
+- Data Sciences
+- Programmation par contraintes
+- Étude d'algorithme
+- Conception et fabrication
+- Langues et entreprenariat
+- Apprentissage statistique
+- Informatique de la vie courante
+- Outils mathématiques
+- Système d'information
+
+Programme pédagogique en M2 MISA (S9-S10) :
+- Stage et mémoire
+- Simulation numérique
+- Sécurité numérique
+- Traitement d'information
+- Imagerie
+- Intelligence artificielle
+- Algorithmique
+
+Programme pédagogique en M1 INT (S7-S8) :
+- Algorithmique avancée
+- Introduction à l'apprentissage automatique
+- Optimisation combinatoire avancée
+- Base de données réparties
+- Introduction à la vision par ordinateur
+- Entreprenariat
+- Modélisation et conception d'objet
+- Modélisation et calcul scientifique
+- JAVA EE
+- Management de projet informatique
+- Web services, XML
+- Développement collaboratif
+
+Programme pédagogique en M2 INT (S9-S10) :
+- Stage et mémoire
+- Transformation de modèle de données
+- Préparation à l'environnement professionnel
+- Développement mobile et embarqués
+- Intégration, vérification, validation, qualification
+- Ingénierie de modèle
+- Développement orienté plateforme
+
+
+PAGE « PROCÉDURE D'INSCRIPTION »
+
+Admission en L1 (IT)
+
+L'admission en L1 se fait sur classement de dossier, selon la série du Baccalauréat.
+
+Séries acceptées :
+- Baccalauréat série C, S, ou Baccalauréat français série S (spécialité mathématiques).
+- Les bacheliers d'une session antérieure doivent signer un engagement de non-perception de bourse d'étude.
+
+Pièces à fournir pour la candidature :
+- Une photo d'identité.
+- Une demande de préinscription remplie et signée par le candidat.
+- Une copie certifiée conforme du relevé de notes du Baccalauréat.
+- Une photocopie de la convocation du Baccalauréat.
+
+Étapes de l'admission :
+1. Remplissage du formulaire de préinscription en ligne ou téléchargement du modèle papier.
+2. Dépôt du dossier complet avant la date limite, en ligne ou par envoi recommandé.
+3. Classement des dossiers selon l'ordre de mérite.
+4. Publication des résultats d'admission.
+
+Une fois admis, l'étudiant passe à l'étape d'inscription :
+
+Inscription en L1 (IT)
+
+Pièces à fournir pour l'inscription :
+- Un acte de naissance récent (moins de 3 mois).
+- Un reçu de versement des frais de dossier, payable en agence bancaire.
+
+L'inscription peut se faire en ligne, via le site web, ou en déposant le dossier physique sur place.
+
+Étapes de l'inscription :
+1. Inscription administrative en ligne ou sur place.
+2. Inscription pédagogique et remise de l'emploi du temps.
+
+Admission en M1 (MISA ou INT)
+
+L'accès au Master ne fonctionne pas de la même façon selon le parcours choisi :
+
+- Le parcours MISA valorise la continuité du parcours : il s'adresse aux étudiants ayant construit leur formation depuis la L1 au sein de l'établissement.
+- Le parcours INT s'ouvre également à de nouveaux talents venant d'autres facultés, sous réserve d'être titulaire d'une Licence obtenue dans un établissement public.
+
+Pour les candidats externes au parcours INT, les étapes d'admission sont les suivantes :
+
+1. Dépôt du dossier de candidature en ligne, comprenant un CV et une lettre de motivation précisant le parcours souhaité.
+2. Étude du dossier, pouvant être suivie d'un entretien.
+3. Publication des résultats d'admission.
+
+Une fois admis, l'étudiant passe à l'étape d'inscription :
+
+Inscription en M1 (MISA ou INT)
+
+Étapes de l'inscription :
+1. Inscription administrative en ligne et paiement des frais de scolarité.
+2. Inscription pédagogique selon le parcours retenu.

@@ -1,63 +1,131 @@
 import { useState } from "react";
-import { masterParcours } from "../data/content";
+import { introductionParcours, masterParcours } from "../data/content";
+import { BookOpen, Target, User } from "lucide-react";
 
 export default function Master() {
-  const [parcours, setParcours] = useState("INT");
+  const [parcoursKey, setParcoursKey] = useState("INT");
   const [level, setLevel] = useState("M1");
-  const data = masterParcours[parcours];
-  const groups = level === "M1" ? data.m1 : data.m2;
+
+  const parcoursData = masterParcours[parcoursKey];
+  const uesGroups = level === "M1" ? parcoursData.m1 : parcoursData.m2;
 
   return (
     <div className="bg-white">
-      <div className="max-w-[1160px] mx-auto px-6 py-8">
-        <div className="text-xs tracking-widest text-neutral-500">FORMATION — MASTER</div>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight">Master</h1>
-        <p className="mt-3 max-w-[720px] text-sm leading-relaxed text-neutral-600">Deux parcours : Innovation et Technologie (INT) et MISA. Contenu repris fidèlement depuis la page Master originale.</p>
+
+      {/* - BANNER - paper band ---------------------- */}
+      <div className="border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
+          <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">FORMATION - MASTER</p>
+          <h1 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">
+            Master Informatique et Technologie
+          </h1>
+          <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
+          <p className="mt-4 sm:mt-5 max-w-[720px] text-sm sm:text-base leading-[1.7] text-neutral-700 font-medium">
+            {introductionParcours}
+          </p>
+          <p className="mt-3 max-w-[680px] text-xs sm:text-sm leading-[1.7] text-neutral-500">
+            Deux parcours : Innovation et Technologie (INT) - systèmes embarqués, et MISA - data & IA.
+          </p>
+        </div>
       </div>
 
-      <div className="max-w-[1160px] mx-auto px-6 pb-12">
-        <div className="flex gap-2">
-          {[
-            ["INT", "Innovation et Technologie"],
-            ["MISA", "MISA"],
-          ].map(([k, label]) => (
-            <button key={k} onClick={() => { setParcours(k); setLevel("M1"); }} className={`text-sm font-semibold px-4 py-2 border ${parcours===k ? "bg-[var(--color-misa-ink)] text-white border-[var(--color-misa-ink)]" : "bg-white border-[var(--color-misa-line)]"}`}>{label}</button>
-          ))}
-        </div>
+      {/* - CONTENT ---------------------------- */}
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
+        <div className="academic-card border border-[var(--color-misa-line)] bg-white">
 
-        <div className="mt-4 border border-[var(--color-misa-line)]">
-          <div className="flex flex-wrap items-center justify-between gap-4 p-5 border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
+          {/* Track + Level selector header */}
+          <div className="px-5 sm:px-8 py-5 sm:py-6 border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <h2 className="text-lg font-bold">{data.title}</h2>
-              <p className="text-sm text-neutral-600 mt-1 max-w-[640px] leading-relaxed">{data.objectif}</p>
+              <p className="text-[11px] tracking-[0.18em] font-bold text-[var(--color-misa-red)] uppercase">PARCOURS MASTER</p>
+              <h2 className="mt-1 text-base sm:text-lg font-light tracking-tight text-[var(--color-misa-ink)]">
+                {parcoursData.title} ({parcoursKey}) - {level}
+              </h2>
             </div>
-            <div className="flex gap-2">
-              {["M1","M2"].map(l => (
-                <button key={l} onClick={() => setLevel(l)} className={`text-xs font-semibold px-3 py-1.5 border ${level===l ? "bg-[var(--color-misa-ink)] text-white border-[var(--color-misa-ink)]" : "bg-white border-[var(--color-misa-line)]"}`}>Master {l.slice(1)} <span className="opacity-60">{l==="M1"?"S7·S8":"S9·S10"}</span></button>
+
+            <div className="flex flex-wrap items-center gap-2">
+              {["INT", "MISA"].map((k) => (
+                <button
+                  key={k}
+                  onClick={() => { setParcoursKey(k); setLevel("M1"); }}
+                  className={`min-h-[40px] px-4 sm:px-5 text-xs font-bold uppercase tracking-wider transition duration-200 cursor-pointer ${
+                    parcoursKey === k
+                      ? "bg-[var(--color-misa-ink)] text-white shadow-xs"
+                      : "bg-white border border-[var(--color-misa-line)] text-neutral-700 hover:bg-neutral-100"
+                  }`}
+                >
+                  Parcours {k}
+                </button>
+              ))}
+              <div className="h-6 w-px bg-neutral-300 hidden sm:block" />
+              {["M1", "M2"].map((lvl) => (
+                <button
+                  key={lvl}
+                  onClick={() => setLevel(lvl)}
+                  className={`min-h-[40px] px-4 sm:px-5 text-xs font-bold uppercase tracking-wider transition duration-200 cursor-pointer ${
+                    level === lvl
+                      ? "bg-[var(--color-misa-red)] text-white shadow-xs"
+                      : "bg-white border border-[var(--color-misa-line)] text-neutral-700 hover:bg-neutral-100"
+                  }`}
+                >
+                  {lvl}
+                </button>
               ))}
             </div>
           </div>
 
+          {/* Grid: UEs + Details */}
           <div className="grid lg:grid-cols-[1.4fr_0.6fr]">
-            <div className="p-5">
-              <div className="text-xs tracking-widest text-neutral-500">UE — MASTER {level.slice(1)}</div>
-              <div className="mt-3 grid sm:grid-cols-2 gap-3">
-                {groups.map((g, idx) => (
-                  <ul key={idx} className="border border-[var(--color-misa-line)] p-3 space-y-1">
-                    {g.map(item => <li key={item} className="text-sm flex gap-2"><span className="text-[var(--color-misa-red)]">—</span>{item}</li>)}
-                  </ul>
+
+            {/* Left: UEs */}
+            <div className="p-5 sm:p-8">
+              <div className="flex items-center justify-between border-b border-[var(--color-misa-line)] pb-3 mb-5 sm:mb-6">
+                <div className="flex items-center gap-2 text-[11px] tracking-[0.16em] text-neutral-500 font-bold uppercase">
+                  <BookOpen size={14} className="text-[var(--color-misa-red)] shrink-0" />
+                  <span>UNITÉS D'ENSEIGNEMENT - {parcoursKey} ({level})</span>
+                </div>
+                <span className="text-[10px] font-mono tracking-widest text-neutral-500 bg-[var(--color-misa-paper)] px-2 py-0.5 border border-[var(--color-misa-line)] uppercase">
+                  {uesGroups.length} groupes
+                </span>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+                {uesGroups.map((group, idx) => (
+                  <div key={idx} className="border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-4">
+                    <div className="text-[10px] font-bold tracking-wider text-[var(--color-misa-ink)] uppercase border-b border-[var(--color-misa-line)] pb-2 mb-3">
+                      Groupe {idx + 1}
+                    </div>
+                    <ul className="space-y-2">
+                      {group.map((item) => (
+                        <li key={item} className="text-xs sm:text-sm text-neutral-700 flex items-start gap-2 leading-snug">
+                          <span className="text-[var(--color-misa-red)] font-bold shrink-0 mt-0.5">-</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
               </div>
             </div>
-            <div className="border-t lg:border-t-0 lg:border-l border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-5 space-y-4">
+
+            {/* Right: Objectif & Responsable */}
+            <div className="border-t lg:border-t-0 lg:border-l border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-5 sm:p-8 space-y-6">
               <div>
-                <div className="text-xs tracking-widest text-neutral-500">RESPONSABLE</div>
-                <div className="mt-1 text-sm font-semibold">{data.responsable}</div>
+                <div className="flex items-center gap-1.5 text-[11px] tracking-[0.16em] text-neutral-500 font-bold uppercase">
+                  <Target size={14} className="text-[var(--color-misa-red)] shrink-0" />
+                  <span>OBJECTIF</span>
+                </div>
+                <p className="mt-2.5 text-xs sm:text-sm leading-[1.7] text-neutral-700">{parcoursData.objectif}</p>
               </div>
-              <div className="border-t border-[var(--color-misa-line)] pt-4 text-sm leading-relaxed text-neutral-600">
-                M2 : stage & mémoire. Seule année indiquée comme telle sur le site original.
+
+              <div className="border-t border-[var(--color-misa-line)] pt-5">
+                <div className="flex items-center gap-1.5 text-[11px] tracking-[0.16em] text-neutral-500 font-bold uppercase">
+                  <User size={14} className="text-[var(--color-misa-ink)] shrink-0" />
+                  <span>RESPONSABLE</span>
+                </div>
+                <div className="mt-2 text-xs sm:text-sm font-bold text-[var(--color-misa-ink)]">{parcoursData.responsable}</div>
               </div>
             </div>
+
           </div>
         </div>
       </div>

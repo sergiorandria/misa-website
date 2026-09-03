@@ -1,77 +1,69 @@
-import { admission } from "../data/content";
+import { Link } from "react-router-dom";
+import { ArrowRight, BookOpen, GraduationCap } from "lucide-react";
+
+const accessPaths = [
+  {
+    to: "/admission/licence",
+    title: "Admission en Licence (L1 - IT)",
+    description: (
+      <>
+        Sur sélection de dossier, réservée exclusivement aux titulaires d’un <strong>Bac scientifique (Série C, Série S)</strong>
+      </>
+    ),
+    icon: BookOpen,
+  },
+  {
+    to: "/admission/master-int",
+    title: "Admission en Master (M1 - INT)",
+    description: "Le parcours INT est ouvert aux titulaires d’une Licence d’un autre établissement public.",
+    icon: GraduationCap,
+  },
+];
 
 export default function Admission() {
   return (
     <div className="bg-white">
-      <div className="max-w-[1160px] mx-auto px-6 py-8">
-        <div className="text-xs tracking-widest text-neutral-500">ADMISSION</div>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight">Conditions d’admission</h1>
-        <p className="mt-3 max-w-[720px] text-sm leading-relaxed text-neutral-600">Mention Informatique et Technologie — repris fidèlement depuis la page Conditions d’admission. Aucune date inventée ; les années mentionnées sont celles affichées sur le site original.</p>
-      </div>
-
-      <div className="max-w-[1160px] mx-auto px-6 pb-12 grid lg:grid-cols-[1.7fr_0.9fr] gap-6">
-        <div className="space-y-6">
-          <section className="border border-[var(--color-misa-line)]">
-            <div className="p-5 border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
-              <h2 className="text-sm font-bold tracking-tight">Classement de dossier et sélection</h2>
-            </div>
-            <div className="p-5 space-y-3">
-              {admission.classement.map(t => (
-                <div key={t} className="flex gap-3 text-sm leading-relaxed">
-                  <span className="mt-1.5 w-1.5 h-1.5 bg-[var(--color-misa-red)] shrink-0" /> {t}
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="border border-[var(--color-misa-line)]">
-            <div className="p-5 border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
-              <h2 className="text-sm font-bold tracking-tight">Dossier à fournir</h2>
-            </div>
-            <div className="p-5 space-y-2">
-              {admission.dossier.map((d, i) => (
-                <div key={d} className="flex gap-3 text-sm leading-relaxed border-b last:border-0 border-[var(--color-misa-line)] py-2">
-                  <span className="text-xs font-mono text-neutral-500 mt-0.5">{String(i+1).padStart(2,"0")}</span> {d}
-                </div>
-              ))}
-            </div>
-            <div className="px-5 pb-5">
-              <a href="/assets/file/PREINSCRIPTION.pdf" className="text-xs underline decoration-[var(--color-misa-red)] underline-offset-4">Télécharger le modèle de préinscription (PDF) — si disponible sur site original</a>
-            </div>
-          </section>
-
-          <section className="border border-[var(--color-misa-line)] bg-amber-50/40">
-            <div className="p-5">
-              <div className="text-xs tracking-widest text-neutral-500">DATE LIMITE DE DÉPÔT</div>
-              <p className="mt-2 text-sm leading-relaxed">{admission.depot}. Cette date est celle affichée sur le site (2022) — à confirmer auprès de la scolarité pour l’année en cours.</p>
-            </div>
-          </section>
+      <section className="border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
+          <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">ADMISSION & PROCÉDURE</p>
+          <h1 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">Deux voies d’accès à la formation</h1>
+          <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
+          <p className="mt-4 sm:mt-5 max-w-[720px] text-sm sm:text-base leading-[1.7] text-neutral-700 font-medium">
+            L’admission se fait soit en première année de Licence après le Baccalauréat, soit directement en Master pour les candidats déjà titulaires d’une Licence.
+          </p>
         </div>
+      </section>
 
-        <aside className="space-y-6">
-          <div className="border border-[var(--color-misa-line)] p-5">
-            <div className="text-xs tracking-widest text-neutral-500">CONTACT SCOLARITÉ</div>
-            <ul className="mt-3 text-sm leading-relaxed space-y-1">
-              <li>BP 906 Ankatso — Faculté des Sciences</li>
-              <li>(+261) 34 53 140 38</li>
-              <li>mit-univ-tana@gmail.com</li>
-            </ul>
-            <div className="mt-4 text-xs leading-relaxed text-neutral-500 border-t border-[var(--color-misa-line)] pt-3">
-              Paiement BNI : 40 000 Ar — n° 00005 00002 214103 602 00 43 — “M. le Doyen de la Faculté des Sciences — BP 906”.
-            </div>
-          </div>
-
-          <div className="border border-[var(--color-misa-ink)] p-5">
-            <div className="text-xs tracking-widest">ÉTAPES</div>
-            <ol className="mt-3 space-y-2 text-sm">
-              <li>1 — Pré-inscription</li>
-              <li>2 — Dépôt du dossier complet</li>
-              <li>3 — Classement & sélection</li>
-              <li>4 — Publication des résultats</li>
-            </ol>
-          </div>
-        </aside>
-      </div>
+      <section className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
+        <div className="grid md:grid-cols-2 gap-5 sm:gap-6 items-stretch">
+          {accessPaths.map((path) => (
+            <AdmissionCard key={path.to} {...path} />
+          ))}
+        </div>
+      </section>
     </div>
+  );
+}
+
+function AdmissionCard({ to, title, description, icon: Icon }) {
+  return (
+    <Link
+      to={to}
+      className="group academic-card min-h-[220px] border border-[var(--color-misa-line)] bg-white p-5 sm:p-8 flex flex-col justify-between shadow-xs hover:border-[var(--color-misa-red)] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+    >
+      <div>
+        <div className="flex items-start justify-between gap-4">
+          <h2 className="text-base sm:text-lg font-bold tracking-tight text-[var(--color-misa-ink)]">{title}</h2>
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] text-[var(--color-misa-red)] group-hover:border-[var(--color-misa-red)] transition-colors">
+            <Icon size={18} aria-hidden="true" />
+          </span>
+        </div>
+        <p className="mt-3 text-sm leading-[1.7] text-neutral-700">{description}</p>
+      </div>
+      <span className="mt-8 inline-flex items-center gap-2 text-xs font-bold text-[var(--color-misa-red)]">
+        Voir les conditions et étapes
+        <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+      </span>
+    </Link>
   );
 }
