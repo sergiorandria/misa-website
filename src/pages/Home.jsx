@@ -5,6 +5,7 @@ import { asset } from "../lib/assets";
 import { temoignages } from "../data/content";
 import Stack from "../components/Stack";
 import ParticleButton from "../components/ui/ParticleButton";
+import CardFlip from "../components/ui/CardFlip";
 import PartnersSection from "../components/PartnersSection";
 import AnimatedSection, { childFadeUpVariants, staggerContainerVariants } from "../components/ui/AnimatedSection";
 
@@ -152,83 +153,61 @@ export default function Home() {
             Cours magistraux, travaux dirigés, ateliers, simulations et projets de groupe. Les étudiants sont encouragés à prendre en charge leur apprentissage et à développer leur autonomie. Stages en entreprise chaque année pour ancrer la théorie dans la pratique.
           </p>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: { staggerChildren: 0.08, delayChildren: 0.1 }
-              }
-            }}
-            className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
-          >
+          <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 justify-items-center">
             {[
               {
                 title: "Data Science",
-                desc: "Analyser et exploiter les données massives pour l'aide à la décision.",
+                subtitle: "Exploiter les données",
+                desc: "Analyser et exploiter les données massives pour l'aide à la décision — Python, SQL, PyTorch, Big Data.",
                 icon: Cpu,
-                stack: ["Python", "SQL", "PyTorch", "Big Data"],
+                features: ["Python", "SQL", "PyTorch", "Big Data"],
               },
               {
                 title: "Expert en cybersécurité",
-                desc: "Protéger les systèmes et infrastructures critiques.",
+                subtitle: "Protéger les systèmes",
+                desc: "Protéger les systèmes et infrastructures critiques — Pentesting, OWASP, Cryptographie, Linux.",
                 icon: ShieldCheck,
-                stack: ["Pentesting", "OWASP", "Cryptographie", "Linux"],
+                features: ["Pentesting", "OWASP", "Cryptographie", "Linux"],
               },
               {
                 title: "Expert en IA",
-                desc: "Concevoir et déployer des systèmes intelligents.",
+                subtitle: "Systèmes intelligents",
+                desc: "Concevoir et déployer des systèmes intelligents — Machine Learning, Deep Learning, Scikit-learn, NLP.",
                 icon: Sparkles,
-                stack: ["Machine Learning", "Deep Learning", "Scikit-learn", "NLP"],
+                features: ["Machine Learning", "Deep Learning", "Scikit-learn", "NLP"],
               },
               {
                 title: "Designer",
-                desc: "Concevoir des interfaces intuitives et esthétiques.",
+                subtitle: "Interfaces intuitives",
+                desc: "Concevoir des interfaces intuitives et esthétiques — UI/UX, Figma, HTML/CSS, Accessibilité.",
                 icon: Globe,
-                stack: ["UI/UX", "Figma", "HTML/CSS", "Accessibilité"],
+                features: ["UI/UX", "Figma", "HTML/CSS", "Accessibilité"],
               },
               {
                 title: "Lead developer",
-                desc: "Diriger les équipes techniques et produire du logiciel robuste.",
+                subtitle: "Piloter les équipes",
+                desc: "Diriger les équipes techniques et produire du logiciel robuste — Architecture Cloud, CI/CD, Design Patterns, Git.",
                 icon: Code2,
-                stack: ["Architecture Cloud", "CI/CD", "Design Patterns", "Git"],
+                features: ["Architecture Cloud", "CI/CD", "Design Patterns", "Git"],
               },
               {
                 title: "Administrateur Système & Réseaux",
-                desc: "Gérer les infrastructures et l'environnement cloud.",
+                subtitle: "Infrastructures cloud",
+                desc: "Gérer les infrastructures et l'environnement cloud — Linux, Docker, TCP/IP, Virtualisation.",
                 icon: Users,
-                stack: ["Linux", "Docker", "TCP/IP", "Virtualisation"],
+                features: ["Linux", "Docker", "TCP/IP", "Virtualisation"],
               },
-            ].map(item => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={item.title}
-                  variants={childFadeUpVariants}
-                  className="academic-card bg-white border border-[var(--color-misa-line)] p-5 sm:p-8 hover:border-[var(--color-misa-ink)] transition-all duration-200 flex flex-col"
-                >
-                  <div className="p-2 bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] text-[var(--color-misa-red)] w-fit">
-                    <Icon size={18} />
-                  </div>
-                  <div className="mt-4 text-sm font-bold text-[var(--color-misa-ink)]">{item.title}</div>
-                  <div className="mt-2 text-xs sm:text-sm text-neutral-600 leading-[1.6] flex-1">{item.desc}</div>
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {item.stack.map(tech => (
-                      <span
-                        key={tech}
-                        className="text-[9px] font-mono tracking-widest uppercase border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] text-neutral-500 px-2 py-1"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+            ].map(item => (
+              <CardFlip
+                key={item.title}
+                title={item.title}
+                subtitle={item.subtitle}
+                description={item.desc}
+                features={item.features}
+                icon={item.icon}
+              />
+            ))}
+          </div>
         </div>
       </AnimatedSection>
 
@@ -309,26 +288,31 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      {/* - ALUMNI TÉMOIGNAGES - paper band ---------------─ */}
+      {/* - AVIS DES SORTANTS — Stack (React Bits) — mobile tap + hover ─ */}
       <AnimatedSection direction="up" distance={40} className="bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div>
-              <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">ALUMNI & SORTANTS</p>
-              <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)] max-w-[540px]">
-                Avis et parcours de nos diplômés
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
+            {/* Left — copy */}
+            <div className="lg:w-80 xl:w-[360px] shrink-0">
+              <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">ALUMNI — TÉMOIGNAGES</p>
+              <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">
+                Avis des sortants
               </h2>
               <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
               <p className="mt-6 text-sm leading-[1.7] text-neutral-700">
                 Paroles d&apos;anciens — valeurs de la MISA : intégrité, initiative, audace, rigueur, persévérance et travail d&apos;équipe.
               </p>
               <p className="mt-3 text-sm leading-[1.7] text-neutral-600 italic">« MISA un jour, MISA toujours ! »</p>
-              <p className="mt-6 text-xs leading-relaxed text-neutral-500">
-                Découvrez les expériences de nos diplômés et leur parcours après la formation.
+              <p className="mt-6 text-xs leading-relaxed text-neutral-500 lg:hidden">
+                Appuyez sur une carte pour la retourner.
               </p>
+              <p className="hidden lg:block mt-2 text-xs leading-relaxed text-neutral-500">
+                Survolez ou cliquez sur une carte pour découvrir le témoignage.
+              </p>
+              <p className="mt-3 text-[11px] text-neutral-400">Extraits de « temoignages_anciens(1).txt » — textes intégraux conservés.</p>
             </div>
 
-            {/* Right — Stack (responsive) */}
+            {/* Right — Stack */}
             <div className="flex-1 w-full flex justify-center lg:justify-end min-w-0">
               <div className="w-full max-w-[300px] xs:max-w-[340px] sm:max-w-[420px] md:max-w-[460px] h-[380px] sm:h-[360px] mx-auto lg:mx-0">
                 <Stack
