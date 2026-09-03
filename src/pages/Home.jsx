@@ -1,18 +1,22 @@
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, CheckCircle2, ShieldCheck, Cpu, Code2, Users, Globe, BookMarked, Sparkles, Award, Quote } from "lucide-react";
 import { motion } from "motion/react";
+import { lazy, Suspense, useMemo } from "react";
 import { asset } from "../lib/assets";
 import { temoignages } from "../data/content";
-import Stack from "../components/Stack";
-import ParticleButton from "../components/ui/ParticleButton";
-import PartnersSection from "../components/PartnersSection";
 import AnimatedSection, { childFadeUpVariants, staggerContainerVariants } from "../components/ui/AnimatedSection";
+
+// Lazy heavy interactive components for code-splitting
+const Stack = lazy(() => import("../components/Stack"));
+const CardFlip = lazy(() => import("../components/ui/CardFlip"));
+const ParticleButton = lazy(() => import("../components/ui/ParticleButton"));
+const PartnersSection = lazy(() => import("../components/PartnersSection"));
 
 export default function Home() {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white overflow-hidden">
+    <div className="bg-white overflow-x-hidden">
 
       {/* - HERO - full-width split: text left | campus photo right ---- */}
       <section className="relative overflow-hidden border-b border-[var(--color-misa-line)]">
@@ -36,7 +40,7 @@ export default function Home() {
 
               <motion.h1
                 variants={childFadeUpVariants}
-                className="mt-6 text-[30px] sm:text-[40px] lg:text-[52px] leading-[1.08] sm:leading-[1.05] tracking-tight font-light text-[var(--color-misa-ink)]"
+                className="mt-6 text-[24px] xs:text-[28px] sm:text-[36px] lg:text-[48px] xl:text-[52px] leading-[1.1] sm:leading-[1.05] tracking-tight font-light text-[var(--color-misa-ink)]"
               >
                 <span className="block text-[11px] sm:text-[12px] tracking-[0.22em] font-sans font-bold text-[var(--color-misa-red)] uppercase mb-2">
                   Mention Informatique et Technologie
@@ -53,30 +57,32 @@ export default function Home() {
                 Immergez-vous dans la Science, la technologie, l'ingénierie et les Mathématiques en intégrant la MIT - mention du Domaine des Sciences et Technologies de l'Université d'Antananarivo.
               </motion.p>
 
-              {/* CTAs — Particle Buttons */}
-              <motion.div variants={childFadeUpVariants} className="mt-8 flex flex-col sm:flex-row gap-3">
-                <ParticleButton
-                  variant="primary"
-                  successDuration={900}
-                  onSuccess={() => setTimeout(() => navigate("/admission"), 250)}
-                  className="flex-1 sm:flex-none min-w-[200px]"
-                >
-                  Conditions d&apos;admission
-                </ParticleButton>
-                <ParticleButton
-                  variant="outline"
-                  successDuration={900}
-                  onSuccess={() => setTimeout(() => navigate("/formation/licence"), 250)}
-                  className="flex-1 sm:flex-none min-w-[180px]"
-                >
-                  Voir la formation
-                </ParticleButton>
-              </motion.div>
+              {/* CTAs — Particle Buttons (lazy) */}
+              <Suspense fallback={<div className="mt-8 flex flex-col xs:flex-row gap-3 w-full"><div className="h-[48px] flex-1 bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] animate-pulse" /><div className="h-[48px] flex-1 bg-white border border-[var(--color-misa-line)] animate-pulse" /></div>}>
+                <motion.div variants={childFadeUpVariants} className="mt-8 flex flex-col xs:flex-row gap-3 w-full">
+                  <ParticleButton
+                    variant="primary"
+                    successDuration={900}
+                    onSuccess={() => setTimeout(() => navigate("/admission"), 250)}
+                    className="w-full xs:w-auto xs:flex-1 sm:flex-none sm:min-w-[200px] justify-center"
+                  >
+                    Conditions d&apos;admission
+                  </ParticleButton>
+                  <ParticleButton
+                    variant="outline"
+                    successDuration={900}
+                    onSuccess={() => setTimeout(() => navigate("/formation/licence"), 250)}
+                    className="w-full xs:w-auto xs:flex-1 sm:flex-none sm:min-w-[180px] justify-center"
+                  >
+                    Voir la formation
+                  </ParticleButton>
+                </motion.div>
+              </Suspense>
 
               {/* Key metrics */}
               <motion.div
                 variants={childFadeUpVariants}
-                className="mt-10 sm:mt-12 grid grid-cols-3 gap-4 sm:gap-6 max-w-[480px] border-t border-[var(--color-misa-line)] pt-6 sm:pt-8"
+                className="mt-10 sm:mt-12 grid grid-cols-3 gap-2 xs:gap-4 sm:gap-6 max-w-[480px] border-t border-[var(--color-misa-line)] pt-6 sm:pt-8"
               >
                 <div className="border-l-2 border-[var(--color-misa-red)] pl-3">
                   <div className="text-base sm:text-lg font-bold text-[var(--color-misa-ink)]">1996</div>
@@ -123,8 +129,8 @@ export default function Home() {
       <AnimatedSection as="div" direction="fade" duration={0.5} className="border-b border-[var(--color-misa-line)] bg-white">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3 sm:gap-4">
-            <div className="p-1.5 border border-[var(--color-misa-line)] shrink-0">
-              <img src={asset('logo-mit.png')} alt="MIT logo" className="h-8 sm:h-9 w-auto object-contain" />
+            <div className="p-1 border border-[var(--color-misa-line)] shrink-0">
+              <img src={asset('logo-mit.png')} alt="MIT logo" className="h-6 sm:h-7 w-auto object-contain" />
             </div>
             <div>
               <div className="text-[11px] sm:text-xs font-bold tracking-[0.14em] text-[var(--color-misa-red)] uppercase">MIT - UNIVERSITÉ D'ANTANANARIVO</div>
@@ -152,83 +158,63 @@ export default function Home() {
             Cours magistraux, travaux dirigés, ateliers, simulations et projets de groupe. Les étudiants sont encouragés à prendre en charge leur apprentissage et à développer leur autonomie. Stages en entreprise chaque année pour ancrer la théorie dans la pratique.
           </p>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: { staggerChildren: 0.08, delayChildren: 0.1 }
-              }
-            }}
-            className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[var(--color-misa-line)] border border-[var(--color-misa-line)]"
-          >
-            {[
-              {
-                title: "Data Science",
-                desc: "Analyser et exploiter les données massives pour l'aide à la décision.",
-                icon: Cpu,
-                stack: ["Python", "SQL", "PyTorch", "Big Data"],
-              },
-              {
-                title: "Expert en cybersécurité",
-                desc: "Protéger les systèmes et infrastructures critiques.",
-                icon: ShieldCheck,
-                stack: ["Pentesting", "OWASP", "Cryptographie", "Linux"],
-              },
-              {
-                title: "Expert en IA",
-                desc: "Concevoir et déployer des systèmes intelligents.",
-                icon: Sparkles,
-                stack: ["Machine Learning", "Deep Learning", "Scikit-learn", "NLP"],
-              },
-              {
-                title: "Designer",
-                desc: "Concevoir des interfaces intuitives et esthétiques.",
-                icon: Globe,
-                stack: ["UI/UX", "Figma", "HTML/CSS", "Accessibilité"],
-              },
-              {
-                title: "Lead developer",
-                desc: "Diriger les équipes techniques et produire du logiciel robuste.",
-                icon: Code2,
-                stack: ["Architecture Cloud", "CI/CD", "Design Patterns", "Git"],
-              },
-              {
-                title: "Administrateur Système & Réseaux",
-                desc: "Gérer les infrastructures et l'environnement cloud.",
-                icon: Users,
-                stack: ["Linux", "Docker", "TCP/IP", "Virtualisation"],
-              },
-            ].map(item => {
-              const Icon = item.icon;
-              return (
-                <motion.div
+          <Suspense fallback={<div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"><div className="h-[300px] bg-white border border-[var(--color-misa-line)] animate-pulse" /><div className="h-[300px] bg-white border border-[var(--color-misa-line)] animate-pulse hidden sm:block" /><div className="h-[300px] bg-white border border-[var(--color-misa-line)] animate-pulse hidden lg:block" /></div>}>
+            <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 justify-items-center">
+              {[
+                {
+                  title: "Data Science",
+                  subtitle: "Exploiter les données",
+                  desc: "Analyser et exploiter les données massives pour l'aide à la décision — Python, SQL, PyTorch, Big Data.",
+                  image: asset('images/pedagogy/data-science.jpg'),
+                  features: ["Python", "SQL", "PyTorch", "Big Data"],
+                },
+                {
+                  title: "Expert en cybersécurité",
+                  subtitle: "Protéger les systèmes",
+                  desc: "Protéger les systèmes et infrastructures critiques — Pentesting, OWASP, Cryptographie, Linux.",
+                  image: asset('images/pedagogy/cybersecurity.jpg'),
+                  features: ["Pentesting", "OWASP", "Cryptographie", "Linux"],
+                },
+                {
+                  title: "Expert en IA",
+                  subtitle: "Systèmes intelligents",
+                  desc: "Concevoir et déployer des systèmes intelligents — Machine Learning, Deep Learning, Scikit-learn, NLP.",
+                  image: asset('images/pedagogy/ai.jpg'),
+                  features: ["Machine Learning", "Deep Learning", "Scikit-learn", "NLP"],
+                },
+                {
+                  title: "Designer",
+                  subtitle: "Interfaces intuitives",
+                  desc: "Concevoir des interfaces intuitives et esthétiques — UI/UX, Figma, HTML/CSS, Accessibilité.",
+                  image: asset('images/pedagogy/design.jpg'),
+                  features: ["UI/UX", "Figma", "HTML/CSS", "Accessibilité"],
+                },
+                {
+                  title: "Lead developer",
+                  subtitle: "Piloter les équipes",
+                  desc: "Diriger les équipes techniques et produire du logiciel robuste — Architecture Cloud, CI/CD, Design Patterns, Git.",
+                  image: asset('images/pedagogy/lead-dev.jpg'),
+                  features: ["Architecture Cloud", "CI/CD", "Design Patterns", "Git"],
+                },
+                {
+                  title: "Administrateur Système & Réseaux",
+                  subtitle: "Infrastructures cloud",
+                  desc: "Gérer les infrastructures et l'environnement cloud — Linux, Docker, TCP/IP, Virtualisation.",
+                  image: asset('images/pedagogy/system-reseau.jpg'),
+                  features: ["Linux", "Docker", "TCP/IP", "Virtualisation"],
+                },
+              ].map(item => (
+                <CardFlip
                   key={item.title}
-                  variants={childFadeUpVariants}
-                  className="academic-card bg-white p-5 sm:p-8 hover:border-[var(--color-misa-ink)] transition-all duration-200 flex flex-col"
-                >
-                  <div className="p-2 bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] text-[var(--color-misa-red)] w-fit">
-                    <Icon size={18} />
-                  </div>
-                  <div className="mt-4 text-sm font-bold text-[var(--color-misa-ink)]">{item.title}</div>
-                  <div className="mt-2 text-xs sm:text-sm text-neutral-600 leading-[1.6] flex-1">{item.desc}</div>
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {item.stack.map(tech => (
-                      <span
-                        key={tech}
-                        className="text-[9px] font-mono tracking-widest uppercase border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] text-neutral-500 px-2 py-1"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+                  title={item.title}
+                  subtitle={item.subtitle}
+                  description={item.desc}
+                  features={item.features}
+                  image={item.image}
+                />
+              ))}
+            </div>
+          </Suspense>
         </div>
       </AnimatedSection>
 
@@ -309,63 +295,107 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      {/* - ALUMNI TÉMOIGNAGES - paper band ---------------─ */}
-      <AnimatedSection direction="up" distance={40} className="bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24">
+      {/* - CAMPUS EN IMAGES — nouveau (WhatsApp) ─ */}
+      <AnimatedSection direction="up" distance={40} className="bg-white border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div>
-              <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">ALUMNI & SORTANTS</p>
-              <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)] max-w-[540px]">
-                Avis et parcours de nos diplômés
-              </h2>
-              <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
-              <p className="mt-6 text-sm leading-[1.7] text-neutral-700">
-                Paroles d&apos;anciens — valeurs de la MISA : intégrité, initiative, audace, rigueur, persévérance et travail d&apos;équipe.
-              </p>
-              <p className="mt-3 text-sm leading-[1.7] text-neutral-600 italic">« MISA un jour, MISA toujours ! »</p>
-              <p className="mt-6 text-xs leading-relaxed text-neutral-500">
-                Découvrez les expériences de nos diplômés et leur parcours après la formation.
-              </p>
-            </div>
+          <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">CAMPUS — INFRASTRUCTURES & VIE ÉTUDIANTE</p>
+          <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)] max-w-[640px]">
+            Découvrez notre campus en images
+          </h2>
+          <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
+          <p className="mt-5 text-sm sm:text-base leading-[1.7] text-neutral-700 max-w-[640px]">
+            Salles informatiques, amphithéâtres, bibliothèque et travaux dirigés — nos infrastructures au service de la formation.
+          </p>
 
-            {/* Right — Stack */}
-            <div className="flex-1 w-full flex justify-center lg:justify-end">
-              <div className="w-[300px] xs:w-[340px] sm:w-[420px] md:w-[460px] h-[380px] sm:h-[360px]">
-                <Stack
-                  randomRotation={true}
-                  sensitivity={180}
-                  sendToBackOnClick={true}
-                  autoplay={true}
-                  autoplayDelay={4000}
-                  pauseOnHover={true}
-                  cards={temoignages.map((t) => (
-                    <div
-                      key={t.author}
-                      className="w-full h-full bg-white border border-[var(--color-misa-line)] border-l-4 border-l-[var(--color-misa-red)] p-6 sm:p-7 flex flex-col justify-between text-left shadow-sm"
-                    >
-                      <div className="flex-1 min-h-0 flex flex-col">
-                        <div className="w-7 h-7 flex items-center justify-center bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] text-[var(--color-misa-red)] shrink-0">
-                          <Quote size={14} />
-                        </div>
-                        <p className="mt-4 text-xs sm:text-[13px] leading-relaxed italic text-neutral-700 overflow-y-auto pr-1">
-                          &ldquo;{t.quote}&rdquo;
-                        </p>
-                      </div>
-                      <div className="mt-4 pt-4 border-t border-[var(--color-misa-line)] text-right shrink-0">
-                        <div className="text-xs font-bold text-[var(--color-misa-red)] leading-tight">{t.author}</div>
-                        <div className="text-[11px] text-neutral-500 tracking-wide uppercase font-medium mt-0.5">{t.promo}</div>
-                      </div>
-                    </div>
-                  ))}
-                />
+          <div className="mt-8 sm:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {[
+              { src: asset('images/campus/lab-informatique.jpg'), title: "Salle informatique", desc: "6 postes avec écran interactif — environnement moderne" },
+              { src: asset('images/campus/vie-etudiante-concours.jpg'), title: "Vie étudiante", desc: "Concours Ecole du Code — équipe MIT primée" },
+              { src: asset('images/campus/amphitheatre.jpg'), title: "Amphithéâtre", desc: "200 places avec prises — cours magistraux" },
+              { src: asset('images/campus/bibliotheque.jpg'), title: "Bibliothèque", desc: "Ouvrages techniques — MCSE, Windows, réseaux" },
+              { src: asset('images/campus/travaux-diriges-1.jpg'), title: "Travaux dirigés", desc: "Ateliers sur ordinateurs portables — encadrement" },
+              { src: asset('images/campus/travaux-diriges-2.jpg'), title: "Projets pratiques", desc: "Développement — code en direct, entraide" },
+            ].map(item => (
+              <div key={item.title} className="group bg-white border border-[var(--color-misa-line)] overflow-hidden hover:border-[var(--color-misa-red)]/20 hover:shadow-sm transition">
+                <div className="aspect-[4/3] overflow-hidden bg-[var(--color-misa-paper)]">
+                  <img src={item.src} alt={item.title} className="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy" />
+                </div>
+                <div className="p-3 sm:p-4">
+                  <div className="text-xs sm:text-sm font-semibold text-[var(--color-misa-ink)]">{item.title}</div>
+                  <div className="text-[11px] sm:text-xs text-neutral-600 mt-1 leading-relaxed">{item.desc}</div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </AnimatedSection>
 
-      {/* - PARTENAIRES - Ivy League Wall of Trust ------------ */}
-      <PartnersSection />
+      {/* - AVIS DES SORTANTS — Stack (React Bits) — mobile tap + hover ─ */}
+      <AnimatedSection direction="up" distance={40} className="bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
+            {/* Left — copy */}
+            <div className="lg:w-80 xl:w-[360px] shrink-0">
+              <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">ALUMNI — TÉMOIGNAGES</p>
+              <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">
+                Avis des sortants
+              </h2>
+              <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
+              <p className="mt-6 text-sm leading-[1.7] text-neutral-700">
+                Paroles d&apos;anciens — valeurs de la MISA : initiative, rigueur, persévérance et travail d&apos;équipe.
+              </p>
+              <p className="mt-3 text-sm leading-[1.7] text-neutral-600 italic">« MISA un jour, MISA toujours ! »</p>
+              <p className="mt-6 text-xs leading-relaxed text-neutral-500 lg:hidden">
+                Appuyez sur une carte pour la retourner.
+              </p>
+              <p className="hidden lg:block mt-2 text-xs leading-relaxed text-neutral-500">
+                Survolez ou cliquez sur une carte pour découvrir le témoignage.
+              </p>
+              <p className="mt-3 text-[11px] text-neutral-400">Extraits de « temoignages_anciens(1).txt » — textes intégraux conservés.</p>
+            </div>
+
+            {/* Right — Stack (lazy) */}
+            <Suspense fallback={<div className="w-full max-w-[300px] xs:max-w-[340px] sm:max-w-[420px] md:max-w-[460px] h-[380px] sm:h-[360px] mx-auto lg:mx-0 bg-white border border-[var(--color-misa-line)] animate-pulse" />}>
+              <div className="flex-1 w-full flex justify-center lg:justify-end min-w-0">
+                <div className="w-full max-w-[300px] xs:max-w-[340px] sm:max-w-[420px] md:max-w-[460px] h-[380px] sm:h-[360px] mx-auto lg:mx-0">
+                  <Stack
+                    randomRotation={true}
+                    sensitivity={180}
+                    sendToBackOnClick={true}
+                    autoplay={true}
+                    autoplayDelay={4000}
+                    pauseOnHover={true}
+                    cards={temoignages.map((t) => (
+                      <div
+                        key={t.author}
+                        className="w-full h-full bg-white border border-[var(--color-misa-line)] border-l-4 border-l-[var(--color-misa-red)] p-6 sm:p-7 flex flex-col justify-between text-left shadow-sm"
+                      >
+                        <div className="flex-1 min-h-0 flex flex-col">
+                          <div className="w-7 h-7 flex items-center justify-center bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] text-[var(--color-misa-red)] shrink-0">
+                            <Quote size={14} />
+                          </div>
+                          <p className="mt-4 text-xs sm:text-[13px] leading-relaxed italic text-neutral-700 overflow-y-auto pr-1">
+                            &ldquo;{t.quote}&rdquo;
+                          </p>
+                        </div>
+                        <div className="mt-4 pt-4 border-t border-[var(--color-misa-line)] text-right shrink-0">
+                          <div className="text-xs font-bold text-[var(--color-misa-red)] leading-tight">{t.author}</div>
+                          <div className="text-[11px] text-neutral-500 tracking-wide uppercase font-medium mt-0.5">{t.promo}</div>
+                        </div>
+                      </div>
+                    ))}
+                  />
+                </div>
+              </div>
+            </Suspense>
+          </div>
+        </div>
+      </AnimatedSection>
+
+      {/* - PARTENAIRES - Ivy League Wall of Trust (lazy) ------------ */}
+      <Suspense fallback={<div className="bg-white border-b border-[var(--color-misa-line)] py-16"><div className="max-w-[1280px] mx-auto px-6 lg:px-8"><div className="h-32 bg-white border border-[var(--color-misa-line)] animate-pulse" /></div></div>}>
+        <PartnersSection />
+      </Suspense>
 
     </div>
   );
