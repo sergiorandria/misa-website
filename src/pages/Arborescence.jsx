@@ -16,13 +16,16 @@ export default function Arborescence() {
     if (!viewport || viewport.scrollHeight <= viewport.clientHeight) return;
 
     cancelAnimationFrame(scrollAnimationRef.current);
-    viewport.scrollTop = viewport.scrollHeight - viewport.clientHeight;
+    const startScrollTop = viewport.scrollTop;
+    if (startScrollTop <= 0) return;
+
+    const maxScrollTop = viewport.scrollHeight - viewport.clientHeight;
     const startTime = performance.now();
-    const duration = 30000;
+    const duration = (startScrollTop / maxScrollTop) * 30000;
 
     function animateScroll(currentTime) {
       const progress = Math.min((currentTime - startTime) / duration, 1);
-      viewport.scrollTop = (viewport.scrollHeight - viewport.clientHeight) * (1 - progress);
+      viewport.scrollTop = startScrollTop * (1 - progress);
       if (progress < 1) {
         scrollAnimationRef.current = requestAnimationFrame(animateScroll);
       }
