@@ -116,6 +116,20 @@ export const partnerCategories = [
         domain: "Partenaire Institutionnel",
         logo: "partners/BMOI.png",
       },
+      {
+        name: "HUAWEI",
+        legacyName: "HUAWEI Madagascar",
+        badge: "International · Télécoms",
+        domain: "Réseaux & Innovation",
+        logo: "partners/huawei.webp",
+      },
+      {
+        name: "PAMF",
+        legacyName: "PAMF",
+        badge: "Banque · Microfinance",
+        domain: "Agence de microfinance",
+        logo: "partners/pamf.jpg",
+      },
     ],
   },
   {
