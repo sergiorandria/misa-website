@@ -56,45 +56,45 @@ function CardFlipInner({
           )}
         >
           <div className="relative h-full overflow-hidden bg-white">
-            {/* Image — from /Pictures/Image, covers top 60% */}
+            {/* Image — covers top 68% with subtle fade, no icon */}
             {image ? (
               <img
                 src={image}
                 alt={title}
-                className="absolute inset-0 w-full h-[58%] object-cover"
+                className="absolute inset-0 w-full h-[68%] object-cover"
                 loading="lazy"
               />
             ) : Icon ? (
-              <div aria-hidden="true" className="absolute inset-0 flex items-start justify-center pt-14 sm:pt-16">
-                <div className="relative flex h-[80px] w-[160px] items-center justify-center">
+              <div aria-hidden="true" className="absolute inset-0 flex items-start justify-center pt-12 sm:pt-14">
+                <div className="relative flex h-[70px] w-[140px] items-center justify-center">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-12 h-12 rounded-full bg-white border border-[var(--color-misa-line)] shadow-sm flex items-center justify-center text-[var(--color-misa-red)]">
-                      <Icon size={22} strokeWidth={1.7} />
+                    <div className="w-10 h-10 rounded-full bg-white border border-[var(--color-misa-line)] shadow-sm flex items-center justify-center text-[var(--color-misa-red)]">
+                      <Icon size={20} strokeWidth={1.7} />
                     </div>
                   </div>
                 </div>
               </div>
             ) : null}
-            {/* Subtle transparency gradient top → bottom (not too much) */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/95 via-white/10" />
-            <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-transparent to-white pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 45%, rgba(255,255,255,0.92) 78%, white 100%)" }} />
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1 text-[10px] tracking-widest uppercase text-neutral-500 font-medium sm:hidden bg-white/90 border border-[var(--color-misa-line)] px-2 py-1 shadow-xs">
-              <Repeat2 size={12} className="text-[var(--color-misa-red)]" /> Tap
+            {/* Subtle top→bottom transparency gradient (light, not too much) */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/90" />
+            <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 42%, rgba(255,255,255,0.55) 68%, rgba(255,255,255,0.96) 84%, white 100%)" }} />
+            <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 flex items-center gap-1 text-[9px] tracking-widest uppercase text-neutral-500 font-medium sm:hidden bg-white/90 border border-[var(--color-misa-line)] px-1.5 py-0.5 shadow-xs rounded-full">
+              <Repeat2 size={10} className="text-[var(--color-misa-red)]" /> Tap
             </div>
           </div>
 
-          <div className="absolute right-0 bottom-0 left-0 p-4 bg-gradient-to-t from-white via-white to-transparent">
+          <div className="absolute right-0 bottom-0 left-0 p-2.5 sm:p-3 bg-white border-t border-[var(--color-misa-line)]/50">
             <div className="flex items-center justify-between gap-2">
-              <div className="space-y-1 min-w-0 flex-1">
-                <h3 className="font-semibold text-sm sm:text-[15px] text-[var(--color-misa-ink)] leading-snug tracking-tight line-clamp-2">
+              <div className="space-y-0.5 min-w-0 flex-1">
+                <h3 className="font-semibold text-xs sm:text-sm text-[var(--color-misa-ink)] leading-snug tracking-tight line-clamp-1">
                   {title}
                 </h3>
-                <p className="line-clamp-2 text-[11px] sm:text-xs text-neutral-600 tracking-tight line-clamp-1">
+                <p className="line-clamp-1 text-[10px] sm:text-[11px] text-neutral-500 tracking-tight">
                   {subtitle}
                 </p>
               </div>
-              <div className="w-7 h-7 rounded-full bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] flex items-center justify-center shrink-0">
-                <Repeat2 size={14} className="text-[var(--color-misa-red)]" />
+              <div className="w-6 h-6 rounded-full bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] flex items-center justify-center shrink-0">
+                <Repeat2 size={12} className="text-[var(--color-misa-red)]" />
               </div>
             </div>
           </div>

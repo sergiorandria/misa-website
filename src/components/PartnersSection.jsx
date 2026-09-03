@@ -106,14 +106,14 @@ export default function PartnersSection() {
                     <motion.div
                       key={partner.name}
                       variants={childFadeUpVariants}
-                      className="academic-card bg-white border border-[var(--color-misa-line)] p-4 sm:p-5 flex flex-col justify-between hover:border-[var(--color-misa-ink)] transition duration-200 group"
+                      className="academic-card bg-white border border-[var(--color-misa-line)] p-3 sm:p-4 flex flex-col justify-between hover:border-[var(--color-misa-ink)] transition duration-200 group"
                     >
-                      {/* Logo Container */}
-                      <div className="h-16 flex items-center justify-center p-2 bg-white border border-neutral-100 mb-3 sm:mb-4 group-hover:bg-neutral-50/30 group-hover:border-[var(--color-misa-red)] transition duration-300">
+                      {/* Logo Container — reduced */}
+                      <div className="h-12 sm:h-14 flex items-center justify-center p-1.5 bg-white border border-neutral-100 mb-2 sm:mb-3 group-hover:bg-neutral-50/30 group-hover:border-[var(--color-misa-red)] transition duration-300">
                         <img
                           src={asset(partner.logo)}
                           alt={`${partner.name} logo`}
-                          className="max-h-12 w-auto max-w-full object-contain opacity-90 group-hover:opacity-100 group-hover:scale-105 transition duration-300"
+                          className="max-h-8 sm:max-h-10 w-auto max-w-full object-contain opacity-90 group-hover:opacity-100 group-hover:scale-105 transition duration-300"
                           loading="lazy"
                         />
                       </div>

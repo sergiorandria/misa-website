@@ -307,7 +307,7 @@ export default function Home() {
               </h2>
               <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
               <p className="mt-6 text-sm leading-[1.7] text-neutral-700">
-                Paroles d&apos;anciens — valeurs de la MISA : intégrité, initiative, audace, rigueur, persévérance et travail d&apos;équipe.
+                Paroles d&apos;anciens — valeurs de la MISA : initiative, rigueur, persévérance et travail d&apos;équipe.
               </p>
               <p className="mt-3 text-sm leading-[1.7] text-neutral-600 italic">« MISA un jour, MISA toujours ! »</p>
               <p className="mt-6 text-xs leading-relaxed text-neutral-500 lg:hidden">
