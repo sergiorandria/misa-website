@@ -63,7 +63,11 @@ jobs:
             echo "→ verify /mit/"
             grep -q 'href="/mit/' dist/index.html
             grep -q 'RewriteBase /mit/' dist/.htaccess
-            echo "→ copy to DocumentRoot (~/ == /var/www/html/mit)"
-            rsync -av --delete --exclude='misa-website' dist/ ../
-            echo "✓ deployed to /var/www/html/mit"
+            echo "→ copy to DocumentRoot (/var/www/html/mit) — keep .nvm"
+            # FIX: do not delete .nvm (npm lives there) — exclude hidden dirs and misa-website
+            rsync -av --delete --exclude='misa-website' --exclude='.nvm' --exclude='.fnm' --exclude='.cache' --exclude='.npm' --exclude='.config' dist/ /var/www/html/mit/
+            # Also keep rsync to ~/ for backward compat if ~/ == /var/www/html/mit (some servers symlink)
+            rsync -av --delete --exclude='misa-website' --exclude='.nvm' --exclude='.fnm' --exclude='.cache' --exclude='.npm' --exclude='.config' dist/ ../ 2>/dev/null || true
+            echo "✓ deployed to /var/www/html/mit (and ~/ if same)"
+            ls -la /var/www/html/mit/ | head -20
             ls -la ../ | head -20
