@@ -6,14 +6,12 @@ export default function Arborescence() {
   const [modalOpen, setModalOpen] = useState(false);
   const imageViewportRef = useRef(null);
   const scrollAnimationRef = useRef(null);
-
-  useEffect(() => {
-    return () => cancelAnimationFrame(scrollAnimationRef.current);
-  }, []);
+  const imageCenteredRef = useRef(false);
+  const imageScrollStartedRef = useRef(false);
 
   function startImageScroll() {
     const viewport = imageViewportRef.current;
-    if (!viewport || viewport.scrollHeight <= viewport.clientHeight) return;
+    if (!imageScrollStartedRef.current || !viewport || viewport.scrollHeight <= viewport.clientHeight) return;
 
     cancelAnimationFrame(scrollAnimationRef.current);
     const startScrollTop = viewport.scrollTop;
@@ -33,6 +31,40 @@ export default function Arborescence() {
 
     scrollAnimationRef.current = requestAnimationFrame(animateScroll);
   }
+
+  function initializeImageScroll() {
+    const viewport = imageViewportRef.current;
+    if (!imageCenteredRef.current || imageScrollStartedRef.current || !viewport || viewport.scrollHeight <= viewport.clientHeight) return;
+
+    imageScrollStartedRef.current = true;
+    viewport.scrollTop = viewport.scrollHeight - viewport.clientHeight;
+    startImageScroll();
+  }
+
+  function handleImageLoad() {
+    initializeImageScroll();
+  }
+
+  useEffect(() => {
+    const viewport = imageViewportRef.current;
+    if (!viewport) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          imageCenteredRef.current = true;
+          initializeImageScroll();
+        }
+      },
+      { rootMargin: "-40% 0px -40% 0px", threshold: 0 }
+    );
+
+    observer.observe(viewport);
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(scrollAnimationRef.current);
+    };
+  }, []);
 
   function stopImageScroll() {
     cancelAnimationFrame(scrollAnimationRef.current);
@@ -198,6 +230,7 @@ export default function Arborescence() {
             <img
               src={asset('arborescence.png')}
               alt="Arborescence MIT originale"
+              onLoad={handleImageLoad}
               className="block w-full h-auto group-hover:scale-[1.01] transition duration-300"
               loading="lazy"
             />
