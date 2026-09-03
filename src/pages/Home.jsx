@@ -295,6 +295,41 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
+      {/* - CAMPUS EN IMAGES — nouveau (WhatsApp) ─ */}
+      <AnimatedSection direction="up" distance={40} className="bg-white border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">CAMPUS — INFRASTRUCTURES & VIE ÉTUDIANTE</p>
+          <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)] max-w-[640px]">
+            Découvrez notre campus en images
+          </h2>
+          <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
+          <p className="mt-5 text-sm sm:text-base leading-[1.7] text-neutral-700 max-w-[640px]">
+            Salles informatiques, amphithéâtres, bibliothèque et travaux dirigés — nos infrastructures au service de la formation.
+          </p>
+
+          <div className="mt-8 sm:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {[
+              { src: asset('images/campus/lab-informatique.jpg'), title: "Salle informatique", desc: "6 postes avec écran interactif — environnement moderne" },
+              { src: asset('images/campus/vie-etudiante-concours.jpg'), title: "Vie étudiante", desc: "Concours Ecole du Code — équipe MIT primée" },
+              { src: asset('images/campus/amphitheatre.jpg'), title: "Amphithéâtre", desc: "200 places avec prises — cours magistraux" },
+              { src: asset('images/campus/bibliotheque.jpg'), title: "Bibliothèque", desc: "Ouvrages techniques — MCSE, Windows, réseaux" },
+              { src: asset('images/campus/travaux-diriges-1.jpg'), title: "Travaux dirigés", desc: "Ateliers sur ordinateurs portables — encadrement" },
+              { src: asset('images/campus/travaux-diriges-2.jpg'), title: "Projets pratiques", desc: "Développement — code en direct, entraide" },
+            ].map(item => (
+              <div key={item.title} className="group bg-white border border-[var(--color-misa-line)] overflow-hidden hover:border-[var(--color-misa-red)]/20 hover:shadow-sm transition">
+                <div className="aspect-[4/3] overflow-hidden bg-[var(--color-misa-paper)]">
+                  <img src={item.src} alt={item.title} className="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy" />
+                </div>
+                <div className="p-3 sm:p-4">
+                  <div className="text-xs sm:text-sm font-semibold text-[var(--color-misa-ink)]">{item.title}</div>
+                  <div className="text-[11px] sm:text-xs text-neutral-600 mt-1 leading-relaxed">{item.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
+
       {/* - AVIS DES SORTANTS — Stack (React Bits) — mobile tap + hover ─ */}
       <AnimatedSection direction="up" distance={40} className="bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -307,7 +342,7 @@ export default function Home() {
               </h2>
               <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
               <p className="mt-6 text-sm leading-[1.7] text-neutral-700">
-                Paroles d&apos;anciens — valeurs de la MISA : intégrité, initiative, audace, rigueur, persévérance et travail d&apos;équipe.
+                Paroles d&apos;anciens — valeurs de la MISA : initiative, rigueur, persévérance et travail d&apos;équipe.
               </p>
               <p className="mt-3 text-sm leading-[1.7] text-neutral-600 italic">« MISA un jour, MISA toujours ! »</p>
               <p className="mt-6 text-xs leading-relaxed text-neutral-500 lg:hidden">
