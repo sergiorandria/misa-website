@@ -1,4 +1,4 @@
-name: CI - verify
+name: CI — verify + deploy
 
 on:
   push:
@@ -11,26 +11,46 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
-      - name: Install deps
-        run: npm ci
-
-      - name: Lint (oxlint)
-        run: npm run lint
-
-      - name: Build (Vite)
-        run: npm run build
-
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: npm }
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
       - name: Verify /mit base in dist
         run: |
-          echo "Checking base /mit/ in dist/index.html"
-          grep -q 'href="/mit/' dist/index.html || (echo "Missing /mit/ base in index.html" && exit 1)
-          grep -q 'src="/mit/assets/' dist/index.html || (echo "Missing /mit/assets/ in index.html" && exit 1)
-          test -f dist/.htaccess && grep -q "RewriteBase /mit/" dist/.htaccess || (echo "Missing .htaccess RewriteBase" && exit 1)
+          grep -q 'href="/mit/' dist/index.html || (echo "Missing /mit/ base" && exit 1)
+          grep -q 'src="/mit/assets/' dist/index.html || (echo "Missing /mit/assets/" && exit 1)
+          test -f dist/.htaccess && grep -q "RewriteBase /mit/" dist/.htaccess || (echo "Missing .htaccess" && exit 1)
           echo "✓ /mit/ hosting verified"
+
+  deploy:
+    needs: build-and-lint
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy on server (your 4 commands, no sudo)
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            set -e
+            cd ~/misa-website
+            echo "→ git fetch"
+            git fetch origin
+            git reset --hard origin/main
+            echo "→ npm install"
+            npm ci
+            echo "→ npm run build"
+            npm run build
+            echo "→ verify /mit/"
+            grep -q 'href="/mit/' dist/index.html
+            grep -q 'RewriteBase /mit/' dist/.htaccess
+            echo "→ copy to DocumentRoot (~/ == /var/www/html/mit)"
+            # cp -r dist/* .. misses .htaccess, use rsync to include dotfiles and delete stale files
+            # exclude misa-website so we don't copy the repo into itself / delete it
+            rsync -av --delete --exclude='misa-website' dist/ ../
+            echo "✓ deployed to /var/www/html/mit"
+            ls -la ../ | head -20
