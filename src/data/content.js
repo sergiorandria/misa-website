@@ -176,12 +176,12 @@ export const temoignages = [
     promo: "Promo 2023, MISA",
   },
   {
-    quote: "Mes études à la MISA ont été l'une des meilleures expériences de ma vie. J'y ai énormément appris, tant sur le plan technique que humain, et développé persévérance, esprit d'initiative, travail d'équipe et rigueur. Ce qui m'a le plus marqué, c'est la cohésion entre promotions - entraide, partage d'expériences et bienveillance. Grâce au soutien de mes aînés, j'ai pu mieux envisager la suite de mon parcours. Au-delà d'une formation, la MISA a été une véritable école de la vie.",
-    author: "R. Andy Astier (suite)",
+    quote: "Mes études à la MISA ont été l’une des meilleures expériences de ma vie. J’y ai énormément appris, tant sur le plan technique que sur le plan humain. Au-delà des connaissances et des compétences acquises, cette formation m’a surtout permis de développer des valeurs qui me servent encore aujourd’hui : la persévérance, l’esprit d’initiative, le travail d’équipe et la rigueur. Mais ce qui m’a le plus marqué durant mon parcours à la MISA, c’est sans aucun doute la cohésion qui existe entre les différentes promotions. L’entraide, le partage d’expériences et la bienveillance entre étudiants créent un environnement particulièrement enrichissant. J’ai également eu la chance de bénéficier du soutien et des opportunités que certains de mes aînés m’ont offerts. Ces rencontres et ces encouragements ont joué un rôle important dans mon parcours et m’ont permis de mieux envisager la suite de mon aventure professionnelle. Au-delà d’une formation académique, la MISA a donc été pour moi une véritable école de la vie, qui m’a permis de grandir, d’évoluer et de construire des bases solides pour la suite.",
+    author: "RAMANANJANAHARY Andy Astier",
     promo: "Promo 2023, MISA",
   },
   {
-    quote: "La MISA, pour moi, c'est ce qui m'a formé à être résilient. Elle façonne la manière de penser, de raisonner, et force à toujours se surpasser. Aujourd'hui Product Owner dans une entreprise éditrice de logiciels, les valeurs de la MISA - initiative, rigueur, persévérance et travail d'équipe - m'ont permis d'être là où je suis. Bien plus qu'un parcours, la MISA est une famille, là où j'ai rencontré les meilleurs des meilleurs dans le domaine de l'IT moderne.",
+    quote: "La MISA, pour moi, c'est ce qui m'a formé à être résilient. Elle façonne la manière de penser, de raisonner, et force à toujours se surpasser. Maintenant, j'occupe le poste de Product Owner (PO) dans une entreprise éditrice de logiciels. Les compétences et surtout les valeurs engrangées à la MISA, telles que l'initiative, la rigueur, la persévérance et le travail d'équipe, m'ont permis d'être là où je suis actuellement. Bien plus qu'un parcours, la MISA est pour moi une famille, là où j'ai rencontré les meilleurs des meilleurs dans le domaine de l'IT moderne.",
     author: "Rajosiarisaona Iantsa Sarobidy",
     promo: "Promo 2022, MISA",
   },

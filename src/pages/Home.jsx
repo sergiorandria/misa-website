@@ -154,7 +154,6 @@ export default function Home() {
           <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)] max-w-[520px]">
             Une formation centrée sur l'étudiant
           </h2>
-          <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
           <p className="mt-5 sm:mt-6 text-sm sm:text-base leading-[1.7] text-neutral-700 max-w-[640px]">
             Cours magistraux, travaux dirigés, ateliers, simulations et projets de groupe. Les étudiants sont encouragés à prendre en charge leur apprentissage et à développer leur autonomie. Stages en entreprise chaque année pour ancrer la théorie dans la pratique.
           </p>
@@ -299,7 +298,7 @@ export default function Home() {
       {/* - CAMPUS EN IMAGES — AccordionGallery (React Bits) ─ */}
       <AnimatedSection direction="up" distance={40} className="bg-white border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">CAMPUS — INFRASTRUCTURES & VIE ÉTUDIANTE</p>
+          <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">CAMPUS — INFRASTRUCTURES & COMPÉTITIONS INTERNATIONAUX</p>
           <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)] max-w-[640px]">
             Découvrez notre campus en images
           </h2>
@@ -313,8 +312,8 @@ export default function Home() {
               <AccordionGallery
                 items={[
                   { image: asset('images/campus/lab-informatique.jpg'), label: 'Salle informatique', alt: 'Salle informatique — 6 postes' },
-                  { image: asset('images/campus/vie-etudiante-concours.jpg'), label: 'Vie étudiante', alt: 'Concours Ecole du Code' },
-                  { image: asset('images/campus/amphitheatre.jpg'), label: 'Amphithéâtre', alt: 'Amphithéâtre 200 places' },
+                  { image: asset('images/campus/vie-etudiante-concours.jpg'), label: 'Compétitions internationaux', alt: 'Compétitions internationaux — Orange digital center' },
+                  { image: asset('images/campus/amphitheatre.jpg'), label: 'Amphithéâtre', alt: 'Amphithéâtre 100 places' },
                   { image: asset('images/campus/bibliotheque.jpg'), label: 'Bibliothèque', alt: 'Bibliothèque ouvrages techniques' },
                   { image: asset('images/campus/travaux-diriges-1.jpg'), label: 'Travaux dirigés', alt: 'Ateliers sur ordinateurs portables' },
                   { image: asset('images/campus/travaux-diriges-2.jpg'), label: 'Projets pratiques', alt: 'Projets pratiques code en direct' },
