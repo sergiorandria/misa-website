@@ -356,9 +356,7 @@ export default function Home() {
               <p className="hidden lg:block mt-2 text-xs leading-relaxed text-neutral-500">
                 Survolez ou cliquez sur une carte pour découvrir le témoignage.
               </p>
-              <p className="mt-3 text-[11px] text-neutral-400">Extraits de « temoignages_anciens(1).txt » — textes intégraux conservés.</p>
             </div>
-
             {/* Right — Stack (lazy) */}
             <Suspense fallback={<div className="w-full max-w-[300px] xs:max-w-[340px] sm:max-w-[420px] md:max-w-[460px] h-[380px] sm:h-[360px] mx-auto lg:mx-0 bg-white border border-[var(--color-misa-line)] animate-pulse" />}>
               <div className="flex-1 w-full flex justify-center lg:justify-end min-w-0">
