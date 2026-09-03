@@ -33,14 +33,14 @@ export default function AdmissionMasterInt() {
           </section>
           <section className="academic-card border border-[var(--color-misa-line)] bg-white">
             <SectionTitle>Étapes de l’admission</SectionTitle>
-            <List items={etapes} numbered />
+            {/* <List items={etapes} numbered /> */}
+            <p className="m-5 text-sm leading-relaxed">Veuillez rester connecté. Les dossiers à fournir seront prochainement communiqués.</p>
           </section>
           <section className="academic-card border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-5 sm:p-8">
             <div className="text-xs tracking-widest text-neutral-500">APRÈS ADMISSION - INSCRIPTION EN M1</div>
             <p className="mt-2 text-sm leading-relaxed">L’inscription comprend l’inscription administrative en ligne, le paiement des frais de scolarité, puis l’inscription pédagogique selon le parcours retenu.</p>
           </section>
         </div>
-
         <aside className="space-y-6">
           <div className="academic-card border border-[var(--color-misa-line)] p-5 sm:p-6">
             <div className="text-[11px] tracking-[0.18em] font-bold text-[var(--color-misa-ink)] uppercase">PARCOURS D’ADMISSION</div>
@@ -48,14 +48,6 @@ export default function AdmissionMasterInt() {
               <Link to="/admission/licence" className="block border-l-2 border-transparent pl-3 hover:border-[var(--color-misa-red)]">Licence - L1 IT</Link>
               <Link to="/admission/master-int" className="block border-l-2 border-[var(--color-misa-red)] pl-3 font-semibold">Master - M1 INT</Link>
             </div>
-          </div>
-          <div className="academic-card border border-[var(--color-misa-line)] p-5 sm:p-6 bg-[var(--color-misa-paper)]">
-            <div className="text-[11px] tracking-[0.18em] font-bold text-neutral-500 uppercase">CONTACT SCOLARITÉ</div>
-            <ul className="mt-3 text-sm leading-relaxed space-y-1">
-              <li>BP 906 Ankatso - Faculté des Sciences</li>
-              <li>(+261) 34 53 140 38</li>
-              <li>mit-univ-tana@gmail.com</li>
-            </ul>
           </div>
           <Link to="/admission/licence" className="group block border border-[var(--color-misa-red)] p-5 text-sm font-bold text-[var(--color-misa-red)] hover:bg-[var(--color-misa-red)] hover:text-white transition">Admission en Licence <ArrowRight size={15} className="inline ml-1 group-hover:translate-x-1 transition-transform" aria-hidden="true" /></Link>
         </aside>
