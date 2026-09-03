@@ -102,18 +102,31 @@ export default function PartnersSection() {
                   variants={staggerContainerVariants}
                   className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4"
                 >
-                  {cat.partners.map((partner) => (
+                  {cat.partners.map((partner) => {
+                    const isEtech = partner.name === "Etech";
+                    const isBMOI = partner.name === "BMOI";
+                    return (
                     <motion.div
                       key={partner.name}
                       variants={childFadeUpVariants}
                       className="academic-card bg-white border border-[var(--color-misa-line)] p-3 sm:p-4 flex flex-col justify-between hover:border-[var(--color-misa-ink)] transition duration-200 group"
                     >
-                      {/* Logo Container */}
-                      <div className="h-20 sm:h-24 flex items-center justify-center p-2.5 sm:p-3 bg-white border border-neutral-100 mb-3 sm:mb-4 group-hover:bg-neutral-50/30 group-hover:border-[var(--color-misa-red)] transition duration-300">
+                      {/* Logo Container — Etech white on white → dark bg + invert */}
+                      <div className={`flex items-center justify-center p-1.5 border mb-2 sm:mb-3 transition duration-300 ${
+                        isEtech
+                          ? "h-12 sm:h-14 bg-[var(--color-misa-ink)] border-[var(--color-misa-ink)] group-hover:bg-black"
+                          : "h-12 sm:h-14 bg-white border-neutral-100 group-hover:bg-neutral-50/30 group-hover:border-[var(--color-misa-red)]"
+                      }`}>
                         <img
                           src={asset(partner.logo)}
                           alt={`${partner.name} logo`}
-                          className="max-h-14 sm:max-h-16 w-auto max-w-[90%] object-contain opacity-90 group-hover:opacity-100 group-hover:scale-105 transition duration-300"
+                          className={`w-auto object-contain opacity-90 group-hover:opacity-100 group-hover:scale-105 transition duration-300 ${
+                            isBMOI
+                              ? "max-h-6 sm:max-h-7 max-w-[110px] sm:max-w-[130px]"
+                              : isEtech
+                                ? "max-h-7 sm:max-h-8 max-w-[120px] sm:max-w-[140px] brightness-0 invert"
+                                : "max-h-8 sm:max-h-10 max-w-full"
+                          }`}
                           loading="lazy"
                         />
                       </div>
@@ -134,7 +147,8 @@ export default function PartnersSection() {
                         </div>
                       </div>
                     </motion.div>
-                  ))}
+                  );
+                  })}
                 </motion.div>
 
               </div>
