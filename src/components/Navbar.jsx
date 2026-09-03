@@ -315,13 +315,25 @@ export default function Navbar() {
 
               {/* Accordion for Admission */}
               <div>
-                <button
-                  onClick={() => setMobileAdmissionOpen(!mobileAdmissionOpen)}
-                  className="w-full flex items-center justify-between h-[48px] px-3 font-semibold text-sm text-neutral-800 hover:bg-[var(--color-misa-paper)] transition cursor-pointer"
-                >
-                  <span>ADMISSION</span>
-                  <ChevronDown size={16} className={`text-neutral-500 transition-transform duration-200 ${mobileAdmissionOpen ? "rotate-180" : ""}`} />
-                </button>
+                <div className="flex items-center">
+                  <NavLink
+                    to="/admission"
+                    onClick={() => setOpen(false)}
+                    className={({ isActive }) => `flex-1 flex items-center gap-2 h-[48px] px-3 font-semibold text-sm transition ${isActive ? "bg-[var(--color-misa-paper)] text-[var(--color-misa-red)]" : "text-neutral-800 hover:bg-[var(--color-misa-paper)]"}`}
+                  >
+                    <Award size={16} className="text-[var(--color-misa-red)]" />
+                    ADMISSION
+                  </NavLink>
+                  <button
+                    type="button"
+                    aria-label="Ouvrir le menu Admission"
+                    aria-expanded={mobileAdmissionOpen}
+                    onClick={() => setMobileAdmissionOpen(!mobileAdmissionOpen)}
+                    className="flex items-center justify-center h-[48px] w-[48px] text-neutral-500 hover:bg-[var(--color-misa-paper)] transition cursor-pointer"
+                  >
+                    <ChevronDown size={16} className={`text-neutral-500 transition-transform duration-200 ${mobileAdmissionOpen ? "rotate-180" : ""}`} />
+                  </button>
+                </div>
 
                 {mobileAdmissionOpen && (
                   <div className="ml-3 pl-3 border-l-2 border-[var(--color-misa-line)] space-y-1 my-1">
