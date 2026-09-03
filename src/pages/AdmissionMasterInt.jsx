@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ClipboardList, ArrowRight } from "lucide-react";
+import AnimatedSection from "../components/ui/AnimatedSection";
 
 const candidatExterne = [
   "Le parcours INT est ouvert aux candidats titulaires d’une Licence obtenue dans un établissement public",
@@ -15,16 +16,16 @@ const etapes = [
 export default function AdmissionMasterInt() {
   return (
     <div className="bg-white">
-      <div className="border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
+      <AnimatedSection direction="fade" duration={0.5} className="border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
           <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">ADMISSION - MASTER</p>
           <h1 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">Admission en M1 - Innovation et Technologie</h1>
           <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
           <p className="mt-4 sm:mt-5 max-w-[720px] text-sm sm:text-base leading-[1.7] text-neutral-700 font-medium">Le parcours INT accueille les étudiants issus de la Licence, y compris les candidats externes titulaires d’une Licence obtenue dans un établissement public.</p>
         </div>
-      </div>
+      </AnimatedSection>
 
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 grid lg:grid-cols-[1fr_320px] gap-10 lg:gap-16 items-start">
+      <AnimatedSection direction="up" distance={30} className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 grid lg:grid-cols-[1fr_320px] gap-10 lg:gap-16 items-start">
         <div className="space-y-8 sm:space-y-10">
           <section className="academic-card border border-[var(--color-misa-line)] bg-white">
             <SectionTitle>Conditions d’accès</SectionTitle>
@@ -58,7 +59,7 @@ export default function AdmissionMasterInt() {
           </div>
           <Link to="/admission/licence" className="group block border border-[var(--color-misa-red)] p-5 text-sm font-bold text-[var(--color-misa-red)] hover:bg-[var(--color-misa-red)] hover:text-white transition">Admission en Licence <ArrowRight size={15} className="inline ml-1 group-hover:translate-x-1 transition-transform" aria-hidden="true" /></Link>
         </aside>
-      </div>
+      </AnimatedSection>
     </div>
   );
 }

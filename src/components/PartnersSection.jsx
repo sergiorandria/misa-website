@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { motion } from "motion/react";
 import { partnerCategories } from "../data/partners";
 import { asset } from "../lib/assets";
 import { GraduationCap, Building2, FlaskConical, Globe2 } from "lucide-react";
+import AnimatedSection, { childFadeUpVariants, staggerContainerVariants } from "./ui/AnimatedSection";
 
 export default function PartnersSection() {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -24,7 +26,7 @@ export default function PartnersSection() {
       : partnerCategories.filter((c) => c.id === activeCategory);
 
   return (
-    <section className="bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24">
+    <AnimatedSection direction="up" distance={30} className="bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -93,10 +95,17 @@ export default function PartnersSection() {
                 </div>
 
                 {/* Grid of Partner Logo Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.1 }}
+                  variants={staggerContainerVariants}
+                  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4"
+                >
                   {cat.partners.map((partner) => (
-                    <div
+                    <motion.div
                       key={partner.name}
+                      variants={childFadeUpVariants}
                       className="academic-card bg-white border border-[var(--color-misa-line)] p-4 sm:p-5 flex flex-col justify-between hover:border-[var(--color-misa-ink)] transition duration-200 group"
                     >
                       {/* Logo Container */}
@@ -124,9 +133,9 @@ export default function PartnersSection() {
                           </span>
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
-                </div>
+                </motion.div>
 
               </div>
             );
@@ -139,6 +148,6 @@ export default function PartnersSection() {
         </div>
 
       </div>
-    </section>
+    </AnimatedSection>
   );
 }

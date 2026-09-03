@@ -1,13 +1,15 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { introductionParcours, licenceParcours } from "../data/content";
 import { BookOpen, Target, User } from "lucide-react";
+import AnimatedSection, { childFadeUpVariants, staggerContainerVariants } from "../components/ui/AnimatedSection";
 
 export default function Licence() {
   return (
     <div className="bg-white">
 
       {/* - BANNER - paper band ---------------------- */}
-      <div className="border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
+      <AnimatedSection direction="fade" duration={0.5} className="border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
           <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">FORMATION - LICENCE</p>
           <h1 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">
@@ -21,14 +23,14 @@ export default function Licence() {
             Deux parcours : Informatique et Technologie (L1, L2) et MISA (L3).
           </p>
         </div>
-      </div>
+      </AnimatedSection>
 
       {/* - CONTENT - white band ---------------------─ */}
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 space-y-8 sm:space-y-12">
+      <AnimatedSection direction="up" distance={30} className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 space-y-8 sm:space-y-12">
         {licenceParcours.map((p) => (
           <ParcoursCard key={p.title} p={p} />
         ))}
-      </div>
+      </AnimatedSection>
 
     </div>
   );
@@ -81,23 +83,32 @@ function ParcoursCard({ p }) {
             </span>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
-            {uesGroups.map((group, idx) => (
-              <div key={idx} className="border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-4">
-                <div className="text-[10px] font-bold tracking-wider text-[var(--color-misa-ink)] uppercase border-b border-[var(--color-misa-line)] pb-2 mb-3">
-                  Groupe {idx + 1}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeLevel}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
+              className="grid sm:grid-cols-2 gap-3 sm:gap-4"
+            >
+              {uesGroups.map((group, idx) => (
+                <div key={idx} className="border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-4">
+                  <div className="text-[10px] font-bold tracking-wider text-[var(--color-misa-ink)] uppercase border-b border-[var(--color-misa-line)] pb-2 mb-3">
+                    Groupe {idx + 1}
+                  </div>
+                  <ul className="space-y-2">
+                    {group.map((item) => (
+                      <li key={item} className="text-xs sm:text-sm text-neutral-700 flex items-start gap-2 leading-snug">
+                        <span className="text-[var(--color-misa-red)] font-bold shrink-0 mt-0.5">-</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="space-y-2">
-                  {group.map((item) => (
-                    <li key={item} className="text-xs sm:text-sm text-neutral-700 flex items-start gap-2 leading-snug">
-                      <span className="text-[var(--color-misa-red)] font-bold shrink-0 mt-0.5">-</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Right: Objectif & Responsable */}

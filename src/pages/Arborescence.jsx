@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { ZoomIn, X, Download, FileText } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 import { asset } from "../lib/assets";
+import AnimatedSection, { childFadeUpVariants, staggerContainerVariants } from "../components/ui/AnimatedSection";
 
 export default function Arborescence() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -73,7 +75,7 @@ export default function Arborescence() {
   return (
     <div className="bg-white">
       {/* Banner */}
-      <div className="border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
+      <AnimatedSection direction="fade" duration={0.5} className="border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
           <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">FORMATION - ARBORESCENCE</p>
           <h1 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">
@@ -88,9 +90,9 @@ export default function Arborescence() {
             <span>Consultez également le schéma original du parcours en bas de page.</span>
           </p>
         </div>
-      </div>
+      </AnimatedSection>
 
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
+      <AnimatedSection direction="up" distance={30} className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
         {/* Stanford-style Academic Progression Pathway */}
         <div className="border border-[var(--color-misa-line)] bg-white shadow-xs">
           
@@ -236,48 +238,56 @@ export default function Arborescence() {
             />
           </div>
         </div>
-      </div>
+      </AnimatedSection>
 
       {/* Lightbox / Zoom Modal */}
-      {modalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/95 p-4 sm:p-6 flex flex-col justify-between backdrop-blur-md animate-in fade-in duration-200">
-          <div className="flex items-center justify-between text-white border-b border-white/20 pb-3">
-            <span className="text-xs sm:text-sm font-bold tracking-wider uppercase">
-              Schéma Officiel LMD - MIT (3508 × 4961 px)
-            </span>
-            
-            <div className="flex items-center gap-2">
-              <a
-                href={asset('arborescence.png')}
-                download="MIT_Arborescence_LMD.png"
-                className="min-h-[40px] px-4 bg-white/10 hover:bg-white/20 text-white text-xs font-bold tracking-wide uppercase flex items-center gap-2 transition border border-white/20"
-              >
-                <Download size={15} />
-                <span className="hidden sm:inline">Télécharger</span>
-              </a>
-              <button
-                onClick={() => setModalOpen(false)}
-                className="min-h-[40px] min-w-[40px] flex items-center justify-center bg-white/20 hover:bg-white/30 text-white transition cursor-pointer"
-                aria-label="Fermer"
-              >
-                <X size={20} />
-              </button>
+      <AnimatePresence>
+        {modalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 bg-black/95 p-4 sm:p-6 flex flex-col justify-between backdrop-blur-md"
+          >
+            <div className="flex items-center justify-between text-white border-b border-white/20 pb-3">
+              <span className="text-xs sm:text-sm font-bold tracking-wider uppercase">
+                Schéma Officiel LMD - MIT (3508 × 4961 px)
+              </span>
+              
+              <div className="flex items-center gap-2">
+                <a
+                  href={asset('arborescence.png')}
+                  download="MIT_Arborescence_LMD.png"
+                  className="min-h-[40px] px-4 bg-white/10 hover:bg-white/20 text-white text-xs font-bold tracking-wide uppercase flex items-center gap-2 transition border border-white/20"
+                >
+                  <Download size={15} />
+                  <span className="hidden sm:inline">Télécharger</span>
+                </a>
+                <button
+                  onClick={() => setModalOpen(false)}
+                  className="min-h-[40px] min-w-[40px] flex items-center justify-center bg-white/20 hover:bg-white/30 text-white transition cursor-pointer"
+                  aria-label="Fermer"
+                >
+                  <X size={20} />
+                </button>
+              </div>
             </div>
-          </div>
 
-          <div className="flex-1 overflow-auto py-4 flex items-center justify-center">
-            <img
-              src={asset('arborescence.png')}
-              alt="Arborescence MIT officielle plein écran"
-              className="max-w-none w-auto max-h-none sm:max-w-full sm:max-h-full object-contain mx-auto"
-            />
-          </div>
+            <div className="flex-1 overflow-auto py-4 flex items-center justify-center">
+              <img
+                src={asset('arborescence.png')}
+                alt="Arborescence MIT officielle plein écran"
+                className="max-w-none w-auto max-h-none sm:max-w-full sm:max-h-full object-contain mx-auto"
+              />
+            </div>
 
-          <div className="text-center text-xs text-white/70 pt-2 border-t border-white/20">
-            Utilisez le pincement de doigts ou le défilement pour vous déplacer sur l'image.
-          </div>
-        </div>
-      )}
+            <div className="text-center text-xs text-white/70 pt-2 border-t border-white/20">
+              Utilisez le pincement de doigts ou le défilement pour vous déplacer sur l'image.
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { ClipboardList, ArrowRight } from "lucide-react";
+import AnimatedSection, { childFadeUpVariants, staggerContainerVariants } from "../components/ui/AnimatedSection";
+import { motion } from "motion/react";
 
 const candidature = [
   "Baccalauréat série C, S, ou Baccalauréat français série S (spécialité mathématiques)",
@@ -51,15 +53,15 @@ export default function AdmissionLicence() {
 function AdmissionPage({ eyebrow, title, intro, next, nextTo, children }) {
   return (
     <div className="bg-white">
-      <div className="border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
+      <AnimatedSection direction="fade" duration={0.5} className="border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
           <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">{eyebrow}</p>
           <h1 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">{title}</h1>
           <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
           <p className="mt-4 sm:mt-5 max-w-[720px] text-sm sm:text-base leading-[1.7] text-neutral-700 font-medium">{intro}</p>
         </div>
-      </div>
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 grid lg:grid-cols-[1fr_320px] gap-10 lg:gap-16 items-start">
+      </AnimatedSection>
+      <AnimatedSection direction="up" distance={30} className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 grid lg:grid-cols-[1fr_320px] gap-10 lg:gap-16 items-start">
         <div className="space-y-8 sm:space-y-10">{children}</div>
         <aside className="space-y-6">
           <div className="academic-card border border-[var(--color-misa-line)] p-5 sm:p-6">
@@ -79,7 +81,7 @@ function AdmissionPage({ eyebrow, title, intro, next, nextTo, children }) {
           </div>
           <Link to={nextTo} className="group block border border-[var(--color-misa-red)] p-5 text-sm font-bold text-[var(--color-misa-red)] hover:bg-[var(--color-misa-red)] hover:text-white transition">{next} <ArrowRight size={15} className="inline ml-1 group-hover:translate-x-1 transition-transform" aria-hidden="true" /></Link>
         </aside>
-      </div>
+      </AnimatedSection>
     </div>
   );
 }
