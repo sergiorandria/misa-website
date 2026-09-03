@@ -108,12 +108,12 @@ export default function PartnersSection() {
                       variants={childFadeUpVariants}
                       className="academic-card bg-white border border-[var(--color-misa-line)] p-3 sm:p-4 flex flex-col justify-between hover:border-[var(--color-misa-ink)] transition duration-200 group"
                     >
-                      {/* Logo Container — reduced */}
-                      <div className="h-12 sm:h-14 flex items-center justify-center p-1.5 bg-white border border-neutral-100 mb-2 sm:mb-3 group-hover:bg-neutral-50/30 group-hover:border-[var(--color-misa-red)] transition duration-300">
+                      {/* Logo Container */}
+                      <div className="h-20 sm:h-24 flex items-center justify-center p-2.5 sm:p-3 bg-white border border-neutral-100 mb-3 sm:mb-4 group-hover:bg-neutral-50/30 group-hover:border-[var(--color-misa-red)] transition duration-300">
                         <img
                           src={asset(partner.logo)}
                           alt={`${partner.name} logo`}
-                          className="max-h-8 sm:max-h-10 w-auto max-w-full object-contain opacity-90 group-hover:opacity-100 group-hover:scale-105 transition duration-300"
+                          className="max-h-14 sm:max-h-16 w-auto max-w-[90%] object-contain opacity-90 group-hover:opacity-100 group-hover:scale-105 transition duration-300"
                           loading="lazy"
                         />
                       </div>

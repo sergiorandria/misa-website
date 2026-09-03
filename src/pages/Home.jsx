@@ -31,13 +31,6 @@ export default function Home() {
               variants={staggerContainerVariants}
               className="py-12 sm:py-16 lg:py-24 pr-0 lg:pr-16 flex flex-col justify-center"
             >
-              <motion.div
-                variants={childFadeUpVariants}
-                className="inline-flex items-center gap-2 text-[11px] tracking-[0.18em] text-[var(--color-misa-red)] font-bold uppercase border-l-3 border-[var(--color-misa-red)] bg-[var(--color-misa-paper)] px-3 py-1.5 self-start"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-misa-red)] animate-pulse" />
-                <span>PRÉ-INSCRIPTION - SÉLECTION SUR DOSSIER</span>
-              </motion.div>
 
               <motion.h1
                 variants={childFadeUpVariants}
@@ -48,7 +41,9 @@ export default function Home() {
                 </span>
                 <span className="block">Informatique</span>
                 <span className="block">et Technologie</span>
-                <span className="block text-[var(--color-misa-red)]">(MIT)</span>
+                <span className="block mt-5 max-w-full text-sm sm:text-base lg:text-lg leading-relaxed tracking-normal font-semibold text-[var(--color-misa-red)]">
+                  Initiative - Rigueur - Persévérance - Travail d&apos;équipe
+                </span>
               </motion.h1>
 
               <motion.div variants={childFadeUpVariants} className="mt-6 h-px w-16 bg-[var(--color-misa-red)]" />
@@ -346,8 +341,8 @@ export default function Home() {
                 Avis des sortants
               </h2>
               <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
-              <p className="mt-6 text-sm leading-[1.7] text-neutral-700">
-                Paroles d&apos;anciens — valeurs de la MISA : initiative, rigueur, persévérance et travail d&apos;équipe.
+              <p className="mt-4 text-sm leading-[1.7] text-neutral-700">
+                Des paroles d&apos;anciens qui témoignent de l&apos;esprit MISA.
               </p>
               <p className="mt-3 text-sm leading-[1.7] text-neutral-600 italic">« MISA un jour, MISA toujours ! »</p>
               <p className="mt-6 text-xs leading-relaxed text-neutral-500 lg:hidden">
@@ -356,9 +351,7 @@ export default function Home() {
               <p className="hidden lg:block mt-2 text-xs leading-relaxed text-neutral-500">
                 Survolez ou cliquez sur une carte pour découvrir le témoignage.
               </p>
-              <p className="mt-3 text-[11px] text-neutral-400">Extraits de « temoignages_anciens(1).txt » — textes intégraux conservés.</p>
             </div>
-
             {/* Right — Stack (lazy) */}
             <Suspense fallback={<div className="w-full max-w-[300px] xs:max-w-[340px] sm:max-w-[420px] md:max-w-[460px] h-[380px] sm:h-[360px] mx-auto lg:mx-0 bg-white border border-[var(--color-misa-line)] animate-pulse" />}>
               <div className="flex-1 w-full flex justify-center lg:justify-end min-w-0">

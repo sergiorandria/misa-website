@@ -38,7 +38,7 @@ export default function Licence() {
 
 function ParcoursCard({ p }) {
   const [activeLevel, setActiveLevel] = useState(p.levels[0]);
-  const uesGroups = p.ues[activeLevel] || [];
+  const uesSemesters = p.ues[activeLevel] || [];
 
   return (
     <div className="academic-card border border-[var(--color-misa-line)] bg-white">
@@ -79,7 +79,7 @@ function ParcoursCard({ p }) {
               <span>UNITÉS D'ENSEIGNEMENT - {activeLevel}</span>
             </div>
             <span className="text-[10px] font-mono tracking-widest text-neutral-500 bg-[var(--color-misa-paper)] px-2 py-0.5 border border-[var(--color-misa-line)] uppercase">
-              {uesGroups.length} groupes
+              {uesSemesters.length} semestres
             </span>
           </div>
 
@@ -92,13 +92,13 @@ function ParcoursCard({ p }) {
               transition={{ duration: 0.25 }}
               className="grid sm:grid-cols-2 gap-3 sm:gap-4"
             >
-              {uesGroups.map((group, idx) => (
+              {uesSemesters.map((semester, idx) => (
                 <div key={idx} className="border border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-4">
                   <div className="text-[10px] font-bold tracking-wider text-[var(--color-misa-ink)] uppercase border-b border-[var(--color-misa-line)] pb-2 mb-3">
-                    Groupe {idx + 1}
+                    Semestre {idx + 1}
                   </div>
                   <ul className="space-y-2">
-                    {group.map((item) => (
+                    {semester.map((item) => (
                       <li key={item} className="text-xs sm:text-sm text-neutral-700 flex items-start gap-2 leading-snug">
                         <span className="text-[var(--color-misa-red)] font-bold shrink-0 mt-0.5">-</span>
                         <span>{item}</span>

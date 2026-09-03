@@ -146,7 +146,7 @@ export const admission = {
   m1: {
     intro: "L'accès au Master diffère selon le parcours :",
     misa: "Parcours MISA valorise la continuité - s'adresse aux étudiants ayant construit leur formation depuis la L1 au sein de l'établissement.",
-    int: "Parcours INT s'ouvre également à de nouveaux talents venant d'autres facultés, sous réserve d'être titulaire d'une Licence scientifique obtenue dans un établissement public.",
+    int: "Parcours INT s'ouvre également à de nouveaux talents venant d'autres facultés, sous réserve d'être titulaire d'une Licence scientifique ou d'une Licence en informatique obtenue dans un établissement public.",
     etapesExternes: [
       "Dépôt du dossier de candidature en ligne (CV + lettre de motivation précisant le parcours souhaité)",
       "Étude du dossier, pouvant être suivie d'un entretien",

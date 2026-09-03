@@ -201,6 +201,7 @@ const AccordionGallery = ({
             style={{ borderRadius: `${radius}px` }}
             href={item.link || undefined}
             onClick={(e) => handleClick(i, e)}
+            onTouchStart={() => setActive(i)}
             onMouseEnter={() => handleEnter(i)}
             onFocus={() => setActive(i)}
             onKeyDown={(e) => handleKeyDown(i, e)}

@@ -17,7 +17,7 @@ const accessPaths = [
   {
     to: "/admission/master-int",
     title: "Admission en Master (M1 - INT)",
-    description: "Le parcours INT est ouvert aux titulaires d’une Licence d’un autre établissement public.",
+    description: "Le parcours INT est réservé aux titulaires d’une Licence scientifique ou d’une Licence en informatique obtenue dans un établissement public.",
     icon: GraduationCap,
   },
 ];

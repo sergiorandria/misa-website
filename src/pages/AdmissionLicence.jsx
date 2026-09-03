@@ -5,7 +5,6 @@ import { motion } from "motion/react";
 
 const candidature = [
   "Baccalauréat série C, S, ou Baccalauréat français série S (spécialité mathématiques)",
-  "Les bacheliers d’une session antérieure doivent signer un engagement de non-perception de bourse d’étude",
 ];
 
 const dossier = [
@@ -30,7 +29,9 @@ export default function AdmissionLicence() {
       </section>
       <section className="academic-card border border-[var(--color-misa-line)] bg-white">
         <SectionTitle>Pièces à fournir pour la candidature</SectionTitle>
-        <List items={dossier} numbered />
+        {/* <List items={dossier} numbered /> */}
+        <p className="m-5 text-sm leading-relaxed">Veuillez rester connecté. Les dossiers à fournir seront prochainement communiqués par la Faculté des Sciences.</p>
+
       </section>
       <section className="academic-card border border-[var(--color-misa-line)] bg-white">
         <SectionTitle>Étapes de l’admission</SectionTitle>
@@ -70,14 +71,6 @@ function AdmissionPage({ eyebrow, title, intro, next, nextTo, children }) {
               <Link to="/admission/licence" className="block border-l-2 border-[var(--color-misa-red)] pl-3 font-semibold">Licence - L1 IT</Link>
               <Link to="/admission/master-int" className="block border-l-2 border-transparent pl-3 hover:border-[var(--color-misa-red)]">Master - M1 INT</Link>
             </div>
-          </div>
-          <div className="academic-card border border-[var(--color-misa-line)] p-5 sm:p-6 bg-[var(--color-misa-paper)]">
-            <div className="text-[11px] tracking-[0.18em] font-bold text-neutral-500 uppercase">CONTACT SCOLARITÉ</div>
-            <ul className="mt-3 text-sm leading-relaxed space-y-1">
-              <li>BP 906 Ankatso - Faculté des Sciences</li>
-              <li>(+261) 34 53 140 38</li>
-              <li>mit-univ-tana@gmail.com</li>
-            </ul>
           </div>
           <Link to={nextTo} className="group block border border-[var(--color-misa-red)] p-5 text-sm font-bold text-[var(--color-misa-red)] hover:bg-[var(--color-misa-red)] hover:text-white transition">{next} <ArrowRight size={15} className="inline ml-1 group-hover:translate-x-1 transition-transform" aria-hidden="true" /></Link>
         </aside>
