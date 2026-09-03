@@ -45,7 +45,7 @@ export const stats = [
 ];
 
 export const introductionParcours =
-  "Notre établissement propose un cursus complet en informatique, structuré en cinq années : deux années de tronc commun en Licence (L1 et L2), une année de spécialisation (L3), puis deux années de Master (M1 et M2) au choix entre deux parcours complémentaires.";
+  "Notre établissement propose un cursus complet en informatique, structuré en cinq années : deux années de tronc commun en Licence (L1 et L2), une année de spécialisation (L3), puis deux années de Master (M1 et M2) entre deux parcours complémentaires.";
 
 export const licenceParcours = [
   {
@@ -146,7 +146,7 @@ export const admission = {
   m1: {
     intro: "L'accès au Master diffère selon le parcours :",
     misa: "Parcours MISA valorise la continuité - s'adresse aux étudiants ayant construit leur formation depuis la L1 au sein de l'établissement.",
-    int: "Parcours INT s'ouvre également à de nouveaux talents venant d'autres facultés, sous réserve d'être titulaire d'une Licence obtenue dans un établissement public.",
+    int: "Parcours INT s'ouvre également à de nouveaux talents venant d'autres facultés, sous réserve d'être titulaire d'une Licence scientifique obtenue dans un établissement public.",
     etapesExternes: [
       "Dépôt du dossier de candidature en ligne (CV + lettre de motivation précisant le parcours souhaité)",
       "Étude du dossier, pouvant être suivie d'un entretien",
@@ -171,11 +171,6 @@ export const temoignages = [
     promo: "Promo 2024, MISA",
   },
   {
-    quote: "À la MISA on nous enseigne les bases et c'est nous même qui allons développer et approfondir nos connaissances, contrairement aux autres écoles où on nous donne tout et on applique juste, et surtout le réseau des alumnis est puissant. L'intégration nous forgeait persévérance et travail d'équipe, ce qui nous poussait à réussir tous ensemble.",
-    author: "RAMANANJANAHARY Andy Astier",
-    promo: "Promo 2023, MISA",
-  },
-  {
     quote: "Mes études à la MISA ont été l’une des meilleures expériences de ma vie. J’y ai énormément appris, tant sur le plan technique que sur le plan humain. Au-delà des connaissances et des compétences acquises, cette formation m’a surtout permis de développer des valeurs qui me servent encore aujourd’hui : la persévérance, l’esprit d’initiative, le travail d’équipe et la rigueur. Mais ce qui m’a le plus marqué durant mon parcours à la MISA, c’est sans aucun doute la cohésion qui existe entre les différentes promotions. L’entraide, le partage d’expériences et la bienveillance entre étudiants créent un environnement particulièrement enrichissant. J’ai également eu la chance de bénéficier du soutien et des opportunités que certains de mes aînés m’ont offerts. Ces rencontres et ces encouragements ont joué un rôle important dans mon parcours et m’ont permis de mieux envisager la suite de mon aventure professionnelle. Au-delà d’une formation académique, la MISA a donc été pour moi une véritable école de la vie, qui m’a permis de grandir, d’évoluer et de construire des bases solides pour la suite.",
     author: "RAMANANJANAHARY Andy Astier",
     promo: "Promo 2023, MISA",
@@ -185,6 +180,11 @@ export const temoignages = [
     author: "Rajosiarisaona Iantsa Sarobidy",
     promo: "Promo 2022, MISA",
   },
+  { 
+    quote: "J'ai choisi la MISA car c'était une école de renom où il y avait déjà des geeks à l'époque. Pour moi la différence entre MISA et les autres, c'est que à la MISA on nous enseigne les bases et c'est nous même qui allons developper et approfondir nos connaissances, contrairement aux autres écoles où on nous donne tout et on applique juste, et surtout le réseau des alumnis est puissant. À l'époque, on avait l'intégration donc ceci nous forgeait à avoir la mentalité de la persévérance, et le travail d'equipe ce-qui nous poussait à reussir tous ensemble . Sans cette intégration, je pense qu'on n'aurait pas pu avoir cette ambiance dans le groupe",
+    author: "Lucka Harena - MISA", 
+    promo: "Promo 2022, MISA"
+  }
 ];
 
 export const contact = {
