@@ -100,11 +100,11 @@ export default function PartnersSection() {
                       className="academic-card bg-white border border-[var(--color-misa-line)] p-4 sm:p-5 flex flex-col justify-between hover:border-[var(--color-misa-ink)] transition duration-200 group"
                     >
                       {/* Logo Container */}
-                      <div className="h-16 flex items-center justify-center p-2 bg-neutral-50/50 border border-neutral-100 mb-3 sm:mb-4 group-hover:bg-white transition">
+                      <div className="h-16 flex items-center justify-center p-2 bg-white border border-neutral-100 mb-3 sm:mb-4 group-hover:bg-neutral-50/30 group-hover:border-[var(--color-misa-red)] transition duration-300">
                         <img
                           src={asset(partner.logo)}
                           alt={`${partner.name} logo`}
-                          className="max-h-12 w-auto max-w-full object-contain grayscale opacity-85 group-hover:grayscale-0 group-hover:opacity-100 transition duration-300"
+                          className="max-h-12 w-auto max-w-full object-contain opacity-90 group-hover:opacity-100 group-hover:scale-105 transition duration-300"
                           loading="lazy"
                         />
                       </div>
