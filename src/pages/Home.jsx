@@ -12,7 +12,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white overflow-hidden">
+    <div className="bg-white overflow-x-hidden">
 
       {/* - HERO - full-width split: text left | campus photo right ---- */}
       <section className="relative overflow-hidden border-b border-[var(--color-misa-line)]">
@@ -36,7 +36,7 @@ export default function Home() {
 
               <motion.h1
                 variants={childFadeUpVariants}
-                className="mt-6 text-[30px] sm:text-[40px] lg:text-[52px] leading-[1.08] sm:leading-[1.05] tracking-tight font-light text-[var(--color-misa-ink)]"
+                className="mt-6 text-[24px] xs:text-[28px] sm:text-[36px] lg:text-[48px] xl:text-[52px] leading-[1.1] sm:leading-[1.05] tracking-tight font-light text-[var(--color-misa-ink)]"
               >
                 <span className="block text-[11px] sm:text-[12px] tracking-[0.22em] font-sans font-bold text-[var(--color-misa-red)] uppercase mb-2">
                   Mention Informatique et Technologie
@@ -54,12 +54,12 @@ export default function Home() {
               </motion.p>
 
               {/* CTAs — Particle Buttons */}
-              <motion.div variants={childFadeUpVariants} className="mt-8 flex flex-col sm:flex-row gap-3">
+              <motion.div variants={childFadeUpVariants} className="mt-8 flex flex-col xs:flex-row gap-3 w-full">
                 <ParticleButton
                   variant="primary"
                   successDuration={900}
                   onSuccess={() => setTimeout(() => navigate("/admission"), 250)}
-                  className="flex-1 sm:flex-none min-w-[200px]"
+                  className="w-full xs:w-auto xs:flex-1 sm:flex-none sm:min-w-[200px] justify-center"
                 >
                   Conditions d&apos;admission
                 </ParticleButton>
@@ -67,7 +67,7 @@ export default function Home() {
                   variant="outline"
                   successDuration={900}
                   onSuccess={() => setTimeout(() => navigate("/formation/licence"), 250)}
-                  className="flex-1 sm:flex-none min-w-[180px]"
+                  className="w-full xs:w-auto xs:flex-1 sm:flex-none sm:min-w-[180px] justify-center"
                 >
                   Voir la formation
                 </ParticleButton>
@@ -76,7 +76,7 @@ export default function Home() {
               {/* Key metrics */}
               <motion.div
                 variants={childFadeUpVariants}
-                className="mt-10 sm:mt-12 grid grid-cols-3 gap-4 sm:gap-6 max-w-[480px] border-t border-[var(--color-misa-line)] pt-6 sm:pt-8"
+                className="mt-10 sm:mt-12 grid grid-cols-3 gap-2 xs:gap-4 sm:gap-6 max-w-[480px] border-t border-[var(--color-misa-line)] pt-6 sm:pt-8"
               >
                 <div className="border-l-2 border-[var(--color-misa-red)] pl-3">
                   <div className="text-base sm:text-lg font-bold text-[var(--color-misa-ink)]">1996</div>
@@ -163,7 +163,7 @@ export default function Home() {
                 transition: { staggerChildren: 0.08, delayChildren: 0.1 }
               }
             }}
-            className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[var(--color-misa-line)] border border-[var(--color-misa-line)]"
+            className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
           >
             {[
               {
@@ -208,7 +208,7 @@ export default function Home() {
                 <motion.div
                   key={item.title}
                   variants={childFadeUpVariants}
-                  className="academic-card bg-white p-5 sm:p-8 hover:border-[var(--color-misa-ink)] transition-all duration-200 flex flex-col"
+                  className="academic-card bg-white border border-[var(--color-misa-line)] p-5 sm:p-8 hover:border-[var(--color-misa-ink)] transition-all duration-200 flex flex-col"
                 >
                   <div className="p-2 bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] text-[var(--color-misa-red)] w-fit">
                     <Icon size={18} />
@@ -328,9 +328,9 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Right — Stack */}
-            <div className="flex-1 w-full flex justify-center lg:justify-end">
-              <div className="w-[300px] xs:w-[340px] sm:w-[420px] md:w-[460px] h-[380px] sm:h-[360px]">
+            {/* Right — Stack (responsive) */}
+            <div className="flex-1 w-full flex justify-center lg:justify-end min-w-0">
+              <div className="w-full max-w-[300px] xs:max-w-[340px] sm:max-w-[420px] md:max-w-[460px] h-[380px] sm:h-[360px] mx-auto lg:mx-0">
                 <Stack
                   randomRotation={true}
                   sensitivity={180}
