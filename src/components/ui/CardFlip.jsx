@@ -75,9 +75,6 @@ function CardFlipInner({
                 </div>
               </div>
             ) : null}
-            {/* Subtle top→bottom transparency gradient (light, not too much) */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/90" />
-            <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 42%, rgba(255,255,255,0.55) 68%, rgba(255,255,255,0.96) 84%, white 100%)" }} />
             <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 flex items-center gap-1 text-[9px] tracking-widest uppercase text-neutral-500 font-medium sm:hidden bg-white/90 border border-[var(--color-misa-line)] px-1.5 py-0.5 shadow-xs rounded-full">
               <Repeat2 size={10} className="text-[var(--color-misa-red)]" /> Tap
             </div>

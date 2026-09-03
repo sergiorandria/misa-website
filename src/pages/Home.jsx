@@ -129,8 +129,8 @@ export default function Home() {
       <AnimatedSection as="div" direction="fade" duration={0.5} className="border-b border-[var(--color-misa-line)] bg-white">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3 sm:gap-4">
-            <div className="p-1.5 border border-[var(--color-misa-line)] shrink-0">
-              <img src={asset('logo-mit.png')} alt="MIT logo" className="h-8 sm:h-9 w-auto object-contain" />
+            <div className="p-1 border border-[var(--color-misa-line)] shrink-0">
+              <img src={asset('logo-mit.png')} alt="MIT logo" className="h-6 sm:h-7 w-auto object-contain" />
             </div>
             <div>
               <div className="text-[11px] sm:text-xs font-bold tracking-[0.14em] text-[var(--color-misa-red)] uppercase">MIT - UNIVERSITÉ D'ANTANANARIVO</div>
