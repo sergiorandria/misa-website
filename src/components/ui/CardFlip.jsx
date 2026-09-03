@@ -10,6 +10,7 @@ function CardFlipInner({
   description = "Dive deep into the world of modern UI/UX design.",
   features = ["UI/UX", "Modern Design", "Tailwind CSS", "Kokonut UI"],
   icon: Icon,
+  image,
 }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -23,7 +24,7 @@ function CardFlipInner({
 
   return (
     <div
-      className="group relative w-full max-w-[260px] sm:max-w-[280px] h-[300px] sm:h-[320px] mx-auto [perspective:2000px] will-change-transform"
+      className="group relative w-full max-w-[280px] sm:max-w-[300px] h-[320px] sm:h-[340px] mx-auto [perspective:2000px] will-change-transform"
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
       onClick={handleFlip}
@@ -54,38 +55,30 @@ function CardFlipInner({
             "group-hover:shadow-md"
           )}
         >
-          <div className="relative h-full overflow-hidden bg-gradient-to-b from-[var(--color-misa-paper)] to-white">
-            <div aria-hidden="true" className="absolute inset-0 flex items-start justify-center pt-14 sm:pt-16">
-              <div className="relative flex h-[80px] w-[160px] items-center justify-center">
-                {[...Array(6)].map((_, i) => (
-                  <div
-                    className={cn(
-                      "absolute h-[40px] w-[40px]",
-                      "rounded-full",
-                      "animate-[scale_3s_linear_infinite]",
-                      "motion-reduce:animate-none",
-                      "opacity-0",
-                      "shadow-[0_0_30px_rgba(175,35,35,0.14)]",
-                      "border border-[var(--color-misa-red)]/10",
-                      "group-hover:animate-[scale_2s_linear_infinite]"
-                    )}
-                    key={i}
-                    style={{ animationDelay: `${i * 0.35}s` }}
-                  />
-                ))}
-                {Icon && (
+          <div className="relative h-full overflow-hidden bg-white">
+            {/* Image — from /Pictures/Image, covers top 60% */}
+            {image ? (
+              <img
+                src={image}
+                alt={title}
+                className="absolute inset-0 w-full h-[58%] object-cover"
+                loading="lazy"
+              />
+            ) : Icon ? (
+              <div aria-hidden="true" className="absolute inset-0 flex items-start justify-center pt-14 sm:pt-16">
+                <div className="relative flex h-[80px] w-[160px] items-center justify-center">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="relative">
-                      <div className="absolute inset-0 rounded-full bg-[var(--color-misa-red)]/10 blur-[6px]" />
-                      <div className="relative w-12 h-12 rounded-full bg-white border border-[var(--color-misa-line)] shadow-sm flex items-center justify-center text-[var(--color-misa-red)] group-hover:border-[var(--color-misa-red)]/30 group-hover:shadow-md transition-all duration-300">
-                        <Icon size={22} strokeWidth={1.7} />
-                      </div>
+                    <div className="w-12 h-12 rounded-full bg-white border border-[var(--color-misa-line)] shadow-sm flex items-center justify-center text-[var(--color-misa-red)]">
+                      <Icon size={22} strokeWidth={1.7} />
                     </div>
                   </div>
-                )}
+                </div>
               </div>
-            </div>
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1 text-[10px] tracking-widest uppercase text-neutral-400 font-medium sm:hidden bg-white/90 border border-[var(--color-misa-line)] px-2 py-1 shadow-xs">
+            ) : null}
+            {/* Subtle transparency gradient top → bottom (not too much) */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/95 via-white/10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-transparent to-white pointer-events-none" style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 45%, rgba(255,255,255,0.92) 78%, white 100%)" }} />
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1 text-[10px] tracking-widest uppercase text-neutral-500 font-medium sm:hidden bg-white/90 border border-[var(--color-misa-line)] px-2 py-1 shadow-xs">
               <Repeat2 size={12} className="text-[var(--color-misa-red)]" /> Tap
             </div>
           </div>

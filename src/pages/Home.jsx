@@ -165,42 +165,42 @@ export default function Home() {
                   title: "Data Science",
                   subtitle: "Exploiter les données",
                   desc: "Analyser et exploiter les données massives pour l'aide à la décision — Python, SQL, PyTorch, Big Data.",
-                  icon: Cpu,
+                  image: asset('images/pedagogy/data-science.jpg'),
                   features: ["Python", "SQL", "PyTorch", "Big Data"],
                 },
                 {
                   title: "Expert en cybersécurité",
                   subtitle: "Protéger les systèmes",
                   desc: "Protéger les systèmes et infrastructures critiques — Pentesting, OWASP, Cryptographie, Linux.",
-                  icon: ShieldCheck,
+                  image: asset('images/pedagogy/cybersecurity.jpg'),
                   features: ["Pentesting", "OWASP", "Cryptographie", "Linux"],
                 },
                 {
                   title: "Expert en IA",
                   subtitle: "Systèmes intelligents",
                   desc: "Concevoir et déployer des systèmes intelligents — Machine Learning, Deep Learning, Scikit-learn, NLP.",
-                  icon: Sparkles,
+                  image: asset('images/pedagogy/ai.jpg'),
                   features: ["Machine Learning", "Deep Learning", "Scikit-learn", "NLP"],
                 },
                 {
                   title: "Designer",
                   subtitle: "Interfaces intuitives",
                   desc: "Concevoir des interfaces intuitives et esthétiques — UI/UX, Figma, HTML/CSS, Accessibilité.",
-                  icon: Globe,
+                  image: asset('images/pedagogy/design.jpg'),
                   features: ["UI/UX", "Figma", "HTML/CSS", "Accessibilité"],
                 },
                 {
                   title: "Lead developer",
                   subtitle: "Piloter les équipes",
                   desc: "Diriger les équipes techniques et produire du logiciel robuste — Architecture Cloud, CI/CD, Design Patterns, Git.",
-                  icon: Code2,
+                  image: asset('images/pedagogy/lead-dev.jpg'),
                   features: ["Architecture Cloud", "CI/CD", "Design Patterns", "Git"],
                 },
                 {
                   title: "Administrateur Système & Réseaux",
                   subtitle: "Infrastructures cloud",
                   desc: "Gérer les infrastructures et l'environnement cloud — Linux, Docker, TCP/IP, Virtualisation.",
-                  icon: Users,
+                  image: asset('images/pedagogy/system-reseau.jpg'),
                   features: ["Linux", "Docker", "TCP/IP", "Virtualisation"],
                 },
               ].map(item => (
@@ -210,7 +210,7 @@ export default function Home() {
                   subtitle={item.subtitle}
                   description={item.desc}
                   features={item.features}
-                  icon={item.icon}
+                  image={item.image}
                 />
               ))}
             </div>
