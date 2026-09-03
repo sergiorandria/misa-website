@@ -58,9 +58,10 @@ jobs:
             echo "→ verify /mit/"
             grep -q 'href="/mit/' dist/index.html
             grep -q 'RewriteBase /mit/' dist/.htaccess
-            echo "→ copy to DocumentRoot — keep .nvm"
-            rsync -av --delete --exclude='misa-website' --exclude='.nvm' --exclude='.fnm' --exclude='.cache' --exclude='.npm' dist/ /var/www/html/mit/
-            rsync -av --delete --exclude='misa-website' --exclude='.nvm' --exclude='.fnm' --exclude='.cache' --exclude='.npm' dist/ ../ 2>/dev/null || true
-            echo "✓ deployed to /var/www/html/mit"
+            echo "→ copy to DocumentRoot — keep all dotfiles in ~"
+            rsync -av --delete --exclude='misa-website' --exclude='.nvm' --exclude='.fnm' --exclude='.cache' --exclude='.npm' --exclude='.config' --exclude='.ssh' dist/ /var/www/html/mit/
+            rsync -av --delete --exclude='misa-website' --exclude='.*' dist/ ../ 2>/dev/null || true
+            echo "✓ deployed to /var/www/html/mit (and ~/ if same) — kept all .*"
             ls -la /var/www/html/mit/ | head -20
             ls -la ../ | head -20
+            ls -la ~/.ssh 2>&1 | head -5; ls -la ~/.nvm 2>&1 | head -5
