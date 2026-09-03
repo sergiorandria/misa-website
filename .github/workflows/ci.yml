@@ -38,9 +38,13 @@ jobs:
           script: |
             set -e
             cd ~/misa-website
-            echo "→ git fetch"
+            echo "→ git fetch (with token to avoid 'could not read Username')"
+            # Use GITHUB_TOKEN for https fetch — fixes "could not read Username for https://github.com" in non-interactive shell
+            git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/sergiorandria/misa-website.git
             git fetch origin
             git reset --hard origin/main
+            # Restore original https URL without token (keep repo clean)
+            git remote set-url origin https://github.com/sergiorandria/misa-website.git
             echo "→ npm install"
             npm ci
             echo "→ npm run build"
