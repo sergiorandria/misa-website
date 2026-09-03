@@ -35,12 +35,27 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
+          # Debug handshake failures
+          debug: true
+          sync: true
           script: |
             set -e
             cd ~/misa-website
-            echo "→ git fetch"
+            echo "→ git fetch (with token to avoid 'could not read Username')"
+            git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/sergiorandria/misa-website.git
             git fetch origin
             git reset --hard origin/main
+            git remote set-url origin https://github.com/sergiorandria/misa-website.git
+            echo "→ nvm setup (load node for npm)"
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            export PATH="$HOME/.local/share/fnm:$PATH" 2>/dev/null || true
+            export PATH="$HOME/.nvm/versions/node/v20.20.2/bin:$PATH" 2>/dev/null || true
+            export PATH="/opt/node/bin:$PATH" 2>/dev/null || true
+            which node || echo "node not found"
+            which npm || echo "npm not found"
+            node -v || true
+            npm -v || true
             echo "→ npm install"
             npm ci
             echo "→ npm run build"
@@ -49,8 +64,6 @@ jobs:
             grep -q 'href="/mit/' dist/index.html
             grep -q 'RewriteBase /mit/' dist/.htaccess
             echo "→ copy to DocumentRoot (~/ == /var/www/html/mit)"
-            # cp -r dist/* .. misses .htaccess, use rsync to include dotfiles and delete stale files
-            # exclude misa-website so we don't copy the repo into itself / delete it
             rsync -av --delete --exclude='misa-website' dist/ ../
             echo "✓ deployed to /var/www/html/mit"
             ls -la ../ | head -20
