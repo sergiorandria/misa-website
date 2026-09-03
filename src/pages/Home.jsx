@@ -11,6 +11,7 @@ const Stack = lazy(() => import("../components/Stack"));
 const CardFlip = lazy(() => import("../components/ui/CardFlip"));
 const ParticleButton = lazy(() => import("../components/ui/ParticleButton"));
 const PartnersSection = lazy(() => import("../components/PartnersSection"));
+const AccordionGallery = lazy(() => import("../components/AccordionGallery"));
 
 export default function Home() {
   const navigate = useNavigate();
@@ -295,7 +296,7 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      {/* - CAMPUS EN IMAGES — nouveau (WhatsApp) ─ */}
+      {/* - CAMPUS EN IMAGES — AccordionGallery (React Bits) ─ */}
       <AnimatedSection direction="up" distance={40} className="bg-white border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">CAMPUS — INFRASTRUCTURES & VIE ÉTUDIANTE</p>
@@ -304,29 +305,34 @@ export default function Home() {
           </h2>
           <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
           <p className="mt-5 text-sm sm:text-base leading-[1.7] text-neutral-700 max-w-[640px]">
-            Salles informatiques, amphithéâtres, bibliothèque et travaux dirigés — nos infrastructures au service de la formation.
+            Salles informatiques, amphithéâtres, bibliothèque et travaux dirigés — nos infrastructures au service de la formation. Survolez ou cliquez sur un panneau.
           </p>
 
-          <div className="mt-8 sm:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {[
-              { src: asset('images/campus/lab-informatique.jpg'), title: "Salle informatique", desc: "6 postes avec écran interactif — environnement moderne" },
-              { src: asset('images/campus/vie-etudiante-concours.jpg'), title: "Vie étudiante", desc: "Concours Ecole du Code — équipe MIT primée" },
-              { src: asset('images/campus/amphitheatre.jpg'), title: "Amphithéâtre", desc: "200 places avec prises — cours magistraux" },
-              { src: asset('images/campus/bibliotheque.jpg'), title: "Bibliothèque", desc: "Ouvrages techniques — MCSE, Windows, réseaux" },
-              { src: asset('images/campus/travaux-diriges-1.jpg'), title: "Travaux dirigés", desc: "Ateliers sur ordinateurs portables — encadrement" },
-              { src: asset('images/campus/travaux-diriges-2.jpg'), title: "Projets pratiques", desc: "Développement — code en direct, entraide" },
-            ].map(item => (
-              <div key={item.title} className="group bg-white border border-[var(--color-misa-line)] overflow-hidden hover:border-[var(--color-misa-red)]/20 hover:shadow-sm transition">
-                <div className="aspect-[4/3] overflow-hidden bg-[var(--color-misa-paper)]">
-                  <img src={item.src} alt={item.title} className="w-full h-full object-cover group-hover:scale-[1.02] transition duration-500" loading="lazy" />
-                </div>
-                <div className="p-3 sm:p-4">
-                  <div className="text-xs sm:text-sm font-semibold text-[var(--color-misa-ink)]">{item.title}</div>
-                  <div className="text-[11px] sm:text-xs text-neutral-600 mt-1 leading-relaxed">{item.desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <Suspense fallback={<div className="mt-8 h-[420px] sm:h-[460px] bg-white border border-[var(--color-misa-line)] animate-pulse" />}>
+            <div className="mt-8 sm:mt-10">
+              <AccordionGallery
+                items={[
+                  { image: asset('images/campus/lab-informatique.jpg'), label: 'Salle informatique', alt: 'Salle informatique — 6 postes' },
+                  { image: asset('images/campus/vie-etudiante-concours.jpg'), label: 'Vie étudiante', alt: 'Concours Ecole du Code' },
+                  { image: asset('images/campus/amphitheatre.jpg'), label: 'Amphithéâtre', alt: 'Amphithéâtre 200 places' },
+                  { image: asset('images/campus/bibliotheque.jpg'), label: 'Bibliothèque', alt: 'Bibliothèque ouvrages techniques' },
+                  { image: asset('images/campus/travaux-diriges-1.jpg'), label: 'Travaux dirigés', alt: 'Ateliers sur ordinateurs portables' },
+                  { image: asset('images/campus/travaux-diriges-2.jpg'), label: 'Projets pratiques', alt: 'Projets pratiques code en direct' },
+                ]}
+                defaultIndex={2}
+                height={460}
+                gap={10}
+                radius={16}
+                expandRatio={0.52}
+                accentColor="#af2323"
+                overlayColor="#464444"
+                textColor="#ffffff"
+                grayscale={true}
+                showLabels={true}
+                trigger="hover"
+              />
+            </div>
+          </Suspense>
         </div>
       </AnimatedSection>
 
