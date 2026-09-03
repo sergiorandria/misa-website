@@ -45,6 +45,17 @@ jobs:
             git reset --hard origin/main
             # Restore original https URL without token (keep repo clean)
             git remote set-url origin https://github.com/sergiorandria/misa-website.git
+            echo "→ nvm setup (load node for npm)"
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            # Fallbacks: fnm, common nvm paths, /opt/node
+            export PATH="$HOME/.local/share/fnm:$PATH" 2>/dev/null || true
+            export PATH="$HOME/.nvm/versions/node/v20.20.2/bin:$PATH" 2>/dev/null || true
+            export PATH="/opt/node/bin:$PATH" 2>/dev/null || true
+            which node || echo "node not found"
+            which npm || echo "npm not found"
+            node -v || true
+            npm -v || true
             echo "→ npm install"
             npm ci
             echo "→ npm run build"
