@@ -1,13 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, CheckCircle2, ShieldCheck, Cpu, Code2, Users, Globe, BookMarked, Sparkles, Award, Quote } from "lucide-react";
 import { motion } from "motion/react";
+import { lazy, Suspense, useMemo } from "react";
 import { asset } from "../lib/assets";
 import { temoignages } from "../data/content";
-import Stack from "../components/Stack";
-import ParticleButton from "../components/ui/ParticleButton";
-import CardFlip from "../components/ui/CardFlip";
-import PartnersSection from "../components/PartnersSection";
 import AnimatedSection, { childFadeUpVariants, staggerContainerVariants } from "../components/ui/AnimatedSection";
+
+// Lazy heavy interactive components for code-splitting
+const Stack = lazy(() => import("../components/Stack"));
+const CardFlip = lazy(() => import("../components/ui/CardFlip"));
+const ParticleButton = lazy(() => import("../components/ui/ParticleButton"));
+const PartnersSection = lazy(() => import("../components/PartnersSection"));
 
 export default function Home() {
   const navigate = useNavigate();
@@ -54,25 +57,27 @@ export default function Home() {
                 Immergez-vous dans la Science, la technologie, l'ingénierie et les Mathématiques en intégrant la MIT - mention du Domaine des Sciences et Technologies de l'Université d'Antananarivo.
               </motion.p>
 
-              {/* CTAs — Particle Buttons */}
-              <motion.div variants={childFadeUpVariants} className="mt-8 flex flex-col xs:flex-row gap-3 w-full">
-                <ParticleButton
-                  variant="primary"
-                  successDuration={900}
-                  onSuccess={() => setTimeout(() => navigate("/admission"), 250)}
-                  className="w-full xs:w-auto xs:flex-1 sm:flex-none sm:min-w-[200px] justify-center"
-                >
-                  Conditions d&apos;admission
-                </ParticleButton>
-                <ParticleButton
-                  variant="outline"
-                  successDuration={900}
-                  onSuccess={() => setTimeout(() => navigate("/formation/licence"), 250)}
-                  className="w-full xs:w-auto xs:flex-1 sm:flex-none sm:min-w-[180px] justify-center"
-                >
-                  Voir la formation
-                </ParticleButton>
-              </motion.div>
+              {/* CTAs — Particle Buttons (lazy) */}
+              <Suspense fallback={<div className="mt-8 flex flex-col xs:flex-row gap-3 w-full"><div className="h-[48px] flex-1 bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] animate-pulse" /><div className="h-[48px] flex-1 bg-white border border-[var(--color-misa-line)] animate-pulse" /></div>}>
+                <motion.div variants={childFadeUpVariants} className="mt-8 flex flex-col xs:flex-row gap-3 w-full">
+                  <ParticleButton
+                    variant="primary"
+                    successDuration={900}
+                    onSuccess={() => setTimeout(() => navigate("/admission"), 250)}
+                    className="w-full xs:w-auto xs:flex-1 sm:flex-none sm:min-w-[200px] justify-center"
+                  >
+                    Conditions d&apos;admission
+                  </ParticleButton>
+                  <ParticleButton
+                    variant="outline"
+                    successDuration={900}
+                    onSuccess={() => setTimeout(() => navigate("/formation/licence"), 250)}
+                    className="w-full xs:w-auto xs:flex-1 sm:flex-none sm:min-w-[180px] justify-center"
+                  >
+                    Voir la formation
+                  </ParticleButton>
+                </motion.div>
+              </Suspense>
 
               {/* Key metrics */}
               <motion.div
@@ -153,61 +158,63 @@ export default function Home() {
             Cours magistraux, travaux dirigés, ateliers, simulations et projets de groupe. Les étudiants sont encouragés à prendre en charge leur apprentissage et à développer leur autonomie. Stages en entreprise chaque année pour ancrer la théorie dans la pratique.
           </p>
 
-          <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 justify-items-center">
-            {[
-              {
-                title: "Data Science",
-                subtitle: "Exploiter les données",
-                desc: "Analyser et exploiter les données massives pour l'aide à la décision — Python, SQL, PyTorch, Big Data.",
-                icon: Cpu,
-                features: ["Python", "SQL", "PyTorch", "Big Data"],
-              },
-              {
-                title: "Expert en cybersécurité",
-                subtitle: "Protéger les systèmes",
-                desc: "Protéger les systèmes et infrastructures critiques — Pentesting, OWASP, Cryptographie, Linux.",
-                icon: ShieldCheck,
-                features: ["Pentesting", "OWASP", "Cryptographie", "Linux"],
-              },
-              {
-                title: "Expert en IA",
-                subtitle: "Systèmes intelligents",
-                desc: "Concevoir et déployer des systèmes intelligents — Machine Learning, Deep Learning, Scikit-learn, NLP.",
-                icon: Sparkles,
-                features: ["Machine Learning", "Deep Learning", "Scikit-learn", "NLP"],
-              },
-              {
-                title: "Designer",
-                subtitle: "Interfaces intuitives",
-                desc: "Concevoir des interfaces intuitives et esthétiques — UI/UX, Figma, HTML/CSS, Accessibilité.",
-                icon: Globe,
-                features: ["UI/UX", "Figma", "HTML/CSS", "Accessibilité"],
-              },
-              {
-                title: "Lead developer",
-                subtitle: "Piloter les équipes",
-                desc: "Diriger les équipes techniques et produire du logiciel robuste — Architecture Cloud, CI/CD, Design Patterns, Git.",
-                icon: Code2,
-                features: ["Architecture Cloud", "CI/CD", "Design Patterns", "Git"],
-              },
-              {
-                title: "Administrateur Système & Réseaux",
-                subtitle: "Infrastructures cloud",
-                desc: "Gérer les infrastructures et l'environnement cloud — Linux, Docker, TCP/IP, Virtualisation.",
-                icon: Users,
-                features: ["Linux", "Docker", "TCP/IP", "Virtualisation"],
-              },
-            ].map(item => (
-              <CardFlip
-                key={item.title}
-                title={item.title}
-                subtitle={item.subtitle}
-                description={item.desc}
-                features={item.features}
-                icon={item.icon}
-              />
-            ))}
-          </div>
+          <Suspense fallback={<div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"><div className="h-[300px] bg-white border border-[var(--color-misa-line)] animate-pulse" /><div className="h-[300px] bg-white border border-[var(--color-misa-line)] animate-pulse hidden sm:block" /><div className="h-[300px] bg-white border border-[var(--color-misa-line)] animate-pulse hidden lg:block" /></div>}>
+            <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 justify-items-center">
+              {[
+                {
+                  title: "Data Science",
+                  subtitle: "Exploiter les données",
+                  desc: "Analyser et exploiter les données massives pour l'aide à la décision — Python, SQL, PyTorch, Big Data.",
+                  icon: Cpu,
+                  features: ["Python", "SQL", "PyTorch", "Big Data"],
+                },
+                {
+                  title: "Expert en cybersécurité",
+                  subtitle: "Protéger les systèmes",
+                  desc: "Protéger les systèmes et infrastructures critiques — Pentesting, OWASP, Cryptographie, Linux.",
+                  icon: ShieldCheck,
+                  features: ["Pentesting", "OWASP", "Cryptographie", "Linux"],
+                },
+                {
+                  title: "Expert en IA",
+                  subtitle: "Systèmes intelligents",
+                  desc: "Concevoir et déployer des systèmes intelligents — Machine Learning, Deep Learning, Scikit-learn, NLP.",
+                  icon: Sparkles,
+                  features: ["Machine Learning", "Deep Learning", "Scikit-learn", "NLP"],
+                },
+                {
+                  title: "Designer",
+                  subtitle: "Interfaces intuitives",
+                  desc: "Concevoir des interfaces intuitives et esthétiques — UI/UX, Figma, HTML/CSS, Accessibilité.",
+                  icon: Globe,
+                  features: ["UI/UX", "Figma", "HTML/CSS", "Accessibilité"],
+                },
+                {
+                  title: "Lead developer",
+                  subtitle: "Piloter les équipes",
+                  desc: "Diriger les équipes techniques et produire du logiciel robuste — Architecture Cloud, CI/CD, Design Patterns, Git.",
+                  icon: Code2,
+                  features: ["Architecture Cloud", "CI/CD", "Design Patterns", "Git"],
+                },
+                {
+                  title: "Administrateur Système & Réseaux",
+                  subtitle: "Infrastructures cloud",
+                  desc: "Gérer les infrastructures et l'environnement cloud — Linux, Docker, TCP/IP, Virtualisation.",
+                  icon: Users,
+                  features: ["Linux", "Docker", "TCP/IP", "Virtualisation"],
+                },
+              ].map(item => (
+                <CardFlip
+                  key={item.title}
+                  title={item.title}
+                  subtitle={item.subtitle}
+                  description={item.desc}
+                  features={item.features}
+                  icon={item.icon}
+                />
+              ))}
+            </div>
+          </Suspense>
         </div>
       </AnimatedSection>
 
@@ -312,44 +319,48 @@ export default function Home() {
               <p className="mt-3 text-[11px] text-neutral-400">Extraits de « temoignages_anciens(1).txt » — textes intégraux conservés.</p>
             </div>
 
-            {/* Right — Stack */}
-            <div className="flex-1 w-full flex justify-center lg:justify-end min-w-0">
-              <div className="w-full max-w-[300px] xs:max-w-[340px] sm:max-w-[420px] md:max-w-[460px] h-[380px] sm:h-[360px] mx-auto lg:mx-0">
-                <Stack
-                  randomRotation={true}
-                  sensitivity={180}
-                  sendToBackOnClick={true}
-                  autoplay={true}
-                  autoplayDelay={4000}
-                  pauseOnHover={true}
-                  cards={temoignages.map((t) => (
-                    <div
-                      key={t.author}
-                      className="w-full h-full bg-white border border-[var(--color-misa-line)] border-l-4 border-l-[var(--color-misa-red)] p-6 sm:p-7 flex flex-col justify-between text-left shadow-sm"
-                    >
-                      <div className="flex-1 min-h-0 flex flex-col">
-                        <div className="w-7 h-7 flex items-center justify-center bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] text-[var(--color-misa-red)] shrink-0">
-                          <Quote size={14} />
+            {/* Right — Stack (lazy) */}
+            <Suspense fallback={<div className="w-full max-w-[300px] xs:max-w-[340px] sm:max-w-[420px] md:max-w-[460px] h-[380px] sm:h-[360px] mx-auto lg:mx-0 bg-white border border-[var(--color-misa-line)] animate-pulse" />}>
+              <div className="flex-1 w-full flex justify-center lg:justify-end min-w-0">
+                <div className="w-full max-w-[300px] xs:max-w-[340px] sm:max-w-[420px] md:max-w-[460px] h-[380px] sm:h-[360px] mx-auto lg:mx-0">
+                  <Stack
+                    randomRotation={true}
+                    sensitivity={180}
+                    sendToBackOnClick={true}
+                    autoplay={true}
+                    autoplayDelay={4000}
+                    pauseOnHover={true}
+                    cards={temoignages.map((t) => (
+                      <div
+                        key={t.author}
+                        className="w-full h-full bg-white border border-[var(--color-misa-line)] border-l-4 border-l-[var(--color-misa-red)] p-6 sm:p-7 flex flex-col justify-between text-left shadow-sm"
+                      >
+                        <div className="flex-1 min-h-0 flex flex-col">
+                          <div className="w-7 h-7 flex items-center justify-center bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] text-[var(--color-misa-red)] shrink-0">
+                            <Quote size={14} />
+                          </div>
+                          <p className="mt-4 text-xs sm:text-[13px] leading-relaxed italic text-neutral-700 overflow-y-auto pr-1">
+                            &ldquo;{t.quote}&rdquo;
+                          </p>
                         </div>
-                        <p className="mt-4 text-xs sm:text-[13px] leading-relaxed italic text-neutral-700 overflow-y-auto pr-1">
-                          &ldquo;{t.quote}&rdquo;
-                        </p>
+                        <div className="mt-4 pt-4 border-t border-[var(--color-misa-line)] text-right shrink-0">
+                          <div className="text-xs font-bold text-[var(--color-misa-red)] leading-tight">{t.author}</div>
+                          <div className="text-[11px] text-neutral-500 tracking-wide uppercase font-medium mt-0.5">{t.promo}</div>
+                        </div>
                       </div>
-                      <div className="mt-4 pt-4 border-t border-[var(--color-misa-line)] text-right shrink-0">
-                        <div className="text-xs font-bold text-[var(--color-misa-red)] leading-tight">{t.author}</div>
-                        <div className="text-[11px] text-neutral-500 tracking-wide uppercase font-medium mt-0.5">{t.promo}</div>
-                      </div>
-                    </div>
-                  ))}
-                />
+                    ))}
+                  />
+                </div>
               </div>
-            </div>
+            </Suspense>
           </div>
         </div>
       </AnimatedSection>
 
-      {/* - PARTENAIRES - Ivy League Wall of Trust ------------ */}
-      <PartnersSection />
+      {/* - PARTENAIRES - Ivy League Wall of Trust (lazy) ------------ */}
+      <Suspense fallback={<div className="bg-white border-b border-[var(--color-misa-line)] py-16"><div className="max-w-[1280px] mx-auto px-6 lg:px-8"><div className="h-32 bg-white border border-[var(--color-misa-line)] animate-pulse" /></div></div>}>
+        <PartnersSection />
+      </Suspense>
 
     </div>
   );
