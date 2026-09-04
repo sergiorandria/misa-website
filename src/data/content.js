@@ -183,7 +183,7 @@ export const temoignages = [
   { 
     quote: "J'ai choisi la MISA car c'était une école de renom où il y avait déjà des geeks à l'époque. Pour moi la différence entre MISA et les autres, c'est que à la MISA on nous enseigne les bases et c'est nous même qui allons developper et approfondir nos connaissances, contrairement aux autres écoles où on nous donne tout et on applique juste, et surtout le réseau des alumnis est puissant. À l'époque, on avait l'intégration donc ceci nous forgeait à avoir la mentalité de la persévérance, et le travail d'equipe ce-qui nous poussait à reussir tous ensemble . Sans cette intégration, je pense qu'on n'aurait pas pu avoir cette ambiance dans le groupe",
     author: "Lucka Harena - MISA", 
-    promo: "Promo 2022, MISA"
+    promo: "Promo 2023, MISA"
   }
 ];
 
