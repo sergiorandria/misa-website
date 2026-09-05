@@ -261,11 +261,6 @@ export default function PartnersSection() {
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">
             Nos partenaires
           </h2>
-
-          <p className="mt-2 text-sm text-neutral-500">
-            {allPartners.length} organisations partenaires — survolez un logo pour en savoir plus, cliquez pour visiter le site
-          </p>
-
           <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
         </div>
 
@@ -291,7 +286,6 @@ export default function PartnersSection() {
             >
               {marqueeTrack.map((partner, i) => {
                 const Icon = categoryIcons[partner.categoryId];
-                const isEtech = partner.name.toLowerCase() === "etech";
 
                 return (
                   <a
@@ -301,20 +295,14 @@ export default function PartnersSection() {
                     rel="noopener noreferrer"
                     onClick={handleLogoClick}
                     draggable={false}
-                    className="group relative shrink-0 w-[140px] h-[100px] sm:w-[168px] sm:h-[116px] bg-white border border-[var(--color-misa-line)] hover:border-[var(--color-misa-ink)] transition duration-200"
+                    className="group relative shrink-0 w-[160px] h-[115px] sm:w-[190px] sm:h-[132px] transition duration-200"
                   >
                     {/* Logo, visible par défaut */}
-                    <div
-                      className={`absolute inset-0 flex items-center justify-center p-3 sm:p-4 transition-opacity duration-200 group-hover:opacity-0 ${
-                        isEtech ? "bg-[var(--color-misa-ink)]" : "bg-white"
-                      }`}
-                    >
+                    <div className="absolute inset-0 flex items-center justify-center p-1 sm:p-2 bg-white transition-opacity duration-200 group-hover:opacity-0">
                       <img
                         src={asset(partner.logo)}
                         alt={`${partner.name} logo`}
-                        className={`max-h-full max-w-full w-auto object-contain pointer-events-none ${
-                          isEtech ? "brightness-0 invert" : ""
-                        }`}
+                        className="max-h-full max-w-full w-auto object-contain pointer-events-none"
                         loading="lazy"
                         draggable={false}
                       />
