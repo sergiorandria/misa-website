@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useTransform } from 'motion/react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import './Stack.css';
 
 function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false }) {
@@ -50,10 +50,15 @@ export default function Stack({
   autoplayDelay = 3000,
   pauseOnHover = false,
   mobileClickOnly = false,
-  mobileBreakpoint = 768
+  mobileBreakpoint = 768,
+  adaptiveHeight = false,
+  minHeight = 0,
+  maxHeight = Infinity
 }) {
   const [isMobile, setIsMobile] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const stackContainerRef = useRef(null);
+  const [measuredHeight, setMeasuredHeight] = useState(null);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -123,6 +128,25 @@ export default function Stack({
     }
   }, [cards]);
 
+  useLayoutEffect(() => {
+    if (!adaptiveHeight || !stackContainerRef.current) return undefined;
+
+    const container = stackContainerRef.current;
+    const measureCards = () => {
+      const cardHeights = [...container.querySelectorAll('.card')].map((card) => card.scrollHeight);
+      const contentHeight = Math.max(0, ...cardHeights);
+      const nextHeight = Math.min(Math.max(contentHeight, minHeight), maxHeight);
+      setMeasuredHeight(nextHeight || null);
+    };
+
+    const observer = new ResizeObserver(measureCards);
+    observer.observe(container);
+    container.querySelectorAll('.card').forEach((card) => observer.observe(card));
+    measureCards();
+
+    return () => observer.disconnect();
+  }, [adaptiveHeight, minHeight, maxHeight, stack]);
+
   const sendToBack = id => {
     setStack(prev => {
       const newStack = [...prev];
@@ -146,7 +170,9 @@ export default function Stack({
 
   return (
     <div
-      className="stack-container"
+      ref={stackContainerRef}
+      style={adaptiveHeight ? { height: measuredHeight || minHeight } : undefined}
+      className={`stack-container ${adaptiveHeight ? 'stack-container-adaptive' : ''}`}
       onMouseEnter={() => pauseOnHover && setIsPaused(true)}
       onMouseLeave={() => pauseOnHover && setIsPaused(false)}
     >

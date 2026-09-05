@@ -353,9 +353,9 @@ export default function Home() {
               </p>
             </div>
             {/* Right — Stack (lazy) */}
-            <Suspense fallback={<div className="w-full max-w-[300px] xs:max-w-[340px] sm:max-w-[420px] md:max-w-[460px] h-[380px] sm:h-[360px] mx-auto lg:mx-0 bg-white border border-[var(--color-misa-line)] animate-pulse" />}>
+            <Suspense fallback={<div className="w-full max-w-[560px] min-h-[360px] max-h-[560px] mx-auto lg:mx-0 bg-white border border-[var(--color-misa-line)] animate-pulse" />}>
               <div className="flex-1 w-full flex justify-center lg:justify-end min-w-0">
-                <div className="w-full max-w-[300px] xs:max-w-[340px] sm:max-w-[420px] md:max-w-[460px] h-[380px] sm:h-[360px] mx-auto lg:mx-0">
+                <div className="w-full max-w-[560px] min-h-[360px] max-h-[560px] mx-auto lg:mx-0">
                   <Stack
                     randomRotation={true}
                     sensitivity={180}
@@ -363,16 +363,19 @@ export default function Home() {
                     autoplay={true}
                     autoplayDelay={4000}
                     pauseOnHover={true}
+                    adaptiveHeight={true}
+                    minHeight={360}
+                    maxHeight={560}
                     cards={temoignages.map((t) => (
                       <div
                         key={t.author}
-                        className="w-full h-full bg-white border border-[var(--color-misa-line)] border-l-4 border-l-[var(--color-misa-red)] p-6 sm:p-7 flex flex-col justify-between text-left shadow-sm"
+                        className="w-full min-h-full bg-white border border-[var(--color-misa-line)] border-l-4 border-l-[var(--color-misa-red)] p-6 sm:p-7 flex flex-col justify-between text-left shadow-sm"
                       >
-                        <div className="flex-1 min-h-0 flex flex-col">
+                        <div className="flex flex-1 flex-col">
                           <div className="w-7 h-7 flex items-center justify-center bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] text-[var(--color-misa-red)] shrink-0">
                             <Quote size={14} />
                           </div>
-                          <p className="mt-4 whitespace-pre-line text-xs sm:text-[13px] leading-relaxed italic text-neutral-700 overflow-y-auto pr-1">
+                          <p className="mt-4 whitespace-pre-line text-xs sm:text-[13px] leading-relaxed italic text-neutral-700 pr-1">
                             &ldquo;{t.quote}&rdquo;
                           </p>
                         </div>
