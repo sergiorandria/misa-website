@@ -203,9 +203,6 @@ export const temoignages = [
 ];
 
 export const contact = {
-  tel: "(+261) 34 53 140 38",
-  tel2: "(+261) 38 18 515 28",
-  email: "mit-univ-tana@gmail.com",
-  email2: "administration@mit-ua.mg",
+  email: "mit@univ-antananarivo.mg",
   adresse: "Université d’Antananarivo - BP 906 Ankatso - Faculté des Sciences - Domaine Sciences et Technologies - Département MIT",
 };
