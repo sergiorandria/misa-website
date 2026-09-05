@@ -51,15 +51,15 @@ export const licenceParcours = [
   {
     tag: "Parcours",
     title: "Informatique et Technologie",
-    levels: ["L1 (S1-S2)", "L2 (S3-S4)"],
+    levels: ["L1", "L2"],
     responsable: "BERNARDIN Hagamalala Santatra",
     objectif: "Renforcer les bases en informatique et mathématiques pour des études avancées. Tronc commun L1-L2 en Informatique et Technologie (IT).",
     ues: {
-      "L1 (S1-S2)": [
+      "L1": [
         ["Mathématiques générales", "Techniques de communication", "Base de la programmation", "Prise en main Unix/Linux", "Physique"],
         ["Mathématiques appliquées à l'informatique", "Combinatoire et probabilités", "Communication audiovisuelle", "Langage C", "Linux et logiciels libres", "Électromécanique"],
       ],
-      "L2 (S3-S4)": [
+      "L2": [
         ["Fabrication numérique", "Architecture des réseaux et systèmes", "Langue et entreprenariat", "Architecture des ordinateurs"],
         ["Réseaux, systèmes et bases de données", "Programmation orientée objet", "Probabilité et statistiques", "Web et multimédia"],
       ],
@@ -67,14 +67,31 @@ export const licenceParcours = [
   },
   {
     tag: "Parcours",
-    title: "MISA - Mathématiques Informatique et Statistique Appliquées",
-    levels: ["L3 (S5-S6)"],
+    title: "MISA",
+    levels: ["L3"],
+    specializations: {
+      "Système d'information": [
+        "Analyse et conception des systèmes d'information",
+        "Bases de données avancées(SQL & NoSQL)",
+      ],
+      "Réseaux & systèmes": [
+        "Systèmes & Réseaux avancés",
+        "Sécurité des réseaux",
+        "Intro Cloud computing"
+      ],
+      "Développement": [
+        "Développement web & mobile avancé",
+        "Génie logiciel",
+        "Modélisation et animation 3D",
+        "Développement de jeux vidéo"
+      ],
+    },
     responsable: "RAMANANA Hasinarivo",
-    objectif: "En troisième année (S5-S6), parcours MISA préparant au Master - socle fondamental + professionnalisation (réseaux, BDD, web/mobile, projet). À l'issue, insertion pro ou poursuite M1 MISA/INT.",
+    objectif: "En troisième année, parcours MISA préparant au Master - socle fondamental + professionnalisation (réseaux, BDD, web/mobile, projet). À l'issue, insertion pro ou poursuite M1 MISA.",
     ues: {
-      "L3 (S5-S6)": [
-        ["Prototypage numérique", "Mathématiques du numérique", "Conduite de projet informatique", "Probabilités et statistiques", "Programmation avancée", "Informatique décisionnelle"],
-        ["Analyse numérique", "Projet informatique", "Administration réseau avancée", "Développement web et mobile", "Système d'information"],
+      "L3": [
+        ["Prototypage numérique", "Mathématiques du numérique", "Conduite de projet informatique", "Probabilités et statistiques", "Programmation", "Informatique décisionnelle"],
+        ["Analyse numérique", "Projet informatique"],
       ],
     },
   },
@@ -90,8 +107,7 @@ export const masterParcours = {
       ["Modélisation et conception d'objet", "Modélisation et calcul scientifique", "JAVA EE", "Management de projet informatique", "Web services, XML", "Développement collaboratif"],
     ],
     m2: [
-      ["Stage et mémoire"],
-      ["Transformation de modèle de données", "Préparation à l'environnement professionnel", "Développement mobile et embarqués", "Intégration, vérification, validation, qualification", "Ingénierie de modèle", "Développement orienté plateforme"],
+      ["Transformation de modèle de données", "Préparation à l'environnement professionnel", "Développement mobile et embarqués", "Intégration, vérification, validation, qualification", "Ingénierie de modèle", "Développement orienté plateforme", "Stage et mémoire"],
     ],
   },
   MISA: {
@@ -103,8 +119,7 @@ export const masterParcours = {
       ["Conception et fabrication", "Langues et entreprenariat", "Apprentissage statistique", "Informatique de la vie courante", "Outils mathématiques", "Système d'information"],
     ],
     m2: [
-      ["Stage et mémoire"],
-      ["Simulation numérique", "Sécurité numérique", "Traitement d'information", "Imagerie", "Intelligence artificielle", "Algorithmique"],
+      ["Simulation numérique", "Sécurité numérique", "Traitement d'information", "Imagerie", "Intelligence artificielle", "Algorithmique", "Stage et mémoire"],
     ],
   },
 };
