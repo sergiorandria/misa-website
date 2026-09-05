@@ -172,6 +172,7 @@ export default function Parcours() {
               <ul className="mt-2 text-xs sm:text-sm leading-relaxed list-disc pl-5 space-y-1 text-neutral-700">
                 <li>Sélection sur dossier + entrevue</li>
                 <li>Ouvert aux étudiants titulaires d’une Licence informatique ou licence scientifique d’une institution publique</li>
+                <li>Baccalauréat série C ou S</li>
               </ul>
             </div>
           </div>

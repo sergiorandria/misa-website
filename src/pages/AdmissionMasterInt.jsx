@@ -4,7 +4,7 @@ import AnimatedSection from "../components/ui/AnimatedSection";
 
 const candidatExterne = [
   "Le parcours INT est réservé aux étudiants titulaires d’une Licence scientifique ou d’une Licence en informatique obtenue dans un établissement public",
-  "Le dossier doit préciser le parcours souhaité",
+  "Le candidat doit être titulaire d’un Baccalauréat série C ou S",
 ];
 
 const etapes = [
@@ -32,7 +32,7 @@ export default function AdmissionMasterInt() {
             <List items={candidatExterne} />
           </section>
           <section className="academic-card border border-[var(--color-misa-line)] bg-white">
-            <SectionTitle>Étapes de l’admission</SectionTitle>
+            <SectionTitle>Pièces à fournir pour la candidature</SectionTitle>
             {/* <List items={etapes} numbered /> */}
             <p className="m-5 text-sm leading-relaxed">Veuillez rester connecté. Les dossiers à fournir seront prochainement communiqués.</p>
           </section>
