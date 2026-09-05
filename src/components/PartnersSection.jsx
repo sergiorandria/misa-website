@@ -263,7 +263,6 @@ export default function PartnersSection() {
           </h2>
           <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
         </div>
-
         {/* Bandeau horizontal : défilement auto + glisser manuel */}
         <div className="relative mt-10 sm:mt-14">
           <div className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-24 z-10 bg-gradient-to-r from-[var(--color-misa-paper)] to-transparent" />
