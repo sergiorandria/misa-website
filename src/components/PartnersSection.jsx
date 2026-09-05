@@ -1,159 +1,234 @@
-import { useState } from "react";
-import { motion } from "motion/react";
+import { useEffect, useRef } from "react";
 import { partnerCategories } from "../data/partners";
 import { asset } from "../lib/assets";
-import { GraduationCap, Building2, FlaskConical, Globe2 } from "lucide-react";
-import AnimatedSection, { childFadeUpVariants, staggerContainerVariants } from "./ui/AnimatedSection";
+import { GraduationCap, Building2, Landmark, Store, Globe2 } from "lucide-react";
+import AnimatedSection from "./ui/AnimatedSection";
+
+const categoryIcons = {
+  institutional: Landmark,
+  academic: GraduationCap,
+  industry: Building2,
+  local: Store,
+};
+
+// On aplatit toutes les catégories en une seule liste continue,
+// chaque partenaire gardant une référence à sa catégorie d'origine
+// (utile pour l'icône affichée au survol).
+const allPartners = partnerCategories.flatMap((cat) =>
+  cat.partners.map((partner) => ({ ...partner, categoryId: cat.id }))
+);
+
+// On duplique la liste pour permettre un défilement en boucle parfaitement continu.
+const marqueeTrack = [...allPartners, ...allPartners];
+
+const AUTO_SCROLL_SPEED = 40; // pixels / seconde
+const RESUME_DELAY = 7000; // ms d'inactivité avant reprise du défilement auto
+const DRAG_CLICK_THRESHOLD = 6; // px de déplacement au-delà duquel un clic est considéré comme un glisser
 
 export default function PartnersSection() {
-  const [activeCategory, setActiveCategory] = useState("all");
+  const scrollRef = useRef(null);
+  const pausedRef = useRef(false);
+  const resumeTimerRef = useRef(null);
+  const rafRef = useRef(null);
+  const lastTimeRef = useRef(null);
+  const halfWidthRef = useRef(0);
 
-  const categoryIcons = {
-    academic: GraduationCap,
-    industry: Building2,
-    research: FlaskConical,
+  const draggingRef = useRef(false);
+  const dragStartXRef = useRef(0);
+  const dragStartScrollRef = useRef(0);
+  const dragDistanceRef = useRef(0);
+
+  // Mesure la largeur d'une "moitié" de piste (= la liste non dupliquée)
+  // pour savoir quand boucler le défilement de façon transparente.
+  // ResizeObserver est plus fiable qu'un simple listener "resize" ici,
+  // car il réagit aussi si la largeur du contenu change après le montage
+  // (polices, images, re-render) et pas seulement si la fenêtre change de taille.
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const measure = () => {
+      halfWidthRef.current = el.scrollWidth / 2;
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Boucle de défilement automatique (requestAnimationFrame, indépendante du framerate).
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const step = (timestamp) => {
+      if (lastTimeRef.current == null) lastTimeRef.current = timestamp;
+      const dt = (timestamp - lastTimeRef.current) / 1000;
+      lastTimeRef.current = timestamp;
+
+      // On avance toujours, même si halfWidthRef n'est pas encore mesuré :
+      // seule la logique de "rebouclage" en dépend, pas le défilement lui-même.
+      if (!pausedRef.current) {
+        el.scrollLeft += AUTO_SCROLL_SPEED * dt;
+        if (halfWidthRef.current > 0 && el.scrollLeft >= halfWidthRef.current) {
+          el.scrollLeft -= halfWidthRef.current;
+        }
+      }
+      rafRef.current = requestAnimationFrame(step);
+    };
+    rafRef.current = requestAnimationFrame(step);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    };
+  }, []);
+
+  const pauseAndScheduleResume = () => {
+    pausedRef.current = true;
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = setTimeout(() => {
+      pausedRef.current = false;
+    }, RESUME_DELAY);
   };
 
-  const categoryShortLabels = {
-    academic: "Académique",
-    industry: "Industrie & Tech",
-    research: "Recherche",
+  // Glisser pour défiler (souris ET tactile, unifiés via Pointer Events).
+  // touch-action:none sur le conteneur désactive le scroll tactile natif
+  // pour laisser cette logique gérer le défilement de façon cohérente partout.
+  const handlePointerDown = (e) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    draggingRef.current = true;
+    dragDistanceRef.current = 0;
+    dragStartXRef.current = e.clientX;
+    dragStartScrollRef.current = el.scrollLeft;
+    pauseAndScheduleResume();
+    el.setPointerCapture?.(e.pointerId);
   };
 
-  const filteredCategories =
-    activeCategory === "all"
-      ? partnerCategories
-      : partnerCategories.filter((c) => c.id === activeCategory);
+  const handlePointerMove = (e) => {
+    if (!draggingRef.current) return;
+    const el = scrollRef.current;
+    if (!el) return;
+    const delta = e.clientX - dragStartXRef.current;
+    dragDistanceRef.current = Math.abs(delta);
+    el.scrollLeft = dragStartScrollRef.current - delta;
+
+    // Reboucle même pendant le glisser actif, pour ne jamais atteindre un bord.
+    if (halfWidthRef.current > 0) {
+      if (el.scrollLeft >= halfWidthRef.current) {
+        el.scrollLeft -= halfWidthRef.current;
+        dragStartScrollRef.current -= halfWidthRef.current;
+      } else if (el.scrollLeft < 0) {
+        el.scrollLeft += halfWidthRef.current;
+        dragStartScrollRef.current += halfWidthRef.current;
+      }
+    }
+  };
+
+  const handlePointerUp = () => {
+    draggingRef.current = false;
+    pauseAndScheduleResume();
+  };
+
+  // Molette / trackpad horizontal : le navigateur défile nativement,
+  // on se contente de mettre en pause et reprogrammer la reprise.
+  const handleWheel = () => {
+    pauseAndScheduleResume();
+  };
+
+  const handleLogoClick = (e) => {
+    if (dragDistanceRef.current > DRAG_CLICK_THRESHOLD) {
+      e.preventDefault();
+    }
+  };
 
   return (
-    <AnimatedSection direction="up" distance={30} className="bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24">
+    <AnimatedSection
+      direction="up"
+      distance={30}
+      className="bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24"
+    >
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-[var(--color-misa-line)]">
-          <div>
-            <div className="inline-flex items-center gap-2 text-[11px] tracking-[0.18em] text-[var(--color-misa-red)] font-bold uppercase mb-2">
-              <Globe2 size={14} />
-              <span>ALLIANCES & COOPÉRATIONS</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">
-              Un réseau académique & industriel d'exception
-            </h2>
-            <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
-          </div>
 
-          {/* Category Filter Tabs */}
-          <div className="flex flex-wrap gap-2 shrink-0">
-            <button
-              onClick={() => setActiveCategory("all")}
-              className={`min-h-[42px] px-3.5 sm:px-4 text-[11px] sm:text-xs font-bold uppercase tracking-wider transition duration-200 cursor-pointer ${
-                activeCategory === "all"
-                  ? "bg-[var(--color-misa-ink)] text-white shadow-xs"
-                  : "bg-white border border-[var(--color-misa-line)] text-neutral-600 hover:bg-neutral-100"
-              }`}
-            >
-              Tous ({partnerCategories.reduce((acc, c) => acc + c.partners.length, 0)})
-            </button>
-            {partnerCategories.map((cat) => {
-              const Icon = categoryIcons[cat.id];
+        {/* Section Header */}
+        <div>
+          <div className="inline-flex items-center gap-2 text-[11px] tracking-[0.18em] text-[var(--color-misa-red)] font-bold uppercase mb-2">
+            <Globe2 size={14} />
+            <span>ALLIANCES & COOPÉRATIONS</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">
+            Nos partenaires
+          </h2>
+          <p className="mt-2 text-sm text-neutral-500">
+            {allPartners.length} organisations partenaires — survolez un logo pour en savoir plus, cliquez pour visiter le site
+          </p>
+          <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
+        </div>
+
+        {/* Bandeau horizontal : défilement auto + glisser/molette manuel */}
+        <div className="relative mt-10 sm:mt-14">
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-24 z-10 bg-gradient-to-r from-[var(--color-misa-paper)] to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-24 z-10 bg-gradient-to-l from-[var(--color-misa-paper)] to-transparent" />
+
+          <div
+            ref={scrollRef}
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+            onPointerLeave={handlePointerUp}
+            onWheel={handleWheel}
+            style={{ scrollBehavior: "auto" }}
+            className="flex gap-3 sm:gap-4 overflow-x-auto touch-none cursor-grab active:cursor-grabbing select-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {marqueeTrack.map((partner, i) => {
+              const Icon = categoryIcons[partner.categoryId];
+              const isEtech = partner.name.toLowerCase() === "etech";
               return (
-                <button
-                  key={cat.id}
-                  onClick={() => setActiveCategory(cat.id)}
-                  className={`min-h-[42px] px-3.5 sm:px-4 text-[11px] sm:text-xs font-bold uppercase tracking-wider flex items-center gap-2 transition duration-200 cursor-pointer ${
-                    activeCategory === cat.id
-                      ? "bg-[var(--color-misa-red)] text-white shadow-xs"
-                      : "bg-white border border-[var(--color-misa-line)] text-neutral-600 hover:bg-neutral-100"
-                  }`}
+                <a
+                  key={`${partner.name}-${i}`}
+                  href={partner.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={handleLogoClick}
+                  draggable={false}
+                  className="group relative shrink-0 w-[140px] h-[100px] sm:w-[168px] sm:h-[116px] bg-white border border-[var(--color-misa-line)] hover:border-[var(--color-misa-ink)] transition duration-200"
                 >
-                  <Icon size={14} />
-                  <span>{categoryShortLabels[cat.id]}</span>
-                </button>
+                  {/* Logo, visible par défaut */}
+                  <div
+                    className={`absolute inset-0 flex items-center justify-center p-3 sm:p-4 transition-opacity duration-200 group-hover:opacity-0 ${
+                      isEtech ? "bg-[var(--color-misa-ink)]" : "bg-white"
+                    }`}
+                  >
+                    <img
+                      src={asset(partner.logo)}
+                      alt={`${partner.name} logo`}
+                      className={`max-h-full max-w-full w-auto object-contain pointer-events-none ${
+                        isEtech ? "brightness-0 invert" : ""
+                      }`}
+                      loading="lazy"
+                      draggable={false}
+                    />
+                  </div>
+
+                  {/* Overlay d'informations, affiché au survol */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-1.5 px-3 text-center bg-[var(--color-misa-ink)] text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    {Icon && <Icon size={16} className="text-[var(--color-misa-red)]" />}
+                    <div className="text-xs font-bold leading-tight">{partner.name}</div>
+                    <div className="text-[9px] font-semibold uppercase tracking-wider text-neutral-300">
+                      {partner.badge}
+                    </div>
+                    <div className="text-[9px] font-mono text-neutral-400">
+                      {partner.domain}
+                    </div>
+                  </div>
+                </a>
               );
             })}
           </div>
-        </div>
-
-        {/* Categories & Logo Wall */}
-        <div className="mt-8 sm:mt-12 space-y-12 sm:space-y-16">
-          {filteredCategories.map((cat) => {
-            const Icon = categoryIcons[cat.id];
-            return (
-              <div key={cat.id} className="space-y-6">
-                
-                {/* Category Header */}
-                <div className="flex items-center gap-3 border-l-3 border-[var(--color-misa-red)] pl-4">
-                  <Icon size={18} className="text-[var(--color-misa-red)] shrink-0" />
-                  <div>
-                    <h3 className="text-base sm:text-lg font-bold text-[var(--color-misa-ink)]">
-                      {cat.title}
-                    </h3>
-                    <p className="text-xs text-neutral-500 font-medium">
-                      {cat.subtitle}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Grid of Partner Logo Cards */}
-                <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.1 }}
-                  variants={staggerContainerVariants}
-                  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4"
-                >
-                  {cat.partners.map((partner) => {
-                    const isEtech = partner.name === "Etech";
-                    const isBMOI = partner.name === "BMOI";
-                    return (
-                    <motion.div
-                      key={partner.name}
-                      variants={childFadeUpVariants}
-                      className="academic-card bg-white border border-[var(--color-misa-line)] p-3 sm:p-4 flex flex-col justify-between hover:border-[var(--color-misa-ink)] transition duration-200 group"
-                    >
-                      {/* Logo Container — Etech white on white → dark bg + invert */}
-                      <div className={`flex items-center justify-center p-1.5 border mb-2 sm:mb-3 transition duration-300 ${
-                        isEtech
-                          ? "h-12 sm:h-14 bg-[var(--color-misa-ink)] border-[var(--color-misa-ink)] group-hover:bg-black"
-                          : "h-12 sm:h-14 bg-white border-neutral-100 group-hover:bg-neutral-50/30 group-hover:border-[var(--color-misa-red)]"
-                      }`}>
-                        <img
-                          src={asset(partner.logo)}
-                          alt={`${partner.name} logo`}
-                          className={`w-auto object-contain opacity-90 group-hover:opacity-100 group-hover:scale-105 transition duration-300 ${
-                            isBMOI
-                              ? "max-h-6 sm:max-h-7 max-w-[110px] sm:max-w-[130px]"
-                              : isEtech
-                                ? "max-h-7 sm:max-h-8 max-w-[120px] sm:max-w-[140px] brightness-0 invert"
-                                : "max-h-8 sm:max-h-10 max-w-full"
-                          }`}
-                          loading="lazy"
-                        />
-                      </div>
-
-                      {/* Info & Badges */}
-                      <div>
-                        <div className="text-xs font-bold text-[var(--color-misa-ink)] group-hover:text-[var(--color-misa-red)] transition">
-                          {partner.name}
-                        </div>
-                        
-                        <div className="mt-2.5 flex flex-wrap items-center gap-1.5 text-[10px]">
-                          <span className="bg-[var(--color-misa-paper)] text-neutral-700 px-2 py-0.5 border border-[var(--color-misa-line)] font-semibold uppercase tracking-wider">
-                            {partner.badge}
-                          </span>
-                          <span className="text-neutral-500 font-mono text-[9px]">
-                            {partner.domain}
-                          </span>
-                        </div>
-                      </div>
-                    </motion.div>
-                  );
-                  })}
-                </motion.div>
-
-              </div>
-            );
-          })}
         </div>
 
         {/* Footer Note */}

@@ -120,28 +120,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* - INFO STRIP - logo + tagline - white band -----------─ */}
-      <AnimatedSection as="div" direction="fade" duration={0.5} className="border-b border-[var(--color-misa-line)] bg-white">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-3 sm:gap-4">
-            <div className="p-1 border border-[var(--color-misa-line)] shrink-0">
-              <img src={asset('logo-mit.png')} alt="MIT logo" className="h-6 sm:h-7 w-auto object-contain" />
-            </div>
-            <div>
-              <div className="text-[11px] sm:text-xs font-bold tracking-[0.14em] text-[var(--color-misa-red)] uppercase">MIT - UNIVERSITÉ D'ANTANANARIVO</div>
-              <div className="text-[10px] sm:text-[11px] text-neutral-500 font-medium mt-0.5">Sciences & Technologies · Faculté des Sciences</div>
-            </div>
-          </div>
-          <ul className="flex flex-wrap gap-3 sm:gap-4 text-[11px] sm:text-xs font-medium text-neutral-600">
-            <li className="flex items-center gap-1.5"><CheckCircle2 size={13} className="text-[var(--color-misa-red)] shrink-0" /> Projets réels</li>
-            <li className="flex items-center gap-1.5"><CheckCircle2 size={13} className="text-[var(--color-misa-red)] shrink-0" /> Stages annuels</li>
-            <li className="flex items-center gap-1.5"><CheckCircle2 size={13} className="text-[var(--color-misa-red)] shrink-0" /> Encadrement chercheur</li>
-            <li className="flex items-center gap-1.5"><CheckCircle2 size={13} className="text-[var(--color-misa-red)] shrink-0" /> Partenariats internationaux</li>
-          </ul>
-        </div>
-      </AnimatedSection>
-
       {/* - PÉDAGOGIE - paper band --------------------─ */}
       <AnimatedSection direction="up" distance={40} className="bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -150,7 +128,7 @@ export default function Home() {
             Une formation centrée sur l'étudiant
           </h2>
           <p className="mt-5 sm:mt-6 text-sm sm:text-base leading-[1.7] text-neutral-700 max-w-[640px]">
-            Cours magistraux, travaux dirigés, ateliers, simulations et projets de groupe. Les étudiants sont encouragés à prendre en charge leur apprentissage et à développer leur autonomie. Stages en entreprise chaque année pour ancrer la théorie dans la pratique.
+            Cours magistraux, travaux dirigés, ateliers, simulations et projets de groupe. Les étudiants sont encouragés à prendre en charge leur apprentissage et à développer leur autonomie.
           </p>
 
           <Suspense fallback={<div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"><div className="h-[300px] bg-white border border-[var(--color-misa-line)] animate-pulse" /><div className="h-[300px] bg-white border border-[var(--color-misa-line)] animate-pulse hidden sm:block" /><div className="h-[300px] bg-white border border-[var(--color-misa-line)] animate-pulse hidden lg:block" /></div>}>
