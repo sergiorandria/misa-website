@@ -9,7 +9,7 @@ export const partnerCategories = [
         legacyName: "Agence Française de Développement",
         badge: "France · Bailleur",
         domain: "Financement & Développement",
-        logo: "partners/AFD.png",
+        logo: "partners/AFD.jpg",
         website: "https://www.afd.fr",
       },
       {
@@ -17,7 +17,7 @@ export const partnerCategories = [
         legacyName: "AUF",
         badge: "Réseau Francophone",
         domain: "Appui à l'Enseignement Supérieur",
-        logo: "partners/AUF.png",
+        logo: "partners/AUF.webp",
         website: "https://www.auf.org",
       },
       {
@@ -41,7 +41,7 @@ export const partnerCategories = [
         legacyName: "MESUPRES",
         badge: "Gouvernement · Madagascar",
         domain: "Ministère de Tutelle",
-        logo: "partners/MESUPRES.png",
+        logo: "partners/MESUPRES.jpg",
         website: "https://www.mesupres.gov.mg",
       },
     ],
@@ -64,7 +64,7 @@ export const partnerCategories = [
         legacyName: "Univ. Limerick",
         badge: "Irlande",
         domain: "Partenariat Académique",
-        logo: "partners/University_of_Limerick.png",
+        logo: "partners/University_of_Limerick.jpg",
         website: "https://www.ul.ie",
       },
       {
@@ -80,7 +80,7 @@ export const partnerCategories = [
         legacyName: "Toulouse III",
         badge: "Toulouse · France",
         domain: "Coopération & Enseignement",
-        logo: "partners/Universite_Toulouse_2026.svg",
+        logo: "partners/Universite_Toulouse_2026.webp",
         website: "https://www.univ-toulouse.fr",
       },
       {
@@ -96,7 +96,7 @@ export const partnerCategories = [
         legacyName: "Paris Diderot / Paris 7",
         badge: "Paris · France",
         domain: "Échanges Enseignants-Chercheurs",
-        logo: "partners/Universite_Paris_Cite_2026.png",
+        logo: "partners/Universite_Paris_Cite_2026.jpg",
         website: "https://u-paris.fr",
       },
       {
@@ -127,7 +127,7 @@ export const partnerCategories = [
         legacyName: "Orange",
         badge: "International · Télécoms",
         domain: "Réseaux & Innovation",
-        logo: "partners/Orange.svg",
+        logo: "partners/Orange.webp",
         website: "https://www.orange.mg",
       },
       {
@@ -143,7 +143,7 @@ export const partnerCategories = [
         legacyName: "Etech",
         badge: "ESN & Ingénierie",
         domain: "Développement & Cloud",
-        logo: "partners/Etech.png",
+        logo: "partners/Etech.jpg",
         website: "https://etechconsulting-mg.com",
       },
       {
@@ -151,7 +151,7 @@ export const partnerCategories = [
         legacyName: "HUAWEI Madagascar",
         badge: "International · Télécoms",
         domain: "Réseaux & Innovation",
-        logo: "partners/huawei.webp",
+        logo: "partners/huawei.png",
         website: "https://www.huawei.com",
       },
     ],

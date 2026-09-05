@@ -215,7 +215,7 @@ export default function PartnersSection() {
           </h2>
 
           <p className="mt-2 text-sm text-neutral-500">
-            {allPartners.length} organisations partenaires — survolez un logo pour en savoir plus, cliquez pour visiter le site
+            {allPartners.length} organisations partenaires
           </p>
 
           <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
@@ -243,7 +243,6 @@ export default function PartnersSection() {
             >
               {marqueeTrack.map((partner, i) => {
                 const Icon = categoryIcons[partner.categoryId];
-                const isEtech = partner.name.toLowerCase() === "etech";
 
                 return (
                   <a
@@ -257,16 +256,12 @@ export default function PartnersSection() {
                   >
                     {/* Logo, visible par défaut */}
                     <div
-                      className={`absolute inset-0 flex items-center justify-center p-3 sm:p-4 transition-opacity duration-200 group-hover:opacity-0 ${
-                        isEtech ? "bg-[var(--color-misa-ink)]" : "bg-white"
-                      }`}
+                      className="absolute inset-0 flex items-center justify-center p-3 sm:p-4 bg-white transition-opacity duration-200 group-hover:opacity-0"
                     >
                       <img
                         src={asset(partner.logo)}
                         alt={`${partner.name} logo`}
-                        className={`max-h-full max-w-full w-auto object-contain pointer-events-none ${
-                          isEtech ? "brightness-0 invert" : ""
-                        }`}
+                        className="max-h-full max-w-full w-auto object-contain pointer-events-none"
                         loading="lazy"
                         draggable={false}
                       />
@@ -280,7 +275,6 @@ export default function PartnersSection() {
                           className="text-[var(--color-misa-red)]"
                         />
                       )}
-
                       <div className="text-xs font-bold leading-tight">
                         {partner.name}
                       </div>
