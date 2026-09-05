@@ -174,7 +174,7 @@ export default function Navbar() {
                       title: "Licence",
                       sub: "L1 - IT",
                       icon: BookOpen,
-                      badge: "Concours",
+                      badge: "Dossier",
                     },
                     {
                       to: "/admission/master-int",

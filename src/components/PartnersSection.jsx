@@ -44,10 +44,12 @@ export default function PartnersSection() {
   const lastTimeRef = useRef(null);
   const halfWidthRef = useRef(0);
 
+  const pointerDownRef = useRef(false);
   const draggingRef = useRef(false);
   const dragStartXRef = useRef(0);
   const dragStartOffsetRef = useRef(0);
   const dragDistanceRef = useRef(0);
+  const dragPointerIdRef = useRef(null);
 
   const offsetRef = useRef(0);
 
@@ -144,19 +146,30 @@ export default function PartnersSection() {
   const handlePointerDown = (e) => {
     const track = trackRef.current;
 
+    console.log("[partners] pointerdown", {
+      pointerType: e.pointerType,
+      clientX: e.clientX,
+      target: e.target,
+    });
+
     if (!track) return;
 
-    draggingRef.current = true;
+    // On note juste que le pointeur est appuyé — on ne sait pas encore
+    // si ce sera un clic ou un vrai glisser, donc on NE touche PAS
+    // encore à draggingRef ni à la piste.
+    pointerDownRef.current = true;
+    draggingRef.current = false;
     dragDistanceRef.current = 0;
 
     dragStartXRef.current = e.clientX;
     dragStartOffsetRef.current = offsetRef.current;
-
-    track.setPointerCapture?.(e.pointerId);
+    // On garde l'id du pointeur pour ne capturer que plus tard, une fois
+    // qu'on sait que c'est un vrai glisser (voir handlePointerMove).
+    dragPointerIdRef.current = e.pointerId;
   };
 
   const handlePointerMove = (e) => {
-    if (!draggingRef.current) return;
+    if (!pointerDownRef.current) return;
 
     const track = trackRef.current;
 
@@ -165,6 +178,22 @@ export default function PartnersSection() {
     const delta = e.clientX - dragStartXRef.current;
 
     dragDistanceRef.current = Math.abs(delta);
+
+    // Tant que le mouvement ne dépasse pas le seuil, on considère qu'il
+    // s'agit peut-être encore d'un simple clic : on ne déplace pas la
+    // piste, pour ne jamais faire "sauter" visuellement un logo qu'on
+    // est juste en train de cliquer (micro-tremblement de souris/doigt).
+    if (!draggingRef.current) {
+      if (dragDistanceRef.current < DRAG_CLICK_THRESHOLD) return;
+      console.log("[partners] seuil de glisser dépassé, dragDistance =", dragDistanceRef.current);
+      draggingRef.current = true;
+      // On ne capture le pointeur que maintenant que c'est un vrai glisser :
+      // capturer dès pointerdown empêchait l'événement "click" de se
+      // déclencher sur l'ancre pour un simple clic.
+      if (dragPointerIdRef.current != null) {
+        track.setPointerCapture?.(dragPointerIdRef.current);
+      }
+    }
 
     offsetRef.current = dragStartOffsetRef.current - delta;
 
@@ -183,17 +212,36 @@ export default function PartnersSection() {
       `translate3d(${-offsetRef.current}px, 0, 0)`;
   };
 
-  const handlePointerUp = () => {
-    if (!draggingRef.current) return;
-
+  const handlePointerUp = (e) => {
+    console.log("[partners] pointerup", {
+      type: e.type,
+      dragDistance: dragDistanceRef.current,
+      wasDragging: draggingRef.current,
+    });
+    pointerDownRef.current = false;
     draggingRef.current = false;
   };
 
   const handleLogoClick = (e) => {
-    // Empêche l'ouverture du lien si l'utilisateur vient réellement de glisser.
+    console.log("[partners] click sur logo", {
+      dragDistance: dragDistanceRef.current,
+      threshold: DRAG_CLICK_THRESHOLD,
+      willOpen: dragDistanceRef.current <= DRAG_CLICK_THRESHOLD,
+      href: e.currentTarget.href,
+    });
+
+    // On empêche systématiquement la navigation native de l'ancre et on
+    // ouvre nous-mêmes la fenêtre en JS. Ça contourne tout intercepteur de
+    // clic externe au composant (typiquement un handler global de routing
+    // SPA qui capture les clics sur les <a> sans tenir compte de
+    // target="_blank") qui empêchait la navigation native de se produire.
+    e.preventDefault();
+
     if (dragDistanceRef.current > DRAG_CLICK_THRESHOLD) {
-      e.preventDefault();
+      return;
     }
+
+    window.open(e.currentTarget.href, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -215,7 +263,7 @@ export default function PartnersSection() {
           </h2>
 
           <p className="mt-2 text-sm text-neutral-500">
-            {allPartners.length} organisations partenaires
+            {allPartners.length} organisations partenaires — survolez un logo pour en savoir plus, cliquez pour visiter le site
           </p>
 
           <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
@@ -243,6 +291,7 @@ export default function PartnersSection() {
             >
               {marqueeTrack.map((partner, i) => {
                 const Icon = categoryIcons[partner.categoryId];
+                const isEtech = partner.name.toLowerCase() === "etech";
 
                 return (
                   <a
@@ -256,12 +305,16 @@ export default function PartnersSection() {
                   >
                     {/* Logo, visible par défaut */}
                     <div
-                      className="absolute inset-0 flex items-center justify-center p-3 sm:p-4 bg-white transition-opacity duration-200 group-hover:opacity-0"
+                      className={`absolute inset-0 flex items-center justify-center p-3 sm:p-4 transition-opacity duration-200 group-hover:opacity-0 ${
+                        isEtech ? "bg-[var(--color-misa-ink)]" : "bg-white"
+                      }`}
                     >
                       <img
                         src={asset(partner.logo)}
                         alt={`${partner.name} logo`}
-                        className="max-h-full max-w-full w-auto object-contain pointer-events-none"
+                        className={`max-h-full max-w-full w-auto object-contain pointer-events-none ${
+                          isEtech ? "brightness-0 invert" : ""
+                        }`}
                         loading="lazy"
                         draggable={false}
                       />
@@ -275,6 +328,7 @@ export default function PartnersSection() {
                           className="text-[var(--color-misa-red)]"
                         />
                       )}
+
                       <div className="text-xs font-bold leading-tight">
                         {partner.name}
                       </div>
