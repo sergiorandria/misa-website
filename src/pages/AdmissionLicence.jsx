@@ -20,8 +20,8 @@ export default function AdmissionLicence() {
       eyebrow="ADMISSION - LICENCE"
       title="Admission en L1 - Informatique et Technologie"
       intro="L’admission en première année se fait sur classement de dossier, selon la série du Baccalauréat."
-      next="Admission en Master INT"
-      nextTo="/admission/master-int"
+      next="Formation en Licence"
+      nextTo="/formation/licence"
     >
       <section className="academic-card border border-[var(--color-misa-line)] bg-white">
         <SectionTitle>Conditions d’accès</SectionTitle>

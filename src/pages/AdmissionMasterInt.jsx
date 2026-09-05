@@ -49,7 +49,7 @@ export default function AdmissionMasterInt() {
               <Link to="/admission/master-int" className="block border-l-2 border-[var(--color-misa-red)] pl-3 font-semibold">Master - M1 INT</Link>
             </div>
           </div>
-          <Link to="/admission/licence" className="group block border border-[var(--color-misa-red)] p-5 text-sm font-bold text-[var(--color-misa-red)] hover:bg-[var(--color-misa-red)] hover:text-white transition">Admission en Licence <ArrowRight size={15} className="inline ml-1 group-hover:translate-x-1 transition-transform" aria-hidden="true" /></Link>
+          <Link to="/formation/master" className="group block border border-[var(--color-misa-red)] p-5 text-sm font-bold text-[var(--color-misa-red)] hover:bg-[var(--color-misa-red)] hover:text-white transition">Formation en Master <ArrowRight size={15} className="inline ml-1 group-hover:translate-x-1 transition-transform" aria-hidden="true" /></Link>
         </aside>
       </AnimatedSection>
     </div>

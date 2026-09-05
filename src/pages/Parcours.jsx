@@ -201,7 +201,6 @@ export default function Parcours() {
           </div>
 
         </div>
-
         {/* Diagram Image Verification Box */}
         <div className="mt-8 border border-[var(--color-misa-line)] p-4 sm:p-6 bg-[var(--color-misa-paper)] shadow-xs">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -215,7 +214,7 @@ export default function Parcours() {
             onMouseEnter={startImageScroll}
             onMouseLeave={stopImageScroll}
             ref={imageViewportRef}
-            className="mt-4 relative group cursor-pointer border border-[var(--color-misa-line)] bg-white overflow-y-auto no-scrollbar max-h-[500px]"
+            className="mt-4 relative group cursor-pointer bg-white overflow-y-auto no-scrollbar max-h-[500px]"
           >
             <img
               src={asset('roadmap.png')}

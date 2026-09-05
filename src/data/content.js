@@ -195,6 +195,16 @@ export const temoignages = [
     author: "Rajosiarisaona Iantsa Sarobidy",
     promo: "Promo 2022, MISA",
   },
+  {
+    quote: "Pour moi, la MISA est bien plus qu’une école. J’y ai acquis des compétences techniques en IT, mais surtout des valeurs essentielles comme la rigueur et la persévérance.\n\nAujourd’hui, je travaille au Luxembourg comme IT Governance, Risk and Compliance Officer chez Volkswagen Losch Financial Services. C’est un métier qui demande beaucoup de rigueur, car il faut être sûr de ce qu’on rapporte aux différentes autorités et de ce qu’on met en place pour garantir le respect des exigences IT. Mais il faut aussi beaucoup de persévérance, car certains sujets, comme les risques IT ou les plans d’action, demandent du temps et un suivi constant.\n\nJe peux dire que j’ai aussi beaucoup développé ces valeurs grâce à la MISA.",
+    author: "Antsa Mandimbiarisoa",
+    promo: "MISA 2016",
+  },
+  { 
+    quote: "J'ai choisi la MISA car c'était une école de renom où il y avait déjà des geeks à l'époque. Pour moi la différence entre MISA et les autres, c'est que à la MISA on nous enseigne les bases et c'est nous même qui allons developper et approfondir nos connaissances, contrairement aux autres écoles où on nous donne tout et on applique juste, et surtout le réseau des alumnis est puissant. À l'époque, on avait l'intégration donc ceci nous forgeait à avoir la mentalité de la persévérance, et le travail d'equipe ce-qui nous poussait à reussir tous ensemble . Sans cette intégration, je pense qu'on n'aurait pas pu avoir cette ambiance dans le groupe",
+    author: "Lucka Harena - MISA", 
+    promo: "Promo 2023, MISA"
+  },
   { 
     quote: "J'ai choisi la MISA car c'était une école de renom où il y avait déjà des geeks à l'époque. Pour moi la différence entre MISA et les autres, c'est que à la MISA on nous enseigne les bases et c'est nous même qui allons developper et approfondir nos connaissances, contrairement aux autres écoles où on nous donne tout et on applique juste, et surtout le réseau des alumnis est puissant. À l'époque, on avait l'intégration donc ceci nous forgeait à avoir la mentalité de la persévérance, et le travail d'equipe ce-qui nous poussait à reussir tous ensemble . Sans cette intégration, je pense qu'on n'aurait pas pu avoir cette ambiance dans le groupe",
     author: "Lucka Harena - MISA", 

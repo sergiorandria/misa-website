@@ -372,7 +372,7 @@ export default function Home() {
                           <div className="w-7 h-7 flex items-center justify-center bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] text-[var(--color-misa-red)] shrink-0">
                             <Quote size={14} />
                           </div>
-                          <p className="mt-4 text-xs sm:text-[13px] leading-relaxed italic text-neutral-700 overflow-y-auto pr-1">
+                          <p className="mt-4 whitespace-pre-line text-xs sm:text-[13px] leading-relaxed italic text-neutral-700 overflow-y-auto pr-1">
                             &ldquo;{t.quote}&rdquo;
                           </p>
                         </div>
