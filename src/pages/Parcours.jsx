@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { asset } from "../lib/assets";
 import AnimatedSection, { childFadeUpVariants, staggerContainerVariants } from "../components/ui/AnimatedSection";
 
-export default function Arborescence() {
+export default function Parcours() {
   const [modalOpen, setModalOpen] = useState(false);
   const imageViewportRef = useRef(null);
   const scrollAnimationRef = useRef(null);
@@ -208,9 +208,7 @@ export default function Arborescence() {
               <div className="text-[11px] sm:text-xs tracking-[0.16em] text-neutral-500 font-bold uppercase">PARCOURS MIT</div>
               <p className="text-xs text-neutral-600 mt-1">Consultez le parcours détaillé de l’organisation des études au sein de la mention.</p>
             </div>
-            
           </div>
-
           <div
             onClick={() => setModalOpen(true)}
             onMouseEnter={startImageScroll}

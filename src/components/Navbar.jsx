@@ -92,9 +92,9 @@ export default function Navbar() {
                 <div className="w-[480px] bg-white border border-[var(--color-misa-line)] p-3 shadow-xl grid grid-cols-3 gap-2">
                   {[
                     {
-                      to: "/formation/arborescence",
-                      title: "Arborescence",
-                      sub: "Schéma LMD",
+                      to: "/formation/parcours",
+                      title: "Parcours",
+                      sub: "Parcours LMD",
                       icon: Layers,
                       badge: "Aperçu",
                     },
@@ -287,7 +287,7 @@ export default function Navbar() {
                 {mobileFormationOpen && (
                   <div className="ml-3 pl-3 border-l-2 border-[var(--color-misa-line)] space-y-1 my-1">
                     {[
-                      { to: "/formation/arborescence", name: "Arborescence LMD", badge: "Schéma" },
+                      { to: "/formation/parcours", name: "Parcours LMD", badge: "Parcours" },
                       { to: "/formation/licence", name: "Licence", badge: "L1 · L2 · L3" },
                       { to: "/formation/master", name: "Master", badge: "M1 · M2" },
                     ].map(item => (

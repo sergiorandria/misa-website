@@ -73,7 +73,7 @@ export default function Footer() {
           <ul className="mt-3 space-y-1.5 font-medium">
             {[
               { to: "/", label: "Accueil" },
-              { to: "/formation/arborescence", label: "Arborescence" },
+              { to: "/formation/parcours", label: "Parcours" },
               { to: "/formation/licence", label: "Licence" },
               { to: "/formation/master", label: "Master" },
               { to: "/admission", label: "Conditions d’admission" },

@@ -338,7 +338,7 @@ export default function Home() {
             <div className="lg:w-80 xl:w-[360px] shrink-0">
               <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">ALUMNI — TÉMOIGNAGES</p>
               <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">
-                Avis des sortants
+                Avis des anciens
               </h2>
               <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
               <p className="mt-4 text-sm leading-[1.7] text-neutral-700">
