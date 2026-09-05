@@ -193,6 +193,10 @@ export default function Stack({
                 scale: 1 + index * 0.06 - stack.length * 0.06,
                 transformOrigin: '90% 90%'
               }}
+              style={{
+                filter: index === stack.length - 1 ? 'none' : 'grayscale(1) blur(2px)',
+                transition: 'filter 300ms ease'
+              }}
               initial={false}
               transition={{
                 type: 'spring',
