@@ -51,15 +51,15 @@ export const licenceParcours = [
   {
     tag: "Parcours",
     title: "Informatique et Technologie",
-    levels: ["L1 (S1-S2)", "L2 (S3-S4)"],
+    levels: ["L1", "L2"],
     responsable: "BERNARDIN Hagamalala Santatra",
     objectif: "Renforcer les bases en informatique et mathématiques pour des études avancées. Tronc commun L1-L2 en Informatique et Technologie (IT).",
     ues: {
-      "L1 (S1-S2)": [
+      "L1": [
         ["Mathématiques générales", "Techniques de communication", "Base de la programmation", "Prise en main Unix/Linux", "Physique"],
         ["Mathématiques appliquées à l'informatique", "Combinatoire et probabilités", "Communication audiovisuelle", "Langage C", "Linux et logiciels libres", "Électromécanique"],
       ],
-      "L2 (S3-S4)": [
+      "L2": [
         ["Fabrication numérique", "Architecture des réseaux et systèmes", "Langue et entreprenariat", "Architecture des ordinateurs"],
         ["Réseaux, systèmes et bases de données", "Programmation orientée objet", "Probabilité et statistiques", "Web et multimédia"],
       ],
@@ -67,14 +67,31 @@ export const licenceParcours = [
   },
   {
     tag: "Parcours",
-    title: "MISA - Mathématiques Informatique et Statistique Appliquées",
-    levels: ["L3 (S5-S6)"],
+    title: "MISA",
+    levels: ["L3"],
+    specializations: {
+      "Système d'information": [
+        "Analyse et conception des systèmes d'information",
+        "Bases de données avancées(SQL & NoSQL)",
+      ],
+      "Réseaux & systèmes": [
+        "Systèmes & Réseaux avancés",
+        "Sécurité des réseaux",
+        "Intro Cloud computing"
+      ],
+      "Développement": [
+        "Développement web & mobile avancé",
+        "Génie logiciel",
+        "Modélisation et animation 3D",
+        "Développement de jeux vidéo"
+      ],
+    },
     responsable: "RAMANANA Hasinarivo",
-    objectif: "En troisième année (S5-S6), parcours MISA préparant au Master - socle fondamental + professionnalisation (réseaux, BDD, web/mobile, projet). À l'issue, insertion pro ou poursuite M1 MISA/INT.",
+    objectif: "En troisième année, parcours MISA préparant au Master - socle fondamental + professionnalisation (réseaux, BDD, web/mobile, projet). À l'issue, insertion pro ou poursuite M1 MISA.",
     ues: {
-      "L3 (S5-S6)": [
-        ["Prototypage numérique", "Mathématiques du numérique", "Conduite de projet informatique", "Probabilités et statistiques", "Programmation avancée", "Informatique décisionnelle"],
-        ["Analyse numérique", "Projet informatique", "Administration réseau avancée", "Développement web et mobile", "Système d'information"],
+      "L3": [
+        ["Prototypage numérique", "Mathématiques du numérique", "Conduite de projet informatique", "Probabilités et statistiques", "Programmation", "Informatique décisionnelle"],
+        ["Analyse numérique", "Projet informatique"],
       ],
     },
   },
@@ -90,8 +107,7 @@ export const masterParcours = {
       ["Modélisation et conception d'objet", "Modélisation et calcul scientifique", "JAVA EE", "Management de projet informatique", "Web services, XML", "Développement collaboratif"],
     ],
     m2: [
-      ["Stage et mémoire"],
-      ["Transformation de modèle de données", "Préparation à l'environnement professionnel", "Développement mobile et embarqués", "Intégration, vérification, validation, qualification", "Ingénierie de modèle", "Développement orienté plateforme"],
+      ["Transformation de modèle de données", "Préparation à l'environnement professionnel", "Développement mobile et embarqués", "Intégration, vérification, validation, qualification", "Ingénierie de modèle", "Développement orienté plateforme", "Stage et mémoire"],
     ],
   },
   MISA: {
@@ -103,8 +119,7 @@ export const masterParcours = {
       ["Conception et fabrication", "Langues et entreprenariat", "Apprentissage statistique", "Informatique de la vie courante", "Outils mathématiques", "Système d'information"],
     ],
     m2: [
-      ["Stage et mémoire"],
-      ["Simulation numérique", "Sécurité numérique", "Traitement d'information", "Imagerie", "Intelligence artificielle", "Algorithmique"],
+      ["Simulation numérique", "Sécurité numérique", "Traitement d'information", "Imagerie", "Intelligence artificielle", "Algorithmique", "Stage et mémoire"],
     ],
   },
 };
@@ -146,7 +161,7 @@ export const admission = {
   m1: {
     intro: "L'accès au Master diffère selon le parcours :",
     misa: "Parcours MISA valorise la continuité - s'adresse aux étudiants ayant construit leur formation depuis la L1 au sein de l'établissement.",
-    int: "Parcours INT s'ouvre également à de nouveaux talents venant d'autres facultés, sous réserve d'être titulaire d'une Licence scientifique ou d'une Licence en informatique obtenue dans un établissement public.",
+    int: "Parcours INT s'ouvre également à de nouveaux talents venant d'autres facultés, sous réserve d'être titulaire d'une Licence scientifique ou d'une Licence en informatique obtenue dans un établissement public et d'un Baccalauréat série C ou S.",
     etapesExternes: [
       "Dépôt du dossier de candidature en ligne (CV + lettre de motivation précisant le parcours souhaité)",
       "Étude du dossier, pouvant être suivie d'un entretien",
@@ -180,17 +195,24 @@ export const temoignages = [
     author: "Rajosiarisaona Iantsa Sarobidy",
     promo: "Promo 2022, MISA",
   },
+  {
+    quote: "Pour moi, la MISA est bien plus qu’une école. J’y ai acquis des compétences techniques en IT, mais surtout des valeurs essentielles comme la rigueur et la persévérance.\n\nAujourd’hui, je travaille au Luxembourg comme IT Governance, Risk and Compliance Officer chez Volkswagen Losch Financial Services. C’est un métier qui demande beaucoup de rigueur, car il faut être sûr de ce qu’on rapporte aux différentes autorités et de ce qu’on met en place pour garantir le respect des exigences IT. Mais il faut aussi beaucoup de persévérance, car certains sujets, comme les risques IT ou les plans d’action, demandent du temps et un suivi constant.\n\nJe peux dire que j’ai aussi beaucoup développé ces valeurs grâce à la MISA.",
+    author: "Antsa Mandimbiarisoa",
+    promo: "MISA 2016",
+  },
   { 
     quote: "J'ai choisi la MISA car c'était une école de renom où il y avait déjà des geeks à l'époque. Pour moi la différence entre MISA et les autres, c'est que à la MISA on nous enseigne les bases et c'est nous même qui allons developper et approfondir nos connaissances, contrairement aux autres écoles où on nous donne tout et on applique juste, et surtout le réseau des alumnis est puissant. À l'époque, on avait l'intégration donc ceci nous forgeait à avoir la mentalité de la persévérance, et le travail d'equipe ce-qui nous poussait à reussir tous ensemble . Sans cette intégration, je pense qu'on n'aurait pas pu avoir cette ambiance dans le groupe",
     author: "Lucka Harena - MISA", 
-    promo: "Promo 2022, MISA"
+    promo: "Promo 2023, MISA"
+  },
+  { 
+    quote: "J'ai choisi la MISA car c'était une école de renom où il y avait déjà des geeks à l'époque. Pour moi la différence entre MISA et les autres, c'est que à la MISA on nous enseigne les bases et c'est nous même qui allons developper et approfondir nos connaissances, contrairement aux autres écoles où on nous donne tout et on applique juste, et surtout le réseau des alumnis est puissant. À l'époque, on avait l'intégration donc ceci nous forgeait à avoir la mentalité de la persévérance, et le travail d'equipe ce-qui nous poussait à reussir tous ensemble . Sans cette intégration, je pense qu'on n'aurait pas pu avoir cette ambiance dans le groupe",
+    author: "Lucka Harena - MISA", 
+    promo: "Promo 2023, MISA"
   }
 ];
 
 export const contact = {
-  tel: "(+261) 34 53 140 38",
-  tel2: "(+261) 38 18 515 28",
-  email: "mit-univ-tana@gmail.com",
-  email2: "administration@mit-ua.mg",
+  email: "mit@univ-antananarivo.mg",
   adresse: "Université d’Antananarivo - BP 906 Ankatso - Faculté des Sciences - Domaine Sciences et Technologies - Département MIT",
 };

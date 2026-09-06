@@ -120,28 +120,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* - INFO STRIP - logo + tagline - white band -----------─ */}
-      <AnimatedSection as="div" direction="fade" duration={0.5} className="border-b border-[var(--color-misa-line)] bg-white">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-3 sm:gap-4">
-            <div className="p-1 border border-[var(--color-misa-line)] shrink-0">
-              <img src={asset('logo-mit.png')} alt="MIT logo" className="h-6 sm:h-7 w-auto object-contain" />
-            </div>
-            <div>
-              <div className="text-[11px] sm:text-xs font-bold tracking-[0.14em] text-[var(--color-misa-red)] uppercase">MIT - UNIVERSITÉ D'ANTANANARIVO</div>
-              <div className="text-[10px] sm:text-[11px] text-neutral-500 font-medium mt-0.5">Sciences & Technologies · Faculté des Sciences</div>
-            </div>
-          </div>
-          <ul className="flex flex-wrap gap-3 sm:gap-4 text-[11px] sm:text-xs font-medium text-neutral-600">
-            <li className="flex items-center gap-1.5"><CheckCircle2 size={13} className="text-[var(--color-misa-red)] shrink-0" /> Projets réels</li>
-            <li className="flex items-center gap-1.5"><CheckCircle2 size={13} className="text-[var(--color-misa-red)] shrink-0" /> Stages annuels</li>
-            <li className="flex items-center gap-1.5"><CheckCircle2 size={13} className="text-[var(--color-misa-red)] shrink-0" /> Encadrement chercheur</li>
-            <li className="flex items-center gap-1.5"><CheckCircle2 size={13} className="text-[var(--color-misa-red)] shrink-0" /> Partenariats internationaux</li>
-          </ul>
-        </div>
-      </AnimatedSection>
-
       {/* - PÉDAGOGIE - paper band --------------------─ */}
       <AnimatedSection direction="up" distance={40} className="bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -150,7 +128,7 @@ export default function Home() {
             Une formation centrée sur l'étudiant
           </h2>
           <p className="mt-5 sm:mt-6 text-sm sm:text-base leading-[1.7] text-neutral-700 max-w-[640px]">
-            Cours magistraux, travaux dirigés, ateliers, simulations et projets de groupe. Les étudiants sont encouragés à prendre en charge leur apprentissage et à développer leur autonomie. Stages en entreprise chaque année pour ancrer la théorie dans la pratique.
+            Cours magistraux, travaux dirigés, ateliers, simulations et projets de groupe. Les étudiants sont encouragés à prendre en charge leur apprentissage et à développer leur autonomie.
           </p>
 
           <Suspense fallback={<div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"><div className="h-[300px] bg-white border border-[var(--color-misa-line)] animate-pulse" /><div className="h-[300px] bg-white border border-[var(--color-misa-line)] animate-pulse hidden sm:block" /><div className="h-[300px] bg-white border border-[var(--color-misa-line)] animate-pulse hidden lg:block" /></div>}>
@@ -336,26 +314,23 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
             {/* Left — copy */}
             <div className="lg:w-80 xl:w-[360px] shrink-0">
-              <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">ALUMNI — TÉMOIGNAGES</p>
-              <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">
-                Avis des sortants
+              <p className="text-xs tracking-[0.18em] text-neutral-400 font-bold uppercase">ALUMNI — TÉMOIGNAGES</p>
+              <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight text-[var(--color-misa-ink)]">
+                Avis des anciens
               </h2>
               <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
-              <p className="mt-4 text-sm leading-[1.7] text-neutral-700">
+              <p className="mt-4 text-base leading-[1.7] text-neutral-700">
                 Des paroles d&apos;anciens qui témoignent de l&apos;esprit MISA.
               </p>
-              <p className="mt-3 text-sm leading-[1.7] text-neutral-600 italic">« MISA un jour, MISA toujours ! »</p>
-              <p className="mt-6 text-xs leading-relaxed text-neutral-500 lg:hidden">
+              <p className="mt-3 text-base leading-[1.7] text-neutral-600 italic">« MISA un jour, MISA toujours ! »</p>
+              <p className="mt-6 text-sm leading-relaxed text-neutral-500 lg:hidden">
                 Appuyez sur une carte pour la retourner.
-              </p>
-              <p className="hidden lg:block mt-2 text-xs leading-relaxed text-neutral-500">
-                Survolez ou cliquez sur une carte pour découvrir le témoignage.
               </p>
             </div>
             {/* Right — Stack (lazy) */}
-            <Suspense fallback={<div className="w-full max-w-[300px] xs:max-w-[340px] sm:max-w-[420px] md:max-w-[460px] h-[380px] sm:h-[360px] mx-auto lg:mx-0 bg-white border border-[var(--color-misa-line)] animate-pulse" />}>
+            <Suspense fallback={<div className="w-full max-w-[560px] min-h-[360px] max-h-[560px] mx-auto lg:mx-0 bg-white border border-[var(--color-misa-line)] animate-pulse" />}>
               <div className="flex-1 w-full flex justify-center lg:justify-end min-w-0">
-                <div className="w-full max-w-[300px] xs:max-w-[340px] sm:max-w-[420px] md:max-w-[460px] h-[380px] sm:h-[360px] mx-auto lg:mx-0">
+                <div className="w-full max-w-[560px] min-h-[360px] max-h-[560px] mx-auto lg:mx-0">
                   <Stack
                     randomRotation={true}
                     sensitivity={180}
@@ -363,16 +338,19 @@ export default function Home() {
                     autoplay={true}
                     autoplayDelay={4000}
                     pauseOnHover={true}
+                    adaptiveHeight={true}
+                    minHeight={360}
+                    maxHeight={560}
                     cards={temoignages.map((t) => (
                       <div
                         key={t.author}
-                        className="w-full h-full bg-white border border-[var(--color-misa-line)] border-l-4 border-l-[var(--color-misa-red)] p-6 sm:p-7 flex flex-col justify-between text-left shadow-sm"
+                        className="w-full min-h-full bg-white border border-[var(--color-misa-line)] border-l-4 border-l-[var(--color-misa-red)] p-6 sm:p-7 flex flex-col justify-between text-left shadow-sm"
                       >
-                        <div className="flex-1 min-h-0 flex flex-col">
+                        <div className="flex flex-1 flex-col">
                           <div className="w-7 h-7 flex items-center justify-center bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] text-[var(--color-misa-red)] shrink-0">
                             <Quote size={14} />
                           </div>
-                          <p className="mt-4 text-xs sm:text-[13px] leading-relaxed italic text-neutral-700 overflow-y-auto pr-1">
+                          <p className="mt-4 whitespace-pre-line text-xs sm:text-[13px] leading-relaxed italic text-neutral-700 pr-1">
                             &ldquo;{t.quote}&rdquo;
                           </p>
                         </div>

@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Licence from "./pages/Licence";
 import Master from "./pages/Master";
-import Arborescence from "./pages/Arborescence";
+import Parcours from "./pages/Parcours";
 import Admission from "./pages/Admission";
 import AdmissionLicence from "./pages/AdmissionLicence";
 import AdmissionMasterInt from "./pages/AdmissionMasterInt";
@@ -22,13 +22,14 @@ function AnimatedRoutes() {
         <Route path="/formation" element={<PageTransition><Formation /></PageTransition>} />
         <Route path="/formation/licence" element={<PageTransition><Licence /></PageTransition>} />
         <Route path="/formation/master" element={<PageTransition><Master /></PageTransition>} />
-        <Route path="/formation/arborescence" element={<PageTransition><Arborescence /></PageTransition>} />
+        <Route path="/formation/parcours" element={<PageTransition><Parcours /></PageTransition>} />
+        <Route path="/formation/arborescence" element={<Navigate to="/formation/parcours" replace />} />
         <Route path="/admission" element={<PageTransition><Admission /></PageTransition>} />
         <Route path="/admission/licence" element={<PageTransition><AdmissionLicence /></PageTransition>} />
         <Route path="/admission/master-int" element={<PageTransition><AdmissionMasterInt /></PageTransition>} />
         <Route path="/licence" element={<Navigate to="/formation/licence" replace />} />
         <Route path="/master" element={<Navigate to="/formation/master" replace />} />
-        <Route path="/arborescence" element={<Navigate to="/formation/arborescence" replace />} />
+        <Route path="/arborescence" element={<Navigate to="/formation/parcours" replace />} />
         <Route path="/inscription" element={<Navigate to="/admission" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
