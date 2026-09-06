@@ -13,8 +13,8 @@ export default function Footer() {
         {/* Col 1: University Info */}
         <div className="space-y-3">
           <div className="flex items-center gap-3">
-            <div className="p-1 bg-white border border-white/20 shadow-2xs">
-              <img src={asset('logo-mit.png')} alt="MIT" className="h-8 w-auto object-contain" />
+            <div className="bg-white border border-white/20 shadow-2xs">
+              <img src={asset('logo-mit.png')} alt="MIT" className="h-10 w-auto object-contain" />
             </div>
             <span className="font-extrabold text-base tracking-tight text-white">MIT - MISA</span>
           </div>
@@ -27,7 +27,6 @@ export default function Footer() {
             Fondée en 1996 - PRESUP & Coopération Française
           </p>
         </div>
-
         {/* Col 2: Contacts with mailto / external links */}
         <div>
           <div className="text-[11px] tracking-[0.16em] text-white/70 font-bold uppercase border-b border-white/20 pb-2">CONTACTS</div>
@@ -94,7 +93,7 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-white/20 bg-black/20">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-center items-center gap-2 text-xs text-white/75 text-center sm:text-left">
-          <span>© 2026 MIT - MISA. Tous droits réservés.</span>
+          <span>© 2026 MIT - MISA</span>
         </div>
       </div>
     </footer>

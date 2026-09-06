@@ -294,7 +294,7 @@ export default function PartnersSection() {
                     rel="noopener noreferrer"
                     onClick={handleLogoClick}
                     draggable={false}
-                    className="group relative shrink-0 w-[160px] h-[115px] sm:w-[190px] sm:h-[132px] transition duration-200"
+                    className="group relative shrink-0 w-[140px] h-[100px] sm:w-[190px] sm:h-[132px] transition duration-200"
                   >
                     {/* Logo, visible par défaut */}
                     <div className="absolute inset-0 flex items-center justify-center p-1 sm:p-2 bg-white transition-opacity duration-200 group-hover:opacity-0">
