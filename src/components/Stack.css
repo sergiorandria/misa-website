@@ -5,6 +5,13 @@
   perspective: 600px;
 }
 
+.stack-container-adaptive .card-rotate,
+.stack-container-adaptive .card-rotate-disabled,
+.stack-container-adaptive .card {
+  height: auto;
+  min-height: 100%;
+}
+
 .card-rotate {
   position: absolute;
   width: 100%;

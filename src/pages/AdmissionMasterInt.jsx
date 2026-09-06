@@ -4,7 +4,7 @@ import AnimatedSection from "../components/ui/AnimatedSection";
 
 const candidatExterne = [
   "Le parcours INT est réservé aux étudiants titulaires d’une Licence scientifique ou d’une Licence en informatique obtenue dans un établissement public",
-  "Le dossier doit préciser le parcours souhaité",
+  "Le candidat doit être titulaire d’un Baccalauréat série C ou S",
 ];
 
 const etapes = [
@@ -32,7 +32,7 @@ export default function AdmissionMasterInt() {
             <List items={candidatExterne} />
           </section>
           <section className="academic-card border border-[var(--color-misa-line)] bg-white">
-            <SectionTitle>Étapes de l’admission</SectionTitle>
+            <SectionTitle>Pièces à fournir pour la candidature</SectionTitle>
             {/* <List items={etapes} numbered /> */}
             <p className="m-5 text-sm leading-relaxed">Veuillez rester connecté. Les dossiers à fournir seront prochainement communiqués.</p>
           </section>
@@ -49,7 +49,7 @@ export default function AdmissionMasterInt() {
               <Link to="/admission/master-int" className="block border-l-2 border-[var(--color-misa-red)] pl-3 font-semibold">Master - M1 INT</Link>
             </div>
           </div>
-          <Link to="/admission/licence" className="group block border border-[var(--color-misa-red)] p-5 text-sm font-bold text-[var(--color-misa-red)] hover:bg-[var(--color-misa-red)] hover:text-white transition">Admission en Licence <ArrowRight size={15} className="inline ml-1 group-hover:translate-x-1 transition-transform" aria-hidden="true" /></Link>
+          <Link to="/formation/master" className="group block border border-[var(--color-misa-red)] p-5 text-sm font-bold text-[var(--color-misa-red)] hover:bg-[var(--color-misa-red)] hover:text-white transition">Formation en Master <ArrowRight size={15} className="inline ml-1 group-hover:translate-x-1 transition-transform" aria-hidden="true" /></Link>
         </aside>
       </AnimatedSection>
     </div>
