@@ -93,8 +93,13 @@ function MasterCard({ parcoursKey, parcoursData }) {
             </motion.ul>
           </AnimatePresence>
         </div>
+        <div className="mt-auto border-t border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] px-5 pt-4 sm:px-8">
+          <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-neutral-500">
+            RESPONSABLE : <span className="text-[var(--color-misa-ink)]">{parcoursData.responsable}</span>
+          </div>
+        </div>
 
-        <div className="mt-auto min-h-[180px] border-t border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-5 sm:p-8">
+        <div className="min-h-[180px] bg-[var(--color-misa-paper)] px-5 pb-5 pt-2 sm:px-8 sm:pb-8 sm:pt-4">
           <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-neutral-500">
             <Target size={14} className="shrink-0 text-[var(--color-misa-red)]" />
             <span>OBJECTIF</span>

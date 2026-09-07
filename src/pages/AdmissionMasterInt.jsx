@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ClipboardList, ArrowRight } from "lucide-react";
 import AnimatedSection from "../components/ui/AnimatedSection";
+import { masterParcours } from "../data/content";
 
 const candidatExterne = [
   "Le parcours INT est réservé aux étudiants titulaires d’une Licence scientifique ou d’une Licence en informatique obtenue dans un établissement public",
@@ -21,6 +22,7 @@ export default function AdmissionMasterInt() {
           <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">ADMISSION - MASTER</p>
           <h1 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">Admission en M1 - Innovation et Technologie</h1>
           <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
+          <div className="mt-4 text-[11px] tracking-[0.16em] text-neutral-500 font-bold uppercase">RESPONSABLE : <span className="text-[var(--color-misa-ink)]">{masterParcours.INT.responsable}</span></div>
           <p className="mt-4 sm:mt-5 max-w-[720px] text-sm sm:text-base leading-[1.7] text-neutral-700 font-medium">Le parcours INT est réservé aux étudiants titulaires d’une Licence scientifique ou d’une Licence en informatique obtenue dans un établissement public.</p>
         </div>
       </AnimatedSection>

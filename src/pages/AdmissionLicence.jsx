@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ClipboardList, ArrowRight } from "lucide-react";
 import AnimatedSection, { childFadeUpVariants, staggerContainerVariants } from "../components/ui/AnimatedSection";
 import { motion } from "motion/react";
+import { licenceParcours } from "../data/content";
 
 const candidature = [
   "Baccalauréat série C, S, ou Baccalauréat français série S (spécialité mathématiques)",
@@ -20,6 +21,7 @@ export default function AdmissionLicence() {
       eyebrow="ADMISSION - LICENCE"
       title="Admission en L1 - Informatique et Technologie"
       intro="L’admission en première année se fait sur classement de dossier, selon la série du Baccalauréat."
+      responsable={licenceParcours[0].responsable}
       next="Formation en Licence"
       nextTo="/formation/licence"
     >
@@ -51,7 +53,7 @@ export default function AdmissionLicence() {
   );
 }
 
-function AdmissionPage({ eyebrow, title, intro, next, nextTo, children }) {
+function AdmissionPage({ eyebrow, title, intro, responsable, next, nextTo, children }) {
   return (
     <div className="bg-white">
       <AnimatedSection direction="fade" duration={0.5} className="border-b border-[var(--color-misa-line)] bg-[var(--color-misa-paper)]">
@@ -59,6 +61,7 @@ function AdmissionPage({ eyebrow, title, intro, next, nextTo, children }) {
           <p className="text-[11px] tracking-[0.18em] text-neutral-400 font-bold uppercase">{eyebrow}</p>
           <h1 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-[var(--color-misa-ink)]">{title}</h1>
           <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
+          <div className="mt-4 text-[11px] tracking-[0.16em] text-neutral-500 font-bold uppercase">RESPONSABLE : <span className="text-[var(--color-misa-ink)]">{responsable}</span></div>
           <p className="mt-4 sm:mt-5 max-w-[720px] text-sm sm:text-base leading-[1.7] text-neutral-700 font-medium">{intro}</p>
         </div>
       </AnimatedSection>
