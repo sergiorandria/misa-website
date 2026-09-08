@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { introductionParcours, licenceParcours } from "../data/content";
-import { BookOpen, ChevronDown, Target } from "lucide-react";
+import { BookOpen, ChartNoAxesCombined, ChevronDown, Target } from "lucide-react";
 import AnimatedSection, { childFadeUpVariants, staggerContainerVariants } from "../components/ui/AnimatedSection";
 
 export default function Licence() {
@@ -163,8 +163,14 @@ function ParcoursCard({ p }) {
           )}
         </div>
 
+        <div className="border-t border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] px-5 pt-4 sm:px-8">
+          <div className="flex items-center gap-1.5 text-[11px] tracking-[0.16em] text-neutral-500 font-bold uppercase">
+            RESPONSABLE : <span className="text-[var(--color-misa-ink)]">{p.responsable}</span>
+          </div>
+        </div>
+
         {/* Objectif */}
-        <div className="mt-auto min-h-[180px] border-t border-[var(--color-misa-line)] bg-[var(--color-misa-paper)] p-5 sm:p-8">
+        <div className="mt-auto min-h-[180px] bg-[var(--color-misa-paper)] px-5 pb-5 pt-2 sm:px-8 sm:pb-8 sm:pt-4">
           <div>
             <div className="flex items-center gap-1.5 text-[11px] tracking-[0.16em] text-neutral-500 font-bold uppercase">
               <Target size={14} className="text-[var(--color-misa-red)] shrink-0" />

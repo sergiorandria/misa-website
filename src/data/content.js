@@ -86,7 +86,7 @@ export const licenceParcours = [
         "Développement de jeux vidéo"
       ],
     },
-    responsable: "RAMANANA Hasinarivo",
+    responsable:"RASOANAIVO Andry" ,
     objectif: "En troisième année, parcours MISA préparant au Master - socle fondamental + professionnalisation (réseaux, BDD, web/mobile, projet). À l'issue, insertion pro ou poursuite M1 MISA.",
     ues: {
       "L3": [
@@ -100,7 +100,7 @@ export const licenceParcours = [
 export const masterParcours = {
   INT: {
     title: "Innovation et Technologie",
-    responsable: "RASOANAIVO Andry",
+    responsable:"RAMANANA Hasinarivo" ,
     objectif: "Parcours orienté systèmes embarqués - conception et développement de systèmes informatiques intégrés à des dispositifs matériels. Socle commun informatique avec débouchés adaptés au marché.",
     m1: [
       ["Algorithmique avancée", "Introduction à l’apprentissage automatique", "Optimisation combinatoire avancée", "Base de données réparties", "Introduction à la vision par ordinateur", "Entreprenariat"],
@@ -112,7 +112,7 @@ export const masterParcours = {
   },
   MISA: {
     title: "MISA",
-    responsable: "ROBINSON Olivier",
+    responsable: "RASOANAIVO Andry",
     objectif: "Parcours orienté data et intelligence artificielle - analyse de données, machine learning et IA. Formation recherche avec mobilité internationale et passerelles écoles d'ingénieurs / actuariat.",
     m1: [
       ["Management d'entreprise", "Calcul et simulation", "Fabrication numérique", "Data Sciences", "Programmation par contraintes", "Étude d'algorithme"],
@@ -198,17 +198,22 @@ export const temoignages = [
   {
     quote: "Pour moi, la MISA est bien plus qu’une école. J’y ai acquis des compétences techniques en IT, mais surtout des valeurs essentielles comme la rigueur et la persévérance.\n\nAujourd’hui, je travaille au Luxembourg comme IT Governance, Risk and Compliance Officer chez Volkswagen Losch Financial Services. C’est un métier qui demande beaucoup de rigueur, car il faut être sûr de ce qu’on rapporte aux différentes autorités et de ce qu’on met en place pour garantir le respect des exigences IT. Mais il faut aussi beaucoup de persévérance, car certains sujets, comme les risques IT ou les plans d’action, demandent du temps et un suivi constant.\n\nJe peux dire que j’ai aussi beaucoup développé ces valeurs grâce à la MISA.",
     author: "Antsa Mandimbiarisoa",
-    promo: "MISA 2016",
+    promo: "Promo 2016, MISA",
   },
   { 
     quote: "J'ai choisi la MISA car c'était une école de renom où il y avait déjà des geeks à l'époque. Pour moi la différence entre MISA et les autres, c'est que à la MISA on nous enseigne les bases et c'est nous même qui allons developper et approfondir nos connaissances, contrairement aux autres écoles où on nous donne tout et on applique juste, et surtout le réseau des alumnis est puissant. À l'époque, on avait l'intégration donc ceci nous forgeait à avoir la mentalité de la persévérance, et le travail d'equipe ce-qui nous poussait à reussir tous ensemble . Sans cette intégration, je pense qu'on n'aurait pas pu avoir cette ambiance dans le groupe",
-    author: "Lucka Harena - MISA", 
+    author: "Lucka Harena", 
     promo: "Promo 2023, MISA"
   },
   { 
-    quote: "J'ai choisi la MISA car c'était une école de renom où il y avait déjà des geeks à l'époque. Pour moi la différence entre MISA et les autres, c'est que à la MISA on nous enseigne les bases et c'est nous même qui allons developper et approfondir nos connaissances, contrairement aux autres écoles où on nous donne tout et on applique juste, et surtout le réseau des alumnis est puissant. À l'époque, on avait l'intégration donc ceci nous forgeait à avoir la mentalité de la persévérance, et le travail d'equipe ce-qui nous poussait à reussir tous ensemble . Sans cette intégration, je pense qu'on n'aurait pas pu avoir cette ambiance dans le groupe",
-    author: "Lucka Harena - MISA", 
-    promo: "Promo 2023, MISA"
+    quote: "À l'origine, intégrer la MISA était surtout un défi personnel lié à l'exigence de la sélection. Au-delà de ce premier objectif, mes études universitaires m'ont apporté un état d'esprit singulier, un réseau solide et les opportunités nécessaires pour lancer rapidement ma carrière. C'est en grande partie grâce à mes années passées à la MISA que j'ai trouvé mon équilibre actuel.\nAujourd'hui, je suis Développeuse Fullstack Senior, orientée Backend. Je travaille depuis l'île Maurice, d'où je conçois des solutions qui facilitent concrètement le quotidien des utilisateurs. C'est une voie qui me correspond pleinement : elle allie le plaisir de bâtir des projets concrets à une totale flexibilité géographique.",
+    author: "Randriamanalina Atrika", 
+    promo: "Promo 2020, MISA"
+  },
+  { 
+    quote: "Si je devais choisir à nouveau mon parcours universitaire, je choisirais encore et toujours la MISA. Pour trois raisons\n- le niveau élevé en mathématiques\n- la culture d'excellence, transmise de génération en génération\n- le réseau d'entraide avec les anciens étudiants\n\nAujourd'hui je suis lead développeur Python à l'île Maurice. \nLa MISA m'a aidé à avoir un esprit critique et logique, pour surmonter tous les défis du monde professionnel.\n\nLes compétences techniques s'apprennent, mais l'état d'esprit se transmet et se forge. Et tout cela, je l'ai acquis grâce à la MISA.",
+    author: "Ny Aina Razafindratsima", 
+    promo: "Promo 2020, MISA"
   }
 ];
 
