@@ -313,26 +313,32 @@ export default function Home() {
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
             {/* Left — MISA mark and copy */}
-            <div className="lg:w-80 xl:w-[360px] shrink-0">
-              <div
-                className="w-full aspect-[3/4] border border-[var(--color-misa-line)] bg-[#d0d0d0] bg-contain bg-center bg-no-repeat"
-                style={{ backgroundImage: `url(${asset('logo-misa-simple.png')})` }}
-                aria-label="Logo MISA"
-                role="img"
-              />
-              <p className="text-xs tracking-[0.18em] text-neutral-400 font-bold uppercase">ALUMNI — TÉMOIGNAGES</p>
-              <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight text-[var(--color-misa-ink)]">
-                Avis des anciens
-              </h2>
-              <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
-              <p className="mt-4 text-base leading-[1.7] text-neutral-700">
-                Des paroles d&apos;anciens qui témoignent de l&apos;esprit MISA.
-              </p>
-              <p className="mt-3 text-base leading-[1.7] text-neutral-600 italic">« MISA un jour, MISA toujours ! »</p>
-              <p className="mt-6 text-sm leading-relaxed text-neutral-500 lg:hidden">
-                Appuyez sur une carte pour la retourner.
-              </p>
-            </div>
+<div className="lg:w-80 xl:w-[360px] shrink-0 relative">
+  {/* Background logo */}
+  {/* Background logo — greyscale image, transparent elsewhere */}
+<div
+  className="absolute inset-0 bg-contain bg-center bg-no-repeat opacity-15 grayscale -z-0"
+  style={{ backgroundImage: `url(${asset('logo-misa-simple.png')})` }}
+  aria-label="Logo MISA"
+  role="img"
+/>
+
+  {/* Foreground text */}
+  <div className="relative z-10 py-8 px-4">
+    <p className="text-xs tracking-[0.18em] text-neutral-400 font-bold uppercase">ALUMNI — TÉMOIGNAGES</p>
+    <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight text-[var(--color-misa-ink)]">
+      Avis des anciens
+    </h2>
+    <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
+    <p className="mt-4 text-base leading-[1.7] text-neutral-700">
+      Des paroles d&apos;anciens qui témoignent de l&apos;esprit MISA.
+    </p>
+    <p className="mt-3 text-base leading-[1.7] text-neutral-600 italic">« MISA un jour, MISA toujours ! »</p>
+    <p className="mt-6 text-sm leading-relaxed text-neutral-500 lg:hidden">
+      Appuyez sur une carte pour la retourner.
+    </p>
+  </div>
+</div>
             {/* Right — Stack (lazy) */}
             <Suspense fallback={<div className="w-full max-w-[560px] min-h-[360px] max-h-[560px] mx-auto lg:mx-0 bg-white border border-[var(--color-misa-line)] animate-pulse" />}>
               <div className="flex-1 w-full flex justify-center lg:justify-end min-w-0">
