@@ -312,8 +312,14 @@ export default function Home() {
       <AnimatedSection direction="up" distance={40} className="bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
-            {/* Left — copy */}
+            {/* Left — MISA mark and copy */}
             <div className="lg:w-80 xl:w-[360px] shrink-0">
+              <div
+                className="w-full aspect-[3/4] border border-[var(--color-misa-line)] bg-[#d0d0d0] bg-contain bg-center bg-no-repeat"
+                style={{ backgroundImage: `url(${asset('logo-misa-simple.png')})` }}
+                aria-label="Logo MISA"
+                role="img"
+              />
               <p className="text-xs tracking-[0.18em] text-neutral-400 font-bold uppercase">ALUMNI — TÉMOIGNAGES</p>
               <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight text-[var(--color-misa-ink)]">
                 Avis des anciens
