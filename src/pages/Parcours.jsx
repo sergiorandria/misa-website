@@ -217,7 +217,7 @@ export default function Parcours() {
             className="mt-4 relative group cursor-pointer bg-white overflow-y-auto no-scrollbar max-h-[500px]"
           >
             <img
-              src={asset('roadmap.png')}
+              src={asset('roadmap.jpg')}
               alt="Parcours LMD MIT"
               onLoad={handleImageLoad}
               className="block w-full h-auto group-hover:scale-[1.01] transition duration-300"
@@ -243,7 +243,7 @@ export default function Parcours() {
               </span>
               <div className="flex items-center gap-2">
                 <a
-                  href={asset('roadmap.png')}
+                  href={asset('roadmap.jpg')}
                   download="MIT_Parcours_LMD.png"
                   className="min-h-[40px] px-4 bg-white/10 hover:bg-white/20 text-white text-xs font-bold tracking-wide uppercase flex items-center gap-2 transition border border-white/20"
                 >
@@ -262,7 +262,7 @@ export default function Parcours() {
 
             <div className="flex-1 overflow-auto py-4 flex items-center justify-center">
               <img
-                src={asset('roadmap.png')}
+                src={asset('roadmap.jpg')}
                 alt="Parcours LMD MIT officiel plein écran"
                 className="max-w-none w-auto max-h-none sm:max-w-full sm:max-h-full object-contain mx-auto"
               />
