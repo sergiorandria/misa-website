@@ -319,7 +319,7 @@ export default function Home() {
   className="absolute inset-0 bg-no-repeat opacity-15 grayscale pointer-events-none"
   style={{
     backgroundImage: `url(${asset('logo-misa-simple.png')})`,
-    backgroundSize: '13%',
+    backgroundSize: 'clamp(180px, 18vw, 240px)',
     backgroundPosition: '10% center',
     backgroundAttachment: 'fixed',
   }}
