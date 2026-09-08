@@ -309,76 +309,82 @@ export default function Home() {
       </AnimatedSection>
 
       {/* - AVIS DES SORTANTS — Stack (React Bits) — mobile tap + hover ─ */}
-      <AnimatedSection direction="up" distance={40} className="bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
-            {/* Left — MISA mark and copy */}
-<div className="lg:w-80 xl:w-[360px] shrink-0 relative">
-  {/* Background logo */}
-  {/* Background logo — greyscale image, transparent elsewhere */}
-<div
-  className="absolute inset-0 bg-contain bg-center bg-no-repeat opacity-15 grayscale -z-0"
-  style={{ backgroundImage: `url(${asset('logo-misa-simple.png')})` }}
+<AnimatedSection
+  direction="up"
+  distance={40}
+  className="relative overflow-hidden bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24"
+>
+  {/* Background logo — oversized, fixed position, half cropped by section bounds */}
+  <div
+  className="absolute inset-0 bg-no-repeat opacity-15 grayscale pointer-events-none"
+  style={{
+    backgroundImage: `url(${asset('logo-misa-simple.png')})`,
+    backgroundSize: '13%',
+    backgroundPosition: '10% center',
+    backgroundAttachment: 'fixed',
+  }}
   aria-label="Logo MISA"
   role="img"
 />
 
-  {/* Foreground text */}
-  <div className="relative z-10 py-8 px-4">
-    <p className="text-xs tracking-[0.18em] text-neutral-400 font-bold uppercase">ALUMNI — TÉMOIGNAGES</p>
-    <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight text-[var(--color-misa-ink)]">
-      Avis des anciens
-    </h2>
-    <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
-    <p className="mt-4 text-base leading-[1.7] text-neutral-700">
-      Des paroles d&apos;anciens qui témoignent de l&apos;esprit MISA.
-    </p>
-    <p className="mt-3 text-base leading-[1.7] text-neutral-600 italic">« MISA un jour, MISA toujours ! »</p>
-    <p className="mt-6 text-sm leading-relaxed text-neutral-500 lg:hidden">
-      Appuyez sur une carte pour la retourner.
-    </p>
-  </div>
-</div>
-            {/* Right — Stack (lazy) */}
-            <Suspense fallback={<div className="w-full max-w-[560px] min-h-[360px] max-h-[560px] mx-auto lg:mx-0 bg-white border border-[var(--color-misa-line)] animate-pulse" />}>
-              <div className="flex-1 w-full flex justify-center lg:justify-end min-w-0">
-                <div className="w-full max-w-[560px] min-h-[360px] max-h-[560px] mx-auto lg:mx-0">
-                  <Stack
-                    randomRotation={true}
-                    sensitivity={180}
-                    sendToBackOnClick={true}
-                    autoplay={true}
-                    autoplayDelay={4000}
-                    pauseOnHover={true}
-                    adaptiveHeight={true}
-                    minHeight={360}
-                    maxHeight={560}
-                    cards={temoignages.map((t) => (
-                      <div
-                        key={t.author}
-                        className="w-full min-h-full bg-white border border-[var(--color-misa-line)] border-l-4 border-l-[var(--color-misa-red)] p-6 sm:p-7 flex flex-col justify-between text-left shadow-sm"
-                      >
-                        <div className="flex flex-1 flex-col">
-                          <div className="w-7 h-7 flex items-center justify-center bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] text-[var(--color-misa-red)] shrink-0">
-                            <Quote size={14} />
-                          </div>
-                          <p className="mt-4 whitespace-pre-line text-xs sm:text-[13px] leading-relaxed italic text-neutral-700 pr-1">
-                            &ldquo;{t.quote}&rdquo;
-                          </p>
-                        </div>
-                        <div className="mt-4 pt-4 border-t border-[var(--color-misa-line)] text-right shrink-0">
-                          <div className="text-xs font-bold text-[var(--color-misa-red)] leading-tight">{t.author}</div>
-                          <div className="text-[11px] text-neutral-500 tracking-wide uppercase font-medium mt-0.5">{t.promo}</div>
-                        </div>
-                      </div>
-                    ))}
-                  />
+  <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
+      {/* Left — MISA mark and copy */}
+      <div className="lg:w-80 xl:w-[360px] shrink-0">
+        <p className="text-xs tracking-[0.18em] text-neutral-400 font-bold uppercase">ALUMNI — TÉMOIGNAGES</p>
+        <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight text-[var(--color-misa-ink)]">
+          Avis des anciens
+        </h2>
+        <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
+        <p className="mt-4 text-base leading-[1.7] text-neutral-700">
+          Des paroles d&apos;anciens qui témoignent de l&apos;esprit MISA.
+        </p>
+        <p className="mt-3 text-base leading-[1.7] text-neutral-600 italic">« MISA un jour, MISA toujours ! »</p>
+        <p className="mt-6 text-sm leading-relaxed text-neutral-500 lg:hidden">
+          Appuyez sur une carte pour la retourner.
+        </p>
+      </div>
+
+      {/* Right — Stack (lazy) */}
+      <Suspense fallback={<div className="w-full max-w-[560px] min-h-[360px] max-h-[560px] mx-auto lg:mx-0 bg-white border border-[var(--color-misa-line)] animate-pulse" />}>
+        <div className="flex-1 w-full flex justify-center lg:justify-end min-w-0">
+          <div className="w-full max-w-[560px] min-h-[360px] max-h-[560px] mx-auto lg:mx-0">
+            <Stack
+              randomRotation={true}
+              sensitivity={180}
+              sendToBackOnClick={true}
+              autoplay={true}
+              autoplayDelay={4000}
+              pauseOnHover={true}
+              adaptiveHeight={true}
+              minHeight={360}
+              maxHeight={560}
+              cards={temoignages.map((t) => (
+                <div
+                  key={t.author}
+                  className="w-full min-h-full bg-white border border-[var(--color-misa-line)] border-l-4 border-l-[var(--color-misa-red)] p-6 sm:p-7 flex flex-col justify-between text-left shadow-sm"
+                >
+                  <div className="flex flex-1 flex-col">
+                    <div className="w-7 h-7 flex items-center justify-center bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] text-[var(--color-misa-red)] shrink-0">
+                      <Quote size={14} />
+                    </div>
+                    <p className="mt-4 whitespace-pre-line text-xs sm:text-[13px] leading-relaxed italic text-neutral-700 pr-1">
+                      &ldquo;{t.quote}&rdquo;
+                    </p>
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-[var(--color-misa-line)] text-right shrink-0">
+                    <div className="text-xs font-bold text-[var(--color-misa-red)] leading-tight">{t.author}</div>
+                    <div className="text-[11px] text-neutral-500 tracking-wide uppercase font-medium mt-0.5">{t.promo}</div>
+                  </div>
                 </div>
-              </div>
-            </Suspense>
+              ))}
+            />
           </div>
         </div>
-      </AnimatedSection>
+      </Suspense>
+    </div>
+  </div>
+</AnimatedSection>
 
       {/* - PARTENAIRES - Ivy League Wall of Trust (lazy) ------------ */}
       <Suspense fallback={<div className="bg-white border-b border-[var(--color-misa-line)] py-16"><div className="max-w-[1280px] mx-auto px-6 lg:px-8"><div className="h-32 bg-white border border-[var(--color-misa-line)] animate-pulse" /></div></div>}>
