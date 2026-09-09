@@ -319,9 +319,8 @@ export default function Home() {
   className="absolute inset-0 bg-no-repeat opacity-15 grayscale pointer-events-none"
   style={{
     backgroundImage: `url(${asset('logo-misa-simple.png')})`,
-    backgroundSize: 'clamp(180px, 18vw, 240px)',
+    backgroundSize: 'clamp(120px, 12vw, 180px)',
     backgroundPosition: '10% center',
-    backgroundAttachment: 'fixed',
   }}
   aria-label="Logo MISA"
   role="img"
