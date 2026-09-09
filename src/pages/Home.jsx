@@ -353,7 +353,7 @@ export default function Home() {
               sensitivity={180}
               sendToBackOnClick={true}
               autoplay={true}
-              autoplayDelay={4000}
+              autoplayDelay={30000}
               pauseOnHover={true}
               adaptiveHeight={true}
               minHeight={360}
