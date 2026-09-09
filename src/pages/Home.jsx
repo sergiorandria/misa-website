@@ -1,20 +1,44 @@
-import { Link, useNavigate } from "react-router-dom";
-import { ArrowRight, CheckCircle2, ShieldCheck, Cpu, Code2, Users, Globe, BookMarked, Sparkles, Award, Quote } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Globe, BookMarked, Award, Quote } from "lucide-react";
 import { motion } from "motion/react";
 import { lazy, Suspense, useMemo } from "react";
 import { asset } from "../lib/assets";
 import { temoignages } from "../data/content";
 import AnimatedSection, { childFadeUpVariants, staggerContainerVariants } from "../components/ui/AnimatedSection";
 
-// Lazy heavy interactive components for code-splitting
+// Lazy heavy interactive components for below-the-fold code-splitting
 const Stack = lazy(() => import("../components/Stack"));
 const CardFlip = lazy(() => import("../components/ui/CardFlip"));
-const ParticleButton = lazy(() => import("../components/ui/ParticleButton"));
 const PartnersSection = lazy(() => import("../components/PartnersSection"));
 const AccordionGallery = lazy(() => import("../components/AccordionGallery"));
+import ParticleButton from "../components/ui/ParticleButton";
 
 export default function Home() {
   const navigate = useNavigate();
+
+  const testimonialCards = useMemo(
+    () =>
+      temoignages.map((t) => (
+        <div
+          key={t.author}
+          className="w-full min-h-full bg-white border border-[var(--color-misa-line)] border-l-4 border-l-[var(--color-misa-red)] p-6 sm:p-7 flex flex-col justify-between text-left shadow-sm"
+        >
+          <div className="flex flex-1 flex-col">
+            <div className="w-7 h-7 flex items-center justify-center bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] text-[var(--color-misa-red)] shrink-0">
+              <Quote size={14} />
+            </div>
+            <p className="mt-4 whitespace-pre-line text-xs sm:text-[13px] leading-relaxed italic text-neutral-700 pr-1">
+              &ldquo;{t.quote}&rdquo;
+            </p>
+          </div>
+          <div className="mt-4 pt-4 border-t border-[var(--color-misa-line)] text-right shrink-0">
+            <div className="text-xs font-bold text-[var(--color-misa-red)] leading-tight">{t.author}</div>
+            <div className="text-[11px] text-neutral-500 tracking-wide uppercase font-medium mt-0.5">{t.promo}</div>
+          </div>
+        </div>
+      )),
+    []
+  );
 
   return (
     <div className="bg-white overflow-x-hidden">
@@ -53,27 +77,25 @@ export default function Home() {
                 Immergez-vous dans la Science, la technologie, l'ingénierie et les Mathématiques en intégrant la MIT - mention du Domaine des Sciences et Technologies de l'Université d'Antananarivo.
               </motion.p>
 
-              {/* CTAs — Particle Buttons (lazy) */}
-              <Suspense fallback={<div className="mt-8 flex flex-col xs:flex-row gap-3 w-full"><div className="h-[48px] flex-1 bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] animate-pulse" /><div className="h-[48px] flex-1 bg-white border border-[var(--color-misa-line)] animate-pulse" /></div>}>
-                <motion.div variants={childFadeUpVariants} className="mt-8 flex flex-col xs:flex-row gap-3 w-full">
-                  <ParticleButton
-                    variant="primary"
-                    successDuration={900}
-                    onSuccess={() => setTimeout(() => navigate("/admission"), 250)}
-                    className="w-full xs:w-auto xs:flex-1 sm:flex-none sm:min-w-[200px] justify-center"
-                  >
-                    Conditions d&apos;admission
-                  </ParticleButton>
-                  <ParticleButton
-                    variant="outline"
-                    successDuration={900}
-                    onSuccess={() => setTimeout(() => navigate("/formation/licence"), 250)}
-                    className="w-full xs:w-auto xs:flex-1 sm:flex-none sm:min-w-[180px] justify-center"
-                  >
-                    Voir la formation
-                  </ParticleButton>
-                </motion.div>
-              </Suspense>
+              {/* CTAs — Direct render for instant LCP / FCP */}
+              <motion.div variants={childFadeUpVariants} className="mt-8 flex flex-col xs:flex-row gap-3 w-full">
+                <ParticleButton
+                  variant="primary"
+                  successDuration={900}
+                  onSuccess={() => setTimeout(() => navigate("/admission"), 250)}
+                  className="w-full xs:w-auto xs:flex-1 sm:flex-none sm:min-w-[200px] justify-center"
+                >
+                  Conditions d&apos;admission
+                </ParticleButton>
+                <ParticleButton
+                  variant="outline"
+                  successDuration={900}
+                  onSuccess={() => setTimeout(() => navigate("/formation/licence"), 250)}
+                  className="w-full xs:w-auto xs:flex-1 sm:flex-none sm:min-w-[180px] justify-center"
+                >
+                  Voir la formation
+                </ParticleButton>
+              </motion.div>
 
               {/* Key metrics */}
               <motion.div
@@ -108,6 +130,10 @@ export default function Home() {
                 alt="Campus Faculté des Sciences - Université d'Antananarivo"
                 className="campus-img absolute inset-0 w-full h-full"
                 style={{ objectPosition: "center 20%" }}
+                fetchPriority="high"
+                decoding="async"
+                width={560}
+                height={680}
               />
               <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[var(--color-misa-ink)]/30 to-transparent pointer-events-none" />
               <div className="absolute bottom-6 left-8 right-6 z-10">
@@ -358,25 +384,7 @@ export default function Home() {
               adaptiveHeight={true}
               minHeight={360}
               maxHeight={560}
-              cards={temoignages.map((t) => (
-                <div
-                  key={t.author}
-                  className="w-full min-h-full bg-white border border-[var(--color-misa-line)] border-l-4 border-l-[var(--color-misa-red)] p-6 sm:p-7 flex flex-col justify-between text-left shadow-sm"
-                >
-                  <div className="flex flex-1 flex-col">
-                    <div className="w-7 h-7 flex items-center justify-center bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] text-[var(--color-misa-red)] shrink-0">
-                      <Quote size={14} />
-                    </div>
-                    <p className="mt-4 whitespace-pre-line text-xs sm:text-[13px] leading-relaxed italic text-neutral-700 pr-1">
-                      &ldquo;{t.quote}&rdquo;
-                    </p>
-                  </div>
-                  <div className="mt-4 pt-4 border-t border-[var(--color-misa-line)] text-right shrink-0">
-                    <div className="text-xs font-bold text-[var(--color-misa-red)] leading-tight">{t.author}</div>
-                    <div className="text-[11px] text-neutral-500 tracking-wide uppercase font-medium mt-0.5">{t.promo}</div>
-                  </div>
-                </div>
-              ))}
+              cards={testimonialCards}
             />
           </div>
         </div>
