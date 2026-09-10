@@ -53,22 +53,20 @@ export default function PartnersSection() {
 
   const offsetRef = useRef(0);
 
-  // Boucle de défilement automatique.
+  // Boucle de défilement automatique avec IntersectionObserver.
   // La piste entière est déplacée avec transform plutôt que scrollLeft.
   useEffect(() => {
+    let isVisible = false;
+
     const measure = () => {
       const track = trackRef.current;
-
       if (!track) {
         halfWidthRef.current = 0;
         return;
       }
 
       const secondSet = track.children[allPartners.length];
-
-      if (secondSet) {
-        // Distance entre le premier logo et le premier logo de la copie.
-        // Cette valeur contient naturellement les largeurs + les gaps du premier groupe.
+      if (secondSet && track.firstElementChild) {
         halfWidthRef.current =
           secondSet.offsetLeft - track.firstElementChild.offsetLeft;
       }
@@ -76,7 +74,6 @@ export default function PartnersSection() {
 
     const applyTransform = () => {
       const track = trackRef.current;
-
       if (track) {
         track.style.transform = `translate3d(${-offsetRef.current}px, 0, 0)`;
       }
@@ -84,35 +81,30 @@ export default function PartnersSection() {
 
     const handleResize = () => {
       measure();
-
-      // Après un redimensionnement, on garde l'offset dans la boucle courante.
       const halfWidth = halfWidthRef.current;
-
       if (halfWidth > 0) {
         offsetRef.current %= halfWidth;
       }
-
       applyTransform();
     };
 
     const step = (timestamp) => {
+      if (!isVisible) return;
+
       const viewport = scrollRef.current;
       const track = trackRef.current;
 
       if (viewport && track) {
-        measure();
-
         if (lastTimeRef.current === null) {
           lastTimeRef.current = timestamp;
         }
 
-        const dt = (timestamp - lastTimeRef.current) / 1000;
+        const dt = Math.min((timestamp - lastTimeRef.current) / 1000, 0.1);
         lastTimeRef.current = timestamp;
 
         if (!draggingRef.current && halfWidthRef.current > 0) {
           offsetRef.current += AUTO_SCROLL_SPEED * dt;
 
-          // On reboucle dès que le premier groupe est entièrement passé.
           if (offsetRef.current >= halfWidthRef.current) {
             offsetRef.current %= halfWidthRef.current;
           }
@@ -120,24 +112,54 @@ export default function PartnersSection() {
           applyTransform();
         }
       } else {
-        // Évite un grand saut de temps si le composant n'est pas encore monté/attaché.
         lastTimeRef.current = null;
       }
 
       rafRef.current = requestAnimationFrame(step);
     };
 
+    const startAnimation = () => {
+      if (!rafRef.current) {
+        lastTimeRef.current = null;
+        measure();
+        rafRef.current = requestAnimationFrame(step);
+      }
+    };
+
+    const stopAnimation = () => {
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = null;
+      }
+    };
+
+    // Mesure initiale après rendu complet
     measure();
     applyTransform();
 
-    rafRef.current = requestAnimationFrame(step);
-    window.addEventListener("resize", handleResize);
+    // IntersectionObserver : anime uniquement quand visible dans l'écran
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) {
+          if (halfWidthRef.current === 0) measure();
+          startAnimation();
+        } else {
+          stopAnimation();
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    if (scrollRef.current) {
+      observer.observe(scrollRef.current);
+    }
+
+    window.addEventListener("resize", handleResize, { passive: true });
 
     return () => {
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
-      }
-
+      stopAnimation();
+      observer.disconnect();
       window.removeEventListener("resize", handleResize);
     };
   }, []);
@@ -145,26 +167,14 @@ export default function PartnersSection() {
   // Glisser pour déplacer la piste (souris + tactile via Pointer Events).
   const handlePointerDown = (e) => {
     const track = trackRef.current;
-
-    console.log("[partners] pointerdown", {
-      pointerType: e.pointerType,
-      clientX: e.clientX,
-      target: e.target,
-    });
-
     if (!track) return;
 
-    // On note juste que le pointeur est appuyé — on ne sait pas encore
-    // si ce sera un clic ou un vrai glisser, donc on NE touche PAS
-    // encore à draggingRef ni à la piste.
     pointerDownRef.current = true;
     draggingRef.current = false;
     dragDistanceRef.current = 0;
 
     dragStartXRef.current = e.clientX;
     dragStartOffsetRef.current = offsetRef.current;
-    // On garde l'id du pointeur pour ne capturer que plus tard, une fois
-    // qu'on sait que c'est un vrai glisser (voir handlePointerMove).
     dragPointerIdRef.current = e.pointerId;
   };
 
@@ -172,75 +182,42 @@ export default function PartnersSection() {
     if (!pointerDownRef.current) return;
 
     const track = trackRef.current;
-
     if (!track) return;
 
     const delta = e.clientX - dragStartXRef.current;
-
     dragDistanceRef.current = Math.abs(delta);
 
-    // Tant que le mouvement ne dépasse pas le seuil, on considère qu'il
-    // s'agit peut-être encore d'un simple clic : on ne déplace pas la
-    // piste, pour ne jamais faire "sauter" visuellement un logo qu'on
-    // est juste en train de cliquer (micro-tremblement de souris/doigt).
     if (!draggingRef.current) {
       if (dragDistanceRef.current < DRAG_CLICK_THRESHOLD) return;
-      console.log("[partners] seuil de glisser dépassé, dragDistance =", dragDistanceRef.current);
       draggingRef.current = true;
-      // On ne capture le pointeur que maintenant que c'est un vrai glisser :
-      // capturer dès pointerdown empêchait l'événement "click" de se
-      // déclencher sur l'ancre pour un simple clic.
       if (dragPointerIdRef.current != null) {
         track.setPointerCapture?.(dragPointerIdRef.current);
       }
     }
 
     offsetRef.current = dragStartOffsetRef.current - delta;
-
     const halfWidth = halfWidthRef.current;
 
     if (halfWidth > 0) {
-      // Conserve toujours l'offset dans [0, halfWidth).
       offsetRef.current %= halfWidth;
-
       if (offsetRef.current < 0) {
         offsetRef.current += halfWidth;
       }
     }
 
-    track.style.transform =
-      `translate3d(${-offsetRef.current}px, 0, 0)`;
+    track.style.transform = `translate3d(${-offsetRef.current}px, 0, 0)`;
   };
 
-  const handlePointerUp = (e) => {
-    console.log("[partners] pointerup", {
-      type: e.type,
-      dragDistance: dragDistanceRef.current,
-      wasDragging: draggingRef.current,
-    });
+  const handlePointerUp = () => {
     pointerDownRef.current = false;
     draggingRef.current = false;
   };
 
   const handleLogoClick = (e) => {
-    console.log("[partners] click sur logo", {
-      dragDistance: dragDistanceRef.current,
-      threshold: DRAG_CLICK_THRESHOLD,
-      willOpen: dragDistanceRef.current <= DRAG_CLICK_THRESHOLD,
-      href: e.currentTarget.href,
-    });
-
-    // On empêche systématiquement la navigation native de l'ancre et on
-    // ouvre nous-mêmes la fenêtre en JS. Ça contourne tout intercepteur de
-    // clic externe au composant (typiquement un handler global de routing
-    // SPA qui capture les clics sur les <a> sans tenir compte de
-    // target="_blank") qui empêchait la navigation native de se produire.
     e.preventDefault();
-
     if (dragDistanceRef.current > DRAG_CLICK_THRESHOLD) {
       return;
     }
-
     window.open(e.currentTarget.href, "_blank", "noopener,noreferrer");
   };
 
@@ -303,6 +280,7 @@ export default function PartnersSection() {
                         alt={`${partner.name} logo`}
                         className="max-h-full max-w-full w-auto object-contain pointer-events-none"
                         loading="lazy"
+                        decoding="async"
                         draggable={false}
                       />
                     </div>

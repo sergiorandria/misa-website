@@ -122,8 +122,10 @@ export default function Stack({
     }
   });
 
+  const cardsCountRef = useRef(cards.length);
   useEffect(() => {
-    if (cards.length) {
+    if (cards.length && cards.length !== cardsCountRef.current) {
+      cardsCountRef.current = cards.length;
       setStack(cards.map((content, index) => ({ id: index + 1, content })));
     }
   }, [cards]);
@@ -132,20 +134,28 @@ export default function Stack({
     if (!adaptiveHeight || !stackContainerRef.current) return undefined;
 
     const container = stackContainerRef.current;
+    let rafId;
+
     const measureCards = () => {
-      const cardHeights = [...container.querySelectorAll('.card')].map((card) => card.scrollHeight);
-      const contentHeight = Math.max(0, ...cardHeights);
-      const nextHeight = Math.min(Math.max(contentHeight, minHeight), maxHeight);
-      setMeasuredHeight(nextHeight || null);
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        if (!container) return;
+        const cardHeights = [...container.querySelectorAll('.card')].map((card) => card.scrollHeight);
+        const contentHeight = Math.max(0, ...cardHeights);
+        const nextHeight = Math.min(Math.max(contentHeight, minHeight), maxHeight);
+        setMeasuredHeight((prev) => (prev !== nextHeight ? nextHeight || null : prev));
+      });
     };
 
     const observer = new ResizeObserver(measureCards);
     observer.observe(container);
-    container.querySelectorAll('.card').forEach((card) => observer.observe(card));
     measureCards();
 
-    return () => observer.disconnect();
-  }, [adaptiveHeight, minHeight, maxHeight, stack]);
+    return () => {
+      cancelAnimationFrame(rafId);
+      observer.disconnect();
+    };
+  }, [adaptiveHeight, minHeight, maxHeight]);
 
   const sendToBack = id => {
     setStack(prev => {
@@ -177,7 +187,7 @@ export default function Stack({
       onMouseLeave={() => pauseOnHover && setIsPaused(false)}
     >
       {stack.map((card, index) => {
-        const randomRotate = randomRotation ? Math.random() * 10 - 5 : 0;
+        const randomRotate = randomRotation ? (((card.id * 17) % 11) - 5) * 0.7 : 0;
         return (
           <CardRotate
             key={card.id}

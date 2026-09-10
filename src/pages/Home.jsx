@@ -1,20 +1,44 @@
-import { Link, useNavigate } from "react-router-dom";
-import { ArrowRight, CheckCircle2, ShieldCheck, Cpu, Code2, Users, Globe, BookMarked, Sparkles, Award, Quote } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Globe, BookMarked, Award, Quote } from "lucide-react";
 import { motion } from "motion/react";
 import { lazy, Suspense, useMemo } from "react";
 import { asset } from "../lib/assets";
 import { temoignages } from "../data/content";
 import AnimatedSection, { childFadeUpVariants, staggerContainerVariants } from "../components/ui/AnimatedSection";
 
-// Lazy heavy interactive components for code-splitting
+// Lazy heavy interactive components for below-the-fold code-splitting
 const Stack = lazy(() => import("../components/Stack"));
 const CardFlip = lazy(() => import("../components/ui/CardFlip"));
-const ParticleButton = lazy(() => import("../components/ui/ParticleButton"));
 const PartnersSection = lazy(() => import("../components/PartnersSection"));
 const AccordionGallery = lazy(() => import("../components/AccordionGallery"));
+import ParticleButton from "../components/ui/ParticleButton";
 
 export default function Home() {
   const navigate = useNavigate();
+
+  const testimonialCards = useMemo(
+    () =>
+      temoignages.map((t) => (
+        <div
+          key={t.author}
+          className="w-full min-h-full bg-white border border-[var(--color-misa-line)] border-l-4 border-l-[var(--color-misa-red)] p-6 sm:p-7 flex flex-col justify-between text-left shadow-sm"
+        >
+          <div className="flex flex-1 flex-col">
+            <div className="w-7 h-7 flex items-center justify-center bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] text-[var(--color-misa-red)] shrink-0">
+              <Quote size={14} />
+            </div>
+            <p className="mt-4 whitespace-pre-line text-xs sm:text-[13px] leading-relaxed italic text-neutral-700 pr-1">
+              &ldquo;{t.quote}&rdquo;
+            </p>
+          </div>
+          <div className="mt-4 pt-4 border-t border-[var(--color-misa-line)] text-right shrink-0">
+            <div className="text-xs font-bold text-[var(--color-misa-red)] leading-tight">{t.author}</div>
+            <div className="text-[11px] text-neutral-500 tracking-wide uppercase font-medium mt-0.5">{t.promo}</div>
+          </div>
+        </div>
+      )),
+    []
+  );
 
   return (
     <div className="bg-white overflow-x-hidden">
@@ -53,27 +77,25 @@ export default function Home() {
                 Immergez-vous dans la Science, la technologie, l'ingénierie et les Mathématiques en intégrant la MIT - mention du Domaine des Sciences et Technologies de l'Université d'Antananarivo.
               </motion.p>
 
-              {/* CTAs — Particle Buttons (lazy) */}
-              <Suspense fallback={<div className="mt-8 flex flex-col xs:flex-row gap-3 w-full"><div className="h-[48px] flex-1 bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] animate-pulse" /><div className="h-[48px] flex-1 bg-white border border-[var(--color-misa-line)] animate-pulse" /></div>}>
-                <motion.div variants={childFadeUpVariants} className="mt-8 flex flex-col xs:flex-row gap-3 w-full">
-                  <ParticleButton
-                    variant="primary"
-                    successDuration={900}
-                    onSuccess={() => setTimeout(() => navigate("/admission"), 250)}
-                    className="w-full xs:w-auto xs:flex-1 sm:flex-none sm:min-w-[200px] justify-center"
-                  >
-                    Conditions d&apos;admission
-                  </ParticleButton>
-                  <ParticleButton
-                    variant="outline"
-                    successDuration={900}
-                    onSuccess={() => setTimeout(() => navigate("/formation/licence"), 250)}
-                    className="w-full xs:w-auto xs:flex-1 sm:flex-none sm:min-w-[180px] justify-center"
-                  >
-                    Voir la formation
-                  </ParticleButton>
-                </motion.div>
-              </Suspense>
+              {/* CTAs — Direct render for instant LCP / FCP */}
+              <motion.div variants={childFadeUpVariants} className="mt-8 flex flex-col xs:flex-row gap-3 w-full">
+                <ParticleButton
+                  variant="primary"
+                  successDuration={900}
+                  onSuccess={() => setTimeout(() => navigate("/admission"), 250)}
+                  className="w-full xs:w-auto xs:flex-1 sm:flex-none sm:min-w-[200px] justify-center"
+                >
+                  Conditions d&apos;admission
+                </ParticleButton>
+                <ParticleButton
+                  variant="outline"
+                  successDuration={900}
+                  onSuccess={() => setTimeout(() => navigate("/formation/licence"), 250)}
+                  className="w-full xs:w-auto xs:flex-1 sm:flex-none sm:min-w-[180px] justify-center"
+                >
+                  Voir la formation
+                </ParticleButton>
+              </motion.div>
 
               {/* Key metrics */}
               <motion.div
@@ -108,6 +130,10 @@ export default function Home() {
                 alt="Campus Faculté des Sciences - Université d'Antananarivo"
                 className="campus-img absolute inset-0 w-full h-full"
                 style={{ objectPosition: "center 20%" }}
+                fetchPriority="high"
+                decoding="async"
+                width={560}
+                height={680}
               />
               <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[var(--color-misa-ink)]/30 to-transparent pointer-events-none" />
               <div className="absolute bottom-6 left-8 right-6 z-10">
@@ -309,64 +335,63 @@ export default function Home() {
       </AnimatedSection>
 
       {/* - AVIS DES SORTANTS — Stack (React Bits) — mobile tap + hover ─ */}
-      <AnimatedSection direction="up" distance={40} className="bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
-            {/* Left — copy */}
-            <div className="lg:w-80 xl:w-[360px] shrink-0">
-              <p className="text-xs tracking-[0.18em] text-neutral-400 font-bold uppercase">ALUMNI — TÉMOIGNAGES</p>
-              <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight text-[var(--color-misa-ink)]">
-                Avis des anciens
-              </h2>
-              <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
-              <p className="mt-4 text-base leading-[1.7] text-neutral-700">
-                Des paroles d&apos;anciens qui témoignent de l&apos;esprit MISA.
-              </p>
-              <p className="mt-3 text-base leading-[1.7] text-neutral-600 italic">« MISA un jour, MISA toujours ! »</p>
-              <p className="mt-6 text-sm leading-relaxed text-neutral-500 lg:hidden">
-                Appuyez sur une carte pour la retourner.
-              </p>
-            </div>
-            {/* Right — Stack (lazy) */}
-            <Suspense fallback={<div className="w-full max-w-[560px] min-h-[360px] max-h-[560px] mx-auto lg:mx-0 bg-white border border-[var(--color-misa-line)] animate-pulse" />}>
-              <div className="flex-1 w-full flex justify-center lg:justify-end min-w-0">
-                <div className="w-full max-w-[560px] min-h-[360px] max-h-[560px] mx-auto lg:mx-0">
-                  <Stack
-                    randomRotation={true}
-                    sensitivity={180}
-                    sendToBackOnClick={true}
-                    autoplay={true}
-                    autoplayDelay={4000}
-                    pauseOnHover={true}
-                    adaptiveHeight={true}
-                    minHeight={360}
-                    maxHeight={560}
-                    cards={temoignages.map((t) => (
-                      <div
-                        key={t.author}
-                        className="w-full min-h-full bg-white border border-[var(--color-misa-line)] border-l-4 border-l-[var(--color-misa-red)] p-6 sm:p-7 flex flex-col justify-between text-left shadow-sm"
-                      >
-                        <div className="flex flex-1 flex-col">
-                          <div className="w-7 h-7 flex items-center justify-center bg-[var(--color-misa-paper)] border border-[var(--color-misa-line)] text-[var(--color-misa-red)] shrink-0">
-                            <Quote size={14} />
-                          </div>
-                          <p className="mt-4 whitespace-pre-line text-xs sm:text-[13px] leading-relaxed italic text-neutral-700 pr-1">
-                            &ldquo;{t.quote}&rdquo;
-                          </p>
-                        </div>
-                        <div className="mt-4 pt-4 border-t border-[var(--color-misa-line)] text-right shrink-0">
-                          <div className="text-xs font-bold text-[var(--color-misa-red)] leading-tight">{t.author}</div>
-                          <div className="text-[11px] text-neutral-500 tracking-wide uppercase font-medium mt-0.5">{t.promo}</div>
-                        </div>
-                      </div>
-                    ))}
-                  />
-                </div>
-              </div>
-            </Suspense>
+<AnimatedSection
+  direction="up"
+  distance={40}
+  className="relative overflow-hidden bg-[var(--color-misa-paper)] border-b border-[var(--color-misa-line)] py-12 sm:py-16 lg:py-24"
+>
+  {/* Background logo — oversized, fixed position, half cropped by section bounds */}
+  <div
+  className="absolute inset-0 bg-no-repeat opacity-15 grayscale pointer-events-none"
+  style={{
+    backgroundImage: `url(${asset('logo-misa-simple.png')})`,
+    backgroundSize: 'clamp(120px, 12vw, 180px)',
+    backgroundPosition: '10% center',
+  }}
+  aria-label="Logo MISA"
+  role="img"
+/>
+
+  <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
+      {/* Left — MISA mark and copy */}
+      <div className="lg:w-80 xl:w-[360px] shrink-0">
+        <p className="text-xs tracking-[0.18em] text-neutral-400 font-bold uppercase">ALUMNI — TÉMOIGNAGES</p>
+        <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight text-[var(--color-misa-ink)]">
+          Avis des anciens
+        </h2>
+        <div className="mt-4 h-px w-12 bg-[var(--color-misa-red)]" />
+        <p className="mt-4 text-base leading-[1.7] text-neutral-700">
+          Des paroles d&apos;anciens qui témoignent de l&apos;esprit MISA.
+        </p>
+        <p className="mt-3 text-base leading-[1.7] text-neutral-600 italic">« MISA un jour, MISA toujours ! »</p>
+        <p className="mt-6 text-sm leading-relaxed text-neutral-500 lg:hidden">
+          Appuyez sur une carte pour la retourner.
+        </p>
+      </div>
+
+      {/* Right — Stack (lazy) */}
+      <Suspense fallback={<div className="w-full max-w-[560px] min-h-[360px] max-h-[560px] mx-auto lg:mx-0 bg-white border border-[var(--color-misa-line)] animate-pulse" />}>
+        <div className="flex-1 w-full flex justify-center lg:justify-end min-w-0">
+          <div className="w-full max-w-[560px] min-h-[360px] max-h-[560px] mx-auto lg:mx-0">
+            <Stack
+              randomRotation={true}
+              sensitivity={180}
+              sendToBackOnClick={true}
+              autoplay={true}
+              autoplayDelay={30000}
+              pauseOnHover={true}
+              adaptiveHeight={true}
+              minHeight={360}
+              maxHeight={560}
+              cards={testimonialCards}
+            />
           </div>
         </div>
-      </AnimatedSection>
+      </Suspense>
+    </div>
+  </div>
+</AnimatedSection>
 
       {/* - PARTENAIRES - Ivy League Wall of Trust (lazy) ------------ */}
       <Suspense fallback={<div className="bg-white border-b border-[var(--color-misa-line)] py-16"><div className="max-w-[1280px] mx-auto px-6 lg:px-8"><div className="h-32 bg-white border border-[var(--color-misa-line)] animate-pulse" /></div></div>}>
